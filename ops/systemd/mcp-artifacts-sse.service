@@ -1,0 +1,16 @@
+[Unit]
+Description=MCP Filesystem (Artifacts) via mcp-proxy on localhost
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mcp-proxy --host 127.0.0.1 --port 7400 mcp-filesystem /srv/artifacts /mnt/homelab-config
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
