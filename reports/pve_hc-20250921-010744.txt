@@ -1,0 +1,111 @@
+--------------------------------------------------------------------------------
+# NODE OVERVIEW
+--------------------------------------------------------------------------------
+Timestamp: 2025-09-21T01:07:44-04:00
+Hostname: pve
+Uptime: up 2 hours, 21 minutes
+Load avg: 1.69 1.86 2.18
+Memory: 
+Swap: 
+--------------------------------------------------------------------------------
+# TOP MEMORY PROCESSES
+--------------------------------------------------------------------------------
+    PID    PPID CMD                         %MEM %CPU
+  38400       1 /usr/bin/kvm -id 101 -name  50.6 16.4
+   5292    4774 /usr/bin/influxd             1.8  0.4
+   1256       1 pveproxy                     1.4  0.0
+    988       1 /usr/sbin/netdata -P /run/n  1.4  2.0
+ 178337    1256 pveproxy worker              1.2  0.1
+ 185235    1256 pveproxy worker              1.2  0.1
+ 109895    1220 pvedaemon worker             1.2  0.1
+  90756    1220 pvedaemon worker             1.2  0.1
+  95833    1220 pvedaemon worker             1.2  0.1
+ 208612    1256 pveproxy worker              1.2  0.0
+ 178336       1 pveproxy worker (shutdown)   1.2  0.0
+ 175564  109895 task UPID:pve:0002ADCC:0009  1.2  0.0
+   1220       1 pvedaemon                    1.2  0.0
+  19454       1 task UPID:pve:00004BFE:0000  1.1  0.0
+--------------------------------------------------------------------------------
+# PVE SERVICES
+--------------------------------------------------------------------------------
+pvestatd       : active
+pvedaemon      : active
+pveproxy       : active
+pve-cluster    : active
+--------------------------------------------------------------------------------
+# STORAGE
+--------------------------------------------------------------------------------
+Name             Type     Status           Total            Used       Available        %
+local             dir     active        98497780         9802792        83645440    9.95%
+local-lvm     lvmthin     active      1793077248        53075086      1740002161    2.96%
+vdev1             lvm     active      2000396288               0      2000396288    0.00%
+vpool         zfspool     active      1885863936            2028      1885861908    0.00%
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/pve-root   94G  9.4G   80G  11% /
+efivarfs              192K  112K   76K  60% /sys/firmware/efi/efivars
+/dev/nvme0n1p2       1022M   12M 1011M   2% /boot/efi
+vpool                 1.8T  128K  1.8T   1% /vpool
+/dev/fuse             128M   32K  128M   1% /etc/pve
+--------------------------------------------------------------------------------
+# ZFS STATUS
+--------------------------------------------------------------------------------
+all pools are healthy
+NAME                                         SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+vpool                                       1.81T  1.98M  1.81T        -         -     0%     0%  1.00x    ONLINE  -
+  mirror-0                                  1.81T  1.98M  1.81T        -         -     0%  0.00%      -    ONLINE
+    nvme-CT2000P310SSD8_24514CF8F7FF        1.82T      -      -        -         -      -      -      -    ONLINE
+    nvme-WD_Blue_SN5000_2TB_25201W804546_1  1.82T      -      -        -         -      -      -      -    ONLINE
+--------------------------------------------------------------------------------
+# SMART OVERALL
+--------------------------------------------------------------------------------
+== /dev/nvme0n1 ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/nvme1n1 ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/nvme2n1 ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/nvme3n1 ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+--------------------------------------------------------------------------------
+# OOM EVENTS (last 24h)
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+# VMS
+--------------------------------------------------------------------------------
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos16.0             running    6000              32.00 38400     
+--------------------------------------------------------------------------------
+# LXCs
+--------------------------------------------------------------------------------
+VMID       Status     Lock         Name                
+100        running                 netbox              
+102        running                 grafana             
+103        running                 prometheus          
+104        running                 prometheus-pve-exporter
+105        running                 influxdb            
+106        running                 homepage            
+--------------------------------------------------------------------------------
+# SUMMARY
+--------------------------------------------------------------------------------
+Overall: OK
+Report: /root/homelab-config/reports/pve_hc-20250921-010744.txt

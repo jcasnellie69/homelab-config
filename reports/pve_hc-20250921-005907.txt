@@ -1,0 +1,369 @@
+--------------------------------------------------------------------------------
+# NODE OVERVIEW
+--------------------------------------------------------------------------------
+Timestamp: 2025-09-21T00:59:07-04:00
+Hostname: pve
+Uptime: up 2 hours, 12 minutes
+Load avg: 2.30 2.41 2.51
+Memory: 11Gi total, 8.8Gi used, 694Mi free
+Swap: 8.0Gi total, 1.0Gi used, 7.0Gi free
+--------------------------------------------------------------------------------
+# TOP MEMORY PROCESSES
+--------------------------------------------------------------------------------
+    PID    PPID CMD                         %MEM %CPU
+  38400       1 /usr/bin/kvm -id 101 -name  50.6 16.5
+   5292    4774 /usr/bin/influxd             1.8  0.4
+   1256       1 pveproxy                     1.4  0.0
+    988       1 /usr/sbin/netdata -P /run/n  1.4  2.0
+ 178337    1256 pveproxy worker              1.2  0.2
+ 185235    1256 pveproxy worker              1.2  0.1
+ 109895    1220 pvedaemon worker             1.2  0.1
+  90756    1220 pvedaemon worker             1.2  0.1
+  95833    1220 pvedaemon worker             1.2  0.1
+ 208612    1256 pveproxy worker              1.2  0.0
+ 178336       1 pveproxy worker (shutdown)   1.2  0.0
+ 175564  109895 task UPID:pve:0002ADCC:0009  1.2  0.0
+   1220       1 pvedaemon                    1.2  0.0
+  19454       1 task UPID:pve:00004BFE:0000  1.1  0.0
+--------------------------------------------------------------------------------
+# PVE SERVICES
+--------------------------------------------------------------------------------
+pvestatd       : active
+pvedaemon      : active
+pveproxy       : active
+pve-cluster    : active
+--------------------------------------------------------------------------------
+# STORAGE
+--------------------------------------------------------------------------------
+Name             Type     Status           Total            Used       Available        %
+local             dir     active        98497780         9800964        83647268    9.95%
+local-lvm     lvmthin     active      1793077248        53075086      1740002161    2.96%
+vdev1             lvm     active      2000396288               0      2000396288    0.00%
+vpool         zfspool     active      1885863936            2028      1885861908    0.00%
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/pve-root   94G  9.4G   80G  11% /
+efivarfs              192K  112K   76K  60% /sys/firmware/efi/efivars
+/dev/nvme0n1p2       1022M   12M 1011M   2% /boot/efi
+vpool                 1.8T  128K  1.8T   1% /vpool
+/dev/fuse             128M   32K  128M   1% /etc/pve
+--------------------------------------------------------------------------------
+# ZFS STATUS
+--------------------------------------------------------------------------------
+all pools are healthy
+NAME                                         SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+vpool                                       1.81T  1.98M  1.81T        -         -     0%     0%  1.00x    ONLINE  -
+  mirror-0                                  1.81T  1.98M  1.81T        -         -     0%  0.00%      -    ONLINE
+    nvme-CT2000P310SSD8_24514CF8F7FF        1.82T      -      -        -         -      -      -      -    ONLINE
+    nvme-WD_Blue_SN5000_2TB_25201W804546_1  1.82T      -      -        -         -      -      -      -    ONLINE
+--------------------------------------------------------------------------------
+# SMART OVERALL
+--------------------------------------------------------------------------------
+== /dev/disk/by-id/dm-name-pve-root (/dev/dm-1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-1: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-swap (/dev/dm-0) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-0: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--100--disk--0 (/dev/dm-12) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-12: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--101--disk--0 (/dev/dm-6) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-6: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--101--disk--1 (/dev/dm-7) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-7: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--102--disk--0 (/dev/dm-8) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-8: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--103--disk--0 (/dev/dm-9) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-9: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--104--disk--0 (/dev/dm-10) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-10: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--105--disk--0 (/dev/dm-11) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-11: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-name-pve-vm--106--disk--0 (/dev/dm-13) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-13: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4t4ZOwxe9b7B5n7KyWm3F9fgGzNayzxMwa (/dev/dm-10) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-10: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tAdMNgUlBvETdGN4hc23pdwfdu28DjL41 (/dev/dm-0) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-0: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tfTlYDWqvs0hL7EstKNEvXAdBnhp2NzyR (/dev/dm-11) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-11: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tgflH0zQq0Ds1S82ilLf5fjKAdDf9AFZO (/dev/dm-13) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-13: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tmxxv0iNZxRQVYhk3QSwYmAUlCQswn5Wc (/dev/dm-6) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-6: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tOPNp5miaOqVa5Ea6cwzsoNs36AUyffzO (/dev/dm-8) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-8: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tRb2Mf4rf0nyxVSfPXGNDrU6sAmlyt6ns (/dev/dm-12) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-12: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tSvoZcWbGzfB7M4hxMXTpsztEiBYOA8ou (/dev/dm-9) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-9: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tuZLcfVQJAEcrgcw2D1s5Tdf2b6dRH3nK (/dev/dm-7) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-7: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/dm-uuid-LVM-29J2IsamziofWRdxbfb0L8JB21Heso4tVKZlvU6yNWRGB3qPttPlebPnwpbSZKNC (/dev/dm-1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/dm-1: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/lvm-pv-uuid-6SaMSk-eC7O-tNfe-7pQg-v3NP-z1eH-Fppjud (/dev/nvme2n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/lvm-pv-uuid-cw8zVq-9Dk2-tO8c-39cA-B2L4-R8Zd-HSO9sB (/dev/nvme0n1p3) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/mmc-SCA64G_0xb212b605 (/dev/mmcblk0) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+/dev/mmcblk0: Unable to detect device type
+Please specify device type with the -d option.
+
+Use smartctl -h to get a usage summary
+
+== /dev/disk/by-id/nvme-CT2000P310SSD8_24514CF8F7FF (/dev/nvme1n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-CT2000P310SSD8_24514CF8F7FF_1 (/dev/nvme1n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-eui.000000000000000100a075244cf8f7ff (/dev/nvme1n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-eui.303136303031383750c68e0950534247 (/dev/nvme2n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b421b7b59 (/dev/nvme0n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b42435e51 (/dev/nvme3n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-Predator_SSD_GM7000_2TB_PSBG55201600187 (/dev/nvme2n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-Predator_SSD_GM7000_2TB_PSBG55201600187_1 (/dev/nvme2n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-WD_BLACK_SN850X_HS_2000GB_25244C801244 (/dev/nvme0n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-WD_BLACK_SN850X_HS_2000GB_25244C801244_1 (/dev/nvme0n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-WD_Blue_SN5000_2TB_25201W804546 (/dev/nvme3n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+== /dev/disk/by-id/nvme-WD_Blue_SN5000_2TB_25201W804546_1 (/dev/nvme3n1) ==
+smartctl 7.3 2022-02-28 r5338 [x86_64-linux-6.8.12-13-pve] (local build)
+Copyright (C) 2002-22, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+--------------------------------------------------------------------------------
+# OOM EVENTS (last 24h)
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+# VMS
+--------------------------------------------------------------------------------
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos16.0             running    6000              32.00 38400     
+--------------------------------------------------------------------------------
+# LXCs
+--------------------------------------------------------------------------------
+VMID       Status     Lock         Name                
+100        running                 netbox              
+102        running                 grafana             
+103        running                 prometheus          
+104        running                 prometheus-pve-exporter
+105        running                 influxdb            
+106        running                 homepage            
+--------------------------------------------------------------------------------
+# SUMMARY
+--------------------------------------------------------------------------------
+Overall: OK
