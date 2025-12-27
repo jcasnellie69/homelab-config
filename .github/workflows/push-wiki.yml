@@ -1,0 +1,48 @@
+name: Push Wiki from Repo
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  push-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Enable wiki via API
+        if: ${{ secrets.WIKI_PAT != '' }}
+        run: |
+          curl -s -X PATCH \
+            -H "Authorization: token ${{ secrets.WIKI_PAT }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }} \
+            -d '{"has_wiki": true}' | jq .
+
+      - name: Clone wiki repo
+        env:
+          WIKI_URL: https://x-access-token:${{ secrets.WIKI_PAT }}@github.com/${{ github.repository }}.wiki.git
+        run: |
+          if [ -n "${{ secrets.WIKI_PAT }}" ]; then
+            git clone "$WIKI_URL" wiki || true
+          else
+            echo "WIKI_PAT secret not set; cannot clone wiki."; exit 1
+          fi
+
+      - name: Copy WIKI pages
+        run: |
+          cp -v WIKI/*.md wiki/ || true
+
+      - name: Commit and push wiki changes
+        run: |
+          cd wiki || exit 0
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Update wiki from repo" || echo "No changes to commit"
+          git push origin main || git push origin master || echo "Push failed"
