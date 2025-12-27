@@ -1,0 +1,12 @@
+site_name: homelab-config
+site_description: Homelab documentation and artifacts
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Artifacts: artifacts-index.md
+  - Telemetry: telemetry-pipeline.md
+  - Docs: README.md
+markdown_extensions:
+  - toc:
+      permalink: true
