@@ -1,0 +1,33 @@
+# PVE Tools — Repo Structure
+
+Recommended placement for scripts in your homelab repo:
+
+```
+~/homelab-config/scripts/util/
+│
+├── PVE_tools_install.sh   # Install baseline monitoring tools
+├── PVE_tools_check.sh     # Verify tools are working
+└── README.md              # Usage guide
+```
+
+## Setup
+```bash
+mkdir -p ~/homelab-config/scripts/util/
+cp PVE_tools_install.sh PVE_tools_check.sh README.md ~/homelab-config/scripts/util/
+chmod +x ~/homelab-config/scripts/util/PVE_tools_install.sh \
+         ~/homelab-config/scripts/util/PVE_tools_check.sh
+```
+
+## Run
+```bash
+# Install tooling (safe to re-run)
+~/homelab-config/scripts/util/PVE_tools_install.sh
+
+# Validate tooling works
+~/homelab-config/scripts/util/PVE_tools_check.sh
+```
+
+## Notes
+- All scripts are written to run as **root** (no sudo).
+- This `util/` directory is for helper utilities, not core stack installers.
+- Next step: add `PVE_HC.sh` into this same directory for full node + guest health reporting.
