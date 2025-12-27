@@ -1,12 +1,29 @@
 site_name: homelab-config
 site_description: Homelab documentation and artifacts
+site_author: "homelab"
+repo_url: https://github.com/jcasnellie69/homelab-config
 theme:
   name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.instant
+plugins:
+  - search
 nav:
   - Home: index.md
   - Artifacts: artifacts-index.md
   - Telemetry: telemetry-pipeline.md
-  - Docs: README.md
+  - Docs:
+      - Overview: README.md
+      - Session Automation: SESSION-AUTOMATION.md
+      - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
+      - MCP Filesystem: mcp-filesystem.md
+      - Netify Config Matrix: netify-config-matrix.md
+      - Observability Service Map: observability-service-map.md
+      - Policy Observability: policy-observability.md
+  - Session Logs:
+      - Build HC Automation: session-logs/20251211-204446-BUILD-HC-AUTOMATION.md
 markdown_extensions:
   - toc:
       permalink: true
