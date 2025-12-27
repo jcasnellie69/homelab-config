@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Logs and runtime
+logs/
+*.log
+
+# Backups
+*.bak
+*~
+
+# Editor
+.vscode/
+.idea/
+
+# MkDocs site build
+site/
