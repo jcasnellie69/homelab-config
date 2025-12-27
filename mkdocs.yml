@@ -15,7 +15,7 @@ nav:
   - Artifacts: artifacts-index.md
   - Telemetry: telemetry-pipeline.md
   - Docs:
-      - Overview: README.md
+      - Overview: DOCS_INDEX.md
       - Session Automation: SESSION-AUTOMATION.md
       - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
       - MCP Filesystem: mcp-filesystem.md
