@@ -2,6 +2,8 @@ name: Push Wiki from Repo
 
 on:
   workflow_dispatch: {}
+  push:
+    branches: [ master ]
 
 permissions:
   contents: write

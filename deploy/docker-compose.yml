@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mcp-gateway:
+    image: "REPLACE_WITH_IMAGE:latest"
+    container_name: mcp-gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - MCP_GATEWAY_TOKEN=${MCP_GATEWAY_TOKEN}
+      - OTHER_ENV=example
+    # If you prefer to keep secrets out of compose file, use an env file:
+    # env_file:
+    #   - .env
