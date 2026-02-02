@@ -6,4 +6,4 @@ Quick links
 
 - [Artifacts index](artifacts-index.md)
 - [Telemetry pipeline](telemetry-pipeline.md)
-- [Docs README](README.md)
+- Docs: see the "Docs" section in the site navigation

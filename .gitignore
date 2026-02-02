@@ -21,3 +21,6 @@ logs/
 
 # MkDocs site build
 site/
+
+# Python virtual env
+.venv/
