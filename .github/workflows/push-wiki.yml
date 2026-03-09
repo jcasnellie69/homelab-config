@@ -3,7 +3,7 @@ name: Push Wiki from Repo
 on:
   workflow_dispatch: {}
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 permissions:
   contents: write
