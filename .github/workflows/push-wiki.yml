@@ -41,7 +41,8 @@ jobs:
           if [ -n "${{ secrets.WIKI_PAT }}" ]; then
             git clone "$WIKI_URL" wiki || true
           else
-            echo "WIKI_PAT secret not set; cannot clone wiki."; exit 1
+            echo "WIKI_PAT secret not set; skipping wiki sync."
+            exit 0
           fi
 
       - name: Copy WIKI pages
