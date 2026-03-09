@@ -23,13 +23,16 @@ jobs:
           sudo apt-get install -y jq
 
       - name: Enable wiki via API
-        if: ${{ secrets.WIKI_PAT != '' }}
         run: |
-          curl -s -X PATCH \
-            -H "Authorization: token ${{ secrets.WIKI_PAT }}" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }} \
-            -d '{"has_wiki": true}' | jq .
+          if [ -n "${{ secrets.WIKI_PAT }}" ]; then
+            curl -s -X PATCH \
+              -H "Authorization: token ${{ secrets.WIKI_PAT }}" \
+              -H "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/${{ github.repository }} \
+              -d '{"has_wiki": true}' | jq .
+          else
+            echo "WIKI_PAT secret not set; skipping enable wiki"
+          fi
 
       - name: Clone wiki repo
         env:
