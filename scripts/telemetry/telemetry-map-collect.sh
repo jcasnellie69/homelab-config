@@ -10,8 +10,11 @@ echo "Writing to: $DIR"
 {
   echo "CT,NAME,IP"
   for CT in $(pct list | awk 'NR>1{print $1}' | sort -n); do
-    NAME="$(pct exec "$CT" -- hostname 2>/dev/null | head -n1 || true)"
-    IP="$(pct exec "$CT" -- bash -lc "ip -4 -o addr show scope global | awk '{print \$4}' | cut -d/ -f1 | head -n1" 2>/dev/null || true)"
+    # Get hostname and IP in a single exec call to reduce overhead.
+    # Output is expected to be "NAME: <hostname>" and "IP: <ip_address>".
+    INFO="$(pct exec "$CT" -- bash -lc "echo \"NAME: \$(hostname | head -n1)\"; echo \"IP: \$(ip -4 -o addr show scope global | awk '{print \$4}' | cut -d/ -f1 | head -n1)\"" 2>/dev/null || true)"
+    NAME="$(echo "$INFO" | grep '^NAME: ' | cut -d' ' -f2- || true)"
+    IP="$(echo "$INFO" | grep '^IP: ' | cut -d' ' -f2- || true)"
     echo "${CT},${NAME:-unknown},${IP:-unknown}"
   done
 } > "$DIR/ct-index.csv"
