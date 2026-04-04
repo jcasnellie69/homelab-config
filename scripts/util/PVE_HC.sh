@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# pve_hc_script.sh v0.5 — Proxmox Node + Guests Health Check
+# PVE_HC.sh v0.5 — Proxmox Node + Guests Health Check
 # Output: $HOME/homelab-config/reports/pve_hc-YYYYmmdd-HHMMSS.txt
 
 set -euo pipefail
