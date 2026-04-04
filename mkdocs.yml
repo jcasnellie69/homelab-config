@@ -8,6 +8,9 @@ theme:
     scheme: slate
   features:
     - navigation.instant
+    - navigation.top
+    - search.suggest
+    - search.highlight
 plugins:
   - search
 nav:
