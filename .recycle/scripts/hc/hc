@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Thin wrapper so "hc" is the main HC entrypoint.
+# Delegates to hc-master.sh, keeps paths and future args flexible.
+
+exec /root/homelab-config/scripts/hc/hc-master.sh "$@"

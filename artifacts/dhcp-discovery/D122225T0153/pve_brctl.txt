@@ -1,0 +1,12 @@
+### CMD: bash -lc command -v brctl >/dev/null 2>&1 && brctl show || echo "brctl not installed"
+### WHEN: 2025-12-22T01:53:45-05:00
+### HOST: pve.primary.node
+
+bridge name	bridge id		STP enabled	interfaces
+vmbr0		8000.e051d81a9da7	no		enp5s0
+							veth100i0
+							veth103i0
+							veth104i0
+							veth105i0
+							veth106i0
+							veth109i0

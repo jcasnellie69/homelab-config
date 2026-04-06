@@ -1,0 +1,104 @@
+
+[1mPihole LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mpihole[m
+    💡  [m[33m IP Address: [1;92m192.168.4.208[m
+  UNIT                                 LOAD      ACTIVE     SUB     JOB   DESCRIPTION
+● apparmor.service                     not-found inactive   dead          apparmor.service
+  apt-daily-upgrade.service            loaded    inactive   dead          Daily apt upgrade and clean activities
+  apt-daily.service                    loaded    inactive   dead          Daily apt download activities
+● auditd.service                       not-found inactive   dead          auditd.service
+● connman.service                      not-found inactive   dead          connman.service
+  console-getty.service                loaded    active     running       Console Getty
+  container-getty@1.service            loaded    active     running       Container Getty on /dev/tty1
+  container-getty@2.service            loaded    active     running       Container Getty on /dev/tty2
+  cron.service                         loaded    active     running       Regular background program processing daemon
+  dbus.service                         loaded    active     running       D-Bus System Message Bus
+● display-manager.service              not-found inactive   dead          display-manager.service
+  dpkg-db-backup.service               loaded    inactive   dead          Daily dpkg database backup service
+  e2scrub_all.service                  loaded    inactive   dead          Online ext4 Metadata Check for All Filesystems
+  e2scrub_reap.service                 loaded    inactive   dead          Remove Stale Online ext4 Metadata Check Snapshots
+  emergency.service                    loaded    inactive   dead          Emergency Shell
+● exim4.service                        not-found inactive   dead          exim4.service
+  fstrim.service                       loaded    inactive   dead          Discard unused blocks on filesystems from /etc/fstab
+  getty-static.service                 loaded    inactive   dead          getty on tty2-tty6 if dbus and logind are not available
+  ifupdown-pre.service                 loaded    active     exited        Helper to synchronize boot up for ifupdown
+  ifupdown-wait-online.service         loaded    active     exited        Wait for network to be configured by ifupdown
+  initrd-cleanup.service               loaded    inactive   dead          Cleaning Up and Shutting Down Daemons
+  initrd-parse-etc.service             loaded    inactive   dead          Mountpoints Configured in the Real Root
+  initrd-switch-root.service           loaded    inactive   dead          Switch Root
+  initrd-udevadm-cleanup-db.service    loaded    inactive   dead          Cleanup udev Database
+  kmod-static-nodes.service            loaded    inactive   dead          Create List of Static Device Nodes
+  logrotate.service                    loaded    inactive   dead          Rotate log files
+  man-db.service                       loaded    inactive   dead          Daily man-db regeneration
+  modprobe@dm_mod.service              loaded    inactive   dead          Load Kernel Module dm_mod
+  modprobe@drm.service                 loaded    inactive   dead          Load Kernel Module drm
+  modprobe@efi_pstore.service          loaded    inactive   dead          Load Kernel Module efi_pstore
+  modprobe@fuse.service                loaded    inactive   dead          Load Kernel Module fuse
+  modprobe@loop.service                loaded    inactive   dead          Load Kernel Module loop
+  netdata.service                      loaded    active     running       Netdata, X-Ray Vision for your infrastructure!
+  networking.service                   loaded    active     exited        Raise network interfaces
+● NetworkManager.service               not-found inactive   dead          NetworkManager.service
+  nftables.service                     loaded    active     exited        nftables
+  pihole-FTL.service                   loaded    active     running       Pi-hole FTL
+● plymouth-quit-wait.service           not-found inactive   dead          plymouth-quit-wait.service
+● plymouth-start.service               not-found inactive   dead          plymouth-start.service
+  postfix-resolvconf.service           loaded    inactive   dead          Copies updated resolv.conf to postfix chroot and restarts postfix.
+  postfix.service                      loaded    active     exited        Postfix Mail Transport Agent
+  postfix@-.service                    loaded    active     running       Postfix Mail Transport Agent (instance -)
+  proxmox-regenerate-snakeoil.service  loaded    inactive   dead          "Regenerate pre-generated snakeoil certificate and key-pair once"
+  rc-local.service                     loaded    inactive   dead          /etc/rc.local Compatibility
+  rescue.service                       loaded    inactive   dead          Rescue Shell
+● sendmail.service                     not-found inactive   dead          sendmail.service
+  ssh.service                          loaded    active     running       OpenBSD Secure Shell server
+● syslog.service                       not-found inactive   dead          syslog.service
+  systemd-ask-password-console.service loaded    inactive   dead          Dispatch Password Requests to Console
+  systemd-ask-password-wall.service    loaded    inactive   dead          Forward Password Requests to Wall
+  systemd-binfmt.service               loaded    inactive   dead          Set Up Additional Binary Formats
+  systemd-firstboot.service            loaded    inactive   dead          First Boot Wizard
+  systemd-fsck-root.service            loaded    inactive   dead          File System Check on Root Device
+  systemd-fsckd.service                loaded    inactive   dead          File System Check Daemon to report status
+● systemd-hwdb-update.service          not-found inactive   dead          systemd-hwdb-update.service
+  systemd-initctl.service              loaded    inactive   dead          initctl Compatibility Daemon
+  systemd-journal-flush.service        loaded    active     exited        Flush Journal to Persistent Storage
+  systemd-journald.service             loaded    active     running       Journal Service
+  systemd-journald@netdata.service     loaded    active     running       Journal Service for Namespace netdata
+  systemd-logind.service               loaded    active     running       User Login Management
+  systemd-machine-id-commit.service    loaded    inactive   dead          Commit a transient machine-id on disk
+  systemd-modules-load.service         loaded    active     exited        Load Kernel Modules
+  systemd-network-generator.service    loaded    active     exited        Generate network units from Kernel command line
+  systemd-networkd.service             loaded    active     running       Network Configuration
+  systemd-pcrphase-initrd.service      loaded    inactive   dead          TPM2 PCR Barrier (initrd)
+  systemd-pcrphase-sysinit.service     loaded    inactive   dead          TPM2 PCR Barrier (Initialization)
+  systemd-pcrphase.service             loaded    inactive   dead          TPM2 PCR Barrier (User)
+  systemd-pstore.service               loaded    inactive   dead          Platform Persistent Storage Archival
+  systemd-random-seed.service          loaded    inactive   dead          Load/Save Random Seed
+  systemd-remount-fs.service           loaded    active     exited        Remount Root and Kernel File Systems
+  systemd-repart.service               loaded    inactive   dead          Repartition Root Disk
+  systemd-sysctl.service               loaded    active     exited        Apply Kernel Variables
+  systemd-sysext.service               loaded    inactive   dead          Merge System Extension Images into /usr/ and /opt/
+  systemd-sysusers.service             loaded    active     exited        Create System Users
+  systemd-timesyncd.service            loaded    inactive   dead          Network Time Synchronization
+  systemd-tmpfiles-clean.service       loaded    inactive   dead          Cleanup of Temporary Directories
+  systemd-tmpfiles-setup-dev.service   loaded    active     exited        Create Static Device Nodes in /dev
+  systemd-tmpfiles-setup.service       loaded    active     exited        Create System Files and Directories
+  systemd-udev-settle.service          loaded    inactive   dead          Wait for udev To Complete Device Initialization
+  systemd-udev-trigger.service         loaded    inactive   dead          Coldplug All udev Devices
+  systemd-udevd.service                loaded    inactive   dead          Rule-based Manager for Device Events and Files
+● systemd-update-done.service          not-found inactive   dead          systemd-update-done.service
+  systemd-update-utmp-runlevel.service loaded    inactive   dead          Record Runlevel Change in UTMP
+  systemd-update-utmp.service          loaded    active     exited        Record System Boot/Shutdown in UTMP
+  systemd-user-sessions.service        loaded    active     exited        Permit User Sessions
+● systemd-vconsole-setup.service       not-found inactive   dead          systemd-vconsole-setup.service
+  ufw.service                          loaded    active     exited        Uncomplicated firewall
+  wa-mqtt.service                      loaded    activating start   start Publish WhatsApp active device metrics to MQTT
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+JOB    = Pending job for the unit.
+
+88 loaded units listed.
+To show all installed unit files use 'systemctl list-unit-files'.

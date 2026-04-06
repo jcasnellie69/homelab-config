@@ -1,0 +1,10 @@
+# cmd: bash -lc 
+for base in /root /srv /opt; do
+  [[ -d "$base" ]] || continue
+  find "$base" -maxdepth 5 -type d -name .git -exec dirname {} \; 2>/dev/null
+done | sort -u
+
+# host: pve
+# when: 2025-12-22T00:43:59-05:00
+
+/srv/homelab-share/homelab-config

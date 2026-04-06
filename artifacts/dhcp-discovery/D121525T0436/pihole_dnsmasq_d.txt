@@ -1,0 +1,15 @@
+### CMD: pct exec 109 -- bash -lc ls -la /etc/dnsmasq.d || true
+### WHEN: 2025-12-15T04:37:12-05:00
+### HOST: pve.primary.node
+
+
+[1mPihole LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mpihole[m
+    💡  [m[33m IP Address: [1;92m192.168.4.208[m
+total 12
+drwxr-xr-x  2 root root 4096 Oct 27 23:28 .
+drwxr-xr-x 76 root root 4096 Dec  9 19:58 ..
+-rw-r--r--  1 root root   30 Oct 27 23:28 01-pihole.conf

@@ -1,0 +1,308 @@
+=====================================================================
+Netify Config Snapshot
+Host      : pve
+Timestamp : 20251126-165717
+=====================================================================
+
+=== 1) netifyd systemd status =======================================
+○ netifyd.service - Netify Agent
+     Loaded: loaded (/lib/systemd/system/netifyd.service; enabled; preset: enabled)
+     Active: inactive (dead) since Wed 2025-11-26 03:46:32 EST; 13h ago
+   Duration: 17.038s
+       Docs: man:netifyd(8)
+             man:netifyd.conf(5)
+             https://netify.ai/
+    Process: 219188 ExecStartPre=/usr/share/netifyd/exec-pre.sh (code=exited, status=0/SUCCESS)
+    Process: 219197 ExecStart=/usr/sbin/netifyd $NETIFYD_OPTS (code=exited, status=0/SUCCESS)
+   Main PID: 219202 (code=exited, status=0/SUCCESS)
+        CPU: 156ms
+
+Nov 26 03:46:15 pve systemd[1]: Starting netifyd.service - Netify Agent...
+Nov 26 03:46:15 pve netifyd[219202]: nd-instance: Netify Agent/5.0.62-HEAD-2637-05f6a224 (debian; linux-gnu; x86_64; conntrack; netlink; dns-cache; tpv3; nfqueue; tcmalloc; regex)
+Nov 26 03:46:15 pve systemd[1]: Started netifyd.service - Netify Agent.
+Nov 26 03:46:15 pve netifyd[219202]: proc-core-auto: Netify Core Processor Plugin v1.0.85 Copyright (C) 2021-2024 eGloo Incorporated.
+Nov 26 03:46:30 pve netifyd[219202]: proc-core-auto: Exception: sink-http: sink target not found
+Nov 26 03:46:31 pve netifyd[219202]: Plugin has terminated: proc-core-auto: /usr/lib/x86_64-linux-gnu/libnetify-proc-core.so.0.0.0
+Nov 26 03:46:31 pve netifyd[219202]: nd-instance: Exit on error: 1
+Nov 26 03:46:32 pve systemd[1]: netifyd.service: Deactivated successfully.
+
+=== 2) netifyd runtime status (netifyd -s) ==========================
+Netify Agent/5.0.62-HEAD-2637-05f6a224 (debian; linux-gnu; x86_64; conntrack; netlink; dns-cache; tpv3; nfqueue; tcmalloc; regex)
+✗ agent is not running: PID 0
+! The following run-time information is likely out-dated.
+• agent timestamp: Wed Nov 26 03:46:31 2025
+• agent uptime: 0d 00:00:17
+✓ agent UUID: NB-TS-I0-S5
+! site UUID is not set.
+  ↪ A new site UUID will be automatically set after this agent has been provisioned.
+! API updates: disabled
+  ↪ Netify API updates can be enabled from the configuration file:
+    /etc/netifyd.conf
+✓ active flows: 734 / unlimited (0.0%)
+• flows purged: 0, in-use: 527
+• flows expiring: 0, expired: 0
+• minimum flow size: 3096
+• CPU cores: 4
+✓ CPU utilization (user + system): 0.0%
+✓ CPU time (user / system): 0.0s / 0.0s
+• current memory usage: 8009 kB
+• maximum memory usage: 30720 kB
+✗ No capture sources (interfaces) configured.
+• apps: 199, domains: 3374, networks: 783, soft-dissectors: 26, transforms: 0
+✓ DNS hint cache: enabled
+• DHC entries: 1000, inserts: 1058 (4.8%), lookups: 36 (0.0%)
+✓ flow hash cache: enabled
+• FHC entries: 1000, inserts: 1169 (0.0%), lookups: 473 (7.6%)
+• persistent state path: /etc/netifyd
+• volatile state path: /var/run/netifyd
+✗ Plugin status unavailable.
+
+=== 3) Core config files ============================================
+--- /etc/netifyd.conf (ls -l) ---
+-rw-r--r-- 1 root root 338 Nov 26 03:49 /etc/netifyd.conf
+
+--- /etc/netifyd.conf (contents) ---
+[netifyd]
+api_enable = yes
+daemonize = no
+
+log_level = debug
+log_file  = /var/log/netifyd/local.log
+
+plugins_dir = /usr/lib/x86_64-linux-gnu
+sinks_dir   = /etc/netifyd/sinks.d
+
+# v5 profile
+profile = /etc/netifyd/profiles.d/10-default.conf
+site_uuid = 47de4c87_fd74_4e3f_bc2c_ec9546fe621b
+site_uuid = 47de4c87_fd74_4e3f_bc2c_ec9546fe621b
+
+=== 4) profiles.d ===================================================
+--- ls -l /etc/netifyd/profiles.d ---
+total 0
+
+=== 5) interfaces.d =================================================
+--- ls -l /etc/netifyd/interfaces.d ---
+total 24
+-rw-r----- 1 root netifyd 404 Dec 31  2016 10-example-nfq.conf
+-rw-r----- 1 root netifyd 436 Dec 31  2016 10-example-pcap.conf
+-rw-r----- 1 root netifyd 788 Dec 31  2016 10-example-tpv3.conf
+-rw-r--r-- 1 root root    230 Nov 26 03:43 10-lan-vmbr0.conf
+-rw-r----- 1 root netifyd 138 Nov 24 22:00 20-enp5s0.conf
+-rw-r----- 1 root netifyd  58 Nov 24 22:00 30-enp6s0.conf
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/10-example-nfq.conf -----
+-rw-r----- 1 root netifyd 404 Dec 31  2016 /etc/netifyd/interfaces.d/10-example-nfq.conf
+
+# Netify Agent Example Capture Interface Configuration
+# Copyright (C) 2024 eGloo Incorporated
+#
+##############################################################################
+
+# Example Netfilter QUEUE capture source
+##############################################################################
+#[capture-interface-nfq0]
+#capture_type = nfqueue
+#role = lan
+#queue_instances = 2
+
+# vim: set ft=dosini :
+----- END INTERFACE: /etc/netifyd/interfaces.d/10-example-nfq.conf -----
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/10-example-pcap.conf -----
+-rw-r----- 1 root netifyd 436 Dec 31  2016 /etc/netifyd/interfaces.d/10-example-pcap.conf
+
+# Netify Agent Example Capture Interface Configuration
+# Copyright (C) 2024 eGloo Incorporated
+#
+##############################################################################
+
+# Example loopback PCAP capture source
+##############################################################################
+#[capture-interface-lo]
+#capture_type = pcap
+#role = lan
+#address[0] = 172.16.100.0/24
+#address[1] = 172.16.101.0/24
+
+# vim: set ft=dosini :
+----- END INTERFACE: /etc/netifyd/interfaces.d/10-example-pcap.conf -----
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/10-example-tpv3.conf -----
+-rw-r----- 1 root netifyd 788 Dec 31  2016 /etc/netifyd/interfaces.d/10-example-tpv3.conf
+
+# Netify Agent Example Capture Interface Configuration
+# Copyright (C) 2024 eGloo Incorporated
+#
+##############################################################################
+
+# Example LAN TPACKETv3 capture source
+##############################################################################
+#[capture-interface-eth0]
+#capture_type = tpv3
+#role = lan
+#fanout_flags = defrag, rollover
+#fanout_instances = 2
+#fanout_mode = hash
+#rb_block_size = 1048576
+#rb_blocks = 64
+
+# Example WAN TPACKETv3 capture source
+##############################################################################
+#[capture-interface-eth1]
+#capture_type = tpv3
+#role = wan
+#fanout_flags = defrag, rollover
+#fanout_instances = 2
+#fanout_mode = hash
+#rb_block_size = 1048576
+#rb_blocks = 64
+
+# vim: set ft=dosini :
+----- END INTERFACE: /etc/netifyd/interfaces.d/10-example-tpv3.conf -----
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/10-lan-vmbr0.conf -----
+-rw-r--r-- 1 root root 230 Nov 26 03:43 /etc/netifyd/interfaces.d/10-lan-vmbr0.conf
+
+# Netify Agent Capture Interface Configuration
+# 2025-11-26 CR-0020 add vmbr0 capture (JC / pve)
+
+[capture-interface-vmbr0]
+capture_type = pcap
+role = lan
+# Your main LAN – Pi-hole and eero live here
+address[0] = 192.168.4.0/24
+----- END INTERFACE: /etc/netifyd/interfaces.d/10-lan-vmbr0.conf -----
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/20-enp5s0.conf -----
+-rw-r----- 1 root netifyd 138 Nov 24 22:00 /etc/netifyd/interfaces.d/20-enp5s0.conf
+
+[capture-interface-enp5s0]
+capture_type = pcap
+role = lan
+# optional: if you want Netify to tag local ranges
+#address[0] = 192.168.0.0/16
+----- END INTERFACE: /etc/netifyd/interfaces.d/20-enp5s0.conf -----
+
+----- BEGIN INTERFACE: /etc/netifyd/interfaces.d/30-enp6s0.conf -----
+-rw-r----- 1 root netifyd 58 Nov 24 22:00 /etc/netifyd/interfaces.d/30-enp6s0.conf
+
+[capture-interface-enp6s0]
+capture_type = pcap
+role = wan
+----- END INTERFACE: /etc/netifyd/interfaces.d/30-enp6s0.conf -----
+
+=== 6) sinks.d ======================================================
+--- ls -l /etc/netifyd/sinks.d ---
+total 16
+-rw-r----- 1 root netifyd 294 Dec 31  2016 10-netify-sink-http.conf
+-rw-r----- 1 root netifyd 290 Dec 31  2016 10-netify-sink-log.conf
+-rw-r----- 1 root netifyd 294 Dec 31  2016 10-netify-sink-mqtt.conf
+-rw-r----- 1 root netifyd 302 Dec 31  2016 10-netify-sink-socket.conf
+
+----- BEGIN SINK: /etc/netifyd/sinks.d/10-netify-sink-http.conf -----
+-rw-r----- 1 root netifyd 294 Dec 31  2016 /etc/netifyd/sinks.d/10-netify-sink-http.conf
+
+# Netify HTTP Sink Plugin Loader
+#
+##############################################################################
+
+[sink-http]
+enable = no
+plugin_library = ${path_plugin_libdir}/libnetify-sink-http.so.0.0.0
+conf_filename = ${path_state_persistent}/netify-sink-http.json
+
+# vim: set ft=dosini :
+----- END SINK: /etc/netifyd/sinks.d/10-netify-sink-http.conf -----
+
+----- BEGIN SINK: /etc/netifyd/sinks.d/10-netify-sink-log.conf -----
+-rw-r----- 1 root netifyd 290 Dec 31  2016 /etc/netifyd/sinks.d/10-netify-sink-log.conf
+
+# Netify Log Sink Plugin Loader
+#
+##############################################################################
+
+[sink-log]
+enable = no
+plugin_library = ${path_plugin_libdir}/libnetify-sink-log.so.0.0.0
+conf_filename = ${path_state_persistent}/netify-sink-log.json
+
+# vim: set ft=dosini :
+----- END SINK: /etc/netifyd/sinks.d/10-netify-sink-log.conf -----
+
+----- BEGIN SINK: /etc/netifyd/sinks.d/10-netify-sink-mqtt.conf -----
+-rw-r----- 1 root netifyd 294 Dec 31  2016 /etc/netifyd/sinks.d/10-netify-sink-mqtt.conf
+
+# Netify MQTT Sink Plugin Loader
+#
+##############################################################################
+
+[sink-mqtt]
+enable = no
+plugin_library = ${path_plugin_libdir}/libnetify-sink-mqtt.so.0.0.0
+conf_filename = ${path_state_persistent}/netify-sink-mqtt.json
+
+# vim: set ft=dosini :
+----- END SINK: /etc/netifyd/sinks.d/10-netify-sink-mqtt.conf -----
+
+----- BEGIN SINK: /etc/netifyd/sinks.d/10-netify-sink-socket.conf -----
+-rw-r----- 1 root netifyd 302 Dec 31  2016 /etc/netifyd/sinks.d/10-netify-sink-socket.conf
+
+# Netify Socket Sink Plugin Loader
+#
+##############################################################################
+
+[sink-socket]
+enable = no
+plugin_library = ${path_plugin_libdir}/libnetify-sink-socket.so.0.0.0
+conf_filename = ${path_state_persistent}/netify-sink-socket.json
+
+# vim: set ft=dosini :
+----- END SINK: /etc/netifyd/sinks.d/10-netify-sink-socket.conf -----
+
+=== 7) File ownership sanity (root/netifyd) =========================
+--- /etc/netifyd (tree level 1) ---
+drwxr-xr-x 22 root netifyd 4096 Nov 24 23:36 /etc/netifyd
+total 460
+-rw-r--r-- 1 root netifyd     11 Nov  4 18:19 agent.uuid
+drwxr-xr-x 3 root netifyd   4096 Nov 22 21:19 backup-20251122-211957
+drwxr-xr-x 3 root netifyd   4096 Nov 22 21:46 backup-20251122-214649
+drwxr-xr-x 3 root netifyd   4096 Nov 22 22:02 backup-20251122-220257
+drwxr-xr-x 2 root netifyd   4096 Nov 22 22:12 backup-cloud-20251122-221204
+drwxr-xr-x 2 root netifyd   4096 Nov 22 22:21 backup-httpcloud-20251122-222154
+drwxr-xr-x 2 root netifyd   4096 Nov 23 19:07 capture.d
+drwxr-xr-x 2 root netifyd   4096 Dec 31  2016 categories.d
+drwxr-xr-x 2 root netifyd   4096 Nov 24 23:41 disabled
+-rw-r--r-- 1 root netifyd     99 Nov  5 04:47 disabled-20-eno1.conf
+drwxr-xr-x 2 root netifyd   4096 Nov 24 21:41 disabled-autoload
+drwxr-xr-x 2 root netifyd   4096 Nov 24 21:26 disabled-autoload.bak-2025-11-24_212606
+-rw-r--r-- 1 root netifyd  78591 Nov 26 03:46 dns-cache.csv
+drwxr-xr-x 2 root netifyd   4096 Nov  5 04:38 examples
+-rw-r--r-- 1 root netifyd  87169 Nov 26 03:46 flow-hash-cache.csv
+drwxr-xr-x 2 root netifyd   4096 Nov 26 03:43 interfaces.d
+drwxr-xr-x 2 root netifyd   4096 Nov 19 23:30 interfaces.d.bak-20251120-000645
+drwxr-xr-x 2 root netifyd   4096 Nov 19 23:30 interfaces.d.bak-20251120-092719
+-rw-r--r-- 1 root netifyd 138134 Dec 31  2016 netify-apps.conf
+-rw-r----- 1 root netifyd   9152 Dec 31  2016 netify-categories.json
+-rw-r--r-- 1 root netifyd    289 Nov 22 22:14 netifyd.conf
+-rw-r----- 1 root netifyd      4 Dec 31  2016 netify-plm.json
+-rw-r----- 1 root netifyd    332 Dec 31  2016 netify-proc-aggregator.json
+-rw-r----- 1 root netifyd    227 Nov 24 23:36 netify-proc-core-auto.json
+-rw-r----- 1 root netifyd    232 Nov  7 05:29 netify-proc-core-auto.json.CR-0018.bak.1764045381
+-rw-r----- 1 root netifyd    841 Dec 31  2016 netify-proc-core.json
+-rw-r----- 1 root netifyd    593 Dec 31  2016 netify-proc-dev-discovery.json
+-rw-r--r-- 1 root netifyd    125 Nov 17 02:16 netify-proc-device-discovery.json.disabled
+-rw-r----- 1 root netifyd   4064 Dec 31  2016 netify-proc-flow-actions.json
+drwxr-xr-x 2 root netifyd   4096 Nov 24 21:55 netify-proc-python
+-rw-r----- 1 root netifyd    102 Dec 31  2016 netify-proc-python.json
+-rw-r----- 1 root netifyd    531 Dec 31  2016 netify-sink-http.json
+-rw-r----- 1 root netifyd    214 Dec 31  2016 netify-sink-log.json
+-rw-r----- 1 root netifyd    189 Dec 31  2016 netify-sink-mqtt.json
+-rw-r----- 1 root netifyd    760 Dec 31  2016 netify-sink-socket.json
+drwxr-xr-x 2 root netifyd   4096 Nov 24 21:59 plugins.d
+drwxr-xr-x 2 root netifyd   4096 Nov 23 19:07 profiles.d
+drwxr-xr-x 2 root netifyd   4096 Nov 24 23:41 sinks.d
+drwxr-xr-x 2 root netifyd   4096 Nov  8 06:47 sinks.d.bak.1762638523
+drwxr-xr-x 2 root netifyd   4096 Nov  8 06:47 sinks.d.bak.1762638995
+
+Snapshot complete.
