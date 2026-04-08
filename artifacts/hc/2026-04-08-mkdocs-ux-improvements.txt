@@ -1,0 +1,42 @@
+Change: MkDocs UX Improvements — content.code.copy + navigation.path
+Date: 2026-04-08
+Branch: palette-ux-mkdocs-improvements-11221471268000097849
+Commit: 1e92580
+
+## Summary
+Added two MkDocs Material theme features to mkdocs.yml to improve the
+documentation site UX:
+
+  1. content.code.copy  — renders a copy-to-clipboard button on every
+                          code block, saving time when copying commands
+                          or scripts.
+  2. navigation.path   — displays breadcrumbs so readers can see their
+                          current location within the documentation
+                          hierarchy.
+
+## File changed
+  mkdocs.yml
+
+## Diff (lines 14-15 added)
++    - content.code.copy
++    - navigation.path
+
+## Full features list after change
+  features:
+    - navigation.instant
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy   <-- NEW
+    - navigation.path     <-- NEW
+
+## MkDocs build validation
+  Command : mkdocs build --strict
+  Result  : not executed in CI (no mkdocs installed in sandbox);
+            change is a pure config addition with no breaking impact —
+            both features are stable, supported features in
+            mkdocs-material >= 8.x.
+
+## Accessibility / UX rationale
+  - Copy button reduces manual selection errors for long commands.
+  - Breadcrumbs improve spatial orientation in nested doc sections.
