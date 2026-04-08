@@ -13,6 +13,8 @@ theme:
     - search.highlight
     - content.code.copy
     - navigation.path
+    - navigation.indexes
+    - navigation.tracking
 plugins:
   - search
 nav:
