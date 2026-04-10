@@ -413,13 +413,21 @@ class AccessibleTabs {
     this.tablist = element.querySelector('[role="tablist"]');
     this.tabs = Array.from(this.tablist.querySelectorAll('[role="tab"]'));
     this.panels = Array.from(element.querySelectorAll('[role="tabpanel"]'));
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     this.tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => this.selectTab(index));
       tab.addEventListener('keydown', (e) => this.handleKeydown(e, index));
     });
   }
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   selectTab(index) {
     // Deselect all tabs
     this.tabs.forEach(tab => {
@@ -427,23 +435,39 @@ class AccessibleTabs {
       tab.setAttribute('tabindex', '-1');
     });
     this.panels.forEach(panel => panel.hidden = true);
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     // Select target tab
     this.tabs[index].setAttribute('aria-selected', 'true');
     this.tabs[index].setAttribute('tabindex', '0');
     this.tabs[index].focus();
     this.panels[index].hidden = false;
   }
+<<<<<<< HEAD
+
+  handleKeydown(event, index) {
+    const { key } = event;
+    let newIndex = index;
+
+=======
   
   handleKeydown(event, index) {
     const { key } = event;
     let newIndex = index;
     
+>>>>>>> origin/main
     if (key === 'ArrowRight') newIndex = (index + 1) % this.tabs.length;
     if (key === 'ArrowLeft') newIndex = (index - 1 + this.tabs.length) % this.tabs.length;
     if (key === 'Home') newIndex = 0;
     if (key === 'End') newIndex = this.tabs.length - 1;
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     if (newIndex !== index) {
       event.preventDefault();
       this.selectTab(newIndex);
@@ -498,20 +522,36 @@ Implement comprehensive security headers:
 // Express.js example
 app.use((req, res, next) => {
   // Content Security Policy
+<<<<<<< HEAD
+  res.setHeader('Content-Security-Policy',
+    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
+
+  // Strict Transport Security
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+
+=======
   res.setHeader('Content-Security-Policy', 
     "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
   
   // Strict Transport Security
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   
+>>>>>>> origin/main
   // XSS Protection
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
+<<<<<<< HEAD
+
+  // Referrer Policy
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+=======
   
   // Referrer Policy
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   
+>>>>>>> origin/main
   next();
 });
 ```

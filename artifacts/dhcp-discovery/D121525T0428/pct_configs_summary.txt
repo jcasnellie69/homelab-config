@@ -142,4 +142,7 @@ rootfs: local-lvm:vm-110-disk-0,size=8G
 swap: 768
 tags: monitoring;netflow
 unprivileged: 1
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/main

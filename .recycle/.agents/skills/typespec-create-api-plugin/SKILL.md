@@ -52,7 +52,11 @@ using TypeSpec.M365.Copilot.Actions;
 @server("[API_BASE_URL]", "[API Name]")
 @useAuth([AuthType]) // Optional
 namespace [APINamespace] {
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   @route("[/path]")
   @get
   @action
@@ -95,7 +99,11 @@ Choose based on API requirements:
 4. **Registered Auth Reference**
    ```typescript
    @useAuth(Auth)
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    @authReferenceId("registration-id-here")
    model Auth is ApiKeyAuth<ApiKeyLocation.header, "X-API-Key">
    ```

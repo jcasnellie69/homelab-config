@@ -62,12 +62,20 @@ Create a complete Model Context Protocol (MCP) server in TypeScript with the fol
 - System information retrieval
 
 ## Configuration Options
+<<<<<<< HEAD
+- **For HTTP Servers**:
+=======
 - **For HTTP Servers**: 
+>>>>>>> origin/main
   - Port configuration via environment variables
   - CORS setup for browser clients
   - Session management (stateless vs stateful)
   - DNS rebinding protection for local servers
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
 - **For stdio Servers**:
   - Proper stdin/stdout handling
   - Environment-based configuration

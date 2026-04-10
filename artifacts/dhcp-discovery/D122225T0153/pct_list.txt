@@ -2,6 +2,19 @@
 ### WHEN: 2025-12-22T01:53:46-05:00
 ### HOST: pve.primary.node
 
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        stopped                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        stopped                 watchyourlan
+109        running                 pihole
+110        stopped                 ntrop.pve.local
+111        stopped                 ansible
+=======
 VMID       Status     Lock         Name                
 100        running                 netbox              
 102        stopped                 grafana             
@@ -13,3 +26,4 @@ VMID       Status     Lock         Name
 109        running                 pihole              
 110        stopped                 ntrop.pve.local     
 111        stopped                 ansible             
+>>>>>>> origin/main

@@ -6,11 +6,19 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Google Chrome
 
+<<<<<<< HEAD
+**Engine**: Blink (rendering), V8 (JavaScript)
+**Released**: 2008
+**Market Share**: ~65% (desktop)
+
+**Developer Tools**:
+=======
 **Engine**: Blink (rendering), V8 (JavaScript)  
 **Released**: 2008  
 **Market Share**: ~65% (desktop)  
 
 **Developer Tools**: 
+>>>>>>> origin/main
 - Elements panel
 - Console
 - Network tab
@@ -19,9 +27,15 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Mozilla Firefox
 
+<<<<<<< HEAD
+**Engine**: Gecko (rendering), SpiderMonkey (JavaScript)
+**Released**: 2004
+**Market Share**: ~3% (desktop)
+=======
 **Engine**: Gecko (rendering), SpiderMonkey (JavaScript)  
 **Released**: 2004  
 **Market Share**: ~3% (desktop)  
+>>>>>>> origin/main
 
 **Features**:
 - Strong privacy focus
@@ -31,9 +45,15 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Apple Safari
 
+<<<<<<< HEAD
+**Engine**: WebKit (rendering), JavaScriptCore (JavaScript)
+**Released**: 2003
+**Market Share**: ~20% (desktop), dominant on iOS
+=======
 **Engine**: WebKit (rendering), JavaScriptCore (JavaScript)  
 **Released**: 2003  
 **Market Share**: ~20% (desktop), dominant on iOS  
+>>>>>>> origin/main
 
 **Features**:
 - Energy efficient
@@ -43,8 +63,13 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Microsoft Edge
 
+<<<<<<< HEAD
+**Engine**: Blink (Chromium-based since 2020)
+**Released**: 2015 (EdgeHTML), 2020 (Chromium)
+=======
 **Engine**: Blink (Chromium-based since 2020)  
 **Released**: 2015 (EdgeHTML), 2020 (Chromium)  
+>>>>>>> origin/main
 
 **Features**:
 - Windows integration
@@ -54,8 +79,13 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Opera
 
+<<<<<<< HEAD
+**Engine**: Blink
+**Based on**: Chromium
+=======
 **Engine**: Blink  
 **Based on**: Chromium  
+>>>>>>> origin/main
 
 **Features**:
 - Built-in VPN
@@ -66,6 +96,23 @@ Web browsers, rendering engines, and browser-specific information.
 
 ### Blink
 
+<<<<<<< HEAD
+**Used by**: Chrome, Edge, Opera, Vivaldi
+**Forked from**: WebKit (2013)
+**Language**: C++
+
+### WebKit
+
+**Used by**: Safari
+**Origin**: KHTML (KDE)
+**Language**: C++
+
+### Gecko
+
+**Used by**: Firefox
+**Developed by**: Mozilla
+**Language**: C++, Rust
+=======
 **Used by**: Chrome, Edge, Opera, Vivaldi  
 **Forked from**: WebKit (2013)  
 **Language**: C++  
@@ -81,6 +128,7 @@ Web browsers, rendering engines, and browser-specific information.
 **Used by**: Firefox  
 **Developed by**: Mozilla  
 **Language**: C++, Rust  
+>>>>>>> origin/main
 
 ### Legacy Engines
 

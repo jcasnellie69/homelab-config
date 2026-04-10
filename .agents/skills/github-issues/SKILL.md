@@ -113,7 +113,11 @@ Only include fields you want to change. Available fields: `title`, `body`, `stat
 
 **User**: "Create a bug issue - the login page crashes when using SSO"
 
+<<<<<<< HEAD
+**Action**:
+=======
 **Action**: 
+>>>>>>> origin/main
 ```bash
 gh api repos/github/awesome-copilot/issues \
   -X POST \
