@@ -12,6 +12,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - toc.follow
 plugins:
   - search
 nav:
