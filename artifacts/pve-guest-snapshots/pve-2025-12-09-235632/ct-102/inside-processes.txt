@@ -1,0 +1,29 @@
+### ps aux | head
+$ pct exec 102 -- sh -c ps aux 2>/dev/null | head -n 40
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  1.5 102400  8064 ?        Ss   15:38   0:00 /sbin/init
+root          54  0.0 47.5 352848 249416 ?       Ss   15:38   0:45 /lib/systemd/systemd-journald
+root          91  0.0  0.5   5744  2688 ?        Ss   15:38   0:00 dhclient -4 -v -i -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0
+systemd+      95  0.0  0.9  17908  5120 ?        Ss   15:38   0:00 /lib/systemd/systemd-networkd
+root          99  0.0  0.4   6612  2432 ?        Ss   15:38   0:00 /usr/sbin/cron -f
+message+     102  0.0  0.7   9136  3712 ?        Ss   15:38   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+prometh+     115  0.0  0.7 948148  4096 ?        Ssl  15:38   0:00 /usr/bin/prometheus-node-exporter
+root         117  0.0  0.8  16588  4608 ?        Ss   15:38   0:00 /lib/systemd/systemd-logind
+root         160  0.0  0.7 1115816 4148 ?        Ssl  15:38   0:00 /usr/lib/code-server/lib/node /usr/lib/code-server
+root         170  0.0  0.3   5500  2048 pts/0    Ss+  15:38   0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud - 115200,38400,9600 linux
+root         171  0.0  0.7   9128  4096 pts/1    Ss   15:38   0:00 /bin/login -f
+root         172  0.0  0.3   5500  2048 pts/2    Ss+  15:38   0:00 /sbin/agetty -o -p -- \u --noclear - linux
+root         173  0.0  1.3  15440  7040 ?        Ss   15:38   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+grafana      187  0.0 14.1 1720088 74100 ?       Ssl  15:38   0:21 /usr/share/grafana/bin/grafana server --config=/etc/grafana/grafana.ini --pidfile=/run/grafana/grafana-server.pid --packaging=deb cfg:default.paths.logs=/var/log/grafana cfg:default.paths.data=/var/lib/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning
+loki         188  0.0 11.2 1413092 58752 ?       Ssl  15:38   0:44 /usr/bin/loki -config.file /etc/loki/config.yml
+promtail     192  0.0  8.7 2208228 46056 ?       Ssl  15:38   0:25 /usr/bin/promtail -config.file /etc/promtail/config.yml
+root         322  0.0  3.0 1050688 15828 ?       Sl   15:38   0:00 /usr/lib/code-server/lib/node /usr/lib/code-server/out/node/entry
+root         385  0.0  0.8  42668  4372 ?        Ss   15:38   0:00 /usr/lib/postfix/sbin/master -w
+root         430  0.0  0.9   8244  4992 pts/1    S+   15:38   0:00 -bash
+grafana      447  0.0  0.0 727092   256 ?        Sl   15:38   0:00 /var/lib/grafana/plugins/redis-datasource/redis-datasource_linux_amd64
+grafana      455  0.0  0.0 1262948  256 ?        Sl   15:39   0:00 /var/lib/grafana/plugins/yesoreyeram-infinity-datasource/gpx_infinity_linux_amd64
+postfix      686  0.0  1.3  43100  7040 ?        S    17:32   0:00 qmgr -l -t unix -u
+postfix      687  0.0  1.3  43056  6912 ?        S    17:32   0:00 pickup -l -t unix -u -c
+root        1113  0.0  0.2   2580  1408 pts/1    S+   18:56   0:00 sh -c ps aux 2>/dev/null | head -n 40
+root        1114  0.0  0.8  11044  4480 pts/1    R+   18:56   0:00 ps aux
+root        1115  0.0  0.3   5476  1664 pts/1    S+   18:56   0:00 head -n 40

@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# PVE_HC.sh — Proxmox Node + Guests Health Check
+# Drop into ~/homelab-config/scripts/util/ alongside PVE_tools_install.sh & PVE_tools_check.sh
+# Output: ~/homelab-config/reports/pve_hc-YYYYmmdd-HHMMSS.txt
+
+set -euo pipefail
+PATH=/usr/sbin:/sbin:/usr/bin:/bin
+
+TS="$(date +%Y%m%d-%H%M%S)"
+OUTDIR="$HOME/homelab-config/reports"
+OUT="$OUTDIR/pve_hc-$TS.txt"
+mkdir -p "$OUTDIR"
+
+crit=0
+hr() { printf '%*s\n' 80 | tr ' ' '-'; }
+sect() { hr | tee -a "$OUT"; echo "# $1" | tee -a "$OUT"; hr | tee -a "$OUT"; }
+
+# --- Node overview ---
+sect "NODE OVERVIEW"
+echo "Timestamp: $(date -Is)" | tee -a "$OUT"
+echo "Hostname: $(hostname)" | tee -a "$OUT"
+echo "Uptime: $(uptime -p)" | tee -a "$OUT"
+echo "Load avg: $(cut -d' ' -f1-3 /proc/loadavg)" | tee -a "$OUT"
+echo "Memory: $(free -h | awk '/Mem:/{print $2" total, "$3" used, "$4" free"}')" | tee -a "$OUT"
+echo "Swap: $(free -h | awk '/Swap:/{print $2" total, "$3" used, "$4" free"}')" | tee -a "$OUT"
+
+# --- Top memory procs ---
+sect "TOP MEMORY PROCESSES"
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -n 15 | tee -a "$OUT"
+
+# --- PVE services ---
+sect "PVE SERVICES"
+for s in pvestatd pvedaemon pveproxy pve-cluster; do
+  st=$(systemctl is-active $s || true)
+  [[ "$st" != "active" ]] && crit=1
+  printf "%-14s : %s\n" "$s" "$st" | tee -a "$OUT"
+done
+
+# --- Storage ---
+sect "STORAGE"
+pvesm status | tee -a "$OUT"
+df -h -x tmpfs -x devtmpfs | tee -a "$OUT"
+
+# --- ZFS ---
+if command -v zpool >/dev/null; then
+  sect "ZFS STATUS"
+  zpool status -x | tee -a "$OUT" || true
+  if ! zpool status -x | grep -q "all pools are healthy"; then crit=1; fi
+  zpool list -v | tee -a "$OUT"
+fi
+
+# --- Disks ---
+if command -v smartctl >/dev/null; then
+  sect "SMART OVERALL"
+if command -v smartctl >/dev/null; then
+  for tgt in /dev/nvme*n1 /dev/sd[a-z]; do
+    [ -e "" ] || continue
+    echo "==  =="
+    smartctl -H "" 2>/dev/null || true
+  done
+fi
+
+# --- Kernel OOMs last 24h ---
+sect "OOM EVENTS (last 24h)"
+journalctl -k --since "24 hours ago" | grep -iE "out of memory|oom-killer|Killed process" | tee -a "$OUT" || true
+
+# --- Guests ---
+sect "VMS"
+qm list | tee -a "$OUT"
+sect "LXCs"
+pct list | tee -a "$OUT"
+
+# --- Summary ---
+sect "SUMMARY"
+[[ $crit -ne 0 ]] && echo "Overall: CRITICAL issues found" | tee -a "$OUT" || echo "Overall: OK" | tee -a "$OUT"
+echo "Report: $OUT"

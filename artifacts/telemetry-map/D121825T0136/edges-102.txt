@@ -1,0 +1,297 @@
+
+[1mGrafana LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mgrafana[m
+    💡  [m[33m IP Address: [1;92m192.168.4.129[m
+# CT 102 (grafana)
+Wed Dec 17 08:37:20 PM HST 2025
+
+## /etc/promtail/config.yml
+6:  - url: http://192.168.4.140:3100/loki/api/v1/push
+
+## /etc/telegraf/telegraf.conf (outputs)
+160:#   url = "http://localhost/secrets"
+166:#   ## "Authorization: Bearer <token>" header
+167:#   # token = "your-token"
+173:#   ## OAuth2 Client Credentials. The options 'client_id', 'client_secret', and 'token_url' are required to use OAuth2.
+176:#   # token_url = "https://indentityprovider/oauth2/v1/token"
+181:#   # http_proxy_url = ""
+193:#   # cookie_auth_url = "https://localhost/authMe"
+254:# # Secret-store to retrieve and maintain tokens from various OAuth2 services
+261:#   ## Service to retrieve the token(s) from
+265:#   ## Setting to overwrite the queried token-endpoint
+269:#   # token_endpoint = ""
+274:#   ## Minimal remaining time until the token expires
+275:#   ## If a token expires less than the set duration in the future, the token is
+276:#   ## renewed. This is useful to avoid race-condition issues where a token is
+278:#   ## your service using the token.
+279:#   # token_expiry_margin = "1s"
+281:#   ## Section for defining a token secret
+282:#   [[secretstores.oauth2.token]]
+283:#     ## Unique secret-key used for referencing the token via @{<id>:<secret_key>}
+291:#     ## Additional (optional) parameters to include in the token request
+294:#     # [secretstores.oauth2.token.parameters]
+347:# [[outputs.influxdb_v2]]
+352:#   ##   ex: urls = ["https://us-west-2-1.aws.cloud2.influxdata.com"]
+353:#   urls = ["http://127.0.0.1:8086"]
+360:#   token = ""
+362:#   ## Organization is the name of the organization you wish to write to.
+363:#   organization = ""
+365:#   ## Destination bucket to write into.
+366:#   bucket = ""
+368:#   ## The value of this tag will be used to determine the bucket.  If this
+369:#   ## tag is not set the 'bucket' option is used as the default.
+370:#   # bucket_tag = ""
+372:#   ## If true, the bucket tag will not be added to the metric.
+373:#   # exclude_bucket_tag = false
+512:#   # proxy_url = "localhost:8888"
+540:#   # endpoint_url = "https://dc.services.visualstudio.com/v2/track"
+564:#   ## ex: endpoint_url = https://myadxresource.australiasoutheast.kusto.windows.net
+565:#   endpoint_url = ""
+622:#   # endpoint_url = "https://monitoring.core.usgovcloudapi.net"
+737:#   ##    web_identity_token_file are specified
+746:#   #token = ""
+748:#   #web_identity_token_file = ""
+756:#   ##   ex: endpoint_url = "http://localhost:8000"
+757:#   # endpoint_url = ""
+761:#   # http_proxy_url = "http://localhost:8888"
+795:#   ##    web_identity_token_file are specified
+804:#   #token = ""
+806:#   #web_identity_token_file = ""
+813:#   ## default, e.g endpoint_url = "http://localhost:8000"
+814:#   # endpoint_url = ""
+847:#   url = "postgres://user:password@localhost/schema?sslmode=disable"
+873:#   # url = "https://app.datadoghq.com/api/v1/series"
+877:#   # http_proxy_url = "http://localhost:8888"
+900:#   ## Only setup environment url and token if you want to monitor a Host without the OneAgent present.
+906:#   url = ""
+908:#   ## Your Dynatrace API token.
+909:#   ## Create an API token within your Dynatrace environment, by navigating to Settings > Integration > Dynatrace API
+910:#   ## The API token needs data ingest scope permission. When using OneAgent, no API token is required.
+911:#   api_token = ""
+947:#   urls = [ "http://node1.es.example.com:9200" ] # required.
+964:#   ## HTTP bearer token authentication details
+965:#   # auth_bearer_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+1266:#   url = "https://groundwork.example.com"
+1344:#   url = "http://127.0.0.1:8080/telegraf"
+1359:#   # token_url = "https://indentityprovider/oauth2/v1/token"
+1368:#   # http_proxy_url = ""
+1378:#   # cookie_auth_url = "https://localhost/authMe"
+1426:#   ## 1) Web identity provider credentials via STS if role_arn and web_identity_token_file are specified
+1435:#   #token = ""
+1437:#   #web_identity_token_file = ""
+1461:#   # urls = ["unix:///var/run/influxdb.sock"]
+1462:#   # urls = ["udp://127.0.0.1:8089"]
+1463:#   # urls = ["http://127.0.0.1:8086"]
+1547:#   url = "http://127.0.0.1:8083"
+1565:#   api_token = "API Token"  # required
+1765:#   ## Access token used if sasl_mechanism is OAUTHBEARER
+1766:#   # sasl_access_token = ""
+1850:#   ## 1) Web identity provider credentials via STS if role_arn and web_identity_token_file are specified
+1859:#   #token = ""
+1861:#   #web_identity_token_file = ""
+1869:#   ##   ex: endpoint_url = "http://localhost:8000"
+1870:#   # endpoint_url = ""
+1917:#   ## Librato API token
+1918:#   api_token = "my-secret-token" # required.
+1923:#   ## Output source Template (same as graphite buckets)
+1939:#   ## Logz.io account token
+1940:#   token = "your logz.io token" # required
+1943:#   # url = "https://listener.logz.io:8071"
+2256:#   # metric_url = "https://metric-api.newrelic.com/metric/v1"
+2279:#   urls = ["http://node1.os.example.com:9200"]
+2314:#   ## HTTP bearer token authentication details
+2315:#   # auth_bearer_token = ""
+2633:#   # url = "https://portal-api.platform.quix.io"
+2639:#   ## Authentication token created in Quix
+2640:#   token = "your_auth_token"
+2676:#   ##   remote = 's3,provider=AWS,access_key_id=...,secret_access_key=...,session_token=...,region=us-east-1:mybucket'
+2724:#   url = "tcp://localhost:5555"
+2777:#   # backend_api_url = "http://127.0.0.1:8080"
+2778:#   # agent_api_url = "http://127.0.0.1:3031"
+2780:#   ## API KEY is the Sensu Backend API token
+2781:#   ## Generate a new API token via:
+2788:#   ## For more information on Sensu RBAC profiles & API tokens, please visit:
+2853:#   access_token = "my-secret-token"
+2855:#   ## The SignalFx realm that your organization resides in
+2861:#   ingest_url = "https://my-custom-ingest/"
+3082:#   # url = "https://events.sumologic.net/receiver/v1/http/<UniqueHTTPCollectorCode>"
+3217:#   ##    web_identity_token_file are specified
+3226:#   #token = ""
+3228:#   #web_identity_token_file = ""
+3236:#   ##   ex: endpoint_url = "http://localhost:8000"
+3237:#   # endpoint_url = ""
+3309:#   warp_url = "http://localhost:8080"
+3311:#   # Write token to access your app on warp 10
+3312:#   token = "Token"
+3334:#   url = "https://metrics.wavefront.com"
+3414:#   ## Direct Ingestion requires one of: `token`,`auth_csp_api_token`, or
+3423:#   # token = "YOUR_TOKEN"
+3426:#   ## Wavefront API token.
+3430:#   # auth_csp_api_token=CSP_API_TOKEN_HERE
+3444:#   url = "ws://127.0.0.1:3000/telegraf"
+3469:#   # http_proxy_url = "http://localhost:8888"
+3492:#   # endpoint_url = "https://monitoring.api.cloud.yandex.net/monitoring/v2/data/write"
+4509:#   ## How many top buckets to return per field
+4511:#   ## For example, 1 field with k of 10 will return 10 buckets. While 2 fields
+4512:#   ## with k of 3 will return 6 buckets.
+4522:#   ## aggregation will return k buckets. If a metric does not have a defined
+4649:#   ## Whether bucket values should be accumulated. If set to false, "gt" tag will be added.
+4654:#   ## there are no changes in any buckets for this time interval. 0 == no expiration.
+4663:#   #   ## Right borders of buckets (with +Inf implicitly added).
+4664:#   #   buckets = [0.0, 15.6, 34.5, 49.1, 71.5, 80.5, 94.5, 100.0]
+4670:#   #   ## Right borders of buckets (with +Inf implicitly added).
+4671:#   #   buckets = [0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
+4877:#   url = "http://127.0.0.1:8161"
+4933:#   # by default, aerospike produces a 100 bucket histogram
+4935:#   # the ability to squash this to a smaller number of buckets
+4936:#   # To have a balanced histogram, the number of buckets chosen
+4938:#   # num_histogram_buckets = 100 # default: 10
+4946:#   urls = ["http://localhost/server-status?auto"]
+5115:#   url = "http://127.0.0.1:5066"
+5150:#   # urls = ["http://localhost:8053/xml/v3"]
+5296:#   ##    web_identity_token_file are specified
+5305:#   # token = ""
+5307:#   # web_identity_token_file = ""
+5320:#   ##   ex: endpoint_url = "http://localhost:8000"
+5321:#   # endpoint_url = ""
+5325:#   # http_proxy_url = "http://localhost:8888"
+5449:#   ## ACL token used in every request
+5450:#   # token = ""
+5475:#   # url = "http://127.0.0.1:8500"
+5477:#   ## Use auth token for authorization.
+5479:#   ## If both are empty, no token will be used.
+5480:#   # token_file = "/path/to/auth/token"
+5482:#   # token = "a1234567-40c7-9048-7bae-378687048181"
+5493:# # Read per-node and per-bucket metrics from Couchbase
+5506:#   ## Filter bucket fields to include only here.
+5507:#   # bucket_stats_included = ["quota_percent_used", "ops_per_sec", "disk_fetches", "item_count", "disk_used", "data_used", "mem_used"]
+5517:#   ## Whether to collect cluster-wide bucket statistics
+5520:#   # cluster_bucket_stats = true
+5522:#   ## Whether to collect bucket stats for each individual node
+5523:#   # node_bucket_stats = false
+5556:#   cluster_url = "https://dcos-master-1"
+5563:#   ## Path containing login token.  If set, will read on every gather.
+5564:#   # token_file = "/home/dcos/.dcos/token"
+5725:#   # endpoint_url = ""
+5835:#   url = "http://<controller>:80"
+5931:#   ## Specify auth token for your account
+5932:#   auth_token = "invalidAuthToken"
+5934:#   # url = https://fireboard.io/api/v1/devices.json
+5960:#   urls = [ "http://user:password@fritz.box:49000/" ]
+5991:#   ## Github API access token.  Unauthenticated requests are limited to 60 per hour.
+5992:#   # access_token = ""
+5995:#   # enterprise_base_url = ""
+6011:#   ## Required. Name of Cloud Storage bucket to ingest metrics from.
+6012:#   bucket = "my-bucket"
+6014:#   ## Optional. Prefix of Cloud Storage bucket keys to list metrics from.
+6015:#   # key_prefix = "my-bucket"
+6119:#   # urls = ["http://localhost"]
+6134:#   ## Optional file with Bearer token
+6136:#   # bearer_token = "/path/to/file"
+6201:#   # cookie_auth_url = "https://localhost/authMe"
+6289:#   urls = [
+6555:#   url = "http://my-jenkins-instance:8080"
+6613:#   urls = ["http://localhost:8080/jolokia"]
+6642:#   url = "http://localhost:8080/jolokia"
+6661:#     url = "service:jmx:rmi:///jndi/rmi://targethost:9999/jmxrmi"
+6676:#   urls = [
+6700:#   ## If empty in-cluster config with POD's service account token will be used.
+6701:#   # url = ""
+6712:#   ## Use bearer token for authorization.
+6714:#   # bearer_token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+6755:#   url = "http://127.0.0.1:10255"
+6757:#   ## Use bearer token for authorization. ('bearer_token' takes priority)
+6759:#   ## at: /var/run/secrets/kubernetes.io/serviceaccount/token
+6761:#   ## To re-read the token at each interval, please use a file with the
+6762:#   ## bearer_token option. If given a string, Telegraf will always use that
+6763:#   ## token.
+6764:#   # bearer_token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+6766:#   # bearer_token_string = "abc_123"
+6957:#   url = "http://localhost:8002"
+7720:#   urls = ["http://localhost/server_status"]
+7736:#   urls = ["http://localhost/status"]
+7752:#   urls = ["http://localhost/api"]
+7770:#   urls = ["http://localhost/status"]
+7787:#   url = "http://127.0.0.1/status?format=json"
+7816:#   urls = ["http://localhost/status"]
+7832:#   # url = "http://127.0.0.1:4646"
+8101:#   urls = [ "https://node1.os.example.com:9200" ] # required.
+8188:#   # base_url = "https://api.openweathermap.org/"
+8281:#   ## urls = ["http://192.168.1.20/status", "/tmp/fpm.sock"]
+8282:#   urls = ["http://localhost/status"]
+8304:#   urls = ["example.org"]
+8507:#   ## API connection configuration. The API token was introduced in Proxmox v6.2.
+8508:#   ## Required permissions for user and token: PVEAuditor role on /.
+8509:#   base_url = "https://localhost:8006/api2/json"
+8510:#   api_token = "USER@REALM!TOKENID=UUID"
+8540:#   # url = "http://localhost:15672"
+8609:#   urls = ["http://localhost:8080/_raindrops"]
+8618:#   url = "https://localhost:4433"
+8734:#   ## (optional) security token
+8735:#   # security_token = "your_security_token"
+8768:#   url = "http://127.0.0.1:6820"
+8772:#   # token = "topSecret"
+9038:#   ## If true, raw bucket counts are collected for distribution value types.
+9041:#   # gather_raw_distribution_buckets = true
+9045:#   ## bucket counts; if they are enabled.
+9212:#   urls = ["http://127.0.0.1/us"]
+9228:#   # url = "http://127.0.0.1:8080/manager/status/all?XML=true"
+9767:#   # proxy_url = "http://localhost:8888"
+9773:#   url = "https://xtremio.example.com/" # required
+9849:#   ## 2) AccessKey STS token credential
+9858:#   # access_key_sts_token = ""
+10328:#   # token = ""
+10738:#   # http_proxy_url = "http://localhost:8888"
+10754:#   urls = [ "http://node1.es.example.com:9200" ] # required.
+10783:#   # http_proxy_url = "http://localhost:8888"
+11172:#   urls = [
+11190:#   ## Optional Bearer token settings to use for the API calls.
+11191:#   ## Use either the token itself or the token file if you need a token.
+11192:#   # token = "eyJhbGc...Qssw5c"
+11193:#   # token_file = "/path/to/file"
+11199:#   ## OAuth2 Client Credentials. The options 'client_id', 'client_secret', and 'token_url' are required to use OAuth2.
+11202:#   # token_url = "https://indentityprovider/oauth2/v1/token"
+11207:#   # http_proxy_url = ""
+11236:#   # cookie_auth_url = "https://localhost/authMe"
+11369:#   ## or authentication token.
+11371:#   ## Use these options for the authentication token in the form
+11376:#   ## Optional JWT token authentication for HTTP requests
+11378:#   ##   https://docs.influxdata.com/influxdb/v1.8/administration/authentication_and_authorization/#authenticate-using-jwt-tokens
+11382:#   # token_shared_secret = ""
+11383:#   # token_username = ""
+11411:#   ## Optional tag to determine the bucket.
+11412:#   ## If the write has a bucket in the query string then it will be kept in this tag name.
+11415:#   # bucket_tag = ""
+11425:#   ## Optional token to accept for HTTP authentication.
+11427:#   # token = "some-long-shared-secret-token"
+11704:#   # sasl_access_token = ""
+11828:#   # http_proxy_url = "http://localhost:8888"
+11838:#   ## 1) Web identity provider credentials via STS if role_arn and web_identity_token_file are specified
+11847:#   # token = ""
+11849:#   # web_identity_token_file = ""
+11857:#   ##   ex: endpoint_url = "http://localhost:8000"
+11858:#   # endpoint_url = ""
+11946:#   url = "http://127.0.0.1:9600"
+11976:#   # http_proxy_url = "http://localhost:8888"
+11995:#   # url = "tcp://127.0.0.1:5760"
+12233:#   ## Bearer token for accessing the data
+12234:#   # token = ""
+12637:#   # http_proxy_url = ""
+12851:#   urls = ["http://localhost:9100/metrics"]
+12952:#   ## Use bearer token for authorization. ('bearer_token' takes priority)
+12953:#   # bearer_token = "/path/to/bearer/token"
+12955:#   # bearer_token_string = "abc_123"
+12957:#   ## HTTP Basic Authentication username and password. ('bearer_token' and
+12958:#   ## 'bearer_token_string' take priority)
+12974:#   # http_proxy_url = ""
+13007:#   #     url = 'http://{{if ne .ServiceAddress ""}}{{.ServiceAddress}}{{else}}{{.Address}}{{end}}:{{.ServicePort}}/{{with .ServiceMeta.metrics_path}}{{.}}{{else}}metrics{{end}}'
+13014:#   #   url = "http://localhost:9000/service-discovery"
+13899:#   # url = "http://127.0.0.1:8200"
+13901:#   ## Use Vault token for authorization.
+13902:#   ## Vault token configuration is mandatory.
+13904:#   # token_file = "/path/to/auth/token"
+13906:#   token = "s.CDDrgg5zPv5ssI0Z2P4qxJj2"
+14131:#   # http_proxy_url = ""

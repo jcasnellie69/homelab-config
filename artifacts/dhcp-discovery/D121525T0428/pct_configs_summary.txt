@@ -1,0 +1,144 @@
+### CMD: bash -lc for id in $(pct list | awk "NR>1{print \$1}"); do echo "==== CT $id ===="; pct config "$id"; echo; done
+### WHEN: 2025-12-15T04:28:18-05:00
+### HOST: pve.primary.node
+
+==== CT 100 ====
+arch: amd64
+cores: 2
+description: NetBox IPAM + DCIM%0A
+features: keyctl=1,nesting=1
+hostname: netbox
+memory: 3840
+nameserver: 75.75.75.75
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:FA:57:0B,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-100-disk-0,size=29G
+searchdomain: primary.node
+swap: 1000
+tags: app
+unprivileged: 1
+
+==== CT 102 ====
+arch: amd64
+cores: 1
+description: Grafana + code-server%0A
+features: keyctl=1,nesting=1
+hostname: grafana
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:5B:7E:44,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-102-disk-0,size=22G
+swap: 512
+tags: monitoring;ui
+unprivileged: 1
+
+==== CT 103 ====
+arch: amd64
+cores: 1
+description: Prometheus server%0A
+features: keyctl=1,nesting=1
+hostname: prometheus
+memory: 2048
+mp0: /etc/prometheus/file_sd,mp=/etc/prometheus/file_sd,ro=1
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:C5:C3:81,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-103-disk-0,size=4G
+swap: 512
+tags: monitoring
+unprivileged: 1
+
+==== CT 104 ====
+arch: amd64
+cores: 1
+description: Proxmox Prometheus Exporter%0A
+features: keyctl=1,nesting=1
+hostname: prometheus-pve-exporter
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:A5:71:20,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-104-disk-0,size=2G
+swap: 512
+tags: monitoring
+unprivileged: 1
+
+==== CT 105 ====
+arch: amd64
+cores: 4
+description: InfluxDB + Telegraf + code-server%0A
+features: keyctl=1,nesting=1
+hostname: influxdb
+memory: 5000
+nameserver: 75.75.75.75
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:F2:AC:2A,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-105-disk-0,size=18G
+searchdomain: primary.node
+swap: 1000
+tags: monitoring;telemetry
+unprivileged: 1
+
+==== CT 106 ====
+arch: amd64
+cores: 2
+description: Homepage / NGINX Documentation Portal%0A
+features: keyctl=1,nesting=1
+hostname: homepage
+memory: 4096
+mp0: /srv/artifacts,mp=/srv/artifacts
+mp1: /srv/homelab-share/homelab-config,mp=/mnt/homelab-config,ro=1
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:9B:14:AE,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-106-disk-0,size=6G
+swap: 512
+tags: docs;ui
+unprivileged: 1
+
+==== CT 108 ====
+arch: amd64
+cores: 1
+description: WatchYourLAN%0A
+features: keyctl=1,nesting=1
+hostname: watchyourlan
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:38:E4:19,ip=dhcp,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-108-disk-0,size=2G
+swap: 512
+tags: monitoring;network
+unprivileged: 1
+
+==== CT 109 ====
+arch: amd64
+cores: 1
+description: Pi-hole DNS + FTLDNS%0A
+features: keyctl=1,nesting=1
+hostname: pihole
+memory: 512
+net0: name=eth0,bridge=vmbr0,firewall=0,gw=192.168.4.1,hwaddr=BC:24:11:A4:42:81,ip=192.168.4.208/24,type=veth
+onboot: 1
+ostype: debian
+rootfs: local-lvm:vm-109-disk-0,size=15G
+swap: 512
+tags: dns;infra
+unprivileged: 1
+
+==== CT 110 ====
+arch: amd64
+cores: 1
+description: NetFlow Collector (nfdump) / ntrop%0A
+features: nesting=1
+hostname: ntrop.pve.local
+memory: 768
+net0: name=eth0,bridge=vmbr0,firewall=1,hwaddr=BC:24:11:4E:3F:F3,ip=dhcp,type=veth
+ostype: debian
+rootfs: local-lvm:vm-110-disk-0,size=8G
+swap: 768
+tags: monitoring;netflow
+unprivileged: 1

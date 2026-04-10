@@ -1,0 +1,50 @@
+
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+# CT 105 (influxdb)
+Wed Dec 17 08:37:22 PM HST 2025
+
+## /etc/promtail/config.yml
+6:  - url: http://192.168.4.140:3100/loki/api/v1/push
+
+## /etc/telegraf/telegraf.conf (outputs)
+45:[[outputs.influxdb_v2]]
+47:  urls = ["$INFLUX_HOST"]
+48:  token = "${INFLUX_TOKEN}"
+49:  organization = "${INFLUX_ORG}"
+50:  bucket = "${TELEGRAF_BUCKET}"
+52:  ## The value of this tag will be used to determine the bucket.  If this
+53:  ## tag is not set the 'bucket' option is used as the default.
+54:  bucket_tag = "${TELEGRAF_BUCKET}"
+56:  ## If true, the bucket tag will not be added to the metric.
+57:   exclude_bucket_tag = false
+
+## /etc/telegraf/telegraf.d/*.conf (outputs)
+/etc/telegraf/telegraf.d/netflow_input.conf:10:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/netflow_input.conf:12: urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/netflow_input.conf:13:  token = "${INFLUX_TOKEN}"
+/etc/telegraf/telegraf.d/netflow_input.conf:14:  organization = "${INFLUX_ORG}"
+/etc/telegraf/telegraf.d/netflow_input.conf:15:  bucket = "${NETFLOW_BUCKET}"
+/etc/telegraf/telegraf.d/system.conf:62:  [[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/system.conf:64:  urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/system.conf:65:  token = "${INFLUX_TOKEN}"
+/etc/telegraf/telegraf.d/system.conf:66:  organization = "${INFLUX_ORG}"
+/etc/telegraf/telegraf.d/system.conf:67:  bucket = "${LINUX_BUCKET}"
+/etc/telegraf/telegraf.d/system.conf:69:  ## The value of this tag will be used to determine the bucket.  If this
+/etc/telegraf/telegraf.d/system.conf:70:  ## tag is not set the 'bucket' option is used as the default.
+/etc/telegraf/telegraf.d/system.conf:71:  bucket_tag = "${LINUX_BUCKET}"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:51:# If you WANT this file to force-bucket routing, we can add a dedicated outputs.influxdb_v2
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:73:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:74:  urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:75:#  token = "$INFLUX_TOKEN"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:76:  token = "${INFLUX_TOKEN}"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:77:  organization = "${INFLUX_ORG}"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:78:  bucket = "${TIMEWARP_BUCKET}"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:80:  ## The value of this tag will be used to determine the bucket.  If this
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:81:  ## tag is not set the 'bucket' option is used as the default.
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:82:  bucket_tag = "${TIMEWARP_BUCKET}"
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:85:  exclude_bucket_tag = false

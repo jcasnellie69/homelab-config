@@ -1,0 +1,7 @@
+### hostname -f
+$ pct exec 103 -- hostname -f
+prometheus.lan
+
+### uname -a
+$ pct exec 103 -- uname -a
+Linux prometheus 6.8.12-15-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-15 (2025-09-12T11:02Z) x86_64 GNU/Linux

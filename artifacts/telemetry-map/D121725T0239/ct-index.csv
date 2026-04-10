@@ -1,0 +1,48 @@
+100,netbox,
+[1mNetBox LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mnetbox[m
+    💡  [m[33m IP Address: [1;92m192.168.4.140[m
+192.168.4.140
+102,grafana,
+[1mGrafana LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mgrafana[m
+    💡  [m[33m IP Address: [1;92m192.168.4.129[m
+192.168.4.129
+103,prometheus,
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m
+192.168.4.132
+104,prometheus-pve-exporter,
+[1mPrometheus-PVE-Exporter LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus-pve-exporter[m
+    💡  [m[33m IP Address: [1;92m192.168.4.131[m
+192.168.4.131
+105,influxdb,
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+192.168.4.130
+109,pihole,
+[1mPihole LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mpihole[m
+    💡  [m[33m IP Address: [1;92m192.168.4.208[m
+192.168.4.208

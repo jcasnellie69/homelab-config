@@ -1,0 +1,19 @@
+### CMD: ip -br addr
+### WHEN: 2025-12-15T04:28:15-05:00
+### HOST: pve.primary.node
+
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp5s0           UP
+enp6s0           UP             fd84:e6b1:42ac:406c:e251:d8ff:fe1a:9da8/64 fe80::e251:d8ff:fe1a:9da8/64
+wlo1             DOWN
+veth100i0@if2    UP             fe80::fc48:a2ff:fe88:ab5b/64
+veth104i0@if2    UP             fe80::fc77:41ff:feb6:6672/64
+vmbr0            UP             192.168.4.249/24 fe80::e251:d8ff:fe1a:9da7/64
+veth105i0@if2    UP
+veth109i0@if2    UP
+veth108i0@if2    UP
+veth103i0@if2    UP
+tap107i0         UNKNOWN
+veth102i0@if2    UP
+veth106i0@if2    UP
+tap101i0         UNKNOWN

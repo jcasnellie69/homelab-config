@@ -1,0 +1,15 @@
+# cmd: bash -lc ip -br a || ip a
+# host: pve
+# when: 2025-12-22T00:43:59-05:00
+
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp5s0           UP
+enp6s0           UP             fd1b:d6fa:3edc:fa1d:e251:d8ff:fe1a:9da8/64 fe80::e251:d8ff:fe1a:9da8/64
+wlo1             DOWN
+vmbr0            UP             192.168.4.249/24 fe80::e251:d8ff:fe1a:9da7/64
+veth100i0@if2    UP
+veth103i0@if2    UP
+veth104i0@if2    UP
+veth105i0@if2    UP
+veth109i0@if2    UP
+veth106i0@if2    UP
