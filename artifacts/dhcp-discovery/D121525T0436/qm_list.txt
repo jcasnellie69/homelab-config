@@ -2,6 +2,12 @@
 ### WHEN: 2025-12-15T04:36:20-05:00
 ### HOST: pve.primary.node
 
+<<<<<<< HEAD
       VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
        101 haos16               running    6000              32.00 4050078
        107 pdm                  running    4096              32.00 448883
+=======
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos16               running    6000              32.00 4050078   
+       107 pdm                  running    4096              32.00 448883    
+>>>>>>> origin/main

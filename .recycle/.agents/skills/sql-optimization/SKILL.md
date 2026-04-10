@@ -22,7 +22,11 @@ WHERE YEAR(o.created_at) = 2024
 SELECT o.id, o.customer_id, o.total_amount, o.created_at
 FROM orders o
 INNER JOIN customers c ON o.customer_id = c.id
+<<<<<<< HEAD
 WHERE o.created_at >= '2024-01-01'
+=======
+WHERE o.created_at >= '2024-01-01' 
+>>>>>>> origin/main
   AND o.created_at < '2025-01-01'
   AND c.status = 'active';
 
@@ -55,8 +59,13 @@ WHERE status IS NOT NULL;
 SELECT p.product_name, p.price
 FROM products p
 WHERE p.price > (
+<<<<<<< HEAD
     SELECT AVG(price)
     FROM products p2
+=======
+    SELECT AVG(price) 
+    FROM products p2 
+>>>>>>> origin/main
     WHERE p2.category_id = p.category_id
 );
 
@@ -95,6 +104,7 @@ WHERE o.created_at > '2024-01-01';
 ### Pagination Optimization
 ```sql
 -- ❌ BAD: OFFSET-based pagination (slow for large offsets)
+<<<<<<< HEAD
 SELECT * FROM products
 ORDER BY created_at DESC
 LIMIT 20 OFFSET 10000;
@@ -109,6 +119,22 @@ LIMIT 20;
 SELECT * FROM products
 WHERE id > 1000
 ORDER BY id
+=======
+SELECT * FROM products 
+ORDER BY created_at DESC 
+LIMIT 20 OFFSET 10000;
+
+-- ✅ GOOD: Cursor-based pagination
+SELECT * FROM products 
+WHERE created_at < '2024-06-15 10:30:00'
+ORDER BY created_at DESC 
+LIMIT 20;
+
+-- Or using ID-based cursor
+SELECT * FROM products 
+WHERE id > 1000
+ORDER BY id 
+>>>>>>> origin/main
 LIMIT 20;
 ```
 
@@ -120,7 +146,11 @@ SELECT COUNT(*) FROM orders WHERE status = 'shipped';
 SELECT COUNT(*) FROM orders WHERE status = 'delivered';
 
 -- ✅ GOOD: Single query with conditional aggregation
+<<<<<<< HEAD
 SELECT
+=======
+SELECT 
+>>>>>>> origin/main
     COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_count,
     COUNT(CASE WHEN status = 'shipped' THEN 1 END) as shipped_count,
     COUNT(CASE WHEN status = 'delivered' THEN 1 END) as delivered_count
@@ -144,11 +174,19 @@ JOIN another_table at ON lt.id = at.ref_id;
 ### WHERE Clause Optimization
 ```sql
 -- ❌ BAD: Function calls in WHERE clause
+<<<<<<< HEAD
 SELECT * FROM orders
 WHERE UPPER(customer_email) = 'JOHN@EXAMPLE.COM';
 
 -- ✅ GOOD: Index-friendly WHERE clause
 SELECT * FROM orders
+=======
+SELECT * FROM orders 
+WHERE UPPER(customer_email) = 'JOHN@EXAMPLE.COM';
+
+-- ✅ GOOD: Index-friendly WHERE clause
+SELECT * FROM orders 
+>>>>>>> origin/main
 WHERE customer_email = 'john@example.com';
 -- Consider: CREATE INDEX idx_orders_email ON orders(LOWER(customer_email));
 ```
@@ -156,7 +194,11 @@ WHERE customer_email = 'john@example.com';
 ### OR vs UNION Optimization
 ```sql
 -- ❌ BAD: Complex OR conditions
+<<<<<<< HEAD
 SELECT * FROM products
+=======
+SELECT * FROM products 
+>>>>>>> origin/main
 WHERE (category = 'electronics' AND price < 1000)
    OR (category = 'books' AND price < 50);
 
@@ -176,7 +218,11 @@ INSERT INTO products (name, price) VALUES ('Product 2', 15.00);
 INSERT INTO products (name, price) VALUES ('Product 3', 20.00);
 
 -- ✅ GOOD: Batch insert
+<<<<<<< HEAD
 INSERT INTO products (name, price) VALUES
+=======
+INSERT INTO products (name, price) VALUES 
+>>>>>>> origin/main
 ('Product 1', 10.00),
 ('Product 2', 15.00),
 ('Product 3', 20.00);
@@ -186,10 +232,17 @@ INSERT INTO products (name, price) VALUES
 ```sql
 -- ✅ GOOD: Using temporary tables for complex operations
 CREATE TEMPORARY TABLE temp_calculations AS
+<<<<<<< HEAD
 SELECT customer_id,
        SUM(total_amount) as total_spent,
        COUNT(*) as order_count
 FROM orders
+=======
+SELECT customer_id, 
+       SUM(total_amount) as total_spent,
+       COUNT(*) as order_count
+FROM orders 
+>>>>>>> origin/main
 WHERE created_at >= '2024-01-01'
 GROUP BY customer_id;
 
@@ -205,8 +258,13 @@ WHERE tc.total_spent > 1000;
 ### Index Design Principles
 ```sql
 -- ✅ GOOD: Covering index design
+<<<<<<< HEAD
 CREATE INDEX idx_orders_covering
 ON orders(customer_id, created_at)
+=======
+CREATE INDEX idx_orders_covering 
+ON orders(customer_id, created_at) 
+>>>>>>> origin/main
 INCLUDE (total_amount, status);  -- SQL Server syntax
 -- Or: CREATE INDEX idx_orders_covering ON orders(customer_id, created_at, total_amount, status); -- Other databases
 ```
@@ -214,8 +272,13 @@ INCLUDE (total_amount, status);  -- SQL Server syntax
 ### Partial Index Strategy
 ```sql
 -- ✅ GOOD: Partial indexes for specific conditions
+<<<<<<< HEAD
 CREATE INDEX idx_orders_active
 ON orders(created_at)
+=======
+CREATE INDEX idx_orders_active 
+ON orders(created_at) 
+>>>>>>> origin/main
 WHERE status IN ('pending', 'processing');
 ```
 
@@ -237,7 +300,11 @@ FROM pg_stat_statements
 ORDER BY total_time DESC;
 
 -- For SQL Server:
+<<<<<<< HEAD
 SELECT
+=======
+SELECT 
+>>>>>>> origin/main
     qs.total_elapsed_time/qs.execution_count as avg_elapsed_time,
     qs.execution_count,
     SUBSTRING(qt.text, (qs.statement_start_offset/2)+1,

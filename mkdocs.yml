@@ -15,6 +15,7 @@ theme:
     - navigation.path
     - navigation.indexes
     - navigation.tracking
+    - toc.follow
 plugins:
   - search
 nav:

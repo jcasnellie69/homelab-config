@@ -40,7 +40,7 @@ Agent evaluates and improves its own output through self-critique.
 def reflect_and_refine(task: str, criteria: list[str], max_iterations: int = 3) -> str:
     """Generate with reflection loop."""
     output = llm(f"Complete this task:\n{task}")
-
+    
     for i in range(max_iterations):
         # Self-critique
         critique = llm(f"""
@@ -48,16 +48,16 @@ def reflect_and_refine(task: str, criteria: list[str], max_iterations: int = 3) 
         Output: {output}
         Rate each: PASS/FAIL with feedback as JSON.
         """)
-
+        
         critique_data = json.loads(critique)
         all_pass = all(c["status"] == "PASS" for c in critique_data.values())
         if all_pass:
             return output
-
+        
         # Refine based on critique
         failed = {k: v["feedback"] for k, v in critique_data.items() if v["status"] == "FAIL"}
         output = llm(f"Improve to address: {failed}\nOriginal: {output}")
-
+    
     return output
 ```
 
@@ -73,20 +73,20 @@ Separate generation and evaluation into distinct components for clearer responsi
 class EvaluatorOptimizer:
     def __init__(self, score_threshold: float = 0.8):
         self.score_threshold = score_threshold
-
+    
     def generate(self, task: str) -> str:
         return llm(f"Complete: {task}")
-
+    
     def evaluate(self, output: str, task: str) -> dict:
         return json.loads(llm(f"""
         Evaluate output for task: {task}
         Output: {output}
         Return JSON: {{"overall_score": 0-1, "dimensions": {{"accuracy": ..., "clarity": ...}}}}
         """))
-
+    
     def optimize(self, output: str, feedback: dict) -> str:
         return llm(f"Improve based on feedback: {feedback}\nOutput: {output}")
-
+    
     def run(self, task: str, max_iterations: int = 3) -> str:
         output = self.generate(task)
         for _ in range(max_iterations):
@@ -108,7 +108,7 @@ class CodeReflector:
     def reflect_and_fix(self, spec: str, max_iterations: int = 3) -> str:
         code = llm(f"Write Python code for: {spec}")
         tests = llm(f"Generate pytest tests for: {spec}\nCode: {code}")
-
+        
         for _ in range(max_iterations):
             result = run_tests(code, tests)
             if result["success"]:

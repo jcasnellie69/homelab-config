@@ -21,20 +21,32 @@ High-performance web server and reverse proxy.
 server {
     listen 80;
     server_name example.com;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     # Serve static files
     location / {
         root /var/www/html;
         index index.html;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     # Proxy to backend
     location /api {
         proxy_pass http://localhost:3000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     # SSL configuration
     listen 443 ssl;
     ssl_certificate /path/to/cert.pem;
@@ -282,10 +294,17 @@ sudo certbot --nginx -d example.com
 server {
     listen 443 ssl http2;
     server_name example.com;
+<<<<<<< HEAD
 
     ssl_certificate /path/to/fullchain.pem;
     ssl_certificate_key /path/to/privkey.pem;
 
+=======
+    
+    ssl_certificate /path/to/fullchain.pem;
+    ssl_certificate_key /path/to/privkey.pem;
+    
+>>>>>>> origin/main
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
 }
@@ -561,14 +580,22 @@ mongodump --db mydb --out /backup/
 
 Increase server resources (CPU, RAM).
 
+<<<<<<< HEAD
 **Pros**: Simple
+=======
+**Pros**: Simple  
+>>>>>>> origin/main
 **Cons**: Limited, expensive
 
 ### Horizontal Scaling
 
 Add more servers.
 
+<<<<<<< HEAD
 **Pros**: Unlimited scaling
+=======
+**Pros**: Unlimited scaling  
+>>>>>>> origin/main
 **Cons**: Complex, requires load balancer
 
 ### Database Scaling

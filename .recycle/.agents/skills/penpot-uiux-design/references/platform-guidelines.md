@@ -251,12 +251,20 @@ Mobile (base):
   Body: 16px
   H1: 28-32px
   H2: 22-24px
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
 Tablet:
   Body: 16px
   H1: 32-40px
   H2: 24-28px
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
 Desktop:
   Body: 16-18px
   H1: 40-56px

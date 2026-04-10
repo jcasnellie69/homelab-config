@@ -6,15 +6,22 @@ PVE Guests Health Check
 Timestamp: 2025-12-11T20:49:27-05:00
 
 === Virtual Machines (qm list) ===
+<<<<<<< HEAD
       VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
        101 haos16.0             running    6000              32.00 449014
        107 PDM                  running    4096              32.00 448883
+=======
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos16.0             running    6000              32.00 449014    
+       107 PDM                  running    4096              32.00 448883    
+>>>>>>> origin/main
 
 --- VM detailed states ---
 VMID=101 NAME=haos16.0 STATE=running
 VMID=107 NAME=PDM STATE=running
 
 === Containers (pct list) ===
+<<<<<<< HEAD
 VMID       Status     Lock         Name
 100        running                 netbox
 102        running                 grafana
@@ -25,6 +32,18 @@ VMID       Status     Lock         Name
 108        running                 watchyourlan
 109        running                 pihole
 110        running                 ntrop.pve.local
+=======
+VMID       Status     Lock         Name                
+100        running                 netbox              
+102        running                 grafana             
+103        running                 prometheus          
+104        running                 prometheus-pve-exporter
+105        running                 influxdb            
+106        running                 homepage            
+108        running                 watchyourlan        
+109        running                 pihole              
+110        running                 ntrop.pve.local     
+>>>>>>> origin/main
 
 --- LXC detailed states ---
 CTID=100 STATUS=running

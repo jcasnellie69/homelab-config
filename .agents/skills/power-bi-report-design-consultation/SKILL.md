@@ -106,7 +106,11 @@ Layout Strategy:
 │ Primary Insight Area                    │
 │ ┌─────────────┐  ┌─────────────────────┐│
 │ │   Main      │  │   Supporting        ││
+<<<<<<< HEAD
 │ │   Visual    │  │   Context           ││
+=======
+│ │   Visual    │  │   Context           ││  
+>>>>>>> origin/main
 │ │             │  │   (2-3 smaller      ││
 │ │             │  │    visuals)         ││
 │ └─────────────┘  └─────────────────────┘│
@@ -182,7 +186,11 @@ Implementation:
 
 Button Navigation:
 Best for: Guided workflows, external links
+<<<<<<< HEAD
 Implementation:
+=======
+Implementation:  
+>>>>>>> origin/main
 - Action-oriented button labels
 - Consistent styling and sizing
 - Appropriate visual hierarchy
@@ -219,7 +227,11 @@ Mobile-First Considerations:
 Responsive Visual Selection:
 Mobile-Friendly:
 ✅ Card visuals for KPIs
+<<<<<<< HEAD
 ✅ Simple bar and column charts
+=======
+✅ Simple bar and column charts  
+>>>>>>> origin/main
 ✅ Line charts with minimal data points
 ✅ Large gauge and KPI visuals
 
@@ -237,7 +249,11 @@ Mobile-Challenging:
 Visual Clarity:
 □ Clear visual hierarchy with appropriate emphasis
 □ Sufficient contrast and readability
+<<<<<<< HEAD
 □ Logical flow and eye movement patterns
+=======
+□ Logical flow and eye movement patterns  
+>>>>>>> origin/main
 □ Minimal cognitive load for interpretation
 □ Appropriate use of white space
 
@@ -270,7 +286,11 @@ Test Scenarios:
 1. Initial impression and orientation (30 seconds)
 2. Finding specific information (2 minutes)
 3. Comparing data points (3 minutes)
+<<<<<<< HEAD
 4. Drilling down for details (2 minutes)
+=======
+4. Drilling down for details (2 minutes)  
+>>>>>>> origin/main
 5. Mobile usage simulation (5 minutes)
 
 Success Criteria:
@@ -300,9 +320,15 @@ Page 1: Dashboard Overview
 ├─ Supporting Visuals: [2-3 context charts]
 └─ Filter Panel: [Key filter controls]
 
+<<<<<<< HEAD
 Page 2: Detailed Analysis
 ├─ Comparative Analysis: [Chart selection]
 ├─ Trend Analysis: [Time-based visuals]
+=======
+Page 2: Detailed Analysis  
+├─ Comparative Analysis: [Chart selection]
+├─ Trend Analysis: [Time-based visuals]  
+>>>>>>> origin/main
 ├─ Distribution Analysis: [Statistical charts]
 └─ Navigation: Drill-through to operational data
 
@@ -324,7 +350,11 @@ Phase 4 (Week 4): Mobile optimization and final polish
 Quality Assurance:
 □ Visual accuracy validation
 □ Interaction testing across browsers
+<<<<<<< HEAD
 □ Mobile device testing
+=======
+□ Mobile device testing  
+>>>>>>> origin/main
 □ Accessibility compliance check
 □ Performance validation
 □ User acceptance testing
@@ -342,7 +372,11 @@ Success Metrics:
 **Usage Instructions:**
 To get visualization design recommendations, provide:
 - Business context and report objectives
+<<<<<<< HEAD
 - Target audience and usage scenarios
+=======
+- Target audience and usage scenarios  
+>>>>>>> origin/main
 - Data description and key metrics
 - Technical constraints and requirements
 - Brand guidelines and accessibility needs

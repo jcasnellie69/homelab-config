@@ -7,3 +7,7 @@
     💡  [m[33m IP Address: [1;92m192.168.4.208[m
 # CT 109 (pihole)
 Thu Dec 18 01:37:25 AM EST 2025
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

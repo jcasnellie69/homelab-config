@@ -15,7 +15,11 @@ A step-by-step diagnostic process for investigating failing Power Automate
 cloud flows through the FlowStudio MCP server.
 
 **Prerequisite**: A FlowStudio MCP server must be reachable with a valid JWT.
+<<<<<<< HEAD
 See the `flowstudio-power-automate-mcp` skill for connection setup.
+=======
+See the `flowstudio-power-automate-mcp` skill for connection setup.  
+>>>>>>> origin/main
 Subscribe at https://mcp.flowstudio.app
 
 ---

@@ -23,3 +23,7 @@ postfix      451  0.0  0.3  43100  7040 ?        S    17:16   0:00 qmgr -l -t un
 root         745  0.0  0.0   2580  1536 pts/1    S+   18:49   0:00 sh -c ps aux 2>/dev/null | head -n 40
 root         746  0.0  0.2  11044  4480 pts/1    R+   18:49   0:00 ps aux
 root         747  0.0  0.0   5476  1664 pts/1    S+   18:49   0:00 head -n 40
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

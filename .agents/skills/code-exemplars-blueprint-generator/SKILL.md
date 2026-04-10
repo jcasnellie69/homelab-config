@@ -75,17 +75,17 @@ ${PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect" ? `#### Python Exemp
   - User interface components
   - Controllers/API endpoints
   - View models/DTOs
-
+  
 - **Business Logic Layer**:
   - Service implementations
   - Business logic components
   - Workflow orchestration
-
+  
 - **Data Access Layer**:
   - Repository implementations
   - Data models
   - Query patterns
-
+  
 - **Cross-Cutting Concerns**:
   - Logging implementations
   - Error handling

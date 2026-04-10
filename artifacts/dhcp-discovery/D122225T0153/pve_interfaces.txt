@@ -31,7 +31,11 @@ iface vmbr0 inet static
     dns-nameservers 192.168.4.208
 	address 192.168.4.249/24
 	gateway 192.168.4.1
+<<<<<<< HEAD
 	bridge-ports enp5s0
+=======
+	bridge-ports enp5s0 
+>>>>>>> origin/main
 	bridge-stp off
 	bridge-fd 0
 	bridge-vlan-aware yes

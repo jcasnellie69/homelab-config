@@ -23,20 +23,37 @@ www-data     259  0.0  0.1 374844  7244 ?        Ssl  Nov21   0:35 /usr/libexec/
 root         269  0.0  0.1  13688  7644 ?        Ss   Nov21   0:38 /usr/sbin/apache2 -k start
 postgres     355  0.0  0.2 220456 11648 ?        Ss   Nov21   0:14 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
 netdata      367  0.9  4.4 864404 175040 ?       SNsl Nov21 240:29 /usr/sbin/netdata -P /run/netdata/netdata.pid -D
+<<<<<<< HEAD
 postgres     381  0.0  0.1 220596  4284 ?        Ss   Nov21   0:00 postgres: 16/main: checkpointer
 postgres     382  0.0  0.0 220588  2876 ?        Ss   Nov21   0:05 postgres: 16/main: background writer
 postgres     387  0.0  0.0 220588  2748 ?        Ss   Nov21   0:05 postgres: 16/main: walwriter
 postgres     388  0.0  0.0 222064  3900 ?        Ss   Nov21   0:03 postgres: 16/main: autovacuum launcher
 postgres     389  0.0  0.0 222044  3516 ?        Ss   Nov21   0:00 postgres: 16/main: logical replication launcher
 netdata      409  0.0  0.0  81472  2512 ?        SN   Nov21   0:53 spawn-plugins
+=======
+postgres     381  0.0  0.1 220596  4284 ?        Ss   Nov21   0:00 postgres: 16/main: checkpointer 
+postgres     382  0.0  0.0 220588  2876 ?        Ss   Nov21   0:05 postgres: 16/main: background writer 
+postgres     387  0.0  0.0 220588  2748 ?        Ss   Nov21   0:05 postgres: 16/main: walwriter 
+postgres     388  0.0  0.0 222064  3900 ?        Ss   Nov21   0:03 postgres: 16/main: autovacuum launcher 
+postgres     389  0.0  0.0 222044  3516 ?        Ss   Nov21   0:00 postgres: 16/main: logical replication launcher 
+netdata      409  0.0  0.0  81472  2512 ?        SN   Nov21   0:53 spawn-plugins                                   
+>>>>>>> origin/main
 root         507  0.0  0.1  42672  4372 ?        Ss   Nov21   0:09 /usr/lib/postfix/sbin/master -w
 root         916  0.0  0.0   8248  2688 pts/1    S+   Nov21   0:00 -bash
 netdata     1061  0.0  0.0 127444  3712 ?        SNl  Nov21   3:43 /usr/libexec/netdata/plugins.d/network-viewer.plugin 1
 netdata     1063  0.0  0.1 201684  4208 ?        SNl  Nov21  11:42 /usr/libexec/netdata/plugins.d/systemd-journal.plugin 1
 netdata     1069  0.2  1.0 1331152 40124 ?       SNl  Nov21  67:17 /usr/libexec/netdata/plugins.d/go.d.plugin 1
 netdata     1074  0.3  0.1  96700  5888 ?        SNl  Nov21  82:56 /usr/libexec/netdata/plugins.d/apps.plugin 1
+<<<<<<< HEAD
 netdata     1094  0.0  0.0  12732  1684 ?        SN   Nov21   0:50 spawn-setns
+=======
+netdata     1094  0.0  0.0  12732  1684 ?        SN   Nov21   0:50 spawn-setns                                           
+>>>>>>> origin/main
 postfix  2218874  0.0  0.1  43104  6656 ?        S    Dec08   0:00 qmgr -l -t unix -u
 root     2467536  0.0  0.1  12600  3968 ?        SN   Dec08   0:05 /usr/libexec/netdata/plugins.d/nfacct.plugin 1
 www-data 2507613  0.0  0.2 1219880 8796 ?        Sl   00:00   0:18 /usr/sbin/apache2 -k start
 www-data 2507614  0.0  0.2 1219880 8912 ?        Sl   00:00   0:15 /usr/sbin/apache2 -k start
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

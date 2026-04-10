@@ -8,6 +8,7 @@
 # CT 102 (grafana)
 Wed Dec 17 08:08:43 PM HST 2025
 
+<<<<<<< HEAD
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=383,fd=13))
 LISTEN 0      511          0.0.0.0:8680      0.0.0.0:*    users:(("node",pid=419,fd=22))
@@ -18,4 +19,16 @@ LISTEN 0      4096               *:9095            *:*    users:(("promtail",pid
 LISTEN 0      4096               *:9096            *:*    users:(("loki",pid=177,fd=8))
 LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=105,fd=3))
 LISTEN 0      4096               *:9080            *:*    users:(("promtail",pid=1099,fd=7))
+=======
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                  
+LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=383,fd=13))        
+LISTEN 0      511          0.0.0.0:8680      0.0.0.0:*    users:(("node",pid=419,fd=22))          
+LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=383,fd=14))        
+LISTEN 0      4096               *:3000            *:*    users:(("grafana",pid=173,fd=18))       
+LISTEN 0      4096               *:3100            *:*    users:(("loki",pid=177,fd=7))           
+LISTEN 0      4096               *:9095            *:*    users:(("promtail",pid=1099,fd=35))     
+LISTEN 0      4096               *:9096            *:*    users:(("loki",pid=177,fd=8))           
+LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=105,fd=3))
+LISTEN 0      4096               *:9080            *:*    users:(("promtail",pid=1099,fd=7))      
+>>>>>>> origin/main
 LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=208,fd=3),("systemd",pid=1,fd=39))

@@ -107,31 +107,51 @@ Keep relationship columns low cardinality:
 ### 1. Use Variables
 ```dax
 // GOOD - Calculate once, use twice
+<<<<<<< HEAD
 Sales Growth =
+=======
+Sales Growth = 
+>>>>>>> origin/main
 VAR CurrentSales = [Total Sales]
 VAR PriorSales = [PY Sales]
 RETURN DIVIDE(CurrentSales - PriorSales, PriorSales)
 
 // BAD - Recalculates [Total Sales] and [PY Sales]
+<<<<<<< HEAD
 Sales Growth =
+=======
+Sales Growth = 
+>>>>>>> origin/main
 DIVIDE([Total Sales] - [PY Sales], [PY Sales])
 ```
 
 ### 2. Avoid FILTER with Entire Tables
 ```dax
 // BAD - Iterates entire table
+<<<<<<< HEAD
 Sales High Value =
 CALCULATE([Total Sales], FILTER(Sales, Sales[Amount] > 1000))
 
 // GOOD - Uses column reference
 Sales High Value =
+=======
+Sales High Value = 
+CALCULATE([Total Sales], FILTER(Sales, Sales[Amount] > 1000))
+
+// GOOD - Uses column reference
+Sales High Value = 
+>>>>>>> origin/main
 CALCULATE([Total Sales], Sales[Amount] > 1000)
 ```
 
 ### 3. Use KEEPFILTERS Appropriately
 ```dax
 // Respects existing filters
+<<<<<<< HEAD
 Sales with Filter =
+=======
+Sales with Filter = 
+>>>>>>> origin/main
 CALCULATE([Total Sales], KEEPFILTERS(Product[Category] = "Bikes"))
 ```
 

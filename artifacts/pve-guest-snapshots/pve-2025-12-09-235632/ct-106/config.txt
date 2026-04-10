@@ -14,3 +14,7 @@ rootfs: local-lvm:vm-106-disk-0,size=6G
 swap: 512
 tags: community-script;dashboard
 unprivileged: 1
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

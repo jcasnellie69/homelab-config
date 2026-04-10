@@ -206,7 +206,11 @@ Functions that remember their lexical scope:
 ```javascript
 function createCounter() {
   let count = 0; // Private variable
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   return {
     increment() {
       count++;
@@ -572,22 +576,38 @@ class Person {
     this.name = name;
     this.age = age;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Instance method
   greet() {
     return `Hello, I'm ${this.name}`;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Getter
   get info() {
     return `${this.name}, ${this.age}`;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Setter
   set birthYear(year) {
     this.age = new Date().getFullYear() - year;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Static method
   static species() {
     return "Homo sapiens";
@@ -600,7 +620,11 @@ class Employee extends Person {
     super(name, age); // Call parent constructor
     this.jobTitle = jobTitle;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Override method
   greet() {
     return `${super.greet()}, I'm a ${this.jobTitle}`;

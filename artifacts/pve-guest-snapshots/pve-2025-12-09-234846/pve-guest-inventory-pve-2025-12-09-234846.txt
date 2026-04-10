@@ -6,8 +6,15 @@ Timestamp : 2025-12-09-234846
 === LXC Containers Overview =======================================
 CTID  STATUS   NAME       IP(s)
 -------------------------------------------------------------------
+<<<<<<< HEAD
 100  running netbox
 102  running grafana    192.168.4.129 fd1b:d6fa:3edc:fa1d:be24:11ff:fe5b:7e44
 103  running prometheus 192.168.4.132 fd1b:d6fa:3edc:fa1d:be24:11ff:fec5:c381
 104  running prometheus-pve-exporter
+=======
+100  running netbox     
+102  running grafana    192.168.4.129 fd1b:d6fa:3edc:fa1d:be24:11ff:fe5b:7e44
+103  running prometheus 192.168.4.132 fd1b:d6fa:3edc:fa1d:be24:11ff:fec5:c381
+104  running prometheus-pve-exporter 
+>>>>>>> origin/main
 105  running influxdb   192.168.4.130 fd1b:d6fa:3edc:fa1d:be24:11ff:fef2:ac2a

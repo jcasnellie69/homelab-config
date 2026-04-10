@@ -68,7 +68,11 @@ import (
 
 func main() {
     cfg := config.Load()
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     ctx, cancel := context.WithCancel(context.Background())
     defer cancel()
 

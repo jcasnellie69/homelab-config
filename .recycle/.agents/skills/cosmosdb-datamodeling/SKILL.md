@@ -197,7 +197,11 @@ A JSON representation showing 5-10 representative documents for the container
     "email": "john@example.com"
   },
   {
+<<<<<<< HEAD
     "id": "order_456",
+=======
+    "id": "order_456", 
+>>>>>>> origin/main
     "partitionKey": "user_123",
     "type": "order",
     "userId": "user_123",
@@ -254,7 +258,11 @@ A JSON representation showing 5-10 representative documents for the container
 [Explain the overall trade-offs made and optimizations used as well as why - such as the examples below]
 
 - **Aggregate Design**: Kept Orders and OrderItems together due to 95% access correlation - trades document size for query performance
+<<<<<<< HEAD
 - **Denormalization**: Duplicated user name in Order document to avoid cross-partition lookup - trades storage for performance
+=======
+- **Denormalization**: Duplicated user name in Order document to avoid cross-partition lookup - trades storage for performance  
+>>>>>>> origin/main
 - **Normalization**: Kept User as separate document type from Orders due to low access correlation (15%) - optimizes update costs
 - **Indexing Strategy**: Used selective indexing instead of automatic to balance cost vs additional query needs
 - **Multi-Document Containers**: Used multi-document containers for [access_pattern] to enable transactional consistency
@@ -290,7 +298,11 @@ A JSON representation showing 5-10 representative documents for the container
 - ALWAYS update cosmosdb_requirements.md after each user response with new information
 - ALWAYS treat design considerations in modeling file as evolving thoughts, not final decisions
 - ALWAYS consider Multi-Document Containers when entities have 30-70% access correlation
+<<<<<<< HEAD
 - ALWAYS consider Hierarchical Partition Keys as alternative to synthetic keys if initial design recommends synthetic keys
+=======
+- ALWAYS consider Hierarchical Partition Keys as alternative to synthetic keys if initial design recommends synthetic keys 
+>>>>>>> origin/main
 - ALWAYS consider data binning for massive scale workloads of uniformed events and batch type writes workloads to optimize size and RU costs
 - **ALWAYS calculate costs accurately** - use realistic document sizes and include all overhead
 - **ALWAYS present final clean comparison** rather than multiple confusing iterations
@@ -343,7 +355,11 @@ In aggregate-oriented design, Azure Cosmos DB NoSQL offers multiple levels of ag
   Multiple entities combined into a single Cosmos DB document. This provides:
 
    • Atomic updates across all data in the aggregate
+<<<<<<< HEAD
    • Single point read retrieval for all data. Make sure to reference the document by id and partition key via API (example `ReadItemAsync<Order>(id: "order0103", partitionKey: new PartitionKey("TimS1234"));` instead of using a query with `SELECT * FROM c WHERE c.id = "order0103" AND c.partitionKey = "TimS1234"` for point reads examples)
+=======
+   • Single point read retrieval for all data. Make sure to reference the document by id and partition key via API (example `ReadItemAsync<Order>(id: "order0103", partitionKey: new PartitionKey("TimS1234"));` instead of using a query with `SELECT * FROM c WHERE c.id = "order0103" AND c.partitionKey = "TimS1234"` for point reads examples)  
+>>>>>>> origin/main
    • Subject to 2MB document size limit
 
 When designing aggregates, consider both levels based on your requirements.
@@ -375,7 +391,11 @@ When designing aggregates, consider both levels based on your requirements.
 • **Cross-partition overhead**: Each physical partition adds ~2.5 RU base cost to cross-partition queries
 • **Massive scale implications**: 100+ physical partitions make cross-partition queries extremely expensive and not scalable.
 • Index overhead: Every indexed property consumes storage and write RUs
+<<<<<<< HEAD
 • Update patterns: Frequent updates to indexed properties or full Document replace increase RU costs (and the bigger Document size, bigger the impact of update RU increase)
+=======
+• Update patterns: Frequent updates to indexed properties or full Document replace increase RU costs (and the bigger Document size, bigger the impact of update RU increase) 
+>>>>>>> origin/main
 
 ## Core Design Philosophy
 
@@ -439,7 +459,11 @@ One-to-One: Store the related ID in both documents
 ```json
 // Users container
 { "id": "user_123", "partitionKey": "user_123", "profileId": "profile_456" }
+<<<<<<< HEAD
 // Profiles container
+=======
+// Profiles container  
+>>>>>>> origin/main
 { "id": "profile_456", "partitionKey": "profile_456", "userId": "user_123" }
 ```
 
@@ -463,10 +487,17 @@ Frequently accessed attributes: Denormalize sparingly
 
 ```json
 // Orders document
+<<<<<<< HEAD
 {
   "id": "order_789",
   "partitionKey": "user_123",
   "customerId": "user_123",
+=======
+{ 
+  "id": "order_789", 
+  "partitionKey": "user_123", 
+  "customerId": "user_123", 
+>>>>>>> origin/main
   "customerName": "John Doe" // Include customer name to avoid lookup
 }
 ```
@@ -493,7 +524,11 @@ When deciding aggregate boundaries, use this decision framework:
 Step 1: Analyze Access Correlation
 
 • 90% accessed together → Strong single document aggregate candidate
+<<<<<<< HEAD
 • 50-90% accessed together → Multi-document container aggregate candidate
+=======
+• 50-90% accessed together → Multi-document container aggregate candidate  
+>>>>>>> origin/main
 • <50% accessed together → Separate aggregates/containers
 
 Step 2: Check Constraints
@@ -587,7 +622,11 @@ Index overhead increases RU costs and storage. It occurs when documents have man
 When making aggregate design decisions:
 
 • Calculate read cost = frequency × RUs per operation
+<<<<<<< HEAD
 • Calculate write cost = frequency × RUs per operation
+=======
+• Calculate write cost = frequency × RUs per operation 
+>>>>>>> origin/main
 • Total cost = Σ(read costs) + Σ(write costs)
 • Choose the design with lower total cost
 
@@ -623,7 +662,11 @@ When facing massive write volumes, **data binning/chunking** can reduce write op
 ```json
 {
   "id": "chunk_001",
+<<<<<<< HEAD
   "partitionKey": "account_test_chunk_001",
+=======
+  "partitionKey": "account_test_chunk_001", 
+>>>>>>> origin/main
   "chunkId": 1,
   "records": [
     { "recordId": 1, "data": "..." },
@@ -660,7 +703,11 @@ When multiple entity types are frequently accessed together, group them in the s
 [
   {
     "id": "user_123",
+<<<<<<< HEAD
     "partitionKey": "user_123",
+=======
+    "partitionKey": "user_123", 
+>>>>>>> origin/main
     "type": "user",
     "name": "John Doe",
     "email": "john@example.com"
@@ -668,7 +715,11 @@ When multiple entity types are frequently accessed together, group them in the s
   {
     "id": "order_456",
     "partitionKey": "user_123",
+<<<<<<< HEAD
     "type": "order",
+=======
+    "type": "order", 
+>>>>>>> origin/main
     "userId": "user_123",
     "amount": 99.99
   }
@@ -728,7 +779,11 @@ Example analysis:
 
 Product + Reviews Aggregate Analysis:
 - Access pattern: View product details (no reviews) - 70%
+<<<<<<< HEAD
 - Access pattern: View product with reviews - 30%
+=======
+- Access pattern: View product with reviews - 30%  
+>>>>>>> origin/main
 - Update frequency: Products daily, Reviews hourly
 - Average sizes: Product 5KB, Reviews 200KB total
 - Decision: Multi-document container - low access correlation + size concerns + update mismatch
@@ -788,14 +843,22 @@ StudentCourseLessons container:
     "type": "student"
   },
   {
+<<<<<<< HEAD
     "id": "course_456",
+=======
+    "id": "course_456", 
+>>>>>>> origin/main
     "partitionKey": "student_123",
     "type": "course",
     "courseId": "course_456"
   },
   {
     "id": "lesson_789",
+<<<<<<< HEAD
     "partitionKey": "student_123",
+=======
+    "partitionKey": "student_123", 
+>>>>>>> origin/main
     "type": "lesson",
     "courseId": "course_456",
     "lessonId": "lesson_789"
@@ -818,7 +881,11 @@ TenantData container:
 ```json
 {
   "id": "record_123",
+<<<<<<< HEAD
   "partitionKey": "tenant_456_customer_789",
+=======
+  "partitionKey": "tenant_456_customer_789", 
+>>>>>>> origin/main
   "tenantId": "tenant_456",
   "customerId": "customer_789"
 }
@@ -877,20 +944,35 @@ Azure Cosmos DB doesn't enforce unique constraints beyond the id+partitionKey co
 function createUserWithUniqueEmail(userData) {
     var context = getContext();
     var container = context.getCollection();
+<<<<<<< HEAD
 
     // Check if email already exists
     var query = `SELECT * FROM c WHERE c.email = "${userData.email}"`;
 
+=======
+    
+    // Check if email already exists
+    var query = `SELECT * FROM c WHERE c.email = "${userData.email}"`;
+    
+>>>>>>> origin/main
     var isAccepted = container.queryDocuments(
         container.getSelfLink(),
         query,
         function(err, documents) {
             if (err) throw new Error('Error querying documents: ' + err.message);
+<<<<<<< HEAD
 
             if (documents.length > 0) {
                 throw new Error('Email already exists');
             }
 
+=======
+            
+            if (documents.length > 0) {
+                throw new Error('Email already exists');
+            }
+            
+>>>>>>> origin/main
             // Email is unique, create the user
             var isAccepted = container.createDocument(
                 container.getSelfLink(),
@@ -900,11 +982,19 @@ function createUserWithUniqueEmail(userData) {
                     context.getResponse().setBody(document);
                 }
             );
+<<<<<<< HEAD
 
             if (!isAccepted) throw new Error('The query was not accepted by the server.');
         }
     );
 
+=======
+            
+            if (!isAccepted) throw new Error('The query was not accepted by the server.');
+        }
+    );
+    
+>>>>>>> origin/main
     if (!isAccepted) throw new Error('The query was not accepted by the server.');
 }
 ```
@@ -929,7 +1019,11 @@ Hierarchical Partition Keys provide natural query boundaries using multiple fiel
 {
   "partitionKey": {
     "version": 2,
+<<<<<<< HEAD
     "kind": "MultiHash",
+=======
+    "kind": "MultiHash", 
+>>>>>>> origin/main
     "paths": ["/accountId", "/testId", "/chunkId"]
   }
 }
@@ -944,7 +1038,11 @@ Hierarchical Partition Keys provide natural query boundaries using multiple fiel
 - Data has natural hierarchy (tenant → user → document)
 - Frequent prefix-based queries
 - Want to eliminate synthetic partition key complexity
+<<<<<<< HEAD
 - Apply only for Cosmos NoSQL API
+=======
+- Apply only for Cosmos NoSQL API 
+>>>>>>> origin/main
 
 **Trade-offs**:
 - Requires dedicated tier (not available on serverless)
@@ -963,7 +1061,11 @@ Implementation: Add a shard suffix using hash-based or time-based calculation:
 // Hash-based sharding
 partitionKey = originalKey + "_" + (hash(identifier) % shardCount)
 
+<<<<<<< HEAD
 // Time-based sharding
+=======
+// Time-based sharding  
+>>>>>>> origin/main
 partitionKey = originalKey + "_" + (currentHour % shardCount)
 ```
 
@@ -993,7 +1095,11 @@ EventLog container (problematic):
 • Result: Limited to 10,000 RU/s regardless of total container throughput
 
 Sharded solution:
+<<<<<<< HEAD
 • Partition Key: date + "_" + shard_id (e.g., "2024-07-09_4")
+=======
+• Partition Key: date + "_" + shard_id (e.g., "2024-07-09_4")  
+>>>>>>> origin/main
 • Shard calculation: shard_id = hash(event_id) % 15
 • Result: Distributes daily events across 15 partitions
 
@@ -1010,7 +1116,11 @@ Option 1 - Combined aggregate (single document):
 - Write cost: 100 RPS × 10 RU (rewrite entire order) = 1000 RU/s
 
 Option 2 - Separate items (multi-document):
+<<<<<<< HEAD
 - Read cost: 1000 RPS × 5 RU (query multiple items) = 5000 RU/s
+=======
+- Read cost: 1000 RPS × 5 RU (query multiple items) = 5000 RU/s  
+>>>>>>> origin/main
 - Write cost: 100 RPS × 10 RU (update single item) = 1000 RU/s
 
 Decision: Option 1 better due to significantly lower read costs despite same write costs
@@ -1029,7 +1139,11 @@ Example: Session tokens with 24-hour expiration
 {
   "id": "sess_abc123",
   "partitionKey": "user_456",
+<<<<<<< HEAD
   "userId": "user_456",
+=======
+  "userId": "user_456", 
+>>>>>>> origin/main
   "createdAt": "2024-01-01T12:00:00Z",
   "ttl": 86400
 }

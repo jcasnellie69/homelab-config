@@ -80,7 +80,7 @@ AADSTS50173: The provided grant has expired
 
 **Detection:**
 ```
-AuthorizationFailed: The client '...' with object id '...' does not have authorization
+AuthorizationFailed: The client '...' with object id '...' does not have authorization 
 to perform action '...' over scope '...'
 ```
 

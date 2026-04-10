@@ -80,7 +80,11 @@ This workflow analyzes a specific Azure resource to assess its health status, di
    **General Error Analysis**:
    ```kql
    // Recent errors and exceptions
+<<<<<<< HEAD
    union isfuzzy=true
+=======
+   union isfuzzy=true 
+>>>>>>> origin/main
        AzureDiagnostics,
        AppServiceHTTPLogs,
        AppServiceAppLogs,
@@ -109,7 +113,11 @@ This workflow analyzes a specific Azure resource to assess its health status, di
    | where success == false
    | summarize FailureCount=count() by resultCode, bin(timestamp, 1h)
    | order by timestamp desc
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    // Database - Connection failures
    AzureDiagnostics
    | where ResourceProvider == "MICROSOFT.SQL"
@@ -176,12 +184,17 @@ This workflow analyzes a specific Azure resource to assess its health status, di
 1. **Display Health Assessment Summary**:
    ```
    🏥 Azure Resource Health Assessment
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    📊 Resource Overview:
    • Resource: [Name] ([Type])
    • Status: [Healthy/Warning/Critical]
    • Location: [Region]
    • Last Analyzed: [Timestamp]
+<<<<<<< HEAD
 
    🚨 Issues Identified:
    • Critical: X issues requiring immediate attention
@@ -189,10 +202,20 @@ This workflow analyzes a specific Azure resource to assess its health status, di
    • Medium: Z issues for optimization
    • Low: N informational items
 
+=======
+   
+   🚨 Issues Identified:
+   • Critical: X issues requiring immediate attention
+   • High: Y issues affecting performance/reliability  
+   • Medium: Z issues for optimization
+   • Low: N informational items
+   
+>>>>>>> origin/main
    🔍 Top Issues:
    1. [Issue Type]: [Description] - Impact: [High/Medium/Low]
    2. [Issue Type]: [Description] - Impact: [High/Medium/Low]
    3. [Issue Type]: [Description] - Impact: [High/Medium/Low]
+<<<<<<< HEAD
 
    🛠️ Remediation Plan:
    • Immediate Actions: X items
@@ -200,12 +223,22 @@ This workflow analyzes a specific Azure resource to assess its health status, di
    • Long-term Improvements: Z items
    • Estimated Resolution Time: [Timeline]
 
+=======
+   
+   🛠️ Remediation Plan:
+   • Immediate Actions: X items
+   • Short-term Fixes: Y items  
+   • Long-term Improvements: Z items
+   • Estimated Resolution Time: [Timeline]
+   
+>>>>>>> origin/main
    ❓ Proceed with detailed remediation plan? (y/n)
    ```
 
 2. **Generate Detailed Report**:
    ```markdown
    # Azure Resource Health Report: [Resource Name]
+<<<<<<< HEAD
 
    **Generated**: [Timestamp]
    **Resource**: [Full Resource ID]
@@ -214,58 +247,105 @@ This workflow analyzes a specific Azure resource to assess its health status, di
    ## 🔍 Executive Summary
    [Brief overview of health status and key findings]
 
+=======
+   
+   **Generated**: [Timestamp]  
+   **Resource**: [Full Resource ID]  
+   **Overall Health**: [Status with color indicator]
+   
+   ## 🔍 Executive Summary
+   [Brief overview of health status and key findings]
+   
+>>>>>>> origin/main
    ## 📊 Health Metrics
    - **Availability**: X% over last 24h
    - **Performance**: [Average response time/throughput]
    - **Error Rate**: X% over last 24h
    - **Resource Utilization**: [CPU/Memory/Storage percentages]
+<<<<<<< HEAD
 
    ## 🚨 Issues Identified
 
+=======
+   
+   ## 🚨 Issues Identified
+   
+>>>>>>> origin/main
    ### Critical Issues
    - **[Issue 1]**: [Description]
      - **Root Cause**: [Analysis]
      - **Impact**: [Business impact]
      - **Immediate Action**: [Required steps]
+<<<<<<< HEAD
 
    ### High Priority Issues
+=======
+   
+   ### High Priority Issues  
+>>>>>>> origin/main
    - **[Issue 2]**: [Description]
      - **Root Cause**: [Analysis]
      - **Impact**: [Performance/reliability impact]
      - **Recommended Fix**: [Solution steps]
+<<<<<<< HEAD
 
    ## 🛠️ Remediation Plan
 
+=======
+   
+   ## 🛠️ Remediation Plan
+   
+>>>>>>> origin/main
    ### Phase 1: Immediate Actions (0-2 hours)
    ```bash
    # Critical fixes to restore service
    [Azure CLI commands with explanations]
    ```
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    ### Phase 2: Short-term Fixes (2-24 hours)
    ```bash
    # Performance and reliability improvements
    [Azure CLI commands with explanations]
    ```
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    ### Phase 3: Long-term Improvements (1-4 weeks)
    ```bash
    # Architectural and preventive measures
    [Azure CLI commands and configuration changes]
    ```
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    ## 📈 Monitoring Recommendations
    - **Alerts to Configure**: [List of recommended alerts]
    - **Dashboards to Create**: [Monitoring dashboard suggestions]
    - **Regular Health Checks**: [Recommended frequency and scope]
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    ## ✅ Validation Steps
    - [ ] Verify issue resolution through logs
    - [ ] Confirm performance improvements
    - [ ] Test application functionality
    - [ ] Update monitoring and alerting
    - [ ] Document lessons learned
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> origin/main
    ## 📝 Prevention Measures
    - [Recommendations to prevent similar issues]
    - [Process improvements]

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Agent Instructios
+=======
+Agent Instructios   
+>>>>>>> origin/main
 
 You are working in /srv/homelab-config (source of truth). Follow these rules:
 

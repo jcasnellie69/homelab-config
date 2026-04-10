@@ -8,6 +8,7 @@
 # CT 109 (pihole)
 Thu Dec 18 01:04:06 AM EST 2025
 
+<<<<<<< HEAD
 State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
 LISTEN 0      128        127.0.0.1:4317       0.0.0.0:*    users:(("otel-plugin",pid=568,fd=9))
 LISTEN 0      32           0.0.0.0:53         0.0.0.0:*    users:(("pihole-FTL",pid=174,fd=21))
@@ -23,3 +24,20 @@ LISTEN 0      200             [::]:443           [::]:*    users:(("pihole-FTL",
 LISTEN 0      4096           [::1]:8125          [::]:*    users:(("netdata",pid=190,fd=338))
 LISTEN 0      4096            [::]:19999         [::]:*    users:(("netdata",pid=190,fd=8))
 LISTEN 0      100            [::1]:25            [::]:*    users:(("master",pid=324,fd=14))
+=======
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                               
+LISTEN 0      128        127.0.0.1:4317       0.0.0.0:*    users:(("otel-plugin",pid=568,fd=9))                 
+LISTEN 0      32           0.0.0.0:53         0.0.0.0:*    users:(("pihole-FTL",pid=174,fd=21))                 
+LISTEN 0      200          0.0.0.0:80         0.0.0.0:*    users:(("pihole-FTL",pid=174,fd=34))                 
+LISTEN 0      200          0.0.0.0:443        0.0.0.0:*    users:(("pihole-FTL",pid=174,fd=35))                 
+LISTEN 0      4096         0.0.0.0:19999      0.0.0.0:*    users:(("netdata",pid=190,fd=6))                     
+LISTEN 0      4096       127.0.0.1:8125       0.0.0.0:*    users:(("netdata",pid=190,fd=339))                   
+LISTEN 0      100        127.0.0.1:25         0.0.0.0:*    users:(("master",pid=324,fd=13))                     
+LISTEN 0      32              [::]:53            [::]:*    users:(("pihole-FTL",pid=174,fd=23))                 
+LISTEN 0      4096               *:22               *:*    users:(("sshd",pid=154,fd=3),("systemd",pid=1,fd=39))
+LISTEN 0      200             [::]:80            [::]:*    users:(("pihole-FTL",pid=174,fd=36))                 
+LISTEN 0      200             [::]:443           [::]:*    users:(("pihole-FTL",pid=174,fd=37))                 
+LISTEN 0      4096           [::1]:8125          [::]:*    users:(("netdata",pid=190,fd=338))                   
+LISTEN 0      4096            [::]:19999         [::]:*    users:(("netdata",pid=190,fd=8))                     
+LISTEN 0      100            [::1]:25            [::]:*    users:(("master",pid=324,fd=14))                     
+>>>>>>> origin/main

@@ -185,6 +185,7 @@ async fn main() -> Result<()> {
         .with_max_level(tracing::Level::INFO)
         .with_target(false)
         .init();
+<<<<<<< HEAD
 
     tracing::info!("Starting {project-name} MCP server");
 
@@ -194,6 +195,17 @@ async fn main() -> Result<()> {
     // Create transport (stdio by default)
     let transport = StdioTransport::new();
 
+=======
+    
+    tracing::info!("Starting {project-name} MCP server");
+    
+    // Create handler
+    let handler = McpHandler::new();
+    
+    // Create transport (stdio by default)
+    let transport = StdioTransport::new();
+    
+>>>>>>> origin/main
     // Build server with capabilities
     let server = Server::builder()
         .with_handler(handler)
@@ -204,12 +216,21 @@ async fn main() -> Result<()> {
             ..Default::default()
         })
         .build(transport)?;
+<<<<<<< HEAD
 
     tracing::info!("Server started, waiting for requests");
 
     // Run server until Ctrl+C
     server.run(signal::ctrl_c()).await?;
 
+=======
+    
+    tracing::info!("Server started, waiting for requests");
+    
+    // Run server until Ctrl+C
+    server.run(signal::ctrl_c()).await?;
+    
+>>>>>>> origin/main
     tracing::info!("Server shutting down");
     Ok(())
 }
@@ -246,7 +267,11 @@ impl McpHandler {
     async fn example_tool(params: Parameters<tools::ExampleParams>) -> Result<String, String> {
         tools::example::execute(params).await
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     pub fn new() -> Self {
         Self {
             state: ServerState::new(),
@@ -276,10 +301,17 @@ impl ServerHandler for McpHandler {
                 ]),
             },
         ];
+<<<<<<< HEAD
 
         Ok(ListPromptsResult { prompts })
     }
 
+=======
+        
+        Ok(ListPromptsResult { prompts })
+    }
+    
+>>>>>>> origin/main
     async fn get_prompt(
         &self,
         request: GetPromptRequestParam,
@@ -291,7 +323,11 @@ impl ServerHandler for McpHandler {
                     .as_ref()
                     .and_then(|args| args.get("topic"))
                     .ok_or_else(|| ErrorData::invalid_params("topic required"))?;
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> origin/main
                 Ok(GetPromptResult {
                     description: Some("Example prompt".to_string()),
                     messages: vec![
@@ -302,7 +338,11 @@ impl ServerHandler for McpHandler {
             _ => Err(ErrorData::invalid_params("Unknown prompt")),
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     async fn list_resources(
         &self,
         _request: Option<PaginatedRequestParam>,
@@ -316,10 +356,17 @@ impl ServerHandler for McpHandler {
                 mime_type: Some("text/plain".to_string()),
             },
         ];
+<<<<<<< HEAD
 
         Ok(ListResourcesResult { resources })
     }
 
+=======
+        
+        Ok(ListResourcesResult { resources })
+    }
+    
+>>>>>>> origin/main
     async fn read_resource(
         &self,
         request: ReadResourceRequestParam,
@@ -359,13 +406,21 @@ impl ServerState {
             counter: Arc::new(RwLock::new(0)),
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     pub async fn increment(&self) -> i32 {
         let mut counter = self.counter.write().await;
         *counter += 1;
         *counter
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     pub async fn get(&self) -> i32 {
         *self.counter.read().await
     }
@@ -394,7 +449,11 @@ pub struct ExampleParams {
 
 pub async fn execute(params: Parameters<ExampleParams>) -> Result<String, String> {
     let input = &params.inner().input;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     // Tool logic here
     Ok(format!("Processed: {}", input))
 }
@@ -402,13 +461,21 @@ pub async fn execute(params: Parameters<ExampleParams>) -> Result<String, String
 #[cfg(test)]
 mod tests {
     use super::*;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     #[tokio::test]
     async fn test_example_tool() {
         let params = Parameters::new(ExampleParams {
             input: "test".to_string(),
         });
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> origin/main
         let result = execute(params).await.unwrap();
         assert!(result.contains("test"));
     }
@@ -444,9 +511,15 @@ use my_mcp_server::handler::McpHandler;
 async fn test_list_tools() {
     let handler = McpHandler::new();
     let context = RequestContext::default();
+<<<<<<< HEAD
 
     let result = handler.list_tools(None, context).await.unwrap();
 
+=======
+    
+    let result = handler.list_tools(None, context).await.unwrap();
+    
+>>>>>>> origin/main
     assert!(!result.tools.is_empty());
     assert!(result.tools.iter().any(|t| t.name == "example_tool"));
 }
@@ -455,14 +528,22 @@ async fn test_list_tools() {
 async fn test_call_tool() {
     let handler = McpHandler::new();
     let context = RequestContext::default();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     let request = CallToolRequestParam {
         name: "example_tool".to_string(),
         arguments: Some(serde_json::json!({
             "input": "test"
         })),
     };
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     let result = handler.call_tool(request, context).await;
     assert!(result.is_ok());
 }
@@ -471,7 +552,11 @@ async fn test_call_tool() {
 async fn test_list_prompts() {
     let handler = McpHandler::new();
     let context = RequestContext::default();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     let result = handler.list_prompts(None, context).await.unwrap();
     assert!(!result.prompts.is_empty());
 }
@@ -480,7 +565,11 @@ async fn test_list_prompts() {
 async fn test_list_resources() {
     let handler = McpHandler::new();
     let context = RequestContext::default();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     let result = handler.list_resources(None, context).await.unwrap();
     assert!(!result.resources.is_empty());
 }

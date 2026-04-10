@@ -56,7 +56,11 @@ Create Coding Agent workflow file:
 - `copilot-setup-steps.yml` - GitHub Actions workflow for Coding Agent environment setup
 
 **CRITICAL**: The workflow MUST follow this exact structure:
+<<<<<<< HEAD
 - Job name MUST be `copilot-setup-steps`
+=======
+- Job name MUST be `copilot-setup-steps` 
+>>>>>>> origin/main
 - Include proper triggers (workflow_dispatch, push, pull_request on the workflow file)
 - Set appropriate permissions (minimum required)
 - Customize steps based on the technology stack provided
@@ -135,13 +139,21 @@ description: "Java Spring Boot development standards"
 
 **Fetch these awesome-copilot directories:**
 - **Instructions**: https://github.com/github/awesome-copilot/tree/main/instructions
+<<<<<<< HEAD
 - **Prompts**: https://github.com/github/awesome-copilot/tree/main/prompts
+=======
+- **Prompts**: https://github.com/github/awesome-copilot/tree/main/prompts  
+>>>>>>> origin/main
 - **Chat Modes**: https://github.com/github/awesome-copilot/tree/main/chatmodes
 - **Collections**: https://github.com/github/awesome-copilot/blob/main/docs/README.collections.md
 
 **Awesome-Copilot Collections to Check:**
 - **Frontend Web Development**: React, Angular, Vue, TypeScript, CSS frameworks
+<<<<<<< HEAD
 - **C# .NET Development**: Testing, documentation, and best practices
+=======
+- **C# .NET Development**: Testing, documentation, and best practices  
+>>>>>>> origin/main
 - **Java Development**: Spring Boot, Quarkus, testing, documentation
 - **Database Development**: PostgreSQL, SQL Server, and general database best practices
 - **Azure Development**: Infrastructure as Code, serverless functions

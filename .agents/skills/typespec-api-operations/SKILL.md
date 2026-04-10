@@ -215,20 +215,35 @@ op deleteItem(@path id: integer): void;
   descriptionForModel: "Read, create, update, and delete items"
 })
 namespace ItemsAPI {
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   // Models
   model Item {
     @visibility(Lifecycle.Read)
     id: integer;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/main
     userId: integer;
     title: string;
     description?: string;
     status: "active" | "completed" | "archived";
+<<<<<<< HEAD
 
     @format("date-time")
     createdAt: utcDateTime;
 
+=======
+    
+    @format("date-time")
+    createdAt: utcDateTime;
+    
+>>>>>>> origin/main
     @format("date-time")
     updatedAt?: utcDateTime;
   }

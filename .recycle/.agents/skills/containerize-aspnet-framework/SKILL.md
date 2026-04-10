@@ -16,7 +16,11 @@ This section of the prompt contains the specific settings and configurations req
 Any settings that are not specified will be set to default values. The default values are provided in `[square brackets]`.
 
 ### Basic Project Information
+<<<<<<< HEAD
 1. Project to containerize:
+=======
+1. Project to containerize: 
+>>>>>>> origin/main
    - `[ProjectName (provide path to .csproj file)]`
 
 2. Windows Server SKU to use:
@@ -29,7 +33,11 @@ Any settings that are not specified will be set to default values. The default v
    - `[Specify base image to use for build stage (Default None)]`
 
 5. Custom base image for the run stage of the Docker image ("None" to use standard Microsoft base image):
+<<<<<<< HEAD
    - `[Specify base image to use for run stage (Default None)]`
+=======
+   - `[Specify base image to use for run stage (Default None)]`   
+>>>>>>> origin/main
 
 ### Container Configuration
 1. Ports that must be exposed in the container image:
@@ -146,7 +154,11 @@ Any settings that are not specified will be set to default values. The default v
        - The build stage MUST use a `mcr.microsoft.com/dotnet/framework/sdk` base image unless a custom base image is specified in the settings file
        - Copy sln, csproj, and packages.config files first
        - Copy NuGet.config if one exists and configure any private feeds
+<<<<<<< HEAD
        - Restore NuGet packages
+=======
+       - Restore NuGet packages       
+>>>>>>> origin/main
        - Then, copy the rest of the source code and build and publish the application to C:\publish using MSBuild
      - Final stage: Use the selected Windows Server image to run the application
        - The final stage MUST use a `mcr.microsoft.com/dotnet/framework/aspnet` base image unless a custom base image is specified in the settings file
@@ -388,7 +400,11 @@ ENTRYPOINT [ "C:\\LogMonitor\\LogMonitor.exe", "C:\\ServiceMonitor.exe", "w3svc"
 
 ## Adapting this Example
 
+<<<<<<< HEAD
 **Note:** Customize this template based on the specific requirements in the containerization settings.
+=======
+**Note:** Customize this template based on the specific requirements in the containerization settings. 
+>>>>>>> origin/main
 
 When adapting this example Dockerfile:
 

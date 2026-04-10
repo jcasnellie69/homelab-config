@@ -56,3 +56,7 @@ smbios1: uuid=b078ea44-a55f-47ad-90ab-63480f888849
 sockets: 1
 tags: utility
 vmgenid: 68114c63-5960-4a09-a9ec-3f0931472555
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

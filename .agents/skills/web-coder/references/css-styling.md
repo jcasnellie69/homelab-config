@@ -106,11 +106,16 @@ Every element is a rectangular box with:
   /* Content size */
   width: 300px;
   height: 200px;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Padding */
   padding: 20px; /* All sides */
   padding: 10px 20px; /* Vertical | Horizontal */
   padding: 10px 20px 15px 25px; /* Top | Right | Bottom | Left */
+<<<<<<< HEAD
 
   /* Border */
   border: 2px solid #333;
@@ -119,6 +124,16 @@ Every element is a rectangular box with:
   /* Margin */
   margin: 20px auto; /* Vertical | Horizontal (auto centers) */
 
+=======
+  
+  /* Border */
+  border: 2px solid #333;
+  border-radius: 8px;
+  
+  /* Margin */
+  margin: 20px auto; /* Vertical | Horizontal (auto centers) */
+  
+>>>>>>> origin/main
   /* Box-sizing changes how width/height work */
   box-sizing: border-box; /* Include padding/border in width/height */
 }
@@ -133,6 +148,7 @@ One-dimensional layout system (row or column):
 ```css
 .container {
   display: flex;
+<<<<<<< HEAD
 
   /* Direction */
   flex-direction: row; /* row | row-reverse | column | column-reverse */
@@ -149,6 +165,24 @@ One-dimensional layout system (row or column):
   /* Multi-line cross axis */
   align-content: center; /* flex-start | flex-end | center | space-between | space-around | stretch */
 
+=======
+  
+  /* Direction */
+  flex-direction: row; /* row | row-reverse | column | column-reverse */
+  
+  /* Wrapping */
+  flex-wrap: wrap; /* nowrap | wrap | wrap-reverse */
+  
+  /* Main axis alignment */
+  justify-content: center; /* flex-start | flex-end | center | space-between | space-around | space-evenly */
+  
+  /* Cross axis alignment */
+  align-items: center; /* flex-start | flex-end | center | stretch | baseline */
+  
+  /* Multi-line cross axis */
+  align-content: center; /* flex-start | flex-end | center | space-between | space-around | stretch */
+  
+>>>>>>> origin/main
   /* Gap between items */
   gap: 1rem;
 }
@@ -156,6 +190,7 @@ One-dimensional layout system (row or column):
 .item {
   /* Grow factor */
   flex-grow: 1; /* Takes available space */
+<<<<<<< HEAD
 
   /* Shrink factor */
   flex-shrink: 1; /* Can shrink if needed */
@@ -169,6 +204,21 @@ One-dimensional layout system (row or column):
   /* Individual alignment */
   align-self: flex-end; /* Overrides container's align-items */
 
+=======
+  
+  /* Shrink factor */
+  flex-shrink: 1; /* Can shrink if needed */
+  
+  /* Base size */
+  flex-basis: 200px; /* Initial size before growing/shrinking */
+  
+  /* Shorthand */
+  flex: 1 1 200px; /* grow | shrink | basis */
+  
+  /* Individual alignment */
+  align-self: flex-end; /* Overrides container's align-items */
+  
+>>>>>>> origin/main
   /* Order */
   order: 2; /* Change visual order (default: 0) */
 }
@@ -181,26 +231,45 @@ Two-dimensional layout system (rows and columns):
 ```css
 .container {
   display: grid;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Define columns */
   grid-template-columns: 200px 1fr 1fr; /* Fixed | Flexible | Flexible */
   grid-template-columns: repeat(3, 1fr); /* Three equal columns */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive */
+<<<<<<< HEAD
 
   /* Define rows */
   grid-template-rows: 100px auto 50px; /* Fixed | Auto | Fixed */
 
+=======
+  
+  /* Define rows */
+  grid-template-rows: 100px auto 50px; /* Fixed | Auto | Fixed */
+  
+>>>>>>> origin/main
   /* Named areas */
   grid-template-areas:
     "header header header"
     "sidebar main main"
     "footer footer footer";
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Gap between cells */
   gap: 1rem; /* Row and column gap */
   row-gap: 1rem;
   column-gap: 2rem;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Alignment */
   justify-items: start; /* Align items horizontally within cells */
   align-items: start; /* Align items vertically within cells */
@@ -212,6 +281,7 @@ Two-dimensional layout system (rows and columns):
   /* Span columns */
   grid-column: 1 / 3; /* Start / End */
   grid-column: span 2; /* Span 2 columns */
+<<<<<<< HEAD
 
   /* Span rows */
   grid-row: 1 / 3;
@@ -220,6 +290,16 @@ Two-dimensional layout system (rows and columns):
   /* Named area */
   grid-area: header;
 
+=======
+  
+  /* Span rows */
+  grid-row: 1 / 3;
+  grid-row: span 2;
+  
+  /* Named area */
+  grid-area: header;
+  
+>>>>>>> origin/main
   /* Individual alignment */
   justify-self: center; /* Horizontal alignment */
   align-self: center; /* Vertical alignment */
@@ -395,16 +475,25 @@ img {
 .text {
   /* Font family */
   font-family: 'Helvetica Neue', Arial, sans-serif;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Font size */
   font-size: 16px; /* Base size */
   font-size: 1rem; /* Relative to root */
   font-size: clamp(14px, 2vw, 20px); /* Responsive with min/max */
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Font weight */
   font-weight: normal; /* 400 */
   font-weight: bold; /* 700 */
   font-weight: 300; /* Light */
+<<<<<<< HEAD
 
   /* Font style */
   font-style: italic;
@@ -437,6 +526,40 @@ img {
   overflow: hidden;
   text-overflow: ellipsis; /* Show ... when text overflows */
 
+=======
+  
+  /* Font style */
+  font-style: italic;
+  
+  /* Line height */
+  line-height: 1.5; /* 1.5 times font-size */
+  line-height: 24px;
+  
+  /* Letter spacing */
+  letter-spacing: 0.05em;
+  
+  /* Text alignment */
+  text-align: left; /* left | right | center | justify */
+  
+  /* Text decoration */
+  text-decoration: underline;
+  text-decoration: none; /* Remove underline from links */
+  
+  /* Text transform */
+  text-transform: uppercase; /* uppercase | lowercase | capitalize */
+  
+  /* Word spacing */
+  word-spacing: 0.1em;
+  
+  /* White space handling */
+  white-space: nowrap; /* Don't wrap */
+  white-space: pre-wrap; /* Preserve whitespace, wrap lines */
+  
+  /* Text overflow */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Show ... when text overflows */
+  
+>>>>>>> origin/main
   /* Word break */
   word-wrap: break-word; /* Break long words */
   overflow-wrap: break-word; /* Modern version */
@@ -449,22 +572,38 @@ img {
 .colors {
   /* Named colors */
   color: red;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Hex */
   color: #ff0000; /* Red */
   color: #f00; /* Shorthand */
   color: #ff0000ff; /* With alpha */
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* RGB */
   color: rgb(255, 0, 0);
   color: rgba(255, 0, 0, 0.5); /* With alpha */
   color: rgb(255 0 0 / 0.5); /* Modern syntax */
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* HSL (Hue, Saturation, Lightness) */
   color: hsl(0, 100%, 50%); /* Red */
   color: hsla(0, 100%, 50%, 0.5); /* With alpha */
   color: hsl(0 100% 50% / 0.5); /* Modern syntax */
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* Color keywords */
   color: currentColor; /* Inherit color */
   color: transparent;
@@ -479,10 +618,17 @@ Modern color spaces for wider gamut:
 .modern-colors {
   /* Display P3 (Apple devices) */
   color: color(display-p3 1 0 0);
+<<<<<<< HEAD
 
   /* Lab color space */
   color: lab(50% 125 0);
 
+=======
+  
+  /* Lab color space */
+  color: lab(50% 125 0);
+  
+>>>>>>> origin/main
   /* LCH color space */
   color: lch(50% 125 0deg);
 }
@@ -555,6 +701,7 @@ Smooth changes between states:
   transform: translate(50px, 100px); /* X, Y */
   transform: translateX(50px);
   transform: translateY(100px);
+<<<<<<< HEAD
 
   /* Rotate */
   transform: rotate(45deg);
@@ -569,6 +716,22 @@ Smooth changes between states:
   /* Multiple transforms */
   transform: translate(50px, 0) rotate(45deg) scale(1.2);
 
+=======
+  
+  /* Rotate */
+  transform: rotate(45deg);
+  
+  /* Scale */
+  transform: scale(1.5); /* 150% size */
+  transform: scale(2, 0.5); /* X, Y different */
+  
+  /* Skew */
+  transform: skew(10deg, 5deg);
+  
+  /* Multiple transforms */
+  transform: translate(50px, 0) rotate(45deg) scale(1.2);
+  
+>>>>>>> origin/main
   /* 3D transforms */
   transform: rotateX(45deg) rotateY(30deg);
   transform: perspective(500px) translateZ(100px);
@@ -589,7 +752,11 @@ Smooth changes between states:
   color: var(--primary-color);
   padding: var(--spacing);
   border-radius: var(--border-radius);
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
   /* With fallback */
   color: var(--accent-color, red);
 }

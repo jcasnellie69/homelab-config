@@ -66,7 +66,11 @@ Create a complete Model Context Protocol (MCP) server in Python with the followi
   - Simple direct execution
   - Test with `uv run mcp dev server.py`
   - Install to Claude: `uv run mcp install server.py`
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/main
 - **For HTTP Servers**:
   - Port configuration via environment variables
   - Stateless mode for scalability: `stateless_http=True`

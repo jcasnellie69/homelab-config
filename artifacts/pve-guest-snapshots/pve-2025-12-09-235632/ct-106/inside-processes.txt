@@ -27,3 +27,7 @@ www-data     933  0.0  0.1  12240  4424 ?        S    23:00   0:00 nginx: worker
 root         968  0.0  0.0   2584  1536 pts/1    S+   23:57   0:00 sh -c ps aux 2>/dev/null | head -n 40
 root         969  0.0  0.1  11048  4480 pts/1    R+   23:57   0:00 ps aux
 root         970  0.0  0.0   5480  1792 pts/1    S+   23:57   0:00 head -n 40
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
