@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD060 -->
 # Netify Configuration Matrix (Settings & Defaults)
 #-------------------------------------------------------------------------------
 # DATE       | CHGID   | REASON

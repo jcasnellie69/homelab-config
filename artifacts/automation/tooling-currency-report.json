@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T02:42:22.166499+00:00",
+  "generated_at": "2026-04-11T03:09:23.360554+00:00",
   "devcontainer_base": "debian:bookworm-slim",
   "recommended_extension_count": 18,
   "mcp_servers": [
@@ -7,6 +7,7 @@
     "docker-gateway",
     "io.github.netdata/mcp-server",
     "klavis-strata",
+    "netbox-ipam",
     "tavily-search"
   ],
   "github_actions": [
@@ -21,7 +22,7 @@
   "latest_tag_findings": [],
   "summary": {
     "latest_tag_count": 0,
-    "mcp_server_count": 5,
+    "mcp_server_count": 6,
     "github_action_count": 7
   }
 }

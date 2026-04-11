@@ -75,6 +75,14 @@ all:
       status: stopped
       description: Automation control node
       tags: ["automation", "dhcp"]
+    opnsense-alpha:
+      hostname: opnsense-alpha
+      ansible_host: null
+      status: planned
+      description: Future OPNsense firewall on Proxmox Alpha
+      target_proxmox_host: alpha
+      management_subnet: 192.168.4.0/24
+      tags: ["opnsense", "firewall", "planned"]
   children:
     proxmox:
       hosts:
@@ -111,3 +119,6 @@ all:
     netbox:
       hosts:
         netbox: {}
+    future_opnsense:
+      hosts:
+        opnsense-alpha: {}

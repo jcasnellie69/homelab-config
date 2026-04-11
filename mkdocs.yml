@@ -19,6 +19,7 @@ nav:
   - Telemetry: telemetry-pipeline.md
   - Docs:
       - Overview: DOCS_INDEX.md
+      - Orchestration: orchestration.md
       - Session Automation: SESSION-AUTOMATION.md
       - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
       - MCP Filesystem: mcp-filesystem.md

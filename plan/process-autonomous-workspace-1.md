@@ -63,6 +63,14 @@ This plan defines a staged, auditable path to turn the repository into a more au
 - **TASK-014** *(done 2026-04-10)*: Create a `Workspace GitOps Monitor` agent for workspace drift review, safe commit/push action, and audit reporting.
 - **TASK-015** *(done 2026-04-10)*: Add a machine-readable GitOps monitor report and safe branch-aware sync helper for autonomous workspace updates.
 
+### Implementation Phase 5
+
+- **GOAL-005**: Make orchestration itself the documented source of truth and apply it to NetBox MCP and OPNsense-on-Alpha onboarding.
+
+- **TASK-016** *(done 2026-04-10)*: Create `docs/orchestration.md` to codify the evidence-first onboarding method for new technology and capabilities.
+- **TASK-017** *(done 2026-04-10)*: Wire the NetBox MCP into workspace and root MCP configuration using prompt/env-based secrets and a validated `uvx --from git+https://github.com/netboxlabs/netbox-mcp-server` startup path.
+- **TASK-018** *(done 2026-04-10)*: Scaffold OPNsense onboarding on PVE Alpha with Ansible playbooks, shared vars, and reachability validation.
+
 ## 3. Alternatives
 
 - **ALT-001**: Keep all logic in one large generic agent. Rejected because stage-specific agents are easier to audit and maintain.
@@ -112,6 +120,9 @@ This plan defines a staged, auditable path to turn the repository into a more au
 - **FILE-032**: `artifacts/automation/workspace-gitops-monitor-report.json`
 - **FILE-033**: `artifacts/hc/2026-04-10-05-10-gitops-monitor-agent.txt`
 - **FILE-034**: `scripts/session/gitops_sync.ps1`
+- **FILE-035**: `docs/orchestration.md`
+- **FILE-036**: `deploy/ansible/group_vars/future_opnsense.yml`
+- **FILE-037**: `deploy/ansible/playbooks/opnsense-alpha-onboard.yml`
 ## 6. Testing
 
 - **TEST-001**: Verify markdown link audit returns zero missing links in `docs/` and `WIKI/`.

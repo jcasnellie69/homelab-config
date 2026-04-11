@@ -3,6 +3,13 @@
     "hostname": "alpha",
     "ip": "192.168.4.10"
   },
+  "planned_vm": {
+    "name": "opnsense-alpha",
+    "vmid": 401,
+    "target_host": "alpha",
+    "management_subnet": "192.168.4.0/24",
+    "playbook": "deploy/ansible/playbooks/opnsense-alpha-onboard.yml"
+  },
   "netbox_dependency": {
     "hostname": "netbox",
     "ip": "192.168.4.140"
@@ -76,7 +83,7 @@
     }
   ],
   "notes": [
-    "Use community.proxmox to manage the LXC lifecycle from Alpha.",
+    "Use community.proxmox to manage the initial VM lifecycle from Alpha.",
     "Use ansibleguy.opnsense for OPNsense API-driven provisioning once credentials are available.",
     "Use netbox.netbox to sync IPAM/DCIM records from NetBox CT 100."
   ]

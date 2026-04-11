@@ -140,6 +140,18 @@ def build_inventory(alpha_ip: str) -> dict[str, object]:
         if 'netbox' in joined:
             groups['netbox'].append(name)
 
+    opnsense_name = 'opnsense-alpha'
+    hosts[opnsense_name] = {
+        'hostname': opnsense_name,
+        'ansible_host': None,
+        'status': 'planned',
+        'description': 'Future OPNsense firewall on Proxmox Alpha',
+        'target_proxmox_host': 'alpha',
+        'management_subnet': alpha_ip.rsplit('.', 1)[0] + '.0/24',
+        'tags': ['opnsense', 'firewall', 'planned'],
+    }
+    groups['future_opnsense'].append(opnsense_name)
+
     inventory = {
         'all': {
             'children': {
@@ -192,11 +204,18 @@ def build_supporting_outputs(alpha_ip: str) -> tuple[dict[str, object], dict[str
 
     opnsense = {
         'alpha_host': {'hostname': 'alpha', 'ip': alpha_ip},
+        'planned_vm': {
+            'name': 'opnsense-alpha',
+            'vmid': 401,
+            'target_host': 'alpha',
+            'management_subnet': alpha_ip.rsplit('.', 1)[0] + '.0/24',
+            'playbook': 'deploy/ansible/playbooks/opnsense-alpha-onboard.yml',
+        },
         'netbox_dependency': {'hostname': 'netbox', 'ip': next((g['ip'] for g in guests if g['hostname'] == 'netbox'), None)},
         'ansible_control_node': {'hostname': 'ansible', 'vmid': 111, 'status': 'stopped', 'ip': None},
         'candidate_seed_hosts': high_priority[:10],
         'notes': [
-            'Use community.proxmox to manage the LXC lifecycle from Alpha.',
+            'Use community.proxmox to manage the initial VM lifecycle from Alpha.',
             'Use ansibleguy.opnsense for OPNsense API-driven provisioning once credentials are available.',
             'Use netbox.netbox to sync IPAM/DCIM records from NetBox CT 100.',
         ],

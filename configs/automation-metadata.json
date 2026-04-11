@@ -4,6 +4,8 @@
     "sources": {
         "network_inventory": "artifacts/network-inventory.json",
         "observability_service_map": "docs/observability-service-map.md",
+        "orchestration_reference": "docs/orchestration.md",
+        "netbox_mcp_reference": "docs/netbox mcp instructions.md",
         "session_logs": "docs/session-logs/",
         "workspace_health": "artifacts/automation/workspace-health-report.json",
         "infra_summary": "artifacts/automation/pipeline-metadata-summary.json"
@@ -98,8 +100,8 @@
         "github_actions": true,
         "ansible": true,
         "terraform": true,
-        "netbox": "planned",
-        "opnsense": "planned",
+        "netbox": "wired_via_mcp_config",
+        "opnsense": "alpha_onboarding_scaffolded",
         "gitops": "active",
         "tooling_currency": true
     }

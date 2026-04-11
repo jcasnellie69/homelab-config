@@ -15,15 +15,19 @@ for the Proxmox VE + LXC infrastructure.
 
 ## Documents
 
-1. Observability Service Map
+1. Orchestration Source of Truth
+   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.
+   - File: orchestration.md
+
+2. Observability Service Map
    Describes which observability services run on which nodes/containers.
    - File: observability-service-map.md
 
-2. Telemetry Pipeline Architecture
+3. Telemetry Pipeline Architecture
    Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.
    - File: telemetry-pipeline.md
 
-3. Observability Policy
+4. Observability Policy
    Defines governance for exporters, Telegraf placement, and pipeline integrity.
    - File: policy-observability.md
 
@@ -36,4 +40,5 @@ The docs/ directory is the single source of truth for:
 - Service placement
 - Telemetry and logging pipelines
 - Design and architecture decisions
+- Orchestration and onboarding methods
 - Evidence-friendly documentation to pair with HC artifacts
