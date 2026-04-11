@@ -5,10 +5,8 @@
 - The repo and `network-inventory` artifact repo are the primary working inputs.
 - `alpha` is reachable for management, but authenticated SSH discovery is still
   blocked from this workstation.
-- The Ansible control plane is now scaffolded in-repo, but the LXC control node
-  remains stopped.
-- NetBox integration exists at the MCP layer, but the CT 100 web service is not
-  currently reachable.
+- The Ansible control plane is now scaffolded in-repo, but the LXC control node remains stopped.
+- NetBox is currently absent from live-state operations; only the MCP scaffolding and historical references remain in the repo.
 
 ## Validation checklist
 
@@ -19,7 +17,7 @@ Run these before calling the platform usable:
 3. `ansible-inventory -i deploy/ansible/inventory/generated.yml --list`
 4. `ansible-playbook .../lab-connectivity.yml`
 5. `ansible-playbook .../proxmox-readonly-discovery.yml --check`
-6. Re-test `alpha`, `NetBox`, `homepage`, and `pihole` reachability
+6. Re-test `alpha`, `homepage`, and `pihole` reachability, and validate the new NetBox endpoint only after redeployment
 
 ## Agent onboarding guide
 
@@ -37,8 +35,8 @@ Run these before calling the platform usable:
 
 ## Next-step backlog
 
-- Recover or verify NetBox CT 100 service health
 - Start or replace the Ansible control-node CT 111
-- Add authenticated Proxmox read-only discovery evidence from `pct list`
-- Decide the final change-control path for future VLAN segmentation
-- Add a NetBox sync loop once API access is available
+- Capture authenticated Proxmox read-only discovery evidence from `pct list`, `ip -br link`, and `bridge vlan show`
+- Build the dedicated `vmbr1` trunk bridge once the active 10G port is confirmed
+- Deploy a fresh NetBox instance with a newly allocated static management IP
+- Add a NetBox sync loop only after the replacement deployment is validated

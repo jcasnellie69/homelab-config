@@ -15,6 +15,6 @@
   - `docs/ci/gitlab-ci.md`
 - **Validation results:**
   - `uvx` launch path works on the controller
-  - ICMP to `192.168.4.140` succeeds
-  - TCP `80`, `443`, and `22` were not reachable during the latest check
-- **Status:** BLOCKED
+  - no live NetBox web service was confirmed on the network
+  - the historical `192.168.4.140` endpoint should not be treated as a valid NetBox target
+- **Status:** ABSENT

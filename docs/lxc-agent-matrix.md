@@ -2,7 +2,7 @@
 
 | CTID | Service | Current role | Recommended agent/MCP model | Validation checks | Status |
 | --- | --- | --- | --- | --- | --- |
-| 100 | `netbox` | IPAM / DCIM | Use `homelab-netbox-ipam` MCP; no extra agent until web service recovers | ICMP to `192.168.4.140`; TCP `80/443`; NetBox token test | Blocked |
+| 100 | `netbox` | Historical NetBox reference only | Do not treat this as live until NetBox is redeployed; keep MCP wiring dormant | Verify new deployment IP, `80/443`, and token flow after install | Absent |
 | 102 | `grafana-code-server` | Monitoring UI (stopped) | Keep agenting disabled until the CT is intentionally restarted | Confirm CT power state; validate UI ports only if re-enabled | Scaffolded |
 | 103 | `prometheus` | Metrics store | Use Prometheus scrape validation and read-only service checks | ICMP to `192.168.4.132`; TCP `9090` | Partial |
 | 104 | `prometheus-pve-exporter` | Proxmox exporter | Keep lightweight exporter role only; no MCP required | Reachability to `192.168.4.131`; exporter port `9221` | Blocked |

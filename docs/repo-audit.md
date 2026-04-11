@@ -45,13 +45,15 @@ checks from 2026-04-11.
 
 ## Live-state summary
 
-- `alpha` at `192.168.4.10` is reachable on ports `22` and `8006`.
-- NetBox at `192.168.4.140` responds to ICMP, but ports `80`, `443`, and `22`
-  were closed during validation.
-- `homepage` (`192.168.4.139`) and `pihole` (`192.168.4.208`) are currently the
-  most reachable LXCs from the controller.
-- SSH authentication to `root@192.168.4.10` is currently blocked without valid
-  credentials, so live `pct` inspection could not be completed from this host.
+- `alpha` at `192.168.4.10` is reachable on ports `22` and `8006`, and the live
+  HTTPS landing page identifies the node as `pve-plex-oasis-alpha`.
+- Historical NetBox assumptions are stale: no live NetBox service was confirmed,
+  and the old `192.168.4.140` reference is no longer a safe server endpoint.
+- `homepage` (`192.168.4.139`) and `pihole` (`192.168.4.208`) remain the most
+  reachable confirmed service endpoints from the controller.
+- SSH authentication to `root@192.168.4.10` is blocked without valid
+  credentials, and authenticated Proxmox API calls return `401 (No ticket)`, so
+  live `pct` and `ip -br link` inspection is still blocked from this host.
 
 ## Gaps
 

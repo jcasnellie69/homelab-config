@@ -51,7 +51,19 @@ for the Proxmox VE + LXC infrastructure.
    Provides the runbook for validation, CI usage, and next-step backlog items.
    - File: bau-operations.md
 
-10. GitLab CI Guide / Jules Handoff
+10. Network Live State
+    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.
+    - File: network-live-state.md
+
+11. OPNsense Prerequisites
+    Documents the dedicated `vmbr1` trunk bridge plan and the live commands needed to validate it.
+    - File: opnsense-prereq.md
+
+12. NetBox Status
+    Records the current absence of NetBox and the clean redeployment path.
+    - File: netbox-status.md
+
+13. GitLab CI Guide / Jules Handoff
     Documents the CI flow and the safe async-refactor boundaries.
     Files: `ci/gitlab-ci.md`, `jules-handoff.md`
 

@@ -5,7 +5,7 @@
     "json_errors": [],
     "secret_findings": [],
     "artifact_directory_exists": true,
-    "artifact_file_count": 17
+    "artifact_file_count": 20
   },
   "summary": {
     "missing_markdown_links": 0,

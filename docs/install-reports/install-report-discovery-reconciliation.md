@@ -18,8 +18,8 @@
   - `docs/vlan-topology.md`
   - `docs/lxc-agent-matrix.md`
 - **Validation results:**
-  - `alpha` reachable on `22` and `8006`
+  - `alpha` reachable on `22` and `8006`, with live Proxmox UI confirmed
   - `homepage` reachable on `22` and `80`
   - `pihole` reachable on `22`, `53`, and `80`
-  - `netbox` reachable via ICMP only; app ports blocked
+  - no live NetBox deployment was confirmed from the current controller view
 - **Status:** READY

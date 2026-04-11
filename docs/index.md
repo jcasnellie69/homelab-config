@@ -8,5 +8,7 @@ Quick links
 - [Telemetry pipeline](telemetry-pipeline.md)
 - [Orchestration source of truth](orchestration.md)
 - [Source-of-truth reconciliation](source-of-truth.md)
+- [Network live state](network-live-state.md)
+- [NetBox status](netbox-status.md)
 - [BAU operations model](bau-operations.md)
 - Docs: see the "Docs" section in the site navigation
