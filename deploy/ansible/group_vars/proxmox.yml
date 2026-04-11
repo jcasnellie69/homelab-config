@@ -4,8 +4,10 @@ proxmox_discovery_commands:
   - pveversion
   - pct list
   - qm list
-  - ip -br addr show
+  - ip -br link
+  - bridge link show
   - bridge vlan show
 proxmox_required_evidence:
   - artifacts/hc/*-alpha-live-discovery.txt
   - artifacts/hc/*-lab-reachability.txt
+  - artifacts/hc/*-proxmox-api-probe.txt
