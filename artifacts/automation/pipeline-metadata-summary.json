@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T00:29:54.706869+00:00",
+  "generated_at": "2026-04-11T12:00:35.449957+00:00",
   "sources": {
     "network_inventory": "artifacts\\network-inventory.json",
     "observability_service_map": "docs\\observability-service-map.md"

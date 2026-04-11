@@ -31,6 +31,30 @@ for the Proxmox VE + LXC infrastructure.
    Defines governance for exporters, Telegraf placement, and pipeline integrity.
    - File: policy-observability.md
 
+5. Repo Audit
+   Summarizes the current automation layout, discovery inputs, and gap areas.
+   - File: repo-audit.md
+
+6. Source of Truth Reconciliation
+   Records which source is authoritative for network, inventory, and live state.
+   - File: source-of-truth.md
+
+7. VLAN Topology Draft
+   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.
+   - File: vlan-topology.md
+
+8. LXC Agent and MCP Matrix
+   Maps each container to a recommended agent, MCP, and validation path.
+   - File: lxc-agent-matrix.md
+
+9. BAU Operations Model
+   Provides the runbook for validation, CI usage, and next-step backlog items.
+   - File: bau-operations.md
+
+10. GitLab CI Guide / Jules Handoff
+    Documents the CI flow and the safe async-refactor boundaries.
+    Files: `ci/gitlab-ci.md`, `jules-handoff.md`
+
 ---
 
 ## Purpose of docs/

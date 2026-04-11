@@ -1,0 +1,159 @@
+Lab reachability check 2026-04-11T07:47:43.7049980-04:00
+
+## alpha [192.168.4.10]
+
+Address       Status Latency
+-------       ------ -------
+192.168.4.10 Success       1
+
+
+
+ComputerName RemotePort TcpTestSucceeded
+------------ ---------- ----------------
+192.168.4.10         22             True
+
+
+
+ComputerName RemotePort TcpTestSucceeded
+------------ ---------- ----------------
+192.168.4.10       8006             True
+
+
+
+## netbox [192.168.4.140]
+
+Address        Status Latency
+-------        ------ -------
+192.168.4.140 Success       5
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.140         80            False
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.140        443            False
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.140         22            False
+
+
+
+## prometheus [192.168.4.132]
+
+Address        Status Latency
+-------        ------ -------
+192.168.4.132 Success      12
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.132         22            False
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.132       9090            False
+
+
+
+## prometheus-pve-exporter [192.168.4.131]
+
+Address   Status Latency
+-------   ------ -------
+        TimedOut       0
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.131         22            False
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.131       9221            False
+
+
+
+## influxdb [192.168.4.130]
+
+Address        Status Latency
+-------        ------ -------
+192.168.4.130 Success     226
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.130         22            False
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.130       8086            False
+
+
+
+## homepage [192.168.4.139]
+
+Address        Status Latency
+-------        ------ -------
+192.168.4.139 Success      20
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.139         22             True
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.139         80             True
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.139        443            False
+
+
+
+## pihole [192.168.4.208]
+
+Address        Status Latency
+-------        ------ -------
+192.168.4.208 Success       4
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.208         22             True
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.208         80             True
+
+
+
+ComputerName  RemotePort TcpTestSucceeded
+------------  ---------- ----------------
+192.168.4.208         53             True
+
+

@@ -7,4 +7,6 @@ Quick links
 - [Artifacts index](artifacts-index.md)
 - [Telemetry pipeline](telemetry-pipeline.md)
 - [Orchestration source of truth](orchestration.md)
+- [Source-of-truth reconciliation](source-of-truth.md)
+- [BAU operations model](bau-operations.md)
 - Docs: see the "Docs" section in the site navigation
