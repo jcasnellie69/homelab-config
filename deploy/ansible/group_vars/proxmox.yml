@@ -1,0 +1,11 @@
+---
+proxmox_read_only: true
+proxmox_discovery_commands:
+  - pveversion
+  - pct list
+  - qm list
+  - ip -br addr show
+  - bridge vlan show
+proxmox_required_evidence:
+  - artifacts/hc/*-alpha-live-discovery.txt
+  - artifacts/hc/*-lab-reachability.txt

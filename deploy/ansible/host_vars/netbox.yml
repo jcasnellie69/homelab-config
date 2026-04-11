@@ -1,0 +1,9 @@
+---
+service_role: ipam_dcim
+vmid: 100
+validation_ports: [80, 443]
+reachability_state: icmp_only
+netbox_integration_mode: supplemental_until_service_recovers
+notes:
+  - ICMP responds from 192.168.4.140.
+  - TCP ports 80, 443, and 22 were not reachable from the controller during the 2026-04-11 validation.
