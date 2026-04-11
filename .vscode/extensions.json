@@ -18,5 +18,8 @@
         "nickeolofsson.remember-mcp-vscode",
         "anthropic.claude-code",
         "HirokiMukai.jules-extension"
+    ],
+    "unwantedRecommendations": [
+        "google.geminicodeassist"
     ]
 }
