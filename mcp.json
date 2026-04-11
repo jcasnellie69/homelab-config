@@ -1,7 +1,7 @@
 {
   "mcp": {
     "servers": {
-      "MCP_DOCKER": {
+      "HOMELAB_DOCKER_GATEWAY": {
         "command": "docker",
         "args": [
           "mcp",
@@ -10,7 +10,7 @@
         ],
         "type": "stdio"
       },
-      "CONTEXTLAYER": {
+      "HOMELAB_CONTEXTLAYER": {
         "command": "npx",
         "args": [
           "-y",
@@ -18,7 +18,7 @@
         ],
         "type": "stdio"
       },
-      "NETBOX_MCP": {
+      "HOMELAB_NETBOX_IPAM": {
         "command": "uvx",
         "args": [
           "--from",
@@ -32,21 +32,21 @@
         },
         "type": "stdio"
       },
-      "NETDATA_CLOUD": {
+      "HOMELAB_NETDATA_CLOUD": {
         "type": "http",
         "url": "https://app.netdata.cloud/api/v1/mcp",
         "headers": {
           "Authorization": "Bearer {{env.NETDATA_CLOUD_API_TOKEN}}"
         }
       },
-      "KLAVIS_STRATA": {
+      "HOMELAB_KLAVIS_STRATA": {
         "type": "http",
         "url": "https://strata.klavis.ai/mcp/",
         "headers": {
           "Authorization": "Bearer {{env.KLAVIS_STRATA_TOKEN}}"
         }
       },
-      "TAVILY_SEARCH": {
+      "HOMELAB_TAVILY_SEARCH": {
         "type": "http",
         "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={{env.TAVILY_API_KEY}}"
       }

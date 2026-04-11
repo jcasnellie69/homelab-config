@@ -24,6 +24,7 @@ artifacts/pve-script-scan/
 # Editor
 .vscode/
 .idea/
+.claude/
 
 # MkDocs site build
 site/

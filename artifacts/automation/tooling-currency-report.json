@@ -1,15 +1,26 @@
 {
-  "generated_at": "2026-04-11T03:09:23.360554+00:00",
+  "generated_at": "2026-04-11T06:45:39.114724+00:00",
   "devcontainer_base": "debian:bookworm-slim",
   "recommended_extension_count": 18,
   "mcp_servers": [
-    "@contextlayer/mcp",
-    "docker-gateway",
-    "io.github.netdata/mcp-server",
-    "klavis-strata",
-    "netbox-ipam",
-    "tavily-search"
+    "homelab-cloudmcp-manager",
+    "homelab-contextlayer",
+    "homelab-docker-gateway",
+    "homelab-klavis-strata",
+    "homelab-netbox-ipam",
+    "homelab-netdata-cloud",
+    "homelab-tavily-search"
   ],
+  "root_mcp_servers": [
+    "HOMELAB_CONTEXTLAYER",
+    "HOMELAB_DOCKER_GATEWAY",
+    "HOMELAB_KLAVIS_STRATA",
+    "HOMELAB_NETBOX_IPAM",
+    "HOMELAB_NETDATA_CLOUD",
+    "HOMELAB_TAVILY_SEARCH"
+  ],
+  "workspace_mcp_naming_findings": [],
+  "root_mcp_naming_findings": [],
   "github_actions": [
     "actions/checkout@v3",
     "actions/checkout@v4",
@@ -22,7 +33,10 @@
   "latest_tag_findings": [],
   "summary": {
     "latest_tag_count": 0,
-    "mcp_server_count": 6,
+    "mcp_server_count": 7,
+    "root_mcp_server_count": 6,
+    "workspace_mcp_naming_issue_count": 0,
+    "root_mcp_naming_issue_count": 0,
     "github_action_count": 7
   }
 }

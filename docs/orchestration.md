@@ -106,6 +106,13 @@ When bringing in a new MCP server:
 5. Add or update a doc/runbook.
 6. Run a startup-path or connectivity validation.
 
+### Naming standard
+
+- Workspace MCP keys must use the `homelab-<service>-<purpose>` pattern.
+- Root automation MCP keys must use the `HOMELAB_<SERVICE>_<PURPOSE>` pattern.
+- Never reuse upstream package IDs or product-default names as workspace keys.
+- This prevents collisions with user/global MCP configs and makes workspace-owned entries obvious.
+
 ### Definition of done for MCP onboarding
 
 - workspace config present

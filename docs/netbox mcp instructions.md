@@ -6,8 +6,8 @@ This is the repo-specific runbook for wiring NetBox into the workspace MCP inven
 
 ## ✅ Current validated state (2026-04-10)
 
-- Workspace MCP entry: `.vscode/mcp.json` → `netbox-ipam`
-- Root automation MCP entry: `mcp.json` → `NETBOX_MCP`
+- Workspace MCP entry: `.vscode/mcp.json` → `homelab-netbox-ipam`
+- Root automation MCP entry: `mcp.json` → `HOMELAB_NETBOX_IPAM`
 - Validated launch path on this workstation:
 
 ```powershell
@@ -38,7 +38,7 @@ Do **not** store the token in tracked files.
 Use a prompt-backed stdio entry:
 
 ```json
-"netbox-ipam": {
+"homelab-netbox-ipam": {
   "command": "uvx",
   "args": [
     "--from",
@@ -59,7 +59,7 @@ Use a prompt-backed stdio entry:
 Use an environment-backed automation entry:
 
 ```json
-"NETBOX_MCP": {
+"HOMELAB_NETBOX_IPAM": {
   "command": "uvx",
   "args": [
     "--from",

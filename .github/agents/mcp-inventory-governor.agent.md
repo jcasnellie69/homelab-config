@@ -14,6 +14,7 @@ You are the MCP inventory governance specialist for this workspace.
 ## Rules
 - Treat `docs/orchestration.md`, `artifacts/`, `reports/`, and `configs/automation-metadata.json` as the source of truth before adding or changing MCPs.
 - Prefer `promptString` inputs or environment variables for tokens, keys, and bearer headers.
+- Use `homelab-*` names in `.vscode/mcp.json` and `HOMELAB_*` names in root `mcp.json`; never reuse upstream default keys directly.
 - Keep server names, transport types, and auth patterns aligned across repo configs.
 - When reporting, include server count, added or removed names, missing inputs, and any client-specific gaps.
 - Never store raw secrets in tracked files.

@@ -53,6 +53,7 @@ def collect_summary() -> dict[str, object]:
     devcontainer = ROOT / '.devcontainer' / 'Dockerfile'
     extensions = ROOT / '.vscode' / 'extensions.json'
     mcp = ROOT / '.vscode' / 'mcp.json'
+    root_mcp = ROOT / 'mcp.json'
 
     devcontainer_base = None
     if devcontainer.exists():
@@ -69,17 +70,30 @@ def collect_summary() -> dict[str, object]:
     if mcp.exists():
         mcp_servers = sorted(json.loads(mcp.read_text(encoding='utf-8')).get('servers', {}).keys())
 
+    root_mcp_servers = []
+    if root_mcp.exists():
+        root_mcp_servers = sorted(json.loads(root_mcp.read_text(encoding='utf-8')).get('mcp', {}).get('servers', {}).keys())
+
+    workspace_mcp_naming_findings = [name for name in mcp_servers if not name.startswith('homelab-')]
+    root_mcp_naming_findings = [name for name in root_mcp_servers if not name.startswith('HOMELAB_')]
+
     latest_images = scan_latest_images()
     return {
         'generated_at': datetime.now(timezone.utc).isoformat(),
         'devcontainer_base': devcontainer_base,
         'recommended_extension_count': ext_count,
         'mcp_servers': mcp_servers,
+        'root_mcp_servers': root_mcp_servers,
+        'workspace_mcp_naming_findings': workspace_mcp_naming_findings,
+        'root_mcp_naming_findings': root_mcp_naming_findings,
         'github_actions': collect_actions(),
         'latest_tag_findings': latest_images,
         'summary': {
             'latest_tag_count': len(latest_images),
             'mcp_server_count': len(mcp_servers),
+            'root_mcp_server_count': len(root_mcp_servers),
+            'workspace_mcp_naming_issue_count': len(workspace_mcp_naming_findings),
+            'root_mcp_naming_issue_count': len(root_mcp_naming_findings),
             'github_action_count': len(collect_actions()),
         },
     }
