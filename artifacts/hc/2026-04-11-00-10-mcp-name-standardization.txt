@@ -16,6 +16,7 @@ Results
 - The conflicting workspace key `io.github.netdata/mcp-server` was replaced with `homelab-netdata-cloud`.
 - All workspace MCP keys now use the `homelab-*` naming convention.
 - All root automation MCP keys now use the `HOMELAB_*` naming convention.
+- `.gitignore` now allows the shared `.vscode/settings.json`, `.vscode/extensions.json`, `.vscode/tasks.json`, and `.vscode/mcp.json` files to be versioned while keeping other local editor noise ignored.
 - `python scripts/session/workspace_health.py --strict --report artifacts/automation/workspace-health-report.json` reported:
   - `missing markdown links: 0`
   - `json errors: 0`
