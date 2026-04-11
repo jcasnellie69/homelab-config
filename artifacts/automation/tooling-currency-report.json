@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-04-11T02:42:22.166499+00:00",
+  "devcontainer_base": "debian:bookworm-slim",
+  "recommended_extension_count": 18,
+  "mcp_servers": [
+    "@contextlayer/mcp",
+    "docker-gateway",
+    "io.github.netdata/mcp-server",
+    "klavis-strata",
+    "tavily-search"
+  ],
+  "github_actions": [
+    "actions/checkout@v3",
+    "actions/checkout@v4",
+    "actions/setup-node@v4",
+    "actions/setup-python@v4",
+    "actions/setup-python@v5",
+    "actions/upload-artifact@v4",
+    "peaceiris/actions-gh-pages@v3"
+  ],
+  "latest_tag_findings": [],
+  "summary": {
+    "latest_tag_count": 0,
+    "mcp_server_count": 5,
+    "github_action_count": 7
+  }
+}

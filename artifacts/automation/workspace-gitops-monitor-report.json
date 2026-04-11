@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-04-11T02:45:00.964462+00:00",
+  "repo": "\\\\192.168.4.60\\homelab-config\\",
+  "branch": "main",
+  "tracking": "origin/main [behind 29]",
+  "is_clean": false,
+  "counts": {
+    "modified": 3,
+    "added": 2,
+    "deleted": 0,
+    "renamed": 0,
+    "untracked": 22,
+    "other": 0
+  },
+  "files": {
+    "modified": [
+      ".github/workflows/lint.yml",
+      "deploy/docker-compose.yml",
+      "mcp.json"
+    ],
+    "added": [
+      "artifacts/index.html",
+      "artifacts/network-inventory.json"
+    ],
+    "deleted": [],
+    "renamed": [],
+    "untracked": [
+      ".devcontainer/",
+      ".github/agents/",
+      ".github/instructions/",
+      "artifacts/automation/",
+      "artifacts/hc/2026-04-10-02-00-space-maintainer-agent.txt",
+      "artifacts/hc/2026-04-10-02-20-workspace-hardening.txt",
+      "artifacts/hc/2026-04-10-03-05-metadata-pipeline-bootstrap.txt",
+      "artifacts/hc/2026-04-10-03-40-infra-pipeline-ansible-terraform.txt",
+      "artifacts/hc/2026-04-10-05-10-gitops-monitor-agent.txt",
+      "configs/automation-metadata.json",
+      "deploy/ansible/",
+      "\"docs/netbox mcp instructions.md\"",
+      "plan/",
+      "reports/automation/",
+      "scripts/session/bootstrap-root-automation.sh",
+      "scripts/session/build_pipeline_metadata.py",
+      "scripts/session/generate_infra_artifacts.py",
+      "scripts/session/gitops_sync.ps1",
+      "scripts/session/gitops_sync.sh",
+      "scripts/session/tooling_currency.py",
+      "scripts/session/workspace_gitops_monitor.py",
+      "scripts/session/workspace_health.py"
+    ],
+    "other": []
+  },
+  "recommendations": [
+    "Create or switch to a dedicated branch before committing or pushing workspace changes.",
+    "Remote tracking branch is behind; prefer pushing the work to a fresh feature branch.",
+    "Review untracked files and include only the intended workspace assets in the next commit.",
+    "Run workspace health and tooling currency audits before pushing."
+  ]
+}

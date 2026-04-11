@@ -9,6 +9,32 @@
           "run"
         ],
         "type": "stdio"
+      },
+      "CONTEXTLAYER": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@contextlayer/mcp@0.0.3"
+        ],
+        "type": "stdio"
+      },
+      "NETDATA_CLOUD": {
+        "type": "http",
+        "url": "https://app.netdata.cloud/api/v1/mcp",
+        "headers": {
+          "Authorization": "Bearer {{env.NETDATA_CLOUD_API_TOKEN}}"
+        }
+      },
+      "KLAVIS_STRATA": {
+        "type": "http",
+        "url": "https://strata.klavis.ai/mcp/",
+        "headers": {
+          "Authorization": "Bearer {{env.KLAVIS_STRATA_TOKEN}}"
+        }
+      },
+      "TAVILY_SEARCH": {
+        "type": "http",
+        "url": "https://mcp.tavily.com/mcp/?tavilyApiKey={{env.TAVILY_API_KEY}}"
       }
     }
   }
