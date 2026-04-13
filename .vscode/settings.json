@@ -195,5 +195,6 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "git.autofetch": true,
-  "chat.editing.autoAcceptDelay": 1
+  "chat.editing.autoAcceptDelay": 1,
+  "githubPullRequests.pullRequestDescription": "commit"
 }
