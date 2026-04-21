@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../ci/gitlab-ci/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../SESSION-AUTOMATION/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>Jules Handoff - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#jules-handoff" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Jules Handoff
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -717,10 +707,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../jules-handoff/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jules Handoff
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -736,6 +753,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#safe-areas-for-refactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe areas for refactor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#areas-not-to-change-without-operator-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Areas not to change without operator review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation expectations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-for-async-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes for async work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1103,58 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#safe-areas-for-refactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe areas for refactor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#areas-not-to-change-without-operator-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Areas not to change without operator review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation expectations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-for-async-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes for async work
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1196,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,115 +1221,36 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
+<h1 id="jules-handoff">Jules Handoff<a class="headerlink" href="#jules-handoff" title="Permanent link">&para;</a></h1>
+<h2 id="safe-areas-for-refactor">Safe areas for refactor<a class="headerlink" href="#safe-areas-for-refactor" title="Permanent link">&para;</a></h2>
 <ul>
-<li>File: network-live-state.md</li>
+<li><code>docs/*.md</code> structure and navigation</li>
+<li><code>deploy/ansible/README.md</code></li>
+<li><code>deploy/ansible/roles/*</code> where behavior remains read-only</li>
+<li><code>scripts/session/*</code> only when evidence generation and existing outputs stay stable</li>
+<li>generated reporting helpers that do not alter live infrastructure</li>
 </ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
+<h2 id="areas-not-to-change-without-operator-review">Areas not to change without operator review<a class="headerlink" href="#areas-not-to-change-without-operator-review" title="Permanent link">&para;</a></h2>
 <ul>
-<li>File: opnsense-prereq.md</li>
+<li><code>artifacts/**</code> historical evidence</li>
+<li>live IP addresses, VMIDs, and hostnames unless new evidence proves a change</li>
+<li><code>mcp.json</code> and <code>.vscode/mcp.json</code> secret-handling patterns</li>
+<li>any task or workflow that would make destructive Proxmox, VLAN, or switch changes</li>
 </ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
+<h2 id="validation-expectations">Validation expectations<a class="headerlink" href="#validation-expectations" title="Permanent link">&para;</a></h2>
+<p>Any refactor should still pass or preserve:</p>
 <ul>
-<li>File: netbox-status.md</li>
+<li><code>workspace: health</code></li>
+<li><code>workspace: infra artifacts</code></li>
+<li>inventory generation into <code>deploy/ansible/inventory/generated.yml</code></li>
+<li>Markdown docs readability and link integrity</li>
+<li>evidence creation under <code>artifacts/hc/</code></li>
 </ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
-</ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="notes-for-async-work">Notes for async work<a class="headerlink" href="#notes-for-async-work" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li>Prefer modular changes with one domain per commit.</li>
+<li>Keep read-only discovery separate from execution playbooks.</li>
+<li>Document any new source-of-truth decision in <code>docs/source-of-truth.md</code>.</li>
 </ul>
 
 

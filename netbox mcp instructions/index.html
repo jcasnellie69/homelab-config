@@ -13,10 +13,6 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
-      
-      
-        <link rel="next" href="../orchestration/">
       
       
         
@@ -27,7 +23,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>NetBox MCP Instructions - homelab-config</title>
       
     
     
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#netbox-mcp-instructions" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              NetBox MCP Instructions
             
           </span>
         </div>
@@ -312,10 +308,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -359,11 +353,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -384,7 +378,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -399,19 +393,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +412,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1022,6 +1006,147 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-validated-state-2026-04-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Current validated state (2026-04-10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required inputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workspace-configuration-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workspace configuration standard
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workspace configuration standard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vscodemcpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .vscode/mcp.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcpjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mcp.json
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-confirm-the-runner-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Confirm the runner works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-check-host-reachability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Check host reachability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-use-the-workspace-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Use the workspace task
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-prompts-once-the-service-is-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example prompts once the service is available
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1038,46 +1163,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href=".." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Docs
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -1088,115 +1173,92 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
+<h1 id="netbox-mcp-instructions">NetBox MCP Instructions<a class="headerlink" href="#netbox-mcp-instructions" title="Permanent link">&para;</a></h1>
+<p>This is the repo-specific runbook for wiring NetBox into the workspace MCP inventory.</p>
 <hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
+<h2 id="current-validated-state-2026-04-10">✅ Current validated state (2026-04-10)<a class="headerlink" href="#current-validated-state-2026-04-10" title="Permanent link">&para;</a></h2>
 <ul>
-<li>File: network-live-state.md</li>
+<li>Workspace MCP entry: <code>.vscode/mcp.json</code> → <code>homelab-netbox-ipam</code></li>
+<li>Root automation MCP entry: <code>mcp.json</code> → <code>HOMELAB_NETBOX_IPAM</code></li>
+<li>Validated launch path on this workstation:</li>
 </ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
+<pre><code class="language-powershell">uvx --from git+https://github.com/netboxlabs/netbox-mcp-server netbox-mcp-server --help
+</code></pre>
 <ul>
-<li>File: opnsense-prereq.md</li>
+<li>Artifact-based NetBox host hint: <code>192.168.4.140</code></li>
+<li>The host responds to ICMP from this workstation.</li>
+<li>During this session, application ports <code>80</code> and <code>443</code> were refusing connections, so authenticated NetBox MCP queries depend on CT 100 service availability.</li>
 </ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
-</ol>
 <hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="required-inputs">Required inputs<a class="headerlink" href="#required-inputs" title="Permanent link">&para;</a></h2>
+<p>The NetBox MCP flow needs:</p>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li><code>NETBOX_URL</code> — the base URL for your NetBox instance</li>
+<li><code>NETBOX_API_TOKEN</code> — a read-only NetBox token used by the MCP entry and mapped to <code>NETBOX_TOKEN</code> at runtime</li>
+</ul>
+<p>Do <strong>not</strong> store the token in tracked files.</p>
+<hr />
+<h2 id="workspace-configuration-standard">Workspace configuration standard<a class="headerlink" href="#workspace-configuration-standard" title="Permanent link">&para;</a></h2>
+<h3 id="vscodemcpjson"><code>.vscode/mcp.json</code><a class="headerlink" href="#vscodemcpjson" title="Permanent link">&para;</a></h3>
+<p>Use a prompt-backed stdio entry:</p>
+<pre><code class="language-json">&quot;homelab-netbox-ipam&quot;: {
+  &quot;command&quot;: &quot;uvx&quot;,
+  &quot;args&quot;: [
+    &quot;--from&quot;,
+    &quot;git+https://github.com/netboxlabs/netbox-mcp-server&quot;,
+    &quot;netbox-mcp-server&quot;,
+    &quot;--no-verify-ssl&quot;
+  ],
+  &quot;type&quot;: &quot;stdio&quot;,
+  &quot;env&quot;: {
+    &quot;NETBOX_URL&quot;: &quot;${input:NETBOX_URL}&quot;,
+    &quot;NETBOX_TOKEN&quot;: &quot;${input:NETBOX_API_TOKEN}&quot;
+  }
+}
+</code></pre>
+<h3 id="mcpjson"><code>mcp.json</code><a class="headerlink" href="#mcpjson" title="Permanent link">&para;</a></h3>
+<p>Use an environment-backed automation entry:</p>
+<pre><code class="language-json">&quot;HOMELAB_NETBOX_IPAM&quot;: {
+  &quot;command&quot;: &quot;uvx&quot;,
+  &quot;args&quot;: [
+    &quot;--from&quot;,
+    &quot;git+https://github.com/netboxlabs/netbox-mcp-server&quot;,
+    &quot;netbox-mcp-server&quot;,
+    &quot;--no-verify-ssl&quot;
+  ],
+  &quot;env&quot;: {
+    &quot;NETBOX_URL&quot;: &quot;{{env.NETBOX_URL}}&quot;,
+    &quot;NETBOX_TOKEN&quot;: &quot;{{env.NETBOX_API_TOKEN}}&quot;
+  },
+  &quot;type&quot;: &quot;stdio&quot;
+}
+</code></pre>
+<hr />
+<h2 id="validation-commands">Validation commands<a class="headerlink" href="#validation-commands" title="Permanent link">&para;</a></h2>
+<h3 id="1-confirm-the-runner-works">1. Confirm the runner works<a class="headerlink" href="#1-confirm-the-runner-works" title="Permanent link">&para;</a></h3>
+<pre><code class="language-powershell">uvx --from git+https://github.com/netboxlabs/netbox-mcp-server netbox-mcp-server --help
+</code></pre>
+<h3 id="2-check-host-reachability">2. Check host reachability<a class="headerlink" href="#2-check-host-reachability" title="Permanent link">&para;</a></h3>
+<pre><code class="language-powershell">Test-Connection 192.168.4.140 -Count 1
+Test-NetConnection 192.168.4.140 -Port 80
+Test-NetConnection 192.168.4.140 -Port 443
+</code></pre>
+<h3 id="3-use-the-workspace-task">3. Use the workspace task<a class="headerlink" href="#3-use-the-workspace-task" title="Permanent link">&para;</a></h3>
+<pre><code class="language-text">workspace: netbox mcp validate
+</code></pre>
+<hr />
+<h2 id="usage-notes">Usage notes<a class="headerlink" href="#usage-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Prefer a read-only NetBox token.</li>
+<li>If NetBox uses a self-signed certificate, the workspace entry already includes <code>--no-verify-ssl</code> for homelab use.</li>
+<li>If the host answers ping but the web ports refuse connections, recover the NetBox service on CT 100 before expecting live MCP queries to succeed.</li>
+</ul>
+<hr />
+<h2 id="example-prompts-once-the-service-is-available">Example prompts once the service is available<a class="headerlink" href="#example-prompts-once-the-service-is-available" title="Permanent link">&para;</a></h2>
+<ul>
+<li>"List my NetBox devices with name, status, site, and primary IP"</li>
+<li>"Show IPAM utilization for the homelab site"</li>
+<li>"Get recent NetBox change logs for core infrastructure objects"</li>
 </ul>
 
 

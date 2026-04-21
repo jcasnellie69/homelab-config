@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../network-live-state/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../netbox-status/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>OPNsense Prerequisites - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#opnsense-prerequisites" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              OPNsense Prerequisites
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -549,10 +539,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../opnsense-prereq/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -568,6 +585,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-safe-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed safe baseline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-live-discovery-on-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required live discovery on alpha
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-confirm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to confirm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-vmbr1-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed vmbr1 snippet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-after-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation after creation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1136,91 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-safe-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed safe baseline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-live-discovery-on-alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required live discovery on alpha
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-confirm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to confirm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-vmbr1-snippet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed vmbr1 snippet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-after-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation after creation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1262,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,115 +1287,67 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
+<h1 id="opnsense-prerequisites">OPNsense Prerequisites<a class="headerlink" href="#opnsense-prerequisites" title="Permanent link">&para;</a></h1>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>NETWORK:</strong> <code>BLOCKED</code></li>
+<li><strong>Why:</strong> the management plane is healthy, but the dedicated 10G port for the
+  data-plane trunk has not yet been confirmed live from the Proxmox shell.</li>
+</ul>
+<h2 id="confirmed-safe-baseline">Confirmed safe baseline<a class="headerlink" href="#confirmed-safe-baseline" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>vmbr0</code> is the active management bridge and must remain untouched.</li>
+<li><code>192.168.4.10</code> is the live management endpoint for <code>alpha</code>.</li>
+<li>The new VLAN trunk bridge must be built as <strong><code>vmbr1</code></strong> with <strong>no IP assigned</strong>.</li>
+</ul>
+<h2 id="required-live-discovery-on-alpha">Required live discovery on <code>alpha</code><a class="headerlink" href="#required-live-discovery-on-alpha" title="Permanent link">&para;</a></h2>
+<p>Run these directly on the Proxmox node or through an authenticated shell:</p>
+<pre><code class="language-bash">pct list
+ip -br link
+bridge link show
+bridge vlan show
+for nic in nic2 nic3; do
+  echo &quot;=== $nic ===&quot;
+  ethtool &quot;$nic&quot; | egrep 'Speed|Duplex|Link detected'
+done
+</code></pre>
+<h2 id="what-to-confirm">What to confirm<a class="headerlink" href="#what-to-confirm" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
-<ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
+<li><code>nic0</code> is still the management path behind <code>vmbr0</code></li>
+<li><code>nic2</code> and <code>nic3</code> are the Intel X710-facing 10G candidates</li>
+<li>whichever port changes from <code>DOWN</code> to <code>UP</code> when the 10G cable is connected is
+   the correct uplink for <code>vmbr1</code></li>
 </ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="proposed-vmbr1-snippet">Proposed <code>vmbr1</code> snippet<a class="headerlink" href="#proposed-vmbr1-snippet" title="Permanent link">&para;</a></h2>
+<p>Use the port that proves live (<code>nic2</code> <strong>or</strong> <code>nic3</code>):</p>
+<pre><code class="language-ini"># dedicated 10G uplink, no IP
+iface nic2 inet manual
+
+auto vmbr1
+iface vmbr1 inet manual
+    bridge-ports nic2
+    bridge-stp off
+    bridge-fd 0
+    bridge-vlan-aware yes
+    bridge-vids 2-4094
+</code></pre>
+<p>If <code>nic3</code> is the port that comes up, substitute <code>nic3</code> for <code>nic2</code>.</p>
+<h2 id="validation-after-creation">Validation after creation<a class="headerlink" href="#validation-after-creation" title="Permanent link">&para;</a></h2>
+<pre><code class="language-bash">ip -br link show vmbr1
+bridge link show
+bridge vlan show dev vmbr1
+</code></pre>
+<p>Expected result:</p>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li><code>vmbr1</code> exists</li>
+<li>the attached 10G port is <code>UP</code> when linked</li>
+<li><code>vmbr1</code> is VLAN-aware and has <strong>no</strong> IP address</li>
+</ul>
+<h2 id="safety-rules">Safety rules<a class="headerlink" href="#safety-rules" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Do <strong>not</strong> change <code>vmbr0</code></li>
+<li>Do <strong>not</strong> assign an IP to <code>vmbr1</code></li>
+<li>Do <strong>not</strong> apply the bridge until the active 10G uplink is positively identified</li>
 </ul>
 
 

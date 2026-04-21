@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../opnsense-prereq/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../vlan-topology/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>NetBox Status - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#netbox-status" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              NetBox Status
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -577,10 +567,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../netbox-status/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NetBox Status
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -596,6 +613,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-deployment-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean deployment plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clean deployment plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preferred-form-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preferred form factor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stable-ip-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stable IP assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-steps-after-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation steps after deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repo-follow-up-after-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repo follow-up after deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1164,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-deployment-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean deployment plan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clean deployment plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preferred-form-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preferred form factor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stable-ip-assignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stable IP assignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-steps-after-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation steps after deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repo-follow-up-after-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repo follow-up after deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1318,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,116 +1343,63 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
+<h1 id="netbox-status">NetBox Status<a class="headerlink" href="#netbox-status" title="Permanent link">&para;</a></h1>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>NETBOX:</strong> <code>ABSENT</code></li>
+</ul>
+<h2 id="evidence">Evidence<a class="headerlink" href="#evidence" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
-<ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
+<li>The operator confirmed that NetBox is <strong>not currently deployed</strong>.</li>
+<li>The historical IP <code>192.168.4.140</code> does not expose the expected service ports:</li>
+<li><code>80/tcp</code> → closed</li>
+<li><code>443/tcp</code> → closed</li>
+<li><code>22/tcp</code> → closed</li>
+<li>The current ARP identity for <code>192.168.4.140</code> is <code>9C:C8:E9:6B:B4:AB</code>, which
+   does not represent a validated NetBox endpoint.</li>
+<li>The <code>network-inventory</code> artifact shows <code>192.168.4.140</code> as a transient client
+   entry rather than a stable infrastructure service, so the old NetBox IP
+   reference must not be reused automatically.</li>
 </ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="current-conclusion">Current conclusion<a class="headerlink" href="#current-conclusion" title="Permanent link">&para;</a></h2>
+<p>Historical CT <code>100</code> / <code>netbox</code> references in the repo are <strong>stale</strong>. No current
+live deployment was verified from the controller view.</p>
+<h2 id="clean-deployment-plan">Clean deployment plan<a class="headerlink" href="#clean-deployment-plan" title="Permanent link">&para;</a></h2>
+<h3 id="preferred-form-factor">Preferred form factor<a class="headerlink" href="#preferred-form-factor" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li><strong>Preferred default:</strong> LXC on <code>alpha</code></li>
+<li><strong>Use a VM instead</strong> only if you want stronger isolation or a future appliance-style build</li>
 </ul>
+<h3 id="stable-ip-assignment">Stable IP assignment<a class="headerlink" href="#stable-ip-assignment" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reserve a <strong>new unused static management IP</strong> from the current management
+  subnet <code>192.168.4.0/24</code></li>
+<li>Do <strong>not</strong> reuse <code>192.168.4.140</code> without explicitly reclaiming and re-validating it</li>
+<li>Record the reserved IP in DHCP/static reservation and then update the workspace
+  MCP config to match</li>
+</ul>
+<h3 id="service-layout">Service layout<a class="headerlink" href="#service-layout" title="Permanent link">&para;</a></h3>
+<ul>
+<li>PostgreSQL</li>
+<li>Redis</li>
+<li>NetBox application</li>
+<li><code>gunicorn</code> bound to localhost or a unix socket</li>
+<li><code>nginx</code> exposing <code>80</code> and <code>443</code></li>
+</ul>
+<h3 id="validation-steps-after-deployment">Validation steps after deployment<a class="headerlink" href="#validation-steps-after-deployment" title="Permanent link">&para;</a></h3>
+<pre><code class="language-bash">ss -ltnp | egrep ':80|:443'
+curl -I http://&lt;new-netbox-ip&gt;/
+curl -kI https://&lt;new-netbox-ip&gt;/
+</code></pre>
+<p>Optional API validation once a read-only token exists:</p>
+<pre><code class="language-bash">curl -k -H &quot;Authorization: Token &lt;redacted&gt;&quot; https://&lt;new-netbox-ip&gt;/api/
+</code></pre>
+<h3 id="repo-follow-up-after-deployment">Repo follow-up after deployment<a class="headerlink" href="#repo-follow-up-after-deployment" title="Permanent link">&para;</a></h3>
+<ol>
+<li>update <code>.vscode/mcp.json</code> and <code>mcp.json</code> with the new <code>NETBOX_URL</code></li>
+<li>set <code>NETBOX_API_TOKEN</code> securely via prompt or environment variables</li>
+<li>re-run <code>workspace: netbox mcp validate</code></li>
+</ol>
 
 
 

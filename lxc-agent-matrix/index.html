@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../vlan-topology/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../bau-operations/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>LXC Agent Matrix - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#lxc-agent-and-mcp-matrix" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              LXC Agent Matrix
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -633,10 +623,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lxc-agent-matrix/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LXC Agent Matrix
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -652,6 +669,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1070,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1130,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,115 +1155,109 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
+<h1 id="lxc-agent-and-mcp-matrix">LXC Agent and MCP Matrix<a class="headerlink" href="#lxc-agent-and-mcp-matrix" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>CTID</th>
+<th>Service</th>
+<th>Current role</th>
+<th>Recommended agent/MCP model</th>
+<th>Validation checks</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td><code>netbox</code></td>
+<td>Historical NetBox reference only</td>
+<td>Do not treat this as live until NetBox is redeployed; keep MCP wiring dormant</td>
+<td>Verify new deployment IP, <code>80/443</code>, and token flow after install</td>
+<td>Absent</td>
+</tr>
+<tr>
+<td>102</td>
+<td><code>grafana-code-server</code></td>
+<td>Monitoring UI (stopped)</td>
+<td>Keep agenting disabled until the CT is intentionally restarted</td>
+<td>Confirm CT power state; validate UI ports only if re-enabled</td>
+<td>Scaffolded</td>
+</tr>
+<tr>
+<td>103</td>
+<td><code>prometheus</code></td>
+<td>Metrics store</td>
+<td>Use Prometheus scrape validation and read-only service checks</td>
+<td>ICMP to <code>192.168.4.132</code>; TCP <code>9090</code></td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>104</td>
+<td><code>prometheus-pve-exporter</code></td>
+<td>Proxmox exporter</td>
+<td>Keep lightweight exporter role only; no MCP required</td>
+<td>Reachability to <code>192.168.4.131</code>; exporter port <code>9221</code></td>
+<td>Blocked</td>
+</tr>
+<tr>
+<td>105</td>
+<td><code>influxdb</code></td>
+<td>Telemetry hub</td>
+<td>Prefer data-source validation and Telegraf checks; no custom MCP needed</td>
+<td>ICMP to <code>192.168.4.130</code>; TCP <code>8086</code></td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>106</td>
+<td><code>homepage</code></td>
+<td>Docs / portal</td>
+<td>Optional docs agent only; keep as stable user-facing endpoint</td>
+<td>SSH <code>22</code>; HTTP <code>80</code></td>
+<td>Ready</td>
+</tr>
+<tr>
+<td>108</td>
+<td><code>watchyourlan</code></td>
+<td>Network discovery (stopped)</td>
+<td>Re-enable only when discovery scans are needed</td>
+<td>Confirm CT state and UI reachability if started</td>
+<td>Scaffolded</td>
+</tr>
+<tr>
+<td>109</td>
+<td><code>pihole</code></td>
+<td>DNS / infra</td>
+<td>Keep DNS-focused validation only; no extra MCP required</td>
+<td>SSH <code>22</code>; DNS <code>53</code>; HTTP <code>80</code></td>
+<td>Ready</td>
+</tr>
+<tr>
+<td>110</td>
+<td><code>netflow-collector</code></td>
+<td>NetFlow intake (stopped)</td>
+<td>Keep passive collector pattern only</td>
+<td>Confirm CT state and nfdump listeners if started</td>
+<td>Scaffolded</td>
+</tr>
+<tr>
+<td>111</td>
+<td><code>ansible</code></td>
+<td>Control plane</td>
+<td>Preferred home for Ansible execution once started; can host control-node bootstrap</td>
+<td>Start CT; run <code>bootstrap-control-node.sh</code>; verify <code>ansible-playbook --version</code></td>
+<td>Blocked</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
-</ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
-<ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li>This matrix describes the target operating model, not a claim that agents are
+  already installed everywhere.</li>
+<li>MCP is preferred where it already exists (<code>NetBox</code>) instead of adding custom
+  one-off agent logic.</li>
+<li>All recommendations remain read-only until connectivity and credentials are
+  confirmed.</li>
 </ul>
 
 

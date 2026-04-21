@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../repo-audit/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../network-live-state/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>Source of Truth - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#source-of-truth-reconciliation" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Source of Truth
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -493,10 +483,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../source-of-truth/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source of Truth
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -512,6 +529,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authoritative-sources-by-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authoritative sources by domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-current-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed current state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stale-or-conflicting-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale or conflicting items
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1114,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authoritative-sources-by-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authoritative sources by domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-current-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed current state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stale-or-conflicting-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stale or conflicting items
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1218,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,116 +1243,109 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
+<h1 id="source-of-truth-reconciliation">Source of Truth Reconciliation<a class="headerlink" href="#source-of-truth-reconciliation" title="Permanent link">&para;</a></h1>
+<h2 id="authoritative-sources-by-domain">Authoritative sources by domain<a class="headerlink" href="#authoritative-sources-by-domain" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Current authoritative source</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network inventory</td>
+<td><code>artifacts/network-inventory.json</code></td>
+<td>High</td>
+<td>User confirmed this is the network artifact repo.</td>
+</tr>
+<tr>
+<td>Repo automation layout</td>
+<td><code>deploy/ansible/**</code>, <code>scripts/session/**</code>, <code>docs/orchestration.md</code></td>
+<td>High</td>
+<td>These define the current workspace automation contract.</td>
+</tr>
+<tr>
+<td>Live host reachability</td>
+<td><code>artifacts/hc/*-lab-reachability.txt</code></td>
+<td>High</td>
+<td>Fresh evidence from 2026-04-11.</td>
+</tr>
+<tr>
+<td>Generated inventory</td>
+<td><code>deploy/ansible/inventory/generated.yml</code></td>
+<td>Medium</td>
+<td>Derived from artifacts and should be regenerated after new discovery.</td>
+</tr>
+<tr>
+<td>NetBox state</td>
+<td>user-confirmed absence + live network checks</td>
+<td>High</td>
+<td>No live NetBox deployment was confirmed; the historical CT 100 reference is stale.</td>
+</tr>
+<tr>
+<td>Historical PVE networking</td>
+<td><code>artifacts/dhcp-discovery/D122225T0153/*</code></td>
+<td>Medium</td>
+<td>Useful for bridge and gateway facts, but some addresses appear stale.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confirmed-current-state">Confirmed current state<a class="headerlink" href="#confirmed-current-state" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>alpha</code> is reachable at <code>192.168.4.10</code> on <code>22/tcp</code> and <code>8006/tcp</code>.</li>
+<li>The live Proxmox HTTPS page at <code>192.168.4.10:8006</code> identifies the node as <code>pve-plex-oasis-alpha</code>.</li>
+<li><code>homepage</code> (<code>192.168.4.139</code>) is reachable on <code>22/tcp</code> and <code>80/tcp</code>.</li>
+<li><code>pihole</code> (<code>192.168.4.208</code>) is reachable on <code>22/tcp</code>, <code>53/tcp</code>, and <code>80/tcp</code>.</li>
+<li><code>vmbr0</code> remains the historical management bridge, while the older <code>.249</code> address and <code>enp*</code> mappings are now stale.</li>
+<li>The management subnet in current repo artifacts remains <code>192.168.4.0/24</code>.</li>
+</ul>
+<h2 id="stale-or-conflicting-items">Stale or conflicting items<a class="headerlink" href="#stale-or-conflicting-items" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current evidence</th>
+<th>Historical evidence</th>
+<th>Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha</code> management IP</td>
+<td><code>192.168.4.10</code> reachable on SSH and PVE UI</td>
+<td><code>192.168.4.249/24</code> in <code>pve_interfaces.txt</code></td>
+<td>Treat <code>.10</code> as the active management address and <code>.249</code> as stale history.</td>
+</tr>
+<tr>
+<td>NetBox availability</td>
+<td>No live NetBox app on <code>80/443/22</code>; user confirmed it is not deployed</td>
+<td>Repo docs and generated inventory still referenced CT 100 and <code>192.168.4.140</code></td>
+<td>Mark NetBox as absent and do not reuse <code>192.168.4.140</code> automatically.</td>
+</tr>
+<tr>
+<td>Ansible control node</td>
+<td>CT <code>111</code> listed as stopped</td>
+<td>Older handoff implied an Ansible LXC</td>
+<td>Mark control plane as scaffolded but not live.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unknowns">Unknowns<a class="headerlink" href="#unknowns" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Current live <code>pct list</code> and <code>ip -br link</code> output from <code>alpha</code> are unavailable from this host because SSH authentication is blocked.</li>
+<li>Authenticated Proxmox API inventory endpoints are also blocked from this host without a valid ticket.</li>
+<li>No Proxmox API or OPNsense API credentials were present in the controller environment during validation.</li>
+</ul>
+<h2 id="operating-decision">Operating decision<a class="headerlink" href="#operating-decision" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
-<ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
+<li>Use live Proxmox reachability and HTTPS identity as the top priority source for the management plane.</li>
+<li>Use <code>network-inventory</code> only as a secondary artifact source when live host access is blocked.</li>
+<li>Treat NetBox as absent until a fresh deployment is built and validated.</li>
+<li>Re-run generated inventory and discovery artifacts after each authenticated live discovery session or controller credential update.</li>
 </ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
-<ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
-</ul>
 
 
 

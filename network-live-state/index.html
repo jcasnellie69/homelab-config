@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../source-of-truth/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../opnsense-prereq/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>Network Live State - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#network-live-state" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Network Live State
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -521,10 +511,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../network-live-state/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Live State
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -540,6 +557,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-checks-executed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live checks executed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actual-current-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actual current layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-corrections-to-stale-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important corrections to stale assumptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-blocker-for-full-nic-confirmation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard blocker for full NIC confirmation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1114,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-checks-executed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live checks executed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actual-current-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actual current layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-corrections-to-stale-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important corrections to stale assumptions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-blocker-for-full-nic-confirmation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard blocker for full NIC confirmation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1218,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,115 +1243,79 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
+<h1 id="network-live-state">Network Live State<a class="headerlink" href="#network-live-state" title="Permanent link">&para;</a></h1>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>NETWORK:</strong> <code>BLOCKED</code></li>
+<li><strong>Reason:</strong> the management path is live, but authenticated Proxmox shell and API
+  access are still required to confirm the dedicated 10G data port (<code>nic2</code> or
+  <code>nic3</code>) and validate the <code>vmbr1</code> trunk bridge end-to-end.</li>
+</ul>
+<h2 id="live-checks-executed">Live checks executed<a class="headerlink" href="#live-checks-executed" title="Permanent link">&para;</a></h2>
+<pre><code class="language-powershell">Test-NetConnection 192.168.4.10 -Port 22
+Test-NetConnection 192.168.4.10 -Port 8006
+Invoke-WebRequest -SkipCertificateCheck https://192.168.4.10:8006/
+ssh -o PreferredAuthentications=publickey -o PasswordAuthentication=no root@192.168.4.10 &quot;hostname&quot;
+arp -a 192.168.4.10
+</code></pre>
+<h2 id="actual-current-layout">Actual current layout<a class="headerlink" href="#actual-current-layout" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Live finding</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nic0 -&gt; vmbr0 -&gt; 192.168.4.10</code></td>
+<td>Current management plane is live and serving the Proxmox UI</td>
+<td>Confirmed</td>
+<td>TCP <code>22</code> and <code>8006</code> succeed; Proxmox login page title shows <code>pve-plex-oasis-alpha</code></td>
+</tr>
+<tr>
+<td><code>nic2</code> / <code>nic3</code></td>
+<td>Dedicated 10G port for the future trunk bridge</td>
+<td>Unconfirmed</td>
+<td>Requires live <code>ip -br link</code> + cable-link test from the Proxmox shell</td>
+</tr>
+<tr>
+<td><code>vmbr1</code></td>
+<td>Dedicated VLAN trunk bridge</td>
+<td>Not observed in live-accessible data</td>
+<td>Only <code>vmbr0</code> is present in the accessible evidence; <code>vmbr1</code> is prepared but not created</td>
+</tr>
+</tbody>
+</table>
+<h2 id="important-corrections-to-stale-assumptions">Important corrections to stale assumptions<a class="headerlink" href="#important-corrections-to-stale-assumptions" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
-<ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
+<li>The old <code>192.168.4.249</code> management address is now stale.</li>
+<li>Historical <code>enp*</code> names in the December artifacts are no longer reliable as
+   the source of truth for the current management path.</li>
+<li>The live ARP identity for <code>192.168.4.10</code> is currently <code>38:05:25:33:ED:66</code>,
+   which differs from the older hardware artifact mappings.</li>
+<li>The <code>network-inventory</code> artifact currently places <code>192.168.4.10</code> on switch
+   port <code>TE10</code> with <code>portType: SFP/SFP+ (10G)</code>, which supports the case for a
+   dedicated 10G path even though the exact host-side <code>nic2</code> or <code>nic3</code> mapping
+   is still blocked.</li>
 </ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="hard-blocker-for-full-nic-confirmation">Hard blocker for full NIC confirmation<a class="headerlink" href="#hard-blocker-for-full-nic-confirmation" title="Permanent link">&para;</a></h2>
+<p>The controller can reach the Proxmox host, but it cannot execute the required
+live commands yet:</p>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li><code>ssh root@192.168.4.10</code> returns <strong>Permission denied</strong></li>
+<li>authenticated API endpoints return <strong>401 (No ticket)</strong></li>
+</ul>
+<p>Because of that, the following still need a live shell or console session on
+<code>alpha</code> before they can be called fully confirmed:</p>
+<ul>
+<li><code>pct list</code></li>
+<li><code>ip -br link</code></li>
+<li><code>bridge link show</code></li>
+<li><code>bridge vlan show</code></li>
+<li><code>ethtool nic2</code> / <code>ethtool nic3</code></li>
 </ul>
 
 

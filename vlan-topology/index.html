@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../netbox-status/">
       
       
-        <link rel="next" href="../orchestration/">
+        <link rel="next" href="../lxc-agent-matrix/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Overview - homelab-config</title>
+        <title>VLAN Topology - homelab-config</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelab-documentation-index" class="md-skip">
+        <a href="#vlan-topology-draft" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              VLAN Topology
             
           </span>
         </div>
@@ -399,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -427,7 +418,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -605,10 +595,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../vlan-topology/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLAN Topology
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -624,6 +641,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-current-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed current state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-topology-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current topology model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candidate-future-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidate future segmentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-before-any-vlan-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies before any VLAN change
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1022,6 +1125,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#confirmed-current-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Confirmed current state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-topology-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current topology model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candidate-future-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidate future segmentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-before-any-vlan-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies before any VLAN change
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unknowns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Migration considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1063,7 +1240,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../DOCS_INDEX/" class="md-path__link">
           
   <span class="md-ellipsis">
     Docs
@@ -1088,115 +1265,80 @@
   
 
 
-<h1 id="homelab-documentation-index">Homelab Documentation Index<a class="headerlink" href="#homelab-documentation-index" title="Permanent link">&para;</a></h1>
-<h1 id="-">-------------------------------------------------------------------------------<a class="headerlink" href="#-" title="Permanent link">&para;</a></h1>
-<h1 id="date-chgid-reason">DATE       | CHGID   | REASON<a class="headerlink" href="#date-chgid-reason" title="Permanent link">&para;</a></h1>
-<h1 id="2025-12-10-cr-0021-create-documentation-index-for-observability-files">2025-12-10 | CR-0021 | Create documentation index for observability files.<a class="headerlink" href="#2025-12-10-cr-0021-create-documentation-index-for-observability-files" title="Permanent link">&para;</a></h1>
-<h1 id="user-jc-target-homelab-documentation">USER: JC  | TARGET: Homelab Documentation<a class="headerlink" href="#user-jc-target-homelab-documentation" title="Permanent link">&para;</a></h1>
-<h1 id="-_1">-------------------------------------------------------------------------------<a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h1>
-<p>Welcome to the homelab documentation index.</p>
-<p>This directory contains architecture, observability, and policy documentation
-for the Proxmox VE + LXC infrastructure.</p>
-<hr />
-<h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
+<h1 id="vlan-topology-draft">VLAN Topology Draft<a class="headerlink" href="#vlan-topology-draft" title="Permanent link">&para;</a></h1>
+<h2 id="confirmed-current-state">Confirmed current state<a class="headerlink" href="#confirmed-current-state" title="Permanent link">&para;</a></h2>
+<p>The current network baseline is still a flat management and service domain on
+<code>192.168.4.0/24</code> with default <code>VLAN 1</code> behavior.</p>
+<p>Confirmed evidence:</p>
+<ul>
+<li>Historical PVE host configuration shows <code>vmbr0</code> as <code>bridge-vlan-aware yes</code>.</li>
+<li>The same artifact shows <code>bridge-vids 2-4094</code>, which means the bridge is ready
+  for segmentation but does not confirm any active tagged VLANs.</li>
+<li>The default gateway confirmed in the PVE interface artifact is <code>192.168.4.1</code>.</li>
+</ul>
+<h2 id="current-topology-model">Current topology model<a class="headerlink" href="#current-topology-model" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Current state</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default VLAN</td>
+<td>VLAN 1 baseline only</td>
+<td><code>artifacts/dhcp-discovery/D122225T0153/pve_interfaces.txt</code></td>
+</tr>
+<tr>
+<td>PVE bridge</td>
+<td><code>vmbr0</code>, VLAN-aware</td>
+<td><code>pve_interfaces.txt</code>, <code>pve_bridge_links.txt</code></td>
+</tr>
+<tr>
+<td>Management subnet</td>
+<td><code>192.168.4.0/24</code></td>
+<td>Repo inventory and generated automation metadata</td>
+</tr>
+<tr>
+<td>Reachable services</td>
+<td><code>alpha</code>, <code>homepage</code>, <code>pihole</code></td>
+<td>2026-04-11 reachability evidence</td>
+</tr>
+</tbody>
+</table>
+<h2 id="candidate-future-segmentation">Candidate future segmentation<a class="headerlink" href="#candidate-future-segmentation" title="Permanent link">&para;</a></h2>
+<p>No new VLAN IDs are assigned in this draft.</p>
+<p>Proposed logical segments only:</p>
 <ol>
-<li>Orchestration Source of Truth
-   Defines the evidence-first onboarding method for new technology, MCPs, agents, tasks, and infrastructure capabilities.</li>
-<li>
-<p>File: orchestration.md</p>
-</li>
-<li>
-<p>Observability Service Map
-   Describes which observability services run on which nodes/containers.</p>
-</li>
-<li>
-<p>File: observability-service-map.md</p>
-</li>
-<li>
-<p>Telemetry Pipeline Architecture
-   Describes the Netify / Netflow / Pi-hole telemetry path into Influx via CT105.</p>
-</li>
-<li>
-<p>File: telemetry-pipeline.md</p>
-</li>
-<li>
-<p>Observability Policy
-   Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
-</li>
-<li>
-<p>File: policy-observability.md</p>
-</li>
-<li>
-<p>Repo Audit
-   Summarizes the current automation layout, discovery inputs, and gap areas.</p>
-</li>
-<li>
-<p>File: repo-audit.md</p>
-</li>
-<li>
-<p>Source of Truth Reconciliation
-   Records which source is authoritative for network, inventory, and live state.</p>
-</li>
-<li>
-<p>File: source-of-truth.md</p>
-</li>
-<li>
-<p>VLAN Topology Draft
-   Captures the confirmed VLAN 1 baseline and safe future segmentation notes.</p>
-</li>
-<li>
-<p>File: vlan-topology.md</p>
-</li>
-<li>
-<p>LXC Agent and MCP Matrix
-   Maps each container to a recommended agent, MCP, and validation path.</p>
-</li>
-<li>
-<p>File: lxc-agent-matrix.md</p>
-</li>
-<li>
-<p>BAU Operations Model
-   Provides the runbook for validation, CI usage, and next-step backlog items.</p>
-</li>
-<li>
-<p>File: bau-operations.md</p>
-</li>
-<li>
-<p>Network Live State
-    Captures the fresh Proxmox reachability evidence and current NIC / bridge blockers.</p>
-<ul>
-<li>File: network-live-state.md</li>
-</ul>
-</li>
-<li>
-<p>OPNsense Prerequisites
-    Documents the dedicated <code>vmbr1</code> trunk bridge plan and the live commands needed to validate it.</p>
-<ul>
-<li>File: opnsense-prereq.md</li>
-</ul>
-</li>
-<li>
-<p>NetBox Status
-    Records the current absence of NetBox and the clean redeployment path.</p>
-<ul>
-<li>File: netbox-status.md</li>
-</ul>
-</li>
-<li>
-<p>GitLab CI Guide / Jules Handoff
-    Documents the CI flow and the safe async-refactor boundaries.
-    Files: <code>ci/gitlab-ci.md</code>, <code>jules-handoff.md</code></p>
-</li>
+<li><strong>Management</strong> — Proxmox host access, automation entry points, controller use</li>
+<li><strong>Core infra</strong> — DNS, IPAM, telemetry, and monitoring services</li>
+<li><strong>User-facing apps</strong> — Homepage and other UI services</li>
+<li><strong>IoT / discovery-heavy clients</strong> — devices currently surfaced via the
+   <code>network-inventory</code> artifact repo</li>
 </ol>
-<hr />
-<h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>
-<p>The docs/ directory is the single source of truth for:</p>
+<h2 id="dependencies-before-any-vlan-change">Dependencies before any VLAN change<a class="headerlink" href="#dependencies-before-any-vlan-change" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Service placement</li>
-<li>Telemetry and logging pipelines</li>
-<li>Design and architecture decisions</li>
-<li>Orchestration and onboarding methods</li>
-<li>Evidence-friendly documentation to pair with HC artifacts</li>
+<li>Confirm the active switch configuration from the MOKERLINK environment</li>
+<li>Confirm live <code>bridge vlan show</code> from <code>alpha</code> over authenticated SSH</li>
+<li>Confirm which LXCs or services require untagged access during migration</li>
+<li>Confirm Pi-hole, NetBox, and telemetry flows that must stay reachable</li>
+</ul>
+<h2 id="unknowns">Unknowns<a class="headerlink" href="#unknowns" title="Permanent link">&para;</a></h2>
+<ul>
+<li>No live switch export or LLDP/cable map was available in this session.</li>
+<li>No live <code>pct</code>-based container NIC inventory could be collected without SSH
+  access to <code>alpha</code>.</li>
+<li>Current tagged VLAN usage on switch ports remains unverified.</li>
+</ul>
+<h2 id="migration-considerations">Migration considerations<a class="headerlink" href="#migration-considerations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Keep VLAN 1 as the documented fallback until the live switch and Proxmox
+  configuration are both confirmed.</li>
+<li>Stage validation playbooks before any bridge, gateway, or switch change.</li>
+<li>Treat segmentation as a change-controlled activity, not a default automation
+  action.</li>
 </ul>
 
 
