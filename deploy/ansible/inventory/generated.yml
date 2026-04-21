@@ -1,0 +1,124 @@
+all:
+  hosts:
+    alpha:
+      ansible_host: 192.168.4.10
+      role: proxmox_host
+      source: user-confirmed + network inventory artifact
+      services: ["pve", "netifyd", "softflowd"]
+    netbox:
+      hostname: netbox
+      vmid: 100
+      ansible_host: 192.168.4.140
+      status: running
+      description: NetBox IPAM + DCIM
+      tags: ["192.168.4.140", "app"]
+    ct102-grafana-code-server:
+      hostname: unknown
+      vmid: 102
+      ansible_host: null
+      status: stopped
+      description: Grafana + code-server
+      tags: ["monitoring", "ui"]
+    prometheus:
+      hostname: prometheus
+      vmid: 103
+      ansible_host: 192.168.4.132
+      status: running
+      description: Prometheus server
+      tags: ["192.168.4.132", "monitoring"]
+    prometheus-pve-exporter:
+      hostname: prometheus-pve-exporter
+      vmid: 104
+      ansible_host: 192.168.4.131
+      status: running
+      description: Proxmox Prometheus Exporter
+      tags: ["192.168.4.131", "monitoring"]
+    influxdb:
+      hostname: influxdb
+      vmid: 105
+      ansible_host: 192.168.4.130
+      status: running
+      description: InfluxDB + Telegraf + code-server
+      tags: ["192.168.4.130", "monitoring", "telemetry"]
+    homepage:
+      hostname: homepage
+      vmid: 106
+      ansible_host: 192.168.4.139
+      status: running
+      description: Homepage / NGINX Documentation Portal
+      tags: ["192.168.4.139", "docs", "ui"]
+    ct108-watchyourlan:
+      hostname: unknown
+      vmid: 108
+      ansible_host: null
+      status: stopped
+      description: WatchYourLAN
+      tags: ["monitoring", "network"]
+    pihole:
+      hostname: pihole
+      vmid: 109
+      ansible_host: 192.168.4.208
+      status: running
+      description: Pi-hole DNS + FTLDNS
+      tags: ["192.168.4.208", "dns", "infra"]
+    ct110-netflow-collector-nfdump-ntrop:
+      hostname: unknown
+      vmid: 110
+      ansible_host: null
+      status: stopped
+      description: NetFlow Collector (nfdump) / ntrop
+      tags: ["monitoring", "netflow"]
+    ansible:
+      hostname: ansible
+      vmid: 111
+      ansible_host: null
+      status: stopped
+      description: Automation control node
+      tags: ["automation", "dhcp"]
+    opnsense-alpha:
+      hostname: opnsense-alpha
+      ansible_host: null
+      status: planned
+      description: Future OPNsense firewall on Proxmox Alpha
+      target_proxmox_host: alpha
+      management_subnet: 192.168.4.0/24
+      tags: ["opnsense", "firewall", "planned"]
+  children:
+    proxmox:
+      hosts:
+        alpha: {}
+    lxc:
+      hosts:
+        netbox: {}
+        ct102-grafana-code-server: {}
+        prometheus: {}
+        prometheus-pve-exporter: {}
+        influxdb: {}
+        homepage: {}
+        ct108-watchyourlan: {}
+        pihole: {}
+        ct110-netflow-collector-nfdump-ntrop: {}
+        ansible: {}
+    monitoring:
+      hosts:
+        ct102-grafana-code-server: {}
+        prometheus: {}
+        prometheus-pve-exporter: {}
+        influxdb: {}
+        ct108-watchyourlan: {}
+        ct110-netflow-collector-nfdump-ntrop: {}
+    docs:
+      hosts:
+        homepage: {}
+    dns:
+      hosts:
+        pihole: {}
+    automation:
+      hosts:
+        ansible: {}
+    netbox:
+      hosts:
+        netbox: {}
+    future_opnsense:
+      hosts:
+        opnsense-alpha: {}

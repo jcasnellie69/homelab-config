@@ -1,0 +1,47 @@
+{
+  "name": "homelab-config",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "USER": "developer"
+    }
+  },
+  "workspaceFolder": "/workspaces/homelab-config",
+  "remoteUser": "developer",
+  "containerUser": "developer",
+  "overrideCommand": false,
+  "runArgs": [
+    "--init"
+  ],
+  "mounts": [
+    "type=volume,source=homelab-uv-cache,target=/home/developer/.cache/uv"
+  ],
+  "postCreateCommand": "python3 --version && uv --version && git --version",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "github.copilot",
+        "github.copilot-chat",
+        "github.vscode-pull-request-github",
+        "ms-python.python",
+        "ms-python.vscode-python-envs",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "redhat.ansible",
+        "hashicorp.terraform",
+        "DavidAnson.vscode-markdownlint",
+        "EditorConfig.EditorConfig",
+        "streetsidesoftware.code-spell-checker",
+        "esbenp.prettier-vscode",
+        "HirokiMukai.jules-extension"
+      ]
+    }
+  }
+}

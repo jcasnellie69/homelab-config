@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD060 -->
 # Netify Configuration Matrix (Settings & Defaults)
 #-------------------------------------------------------------------------------
 # DATE       | CHGID   | REASON
@@ -70,8 +71,8 @@ The goal is: *no ambiguity* when re-installing, auditing, or debugging Netify.
 
 This matrix is meant to be kept in sync with:
 
-- `docs/netify-config-changelog.md`  
-  → human-readable, evidence-grade record of *when* changes were made.  
+- `docs/netify-config-changelog.md`
+  → human-readable, evidence-grade record of *when* changes were made.
 - Any future HC script:
   - `scripts/hc/hc-netify-config-check.sh`
   - Which will:
@@ -80,10 +81,10 @@ This matrix is meant to be kept in sync with:
     - Emit a **PASS / WARN / FAIL** per row above
     - Update the changelog when it detects a real config delta.
 
-**Rule:**  
+**Rule:**
 If a Netify setting differs from this matrix, either:
 
-1. Update the **config** back to match the matrix, or  
+1. Update the **config** back to match the matrix, or
 2. Intentionally change policy:
    - Update this matrix (with a new CHGID row)
    - Update `netify-config-changelog.md`
