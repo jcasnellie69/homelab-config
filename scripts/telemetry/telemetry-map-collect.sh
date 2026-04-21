@@ -22,6 +22,7 @@ echo "Writing to: $DIR"
 # Listeners (catchers)
 for CT in $(pct list | awk 'NR>1{print $1}' | sort -n); do
   OUT="$DIR/listeners-${CT}.txt"
+  # shellcheck disable=SC2016
   pct exec "$CT" -- bash -lc '
     set -euo pipefail
     echo "# CT '"$CT"' ($(hostname))"
@@ -34,6 +35,7 @@ done
 # Edges (pitchers) - capture the “who is pushing to where” from common configs
 for CT in $(pct list | awk 'NR>1{print $1}' | sort -n); do
   OUT="$DIR/edges-${CT}.txt"
+  # shellcheck disable=SC2016
   pct exec "$CT" -- bash -lc '
     set -euo pipefail
     echo "# CT '"$CT"' ($(hostname))"

@@ -29,14 +29,13 @@ EOT
 SUBNET="$SUBNET_DEFAULT"
 ART_BASE="$ART_BASE_DEFAULT"
 PIHOLE_CTID="$PIHOLE_CTID_DEFAULT"
-NONINTERACTIVE=0
 
 while getopts ":s:o:p:yh" opt; do
   case "$opt" in
     s) SUBNET="$OPTARG" ;;
     o) ART_BASE="$OPTARG" ;;
     p) PIHOLE_CTID="$OPTARG" ;;
-    y) NONINTERACTIVE=1 ;;
+    y) ;;  # non-interactive mode (reserved; no prompts to skip currently)
     h) usage; exit 0 ;;
     *) usage; exit 2 ;;
   esac
@@ -89,7 +88,9 @@ run "qm_list" qm list
 run "pve_interfaces" cat /etc/network/interfaces
 
 # Capture LXC and VM configs (summary + full)
+# shellcheck disable=SC2016
 run "pct_configs_summary" bash -lc 'for id in $(pct list | awk "NR>1{print \$1}"); do echo "==== CT $id ===="; pct config "$id"; echo; done'
+# shellcheck disable=SC2016
 run "qm_configs_summary" bash -lc 'for id in $(qm list | awk "NR>1{print \$1}"); do echo "==== VM $id ===="; qm config "$id"; echo; done'
 
 # ====== Gap detection scan ======
@@ -104,6 +105,7 @@ if [[ -n "$PIHOLE_CTID" ]]; then
   run "pihole_resolv" pct exec "$PIHOLE_CTID" -- bash -lc 'cat /etc/resolv.conf'
   run "pihole_setupVars" pct exec "$PIHOLE_CTID" -- bash -lc 'ls -l /etc/pihole/setupVars.conf && sed -n "1,220p" /etc/pihole/setupVars.conf'
   run "pihole_dnsmasq_d" pct exec "$PIHOLE_CTID" -- bash -lc 'ls -la /etc/dnsmasq.d || true'
+  # shellcheck disable=SC2016
   run "pihole_dhcp_conf" pct exec "$PIHOLE_CTID" -- bash -lc 'for f in /etc/dnsmasq.d/*dhcp* /etc/dnsmasq.d/02-pihole-dhcp.conf; do [ -f "$f" ] && { echo "==== $f ===="; sed -n "1,260p" "$f"; echo; }; done'
   run "pihole_versions" pct exec "$PIHOLE_CTID" -- bash -lc 'command -v pihole >/dev/null 2>&1 && pihole -v || echo "pihole CLI not found"'
   run "pihole_status" pct exec "$PIHOLE_CTID" -- bash -lc 'command -v pihole >/dev/null 2>&1 && pihole status || echo "pihole CLI not found"'

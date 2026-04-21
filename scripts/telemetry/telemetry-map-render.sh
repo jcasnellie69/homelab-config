@@ -51,7 +51,7 @@ OUT_PNG="$DIR/telemetry-map.png"
     NAME="${NAME//[[:space:]]/}"
     IP="${IP//[[:space:]]/}"
     [[ -n "$CT" ]] || continue
-    echo "  \"CT$CT\" [label=\"CT $CT\\n$NAME\\n$IP\"];"
+    printf '  "CT%s" [label="CT %s\\n%s\\n%s"];\n' "$CT" "$CT" "$NAME" "$IP"
   done
 
   # edges: promtail->loki from edges files
