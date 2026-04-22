@@ -387,7 +387,11 @@ function User({ id }) {
   const { loading, error, data } = useQuery(GET_USER, {
     variables: { id }
   });
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   if (loading) return <p>Loading...</p>;
   return <p>{data.user.name}</p>;
 }

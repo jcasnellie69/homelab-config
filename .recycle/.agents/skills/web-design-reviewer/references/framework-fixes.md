@@ -215,7 +215,11 @@ const Container = styled.div`
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -229,11 +233,19 @@ const Card = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+<<<<<<< HEAD
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+=======
   
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
   
+>>>>>>> origin/main
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     gap: 1rem;

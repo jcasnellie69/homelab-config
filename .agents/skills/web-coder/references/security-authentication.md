@@ -114,7 +114,11 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 // Login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   // Verify credentials
   if (verifyCredentials(username, password)) {
     req.session.userId = user.id;
@@ -137,7 +141,11 @@ app.post('/logout', (req, res) => {
 });
 ```
 
+<<<<<<< HEAD
+**Pros**: Simple, server controls sessions
+=======
 **Pros**: Simple, server controls sessions  
+>>>>>>> origin/main
 **Cons**: Stateful, scalability issues, CSRF vulnerable
 
 #### 2. Token-Based Authentication (JWT)
@@ -146,7 +154,11 @@ app.post('/logout', (req, res) => {
 // Login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   if (verifyCredentials(username, password)) {
     const token = jwt.sign(
       { userId: user.id, role: user.role },
@@ -162,7 +174,11 @@ app.post('/login', (req, res) => {
 // Protected route
 app.get('/profile', (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
     const user = getUserById(decoded.userId);
@@ -173,7 +189,11 @@ app.get('/profile', (req, res) => {
 });
 ```
 
+<<<<<<< HEAD
+**Pros**: Stateless, scalable, works across domains
+=======
 **Pros**: Stateless, scalable, works across domains  
+>>>>>>> origin/main
 **Cons**: Can't revoke before expiry, size overhead
 
 #### 3. OAuth 2.0

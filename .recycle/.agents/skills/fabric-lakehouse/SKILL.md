@@ -76,7 +76,11 @@ Shortcuts create virtual links to data without copying:
 
 ### Types of Shortcuts
 
+<<<<<<< HEAD
+- **Internal**: Link to other Fabric Lakehouses/tables, cross-workspace data sharing
+=======
 - **Internal**: Link to other Fabric Lakehouses/tables, cross-workspace data sharing 
+>>>>>>> origin/main
 - **ADLS Gen2**: Link to ADLS Gen2 containers in Azure
 - **Amazon S3**: AWS S3 buckets, cross-cloud data access
 - **Dataverse**: Microsoft Dataverse, business application data
@@ -103,4 +107,7 @@ See [PySpark code](references/pyspark.md) for details.
 ## Getting data into Lakehouse
 
 See [Get data](references/getdata.md) for details.
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/main

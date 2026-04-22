@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# CT 105 (influxdb)
+=======
 # CT 105 (influxdb) 
+>>>>>>> origin/main
 [1mInfluxDB LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 

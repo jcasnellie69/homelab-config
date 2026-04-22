@@ -46,16 +46,28 @@ def operation_with_retry(max_retries=3):
 class DataverseService:
     _instance = None
     _client = None
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
+<<<<<<< HEAD
+
+    def __init__(self, org_url, credential):
+        if self._client is None:
+            self._client = DataverseClient(org_url, credential)
+
+=======
     
     def __init__(self, org_url, credential):
         if self._client is None:
             self._client = DataverseClient(org_url, credential)
     
+>>>>>>> origin/main
     @property
     def client(self):
         return self._client

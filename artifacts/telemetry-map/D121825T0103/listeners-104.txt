@@ -8,9 +8,18 @@
 # CT 104 (prometheus-pve-exporter)
 Wed Dec 17 08:04:03 PM HST 2025
 
+<<<<<<< HEAD
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      2048         0.0.0.0:9221      0.0.0.0:*    users:(("pve_exporter",pid=269,fd=6),("pve_exporter",pid=172,fd=6))
+LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=321,fd=13))
+LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=321,fd=14))
+LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=105,fd=3))
+LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=188,fd=3),("systemd",pid=1,fd=39))
+=======
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                             
 LISTEN 0      2048         0.0.0.0:9221      0.0.0.0:*    users:(("pve_exporter",pid=269,fd=6),("pve_exporter",pid=172,fd=6))
 LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=321,fd=13))                                   
 LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=321,fd=14))                                   
 LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=105,fd=3))                           
 LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=188,fd=3),("systemd",pid=1,fd=39))              
+>>>>>>> origin/main

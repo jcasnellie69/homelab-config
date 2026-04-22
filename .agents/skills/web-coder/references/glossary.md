@@ -7,7 +7,11 @@
 This glossary contains comprehensive web terms categorized across 15 domains:
 
 - HTML & Markup
+<<<<<<< HEAD
+- CSS & Styling
+=======
 - CSS & Styling  
+>>>>>>> origin/main
 - JavaScript & Programming
 - Web APIs & DOM
 - HTTP & Networking

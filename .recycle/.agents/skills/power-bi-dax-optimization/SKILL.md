@@ -18,7 +18,11 @@ When provided with a DAX formula, perform this comprehensive analysis:
 - Assess filter complexity and suggest optimizations
 - Evaluate aggregation function choices
 
+<<<<<<< HEAD
+### 2. **Readability Assessment**
+=======
 ### 2. **Readability Assessment** 
+>>>>>>> origin/main
 - Evaluate formula structure and clarity
 - Check naming conventions for measures and variables
 - Assess comment quality and documentation
@@ -44,7 +48,11 @@ For each DAX formula provided:
 ```
 Analyze the provided DAX formula and identify:
 - Performance bottlenecks
+<<<<<<< HEAD
+- Readability issues
+=======
 - Readability issues  
+>>>>>>> origin/main
 - Best practice violations
 - Potential errors or edge cases
 - Maintenance challenges
@@ -102,10 +110,17 @@ Explain all changes made:
 ## Example Output Format
 
 ```dax
+<<<<<<< HEAD
+/*
+ORIGINAL FORMULA ANALYSIS:
+- Performance Issues: [List identified issues]
+- Readability Concerns: [List readability problems]
+=======
 /* 
 ORIGINAL FORMULA ANALYSIS:
 - Performance Issues: [List identified issues]
 - Readability Concerns: [List readability problems]  
+>>>>>>> origin/main
 - Best Practice Violations: [List violations]
 
 OPTIMIZATION STRATEGY:
@@ -117,14 +132,23 @@ PERFORMANCE IMPACT:
 */
 
 -- OPTIMIZED FORMULA:
+<<<<<<< HEAD
+Optimized Measure Name =
+VAR DescriptiveVariableName =
+=======
 Optimized Measure Name = 
 VAR DescriptiveVariableName = 
+>>>>>>> origin/main
     CALCULATE(
         [Base Measure],
         -- Clear filter logic
         Table[Column] = "Value"
     )
+<<<<<<< HEAD
+VAR AnotherCalculation =
+=======
 VAR AnotherCalculation = 
+>>>>>>> origin/main
     DIVIDE(
         DescriptiveVariableName,
         [Denominator Measure]
@@ -149,7 +173,11 @@ To use this prompt effectively, provide:
    - Current performance issues experienced
 3. **Specific optimization goals** such as:
    - Performance improvement
+<<<<<<< HEAD
+   - Readability enhancement
+=======
    - Readability enhancement  
+>>>>>>> origin/main
    - Best practice compliance
    - Error handling improvement
 

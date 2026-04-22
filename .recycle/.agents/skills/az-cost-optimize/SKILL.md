@@ -9,7 +9,11 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
 
 ## Prerequisites
 - Azure MCP server configured and authenticated
+<<<<<<< HEAD
+- GitHub MCP server configured and authenticated
+=======
 - GitHub MCP server configured and authenticated  
+>>>>>>> origin/main
 - Target GitHub repository identified
 - Azure resources deployed (IaC files optional but helpful)
 - Prefer Azure MCP tools (`azmcp-*`) over direct Azure CLI when available
@@ -36,7 +40,11 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
      - Use `az resource list --subscription <id> --resource-group <name>`
    - For each resource type, use MCP tools first if possible, then CLI fallback:
      - `azmcp-cosmos-account-list --subscription <id>` - Cosmos DB accounts
+<<<<<<< HEAD
+     - `azmcp-storage-account-list --subscription <id>` - Storage accounts
+=======
      - `azmcp-storage-account-list --subscription <id>` - Storage accounts  
+>>>>>>> origin/main
      - `azmcp-monitor-workspace-list --subscription <id>` - Log Analytics workspaces
      - `azmcp-keyvault-key-list` - Key Vaults
      - `az webapp list` - Web Apps (fallback - no MCP tool available)
@@ -77,13 +85,22 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    AppServiceAppLogs
    | where TimeGenerated > ago(7d)
    | summarize avg(CpuTime) by Resource, bin(TimeGenerated, 1h)
+<<<<<<< HEAD
+
+   // Cosmos DB RU consumption
+=======
    
    // Cosmos DB RU consumption  
+>>>>>>> origin/main
    AzureDiagnostics
    | where ResourceProvider == "MICROSOFT.DOCUMENTDB"
    | where TimeGenerated > ago(7d)
    | summarize avg(RequestCharge) by Resource
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    // Storage account access patterns
    StorageBlobLogs
    | where TimeGenerated > ago(7d)
@@ -96,7 +113,11 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    - Storage access frequency
    - Function execution rates
 
+<<<<<<< HEAD
+4. **VALIDATE CURRENT COSTS**:
+=======
 4. **VALIDATE CURRENT COSTS**: 
+>>>>>>> origin/main
    - Using the SKU/tier configurations discovered in Step 2
    - Look up current Azure pricing at https://azure.microsoft.com/pricing/ or use `az billing` commands
    - Document: Resource → Current SKU → Estimated monthly cost
@@ -107,11 +128,24 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
 **Tools**: Local analysis using collected data
 **Process**:
 1. **Apply Optimization Patterns** based on resource types found:
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    **Compute Optimizations**:
    - App Service Plans: Right-size based on CPU/memory usage
    - Function Apps: Premium → Consumption plan for low usage
    - Virtual Machines: Scale down oversized instances
+<<<<<<< HEAD
+
+   **Database Optimizations**:
+   - Cosmos DB:
+     - Provisioned → Serverless for variable workloads
+     - Right-size RU/s based on actual usage
+   - SQL Database: Right-size service tiers based on DTU usage
+
+=======
    
    **Database Optimizations**:
    - Cosmos DB: 
@@ -119,24 +153,37 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
      - Right-size RU/s based on actual usage
    - SQL Database: Right-size service tiers based on DTU usage
    
+>>>>>>> origin/main
    **Storage Optimizations**:
    - Implement lifecycle policies (Hot → Cool → Archive)
    - Consolidate redundant storage accounts
    - Right-size storage tiers based on access patterns
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    **Infrastructure Optimizations**:
    - Remove unused/redundant resources
    - Implement auto-scaling where beneficial
    - Schedule non-production environments
 
+<<<<<<< HEAD
+2. **Calculate Evidence-Based Savings**:
+=======
 2. **Calculate Evidence-Based Savings**: 
+>>>>>>> origin/main
    - Current validated cost → Target cost = Savings
    - Document pricing source for both current and target configurations
 
 3. **Calculate Priority Score** for each recommendation:
    ```
    Priority Score = (Value Score × Monthly Savings) / (Risk Score × Implementation Days)
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    High Priority: Score > 20
    Medium Priority: Score 5-20
    Low Priority: Score < 5
@@ -154,6 +201,16 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
 1. **Display Optimization Summary**:
    ```
    🎯 Azure Cost Optimization Summary
+<<<<<<< HEAD
+
+   📊 Analysis Results:
+   • Total Resources Analyzed: X
+   • Current Monthly Cost: $X
+   • Potential Monthly Savings: $Y
+   • Optimization Opportunities: Z
+   • High Priority Items: N
+
+=======
    
    📊 Analysis Results:
    • Total Resources Analyzed: X
@@ -162,16 +219,25 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    • Optimization Opportunities: Z
    • High Priority Items: N
    
+>>>>>>> origin/main
    🏆 Recommendations:
    1. [Resource]: [Current SKU] → [Target SKU] = $X/month savings - [Risk Level] | [Implementation Effort]
    2. [Resource]: [Current Config] → [Target Config] = $Y/month savings - [Risk Level] | [Implementation Effort]
    3. [Resource]: [Current Config] → [Target Config] = $Z/month savings - [Risk Level] | [Implementation Effort]
    ... and so on
+<<<<<<< HEAD
+
+   💡 This will create:
+   • Y individual GitHub issues (one per optimization)
+   • 1 EPIC issue to coordinate implementation
+
+=======
    
    💡 This will create:
    • Y individual GitHub issues (one per optimization)
    • 1 EPIC issue to coordinate implementation
    
+>>>>>>> origin/main
    ❓ Proceed with creating GitHub issues? (y/n)
    ```
 
@@ -184,6 +250,22 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
 1. **Create Individual Issues** using this template:
 
    **Title Format**: `[COST-OPT] [Resource Type] - [Brief Description] - $X/month savings`
+<<<<<<< HEAD
+
+   **Body Template**:
+   ```markdown
+   ## 💰 Cost Optimization: [Brief Title]
+
+   **Monthly Savings**: $X | **Risk Level**: [Low/Medium/High] | **Implementation Effort**: X days
+
+   ### 📋 Description
+   [Clear explanation of the optimization and why it's needed]
+
+   ### 🔧 Implementation
+
+   **IaC Files Detected**: [Yes/No - based on file_search results]
+
+=======
    
    **Body Template**:
    ```markdown
@@ -198,33 +280,54 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    
    **IaC Files Detected**: [Yes/No - based on file_search results]
    
+>>>>>>> origin/main
    ```bash
    # If IaC files found: Show IaC modifications + deployment
    # File: infrastructure/bicep/modules/app-service.bicep
    # Change: sku.name: 'S3' → 'B2'
    az deployment group create --resource-group [rg] --template-file infrastructure/bicep/main.bicep
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    # If no IaC files: Direct Azure CLI commands + warning
    # ⚠️ No IaC files found. If they exist elsewhere, modify those instead.
    az appservice plan update --name [plan] --sku B2
    ```
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    ### 📊 Evidence
    - Current Configuration: [details]
    - Usage Pattern: [evidence from monitoring data]
    - Cost Impact: $X/month → $Y/month
    - Best Practice Alignment: [reference to Azure best practices if applicable]
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    ### ✅ Validation Steps
    - [ ] Test in non-production environment
    - [ ] Verify no performance degradation
    - [ ] Confirm cost reduction in Azure Cost Management
    - [ ] Update monitoring and alerts if needed
+<<<<<<< HEAD
+
+   ### ⚠️ Risks & Considerations
+   - [Risk 1 and mitigation]
+   - [Risk 2 and mitigation]
+
+=======
    
    ### ⚠️ Risks & Considerations
    - [Risk 1 and mitigation]
    - [Risk 2 and mitigation]
    
+>>>>>>> origin/main
    **Priority Score**: X | **Value**: X/10 | **Risk**: X/10
    ```
 
@@ -236,6 +339,23 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
 1. **Create EPIC Issue**:
 
    **Title**: `[EPIC] Azure Cost Optimization Initiative - $X/month potential savings`
+<<<<<<< HEAD
+
+   **Body Template**:
+   ```markdown
+   # 🎯 Azure Cost Optimization EPIC
+
+   **Total Potential Savings**: $X/month | **Implementation Timeline**: X weeks
+
+   ## 📊 Executive Summary
+   - **Resources Analyzed**: X
+   - **Optimization Opportunities**: Y
+   - **Total Monthly Savings Potential**: $X
+   - **High Priority Items**: N
+
+   ## 🏗️ Current Architecture Overview
+
+=======
    
    **Body Template**:
    ```markdown
@@ -251,12 +371,29 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    
    ## 🏗️ Current Architecture Overview
    
+>>>>>>> origin/main
    ```mermaid
    graph TB
        subgraph "Resource Group: [name]"
            [Generated architecture diagram showing current resources and costs]
        end
    ```
+<<<<<<< HEAD
+
+   ## 📋 Implementation Tracking
+
+   ### 🚀 High Priority (Implement First)
+   - [ ] #[issue-number]: [Title] - $X/month savings
+   - [ ] #[issue-number]: [Title] - $X/month savings
+
+   ### ⚡ Medium Priority
+   - [ ] #[issue-number]: [Title] - $X/month savings
+   - [ ] #[issue-number]: [Title] - $X/month savings
+
+   ### 🔄 Low Priority (Nice to Have)
+   - [ ] #[issue-number]: [Title] - $X/month savings
+
+=======
    
    ## 📋 Implementation Tracking
    
@@ -271,17 +408,26 @@ This workflow analyzes Infrastructure-as-Code (IaC) files and Azure resources to
    ### 🔄 Low Priority (Nice to Have)
    - [ ] #[issue-number]: [Title] - $X/month savings
    
+>>>>>>> origin/main
    ## 📈 Progress Tracking
    - **Completed**: 0 of Y optimizations
    - **Savings Realized**: $0 of $X/month
    - **Implementation Status**: Not Started
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    ## 🎯 Success Criteria
    - [ ] All high-priority optimizations implemented
    - [ ] >80% of estimated savings realized
    - [ ] No performance degradation observed
    - [ ] Cost monitoring dashboard updated
+<<<<<<< HEAD
+
+=======
    
+>>>>>>> origin/main
    ## 📝 Notes
    - Review and update this EPIC as issues are completed
    - Monitor actual vs. estimated savings

@@ -1,4 +1,16 @@
 === LXC Containers (pct list) =====================================
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        running                 watchyourlan
+109        running                 pihole
+110        running                 ntrop.pve.local
+=======
 VMID       Status     Lock         Name                
 100        running                 netbox              
 102        running                 grafana             
@@ -10,3 +22,4 @@ VMID       Status     Lock         Name
 109        running                 pihole              
 110        running                 ntrop.pve.local     
 
+>>>>>>> origin/main
