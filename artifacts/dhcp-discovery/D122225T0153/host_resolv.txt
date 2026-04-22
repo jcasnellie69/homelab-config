@@ -1,7 +1,0 @@
-### CMD: cat /etc/resolv.conf
-### WHEN: 2025-12-22T01:53:45-05:00
-### HOST: pve.primary.node
-
-# Managed by pve-dns-hardening.sh
-nameserver 192.168.4.208
-search lan
