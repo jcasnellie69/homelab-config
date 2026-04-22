@@ -241,6 +241,14 @@
   },
   "git.autofetch": true,
   "chat.editing.autoAcceptDelay": 1,
+  "docker.languageserver.diagnostics.ignoreCodes": [
+    "recommended_tag"
+  ],
+  "cSpell.words": [
+    "noninteractive",
+    "NOPASSWD",
+    "robbyrussell"
+  ],
   "githubPullRequests.pullRequestDescription": "commit",
   "gitlens.launchpad.indicator.polling.interval": 2,
   "gitlens.launchpad.allowMultiple": false

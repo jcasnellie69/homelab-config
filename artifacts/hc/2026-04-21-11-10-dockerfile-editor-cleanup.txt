@@ -1,0 +1,15 @@
+Change summary:
+- Kept devcontainer base image as stable tag in `.devcontainer/Dockerfile` (`debian:bookworm-slim`).
+- Added Docker language server ignore rule for `recommended_tag` in `.vscode/settings.json`.
+- Added intentional domain words to workspace `cSpell` dictionary in `.vscode/settings.json`:
+  - noninteractive
+  - NOPASSWD
+  - robbyrussell
+
+Why:
+- Removes editor noise from Docker recommendation + spelling false positives.
+- Avoids introducing a digest-staleness warning while improving workspace hygiene.
+
+Expected result:
+- Docker `recommended_tag` info diagnostic is ignored in this workspace.
+- cSpell unknown-word warnings for the listed tokens are cleared.
