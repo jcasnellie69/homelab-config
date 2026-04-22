@@ -1,0 +1,20 @@
+Change summary:
+- Updated AGENTS.md to correct agent definition path from `.jules/agents/` to `.github/agents/`.
+- Added a concise "AI Coding Agent Quickstart" section to AGENTS.md.
+- Fixed AGENTS.md fenced code blocks to include explicit language tags for markdown lint compliance.
+- Added a concise "Fast Start for AI Coding Agents" section to .github/copilot-instructions.md.
+
+Why:
+- Align chat customization guidance with current repository structure and reduce onboarding ambiguity for AI coding agents.
+
+Validation run:
+- Task: verify workspace automation
+- Result:
+  - [health] missing markdown links: 0
+  - [health] json errors: 0
+  - [health] secret findings: 0
+  - [metadata] wrote summary: artifacts/automation/pipeline-metadata-summary.json
+  - [gitops-monitor] wrote report: artifacts/automation/workspace-gitops-monitor-report.json
+
+Notes:
+- Only chat customization files were edited for this request, plus this required evidence artifact.

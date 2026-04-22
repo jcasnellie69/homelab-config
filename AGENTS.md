@@ -24,7 +24,7 @@ All agent processes must include the word `agent`.
 
 Pattern:
 
-```
+```text
 <domain>-<role>-agent[-mode]
 ```
 
@@ -245,7 +245,7 @@ Standard report paths:
 
 Agents should write to:
 
-```
+```text
 latest.md
 ```
 
@@ -265,9 +265,21 @@ Jules automatically reads this file to understand:
 When running tasks:
 
 * use clear, scoped prompts
-* reference agent definitions under `.jules/agents/`
+* reference agent definitions under `.github/agents/`
 * prefer bounded, repeatable work
 * avoid open-ended “improve everything” tasks
+
+---
+
+# AI Coding Agent Quickstart
+
+For Copilot/Codex/Jules runs in this repository:
+
+* read this file and `.github/copilot-instructions.md` first
+* treat `docs/index.md` as the top-level docs entry and link to docs rather than copying content
+* prefer the VS Code task `verify workspace automation` for baseline validation
+* keep changes small and auditable, and add evidence under `artifacts/hc/`
+* use agent definitions from `.github/agents/` as the source of truth
 
 ---
 

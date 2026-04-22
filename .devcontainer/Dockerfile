@@ -12,7 +12,7 @@ RUN apt update \
 
 RUN useradd -m -s /usr/bin/zsh ${USER} \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/${USER} \
-    && chmod 0440 /etc/sudoers.d/${USER}
+    && chmod 0440 /etc/sudoers.d/${USER} # hadolint ignore=SC2086
 
 USER ${USER}
 ARG HOME=/home/${USER}

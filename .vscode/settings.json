@@ -156,6 +156,51 @@
         "copilot/grok-code-fast-1",
         "copilot/oswe-vscode-prime"
       ]
+    },
+    "z:/.vscode/mcp.json: homelab-klavis-strata": {
+      "allowedModels": [
+        "copilot/auto",
+        "copilotcli/claude-sonnet-4.6",
+        "copilotcli/claude-haiku-4.5",
+        "claude-code/claude-haiku-4.5",
+        "copilot/claude-haiku-4.5",
+        "copilotcli/claude-opus-4.5",
+        "claude-code/claude-opus-4.5",
+        "copilot/claude-opus-4.5",
+        "copilotcli/claude-opus-4.6",
+        "claude-code/claude-opus-4.6",
+        "copilot/claude-opus-4.6",
+        "copilotcli/claude-sonnet-4",
+        "claude-code/claude-sonnet-4",
+        "copilot/claude-sonnet-4",
+        "copilotcli/claude-sonnet-4.5",
+        "claude-code/claude-sonnet-4.5",
+        "copilot/claude-sonnet-4.5",
+        "claude-code/claude-sonnet-4.6",
+        "copilot/claude-sonnet-4.6",
+        "copilot/gemini-2.5-pro",
+        "copilot/gemini-3-flash-preview",
+        "copilot/gemini-3.1-pro-preview",
+        "copilotcli/gpt-4.1",
+        "copilot/gpt-4.1",
+        "copilot/gpt-4o",
+        "copilotcli/gpt-5-mini",
+        "copilot/gpt-5-mini",
+        "copilotcli/gpt-5.1",
+        "copilot/gpt-5.1",
+        "copilotcli/gpt-5.2",
+        "copilot/gpt-5.2",
+        "copilotcli/gpt-5.2-codex",
+        "copilot/gpt-5.2-codex",
+        "copilotcli/gpt-5.3-codex",
+        "copilot/gpt-5.3-codex",
+        "copilotcli/gpt-5.4",
+        "copilot/gpt-5.4",
+        "copilotcli/gpt-5.4-mini",
+        "copilot/gpt-5.4-mini",
+        "copilot/grok-code-fast-1",
+        "copilot/oswe-vscode-prime"
+      ]
     }
   },
   "chat.mcp.discovery.enabled": {
@@ -196,5 +241,7 @@
   },
   "git.autofetch": true,
   "chat.editing.autoAcceptDelay": 1,
-  "githubPullRequests.pullRequestDescription": "commit"
+  "githubPullRequests.pullRequestDescription": "commit",
+  "gitlens.launchpad.indicator.polling.interval": 2,
+  "gitlens.launchpad.allowMultiple": false
 }

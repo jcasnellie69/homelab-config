@@ -55,3 +55,10 @@ This repository manages homelab configuration for:
 - Document all infrastructure changes with artifacts
 - Maintain evidence trail for auditing and rollback purposes
 - Use descriptive names for artifacts that indicate their purpose
+
+## Fast Start for AI Coding Agents
+
+- Read `AGENTS.md` first for repository operating boundaries.
+- Use `docs/index.md` as the documentation hub and link to detailed docs instead of duplicating content.
+- Prefer the workspace validation task `verify workspace automation` (see `.vscode/tasks.json`) before concluding maintenance changes.
+- Agent definition files are located in `.github/agents/`.
