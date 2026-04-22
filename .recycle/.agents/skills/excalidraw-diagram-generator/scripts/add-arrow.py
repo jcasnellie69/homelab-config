@@ -77,7 +77,11 @@ def create_arrow(
 ) -> list:
     """
     Create an arrow element.
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     Args:
         from_x: Starting X coordinate
         from_y: Starting Y coordinate
@@ -86,12 +90,20 @@ def create_arrow(
         style: Line style (solid, dashed, dotted)
         color: Arrow color
         label: Optional text label on the arrow
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     Returns:
         List of elements (arrow and optional label)
     """
     elements = []
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     # Arrow element
     arrow = {
         "id": generate_unique_id(),
@@ -133,12 +145,20 @@ def create_arrow(
         "lastCommittedPoint": None
     }
     elements.append(arrow)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     # Optional label
     if label:
         mid_x = (from_x + to_x) / 2 - (len(label) * 5)
         mid_y = (from_y + to_y) / 2 - 10
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         label_element = {
             "id": generate_unique_id(),
             "type": "text",
@@ -177,7 +197,11 @@ def create_arrow(
             "lineHeight": 1.25
         }
         elements.append(label_element)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     return elements
 
 
@@ -193,7 +217,11 @@ def add_arrow_to_diagram(
 ) -> None:
     """
     Add an arrow to an Excalidraw diagram.
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     Args:
         diagram_path: Path to the Excalidraw diagram file
         from_x: Starting X coordinate
@@ -206,14 +234,32 @@ def add_arrow_to_diagram(
     """
     print(f"Creating arrow from ({from_x}, {from_y}) to ({to_x}, {to_y})")
     arrow_elements = create_arrow(from_x, from_y, to_x, to_y, style, color, label)
+<<<<<<< HEAD
+
+    if label:
+        print(f"  With label: '{label}'")
+
+=======
     
     if label:
         print(f"  With label: '{label}'")
     
+>>>>>>> origin/main
     # Load diagram
     print(f"Loading diagram: {diagram_path}")
     with open(diagram_path, 'r', encoding='utf-8') as f:
         diagram = json.load(f)
+<<<<<<< HEAD
+
+    # Add arrow elements
+    if 'elements' not in diagram:
+        diagram['elements'] = []
+
+    original_count = len(diagram['elements'])
+    diagram['elements'].extend(arrow_elements)
+    print(f"  Added {len(arrow_elements)} elements (total: {original_count} -> {len(diagram['elements'])})")
+
+=======
     
     # Add arrow elements
     if 'elements' not in diagram:
@@ -223,11 +269,16 @@ def add_arrow_to_diagram(
     diagram['elements'].extend(arrow_elements)
     print(f"  Added {len(arrow_elements)} elements (total: {original_count} -> {len(diagram['elements'])})")
     
+>>>>>>> origin/main
     # Save diagram
     print(f"Saving diagram")
     with open(diagram_path, 'w', encoding='utf-8') as f:
         json.dump(diagram, f, indent=2, ensure_ascii=False)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     print(f"✓ Successfully added arrow to diagram")
 
 
@@ -244,20 +295,32 @@ def main():
         print("  python add-arrow.py diagram.excalidraw 300 200 500 300")
         print("  python add-arrow.py diagram.excalidraw 300 200 500 300 --label 'HTTP'")
         sys.exit(1)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     diagram_path = Path(sys.argv[1])
     from_x = float(sys.argv[2])
     from_y = float(sys.argv[3])
     to_x = float(sys.argv[4])
     to_y = float(sys.argv[5])
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     # Parse optional arguments
     style = "solid"
     color = "#1e1e1e"
     label = None
     # Default: use edit suffix to avoid editor overwrite issues
     use_edit_suffix = True
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     i = 6
     while i < len(sys.argv):
         if sys.argv[i] == '--style':
@@ -293,12 +356,20 @@ def main():
         else:
             print(f"Error: Unknown option: {sys.argv[i]}")
             sys.exit(1)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     # Validate inputs
     if not diagram_path.exists():
         print(f"Error: Diagram file not found: {diagram_path}")
         sys.exit(1)
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     try:
         work_path, final_path = prepare_edit_path(diagram_path, use_edit_suffix)
         add_arrow_to_diagram(work_path, from_x, from_y, to_x, to_y, style, color, label)

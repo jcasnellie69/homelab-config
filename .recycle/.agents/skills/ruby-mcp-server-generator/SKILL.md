@@ -92,7 +92,11 @@ end
 module MyMcpServer
   class Server
     attr_reader :mcp_server
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     def initialize(server_context: {})
       @mcp_server = MCP::Server.new(
         name: 'my_mcp_server',
@@ -109,6 +113,16 @@ module MyMcpServer
         ],
         server_context: server_context
       )
+<<<<<<< HEAD
+
+      setup_resource_handler
+    end
+
+    def handle_json(json_string)
+      mcp_server.handle_json(json_string)
+    end
+
+=======
       
       setup_resource_handler
     end
@@ -117,13 +131,20 @@ module MyMcpServer
       mcp_server.handle_json(json_string)
     end
     
+>>>>>>> origin/main
     def start_stdio
       transport = MCP::Server::Transports::StdioTransport.new(mcp_server)
       transport.open
     end
+<<<<<<< HEAD
+
+    private
+
+=======
     
     private
     
+>>>>>>> origin/main
     def setup_resource_handler
       mcp_server.resources_read_handler do |params|
         Resources::ExampleResource.read(params[:uri])
@@ -143,7 +164,11 @@ module MyMcpServer
     class GreetTool < MCP::Tool
       tool_name 'greet'
       description 'Generate a greeting message'
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       input_schema(
         properties: {
           name: {
@@ -153,7 +178,11 @@ module MyMcpServer
         },
         required: ['name']
       )
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       output_schema(
         properties: {
           message: { type: 'string' },
@@ -161,21 +190,37 @@ module MyMcpServer
         },
         required: ['message', 'timestamp']
       )
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       annotations(
         read_only_hint: true,
         idempotent_hint: true
       )
+<<<<<<< HEAD
+
+      def self.call(name:, server_context:)
+        timestamp = Time.now.iso8601
+        message = "Hello, #{name}! Welcome to MCP."
+
+=======
       
       def self.call(name:, server_context:)
         timestamp = Time.now.iso8601
         message = "Hello, #{name}! Welcome to MCP."
         
+>>>>>>> origin/main
         structured_data = {
           message: message,
           timestamp: timestamp
         }
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         MCP::Tool::Response.new(
           [{ type: 'text', text: message }],
           structured_content: structured_data
@@ -196,7 +241,11 @@ module MyMcpServer
     class CalculateTool < MCP::Tool
       tool_name 'calculate'
       description 'Perform mathematical calculations'
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       input_schema(
         properties: {
           operation: {
@@ -215,7 +264,11 @@ module MyMcpServer
         },
         required: ['operation', 'a', 'b']
       )
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       output_schema(
         properties: {
           result: { type: 'number' },
@@ -223,12 +276,20 @@ module MyMcpServer
         },
         required: ['result', 'operation']
       )
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       annotations(
         read_only_hint: true,
         idempotent_hint: true
       )
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       def self.call(operation:, a:, b:, server_context:)
         result = case operation
                  when 'add' then a + b
@@ -240,18 +301,30 @@ module MyMcpServer
                  else
                    return error_response("Unknown operation: #{operation}")
                  end
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         structured_data = {
           result: result,
           operation: operation
         }
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         MCP::Tool::Response.new(
           [{ type: 'text', text: "Result: #{result}" }],
           structured_content: structured_data
         )
       end
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       def self.error_response(message)
         MCP::Tool::Response.new(
           [{ type: 'text', text: message }],
@@ -273,7 +346,11 @@ module MyMcpServer
     class CodeReviewPrompt < MCP::Prompt
       prompt_name 'code_review'
       description 'Generate a code review prompt'
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       arguments [
         MCP::Prompt::Argument.new(
           name: 'language',
@@ -286,16 +363,28 @@ module MyMcpServer
           required: false
         )
       ]
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       meta(
         version: '1.0',
         category: 'development'
       )
+<<<<<<< HEAD
+
+      def self.template(args, server_context:)
+        language = args['language'] || 'Ruby'
+        focus = args['focus'] || 'general quality'
+
+=======
       
       def self.template(args, server_context:)
         language = args['language'] || 'Ruby'
         focus = args['focus'] || 'general quality'
         
+>>>>>>> origin/main
         MCP::Prompt::Result.new(
           description: "Code review for #{language} with focus on #{focus}",
           messages: [
@@ -334,7 +423,11 @@ module MyMcpServer
   module Resources
     class ExampleResource
       RESOURCE_URI = 'resource://data/example'
+<<<<<<< HEAD
+
+=======
       
+>>>>>>> origin/main
       def self.resource
         MCP::Resource.new(
           uri: RESOURCE_URI,
@@ -343,16 +436,27 @@ module MyMcpServer
           mime_type: 'application/json'
         )
       end
+<<<<<<< HEAD
+
+      def self.read(uri)
+        return [] unless uri == RESOURCE_URI
+
+=======
       
       def self.read(uri)
         return [] unless uri == RESOURCE_URI
         
+>>>>>>> origin/main
         data = {
           message: 'Example resource data',
           timestamp: Time.now.iso8601,
           version: MyMcpServer::VERSION
         }
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         [{
           uri: uri,
           mimeType: 'application/json',
@@ -415,6 +519,17 @@ module MyMcpServer
           name: 'Ruby',
           server_context: {}
         )
+<<<<<<< HEAD
+
+        refute response.is_error
+        assert_equal 1, response.content.length
+        assert_match(/Ruby/, response.content.first[:text])
+
+        assert response.structured_content
+        assert_equal 'Hello, Ruby! Welcome to MCP.', response.structured_content[:message]
+      end
+
+=======
         
         refute response.is_error
         assert_equal 1, response.content.length
@@ -424,12 +539,17 @@ module MyMcpServer
         assert_equal 'Hello, Ruby! Welcome to MCP.', response.structured_content[:message]
       end
       
+>>>>>>> origin/main
       def test_output_schema_validation
         response = GreetTool.call(
           name: 'Test',
           server_context: {}
         )
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         assert response.structured_content.key?(:message)
         assert response.structured_content.key?(:timestamp)
       end
@@ -455,11 +575,19 @@ module MyMcpServer
           b: 3,
           server_context: {}
         )
+<<<<<<< HEAD
+
+        refute response.is_error
+        assert_equal 8, response.structured_content[:result]
+      end
+
+=======
         
         refute response.is_error
         assert_equal 8, response.structured_content[:result]
       end
       
+>>>>>>> origin/main
       def test_subtraction
         response = CalculateTool.call(
           operation: 'subtract',
@@ -467,11 +595,19 @@ module MyMcpServer
           b: 4,
           server_context: {}
         )
+<<<<<<< HEAD
+
+        refute response.is_error
+        assert_equal 6, response.structured_content[:result]
+      end
+
+=======
         
         refute response.is_error
         assert_equal 6, response.structured_content[:result]
       end
       
+>>>>>>> origin/main
       def test_multiplication
         response = CalculateTool.call(
           operation: 'multiply',
@@ -479,11 +615,19 @@ module MyMcpServer
           b: 7,
           server_context: {}
         )
+<<<<<<< HEAD
+
+        refute response.is_error
+        assert_equal 42, response.structured_content[:result]
+      end
+
+=======
         
         refute response.is_error
         assert_equal 42, response.structured_content[:result]
       end
       
+>>>>>>> origin/main
       def test_division
         response = CalculateTool.call(
           operation: 'divide',
@@ -491,11 +635,19 @@ module MyMcpServer
           b: 3,
           server_context: {}
         )
+<<<<<<< HEAD
+
+        refute response.is_error
+        assert_equal 5.0, response.structured_content[:result]
+      end
+
+=======
         
         refute response.is_error
         assert_equal 5.0, response.structured_content[:result]
       end
       
+>>>>>>> origin/main
       def test_division_by_zero
         response = CalculateTool.call(
           operation: 'divide',
@@ -503,11 +655,19 @@ module MyMcpServer
           b: 0,
           server_context: {}
         )
+<<<<<<< HEAD
+
+        assert response.is_error
+        assert_match(/Division by zero/, response.content.first[:text])
+      end
+
+=======
         
         assert response.is_error
         assert_match(/Division by zero/, response.content.first[:text])
       end
       
+>>>>>>> origin/main
       def test_unknown_operation
         response = CalculateTool.call(
           operation: 'modulo',
@@ -515,7 +675,11 @@ module MyMcpServer
           b: 3,
           server_context: {}
         )
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         assert response.is_error
         assert_match(/Unknown operation/, response.content.first[:text])
       end

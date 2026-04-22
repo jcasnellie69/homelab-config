@@ -17,7 +17,11 @@ When reviewing a Power BI data model, conduct analysis across these key dimensio
 ```
 Star Schema Compliance:
 □ Clear separation of fact and dimension tables
+<<<<<<< HEAD
+□ Proper grain consistency within fact tables
+=======
 □ Proper grain consistency within fact tables  
+>>>>>>> origin/main
 □ Dimension tables contain descriptive attributes
 □ Minimal snowflaking (justified when present)
 □ Appropriate use of bridge tables for many-to-many
@@ -78,7 +82,11 @@ Fact Table Analysis:
 - Size and growth projections
 - Historical data management
 
+<<<<<<< HEAD
+Dimension Table Analysis:
+=======
 Dimension Table Analysis:  
+>>>>>>> origin/main
 - Attribute completeness and quality
 - Hierarchy design and implementation
 - Slowly changing dimension handling
@@ -224,7 +232,11 @@ Model Overview:
 
 Key Findings:
 - Critical issues requiring immediate attention
+<<<<<<< HEAD
+- Performance optimization opportunities
+=======
 - Performance optimization opportunities  
+>>>>>>> origin/main
 - Best practice compliance assessment
 - Security and governance status
 
@@ -235,7 +247,11 @@ Priority Recommendations:
 
 Implementation Roadmap:
 - Quick wins (1-2 weeks)
+<<<<<<< HEAD
+- Short-term improvements (1-3 months)
+=======
 - Short-term improvements (1-3 months)  
+>>>>>>> origin/main
 - Long-term strategic enhancements (3-12 months)
 ```
 
@@ -250,7 +266,11 @@ Implementation Roadmap:
    □ Naming convention compliance
    □ Data type optimization suggestions
 
+<<<<<<< HEAD
+2. Performance Architecture
+=======
 2. Performance Architecture  
+>>>>>>> origin/main
    □ Storage mode strategy evaluation
    □ Size optimization recommendations
    □ Query performance enhancement opportunities
@@ -309,7 +329,11 @@ Implementation Guidance:
 ```
 Architecture & Design:
 □ Complete schema architecture analysis
+<<<<<<< HEAD
+□ Detailed relationship design review
+=======
 □ Detailed relationship design review  
+>>>>>>> origin/main
 □ Storage mode strategy evaluation
 □ Performance optimization assessment
 □ Scalability planning review
@@ -343,7 +367,11 @@ Governance & Security:
 Focus Areas:
 - Functionality completeness
 - Performance validation
+<<<<<<< HEAD
+- Security implementation
+=======
 - Security implementation  
+>>>>>>> origin/main
 - User acceptance criteria
 - Go-live readiness assessment
 

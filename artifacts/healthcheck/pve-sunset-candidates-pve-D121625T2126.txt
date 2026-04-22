@@ -28,6 +28,19 @@ Hugetlb:         8388608 kB
 LXC LIST
 
 ============================================================
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        running                 watchyourlan
+109        running                 pihole
+110        stopped                 ntrop.pve.local
+111        stopped                 ansible
+=======
 VMID       Status     Lock         Name                
 100        running                 netbox              
 102        running                 grafana             
@@ -39,6 +52,7 @@ VMID       Status     Lock         Name
 109        running                 pihole              
 110        stopped                 ntrop.pve.local     
 111        stopped                 ansible             
+>>>>>>> origin/main
 
 
 ============================================================
@@ -155,6 +169,38 @@ RUNNING SERVICES ON HOST (data-path clues)
 PORT LISTENERS ON HOST (high-signal services)
 
 ============================================================
+<<<<<<< HEAD
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0          127.0.0.1:8125       0.0.0.0:*    users:(("netdata",pid=726428,fd=383))
+udp   UNCONN 0      0            0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=843,fd=5),("systemd",pid=1,fd=48))
+udp   UNCONN 0      0      192.168.4.255:137        0.0.0.0:*    users:(("nmbd",pid=1118,fd=16))
+udp   UNCONN 0      0      192.168.4.249:137        0.0.0.0:*    users:(("nmbd",pid=1118,fd=15))
+udp   UNCONN 0      0            0.0.0.0:137        0.0.0.0:*    users:(("nmbd",pid=1118,fd=13))
+udp   UNCONN 0      0      192.168.4.255:138        0.0.0.0:*    users:(("nmbd",pid=1118,fd=18))
+udp   UNCONN 0      0      192.168.4.249:138        0.0.0.0:*    users:(("nmbd",pid=1118,fd=17))
+udp   UNCONN 0      0            0.0.0.0:138        0.0.0.0:*    users:(("nmbd",pid=1118,fd=14))
+udp   UNCONN 0      0          127.0.0.1:323        0.0.0.0:*    users:(("chronyd",pid=1068,fd=5))
+udp   UNCONN 0      0               [::]:111           [::]:*    users:(("rpcbind",pid=843,fd=7),("systemd",pid=1,fd=51))
+udp   UNCONN 0      0              [::1]:323           [::]:*    users:(("chronyd",pid=1068,fd=6))
+tcp   LISTEN 0      128        127.0.0.1:4317       0.0.0.0:*    users:(("otel-plugin",pid=727193,fd=9))
+tcp   LISTEN 0      4096       127.0.0.1:8125       0.0.0.0:*    users:(("netdata",pid=726428,fd=422))
+tcp   LISTEN 0      4096         0.0.0.0:19999      0.0.0.0:*    users:(("netdata",pid=726428,fd=6))
+tcp   LISTEN 0      4096       127.0.0.1:85         0.0.0.0:*    users:(("pvedaemon worke",pid=1615604,fd=6),("pvedaemon worke",pid=360223,fd=6),("pvedaemon worke",pid=332283,fd=6),("pvedaemon",pid=1326,fd=6))
+tcp   LISTEN 0      100        127.0.0.1:25         0.0.0.0:*    users:(("master",pid=1274,fd=13))
+tcp   LISTEN 0      50           0.0.0.0:139        0.0.0.0:*    users:(("smbd",pid=1190,fd=31))
+tcp   LISTEN 0      4096         0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=843,fd=4),("systemd",pid=1,fd=47))
+tcp   LISTEN 0      128          0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=1051,fd=3))
+tcp   LISTEN 0      50           0.0.0.0:445        0.0.0.0:*    users:(("smbd",pid=1190,fd=30))
+tcp   LISTEN 0      4096               *:8080             *:*    users:(("filebrowser",pid=1017,fd=7))
+tcp   LISTEN 0      4096               *:8006             *:*    users:(("pveproxy worker",pid=1927876,fd=6),("pveproxy worker",pid=1914054,fd=6),("pveproxy worker",pid=1914050,fd=6),("pveproxy worker",pid=1818464,fd=6),("pveproxy",pid=1341,fd=6))
+tcp   LISTEN 0      100            [::1]:25            [::]:*    users:(("master",pid=1274,fd=14))
+tcp   LISTEN 0      4096            [::]:19999         [::]:*    users:(("netdata",pid=726428,fd=8))
+tcp   LISTEN 0      4096               *:3128             *:*    users:(("spiceproxy work",pid=140736,fd=6),("spiceproxy",pid=1350,fd=6))
+tcp   LISTEN 0      50              [::]:139           [::]:*    users:(("smbd",pid=1190,fd=29))
+tcp   LISTEN 0      4096            [::]:111           [::]:*    users:(("rpcbind",pid=843,fd=6),("systemd",pid=1,fd=49))
+tcp   LISTEN 0      128             [::]:22            [::]:*    users:(("sshd",pid=1051,fd=4))
+tcp   LISTEN 0      50              [::]:445           [::]:*    users:(("smbd",pid=1190,fd=28))
+=======
 Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                                                                                                                                                                
 udp   UNCONN 0      0          127.0.0.1:8125       0.0.0.0:*    users:(("netdata",pid=726428,fd=383))                                                                                                                                                 
 udp   UNCONN 0      0            0.0.0.0:111        0.0.0.0:*    users:(("rpcbind",pid=843,fd=5),("systemd",pid=1,fd=48))                                                                                                                              
@@ -185,6 +231,7 @@ tcp   LISTEN 0      50              [::]:139           [::]:*    users:(("smbd",
 tcp   LISTEN 0      4096            [::]:111           [::]:*    users:(("rpcbind",pid=843,fd=6),("systemd",pid=1,fd=49))                                                                                                                              
 tcp   LISTEN 0      128             [::]:22            [::]:*    users:(("sshd",pid=1051,fd=4))                                                                                                                                                        
 tcp   LISTEN 0      50              [::]:445           [::]:*    users:(("smbd",pid=1190,fd=28))                                                                                                                                                       
+>>>>>>> origin/main
 
 
 ============================================================

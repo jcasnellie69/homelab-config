@@ -162,11 +162,19 @@ repositories {
 dependencies {
     // MCP Java SDK
     implementation("io.modelcontextprotocol.sdk:mcp:0.14.1")
+<<<<<<< HEAD
+
+    // Logging
+    implementation("org.slf4j:slf4j-api:2.0.9")
+    implementation("ch.qos.logback:logback-classic:1.4.11")
+
+=======
     
     // Logging
     implementation("org.slf4j:slf4j-api:2.0.9")
     implementation("ch.qos.logback:logback-classic:1.4.11")
     
+>>>>>>> origin/main
     // Testing
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     testImplementation("io.projectreactor:reactor-test:3.5.0")
@@ -197,6 +205,21 @@ import org.slf4j.LoggerFactory;
 import reactor.core.Disposable;
 
 public class McpServerApplication {
+<<<<<<< HEAD
+
+    private static final Logger log = LoggerFactory.getLogger(McpServerApplication.class);
+
+    public static void main(String[] args) {
+        log.info("Starting MCP Server...");
+
+        try {
+            McpServer server = createServer();
+            StdioServerTransport transport = new StdioServerTransport();
+
+            // Start server
+            Disposable serverDisposable = server.start(transport).subscribe();
+
+=======
     
     private static final Logger log = LoggerFactory.getLogger(McpServerApplication.class);
     
@@ -210,24 +233,38 @@ public class McpServerApplication {
             // Start server
             Disposable serverDisposable = server.start(transport).subscribe();
             
+>>>>>>> origin/main
             // Graceful shutdown
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 log.info("Shutting down MCP server");
                 serverDisposable.dispose();
                 server.stop().block();
             }));
+<<<<<<< HEAD
+
+            log.info("MCP Server started successfully");
+
+            // Keep running
+            Thread.currentThread().join();
+
+=======
             
             log.info("MCP Server started successfully");
             
             // Keep running
             Thread.currentThread().join();
             
+>>>>>>> origin/main
         } catch (Exception e) {
             log.error("Failed to start MCP server", e);
             System.exit(1);
         }
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private static McpServer createServer() {
         McpServer server = McpServerBuilder.builder()
             .serverInfo("my-mcp-server", "1.0.0")
@@ -236,12 +273,20 @@ public class McpServerApplication {
                 .resources(true)
                 .prompts(true))
             .build();
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         // Register handlers
         ToolHandlers.register(server);
         ResourceHandlers.register(server);
         PromptHandlers.register(server);
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> origin/main
         return server;
     }
 }
@@ -258,14 +303,22 @@ import io.mcp.server.tool.Tool;
 import java.util.List;
 
 public class ToolDefinitions {
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     public static List<Tool> getTools() {
         return List.of(
             createGreetTool(),
             createCalculateTool()
         );
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private static Tool createGreetTool() {
         return Tool.builder()
             .name("greet")
@@ -276,7 +329,11 @@ public class ToolDefinitions {
                     .required(true)))
             .build();
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private static Tool createCalculateTool() {
         return Tool.builder()
             .name("calculate")
@@ -310,15 +367,34 @@ import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
 
 public class ToolHandlers {
+<<<<<<< HEAD
+
+    private static final Logger log = LoggerFactory.getLogger(ToolHandlers.class);
+
+=======
     
     private static final Logger log = LoggerFactory.getLogger(ToolHandlers.class);
     
+>>>>>>> origin/main
     public static void register(McpServer server) {
         // Register tool list handler
         server.addToolListHandler(() -> {
             log.debug("Listing available tools");
             return Mono.just(ToolDefinitions.getTools());
         });
+<<<<<<< HEAD
+
+        // Register greet handler
+        server.addToolHandler("greet", ToolHandlers::handleGreet);
+
+        // Register calculate handler
+        server.addToolHandler("calculate", ToolHandlers::handleCalculate);
+    }
+
+    private static Mono<ToolResponse> handleGreet(JsonNode arguments) {
+        log.info("Greet tool called");
+
+=======
         
         // Register greet handler
         server.addToolHandler("greet", ToolHandlers::handleGreet);
@@ -330,35 +406,60 @@ public class ToolHandlers {
     private static Mono<ToolResponse> handleGreet(JsonNode arguments) {
         log.info("Greet tool called");
         
+>>>>>>> origin/main
         if (!arguments.has("name")) {
             return Mono.just(ToolResponse.error()
                 .message("Missing 'name' parameter")
                 .build());
         }
+<<<<<<< HEAD
+
+        String name = arguments.get("name").asText();
+        String greeting = "Hello, " + name + "! Welcome to MCP.";
+
+        log.debug("Generated greeting for: {}", name);
+
+=======
         
         String name = arguments.get("name").asText();
         String greeting = "Hello, " + name + "! Welcome to MCP.";
         
         log.debug("Generated greeting for: {}", name);
         
+>>>>>>> origin/main
         return Mono.just(ToolResponse.success()
             .addTextContent(greeting)
             .build());
     }
+<<<<<<< HEAD
+
+    private static Mono<ToolResponse> handleCalculate(JsonNode arguments) {
+        log.info("Calculate tool called");
+
+=======
     
     private static Mono<ToolResponse> handleCalculate(JsonNode arguments) {
         log.info("Calculate tool called");
         
+>>>>>>> origin/main
         if (!arguments.has("operation") || !arguments.has("a") || !arguments.has("b")) {
             return Mono.just(ToolResponse.error()
                 .message("Missing required parameters")
                 .build());
         }
+<<<<<<< HEAD
+
+        String operation = arguments.get("operation").asText();
+        double a = arguments.get("a").asDouble();
+        double b = arguments.get("b").asDouble();
+
+=======
         
         String operation = arguments.get("operation").asText();
         double a = arguments.get("a").asDouble();
         double b = arguments.get("b").asDouble();
         
+>>>>>>> origin/main
         double result;
         switch (operation) {
             case "add":
@@ -383,9 +484,15 @@ public class ToolHandlers {
                     .message("Unknown operation: " + operation)
                     .build());
         }
+<<<<<<< HEAD
+
+        log.debug("Calculation: {} {} {} = {}", a, operation, b, result);
+
+=======
         
         log.debug("Calculation: {} {} {} = {}", a, operation, b, result);
         
+>>>>>>> origin/main
         return Mono.just(ToolResponse.success()
             .addTextContent("Result: " + result)
             .build());
@@ -403,7 +510,11 @@ import io.mcp.server.resource.Resource;
 import java.util.List;
 
 public class ResourceDefinitions {
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     public static List<Resource> getResources() {
         return List.of(
             Resource.builder()
@@ -439,16 +550,39 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ResourceHandlers {
+<<<<<<< HEAD
+
+    private static final Logger log = LoggerFactory.getLogger(ResourceHandlers.class);
+    private static final Map<String, Boolean> subscriptions = new ConcurrentHashMap<>();
+
+=======
     
     private static final Logger log = LoggerFactory.getLogger(ResourceHandlers.class);
     private static final Map<String, Boolean> subscriptions = new ConcurrentHashMap<>();
     
+>>>>>>> origin/main
     public static void register(McpServer server) {
         // Register resource list handler
         server.addResourceListHandler(() -> {
             log.debug("Listing available resources");
             return Mono.just(ResourceDefinitions.getResources());
         });
+<<<<<<< HEAD
+
+        // Register resource read handler
+        server.addResourceReadHandler(ResourceHandlers::handleRead);
+
+        // Register resource subscribe handler
+        server.addResourceSubscribeHandler(ResourceHandlers::handleSubscribe);
+
+        // Register resource unsubscribe handler
+        server.addResourceUnsubscribeHandler(ResourceHandlers::handleUnsubscribe);
+    }
+
+    private static Mono<ResourceContent> handleRead(String uri) {
+        log.info("Reading resource: {}", uri);
+
+=======
         
         // Register resource read handler
         server.addResourceReadHandler(ResourceHandlers::handleRead);
@@ -463,6 +597,7 @@ public class ResourceHandlers {
     private static Mono<ResourceContent> handleRead(String uri) {
         log.info("Reading resource: {}", uri);
         
+>>>>>>> origin/main
         switch (uri) {
             case "resource://data/example":
                 String jsonData = String.format(
@@ -470,23 +605,39 @@ public class ResourceHandlers {
                     Instant.now()
                 );
                 return Mono.just(ResourceContent.text(jsonData, uri, "application/json"));
+<<<<<<< HEAD
+
+            case "resource://config":
+                String config = "{\"serverName\":\"my-mcp-server\",\"version\":\"1.0.0\"}";
+                return Mono.just(ResourceContent.text(config, uri, "application/json"));
+
+=======
                 
             case "resource://config":
                 String config = "{\"serverName\":\"my-mcp-server\",\"version\":\"1.0.0\"}";
                 return Mono.just(ResourceContent.text(config, uri, "application/json"));
                 
+>>>>>>> origin/main
             default:
                 log.warn("Unknown resource requested: {}", uri);
                 return Mono.error(new IllegalArgumentException("Unknown resource URI: " + uri));
         }
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private static Mono<Void> handleSubscribe(String uri) {
         log.info("Client subscribed to resource: {}", uri);
         subscriptions.put(uri, true);
         return Mono.empty();
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private static Mono<Void> handleUnsubscribe(String uri) {
         log.info("Client unsubscribed from resource: {}", uri);
         subscriptions.remove(uri);
@@ -506,7 +657,11 @@ import io.mcp.server.prompt.PromptArgument;
 import java.util.List;
 
 public class PromptDefinitions {
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     public static List<Prompt> getPrompts() {
         return List.of(
             Prompt.builder()
@@ -544,15 +699,40 @@ import java.util.List;
 import java.util.Map;
 
 public class PromptHandlers {
+<<<<<<< HEAD
+
+    private static final Logger log = LoggerFactory.getLogger(PromptHandlers.class);
+
+=======
     
     private static final Logger log = LoggerFactory.getLogger(PromptHandlers.class);
     
+>>>>>>> origin/main
     public static void register(McpServer server) {
         // Register prompt list handler
         server.addPromptListHandler(() -> {
             log.debug("Listing available prompts");
             return Mono.just(PromptDefinitions.getPrompts());
         });
+<<<<<<< HEAD
+
+        // Register prompt get handler
+        server.addPromptGetHandler(PromptHandlers::handleCodeReview);
+    }
+
+    private static Mono<PromptResult> handleCodeReview(String name, Map<String, String> arguments) {
+        log.info("Getting prompt: {}", name);
+
+        if (!name.equals("code-review")) {
+            return Mono.error(new IllegalArgumentException("Unknown prompt: " + name));
+        }
+
+        String language = arguments.getOrDefault("language", "Java");
+        String focus = arguments.getOrDefault("focus", "general quality");
+
+        String description = "Code review for " + language + " with focus on " + focus;
+
+=======
         
         // Register prompt get handler
         server.addPromptGetHandler(PromptHandlers::handleCodeReview);
@@ -570,14 +750,21 @@ public class PromptHandlers {
         
         String description = "Code review for " + language + " with focus on " + focus;
         
+>>>>>>> origin/main
         List<PromptMessage> messages = List.of(
             PromptMessage.user("Please review this " + language + " code with focus on " + focus + "."),
             PromptMessage.assistant("I'll review the code focusing on " + focus + ". Please share the code."),
             PromptMessage.user("Here's the code to review: [paste code here]")
         );
+<<<<<<< HEAD
+
+        log.debug("Generated code review prompt for {} ({})", language, focus);
+
+=======
         
         log.debug("Generated code review prompt for {} ({})", language, focus);
         
+>>>>>>> origin/main
         return Mono.just(PromptResult.builder()
             .description(description)
             .messages(messages)
@@ -602,23 +789,43 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class McpServerTest {
+<<<<<<< HEAD
+
+    private McpSyncServer syncServer;
+    private ObjectMapper objectMapper;
+
+=======
     
     private McpSyncServer syncServer;
     private ObjectMapper objectMapper;
     
+>>>>>>> origin/main
     @BeforeEach
     void setUp() {
         McpServer server = createTestServer();
         syncServer = server.toSyncServer();
         objectMapper = new ObjectMapper();
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     private McpServer createTestServer() {
         // Same setup as main application
         McpServer server = McpServerBuilder.builder()
             .serverInfo("test-server", "1.0.0")
             .capabilities(cap -> cap.tools(true))
             .build();
+<<<<<<< HEAD
+
+        // Register handlers
+        ToolHandlers.register(server);
+
+        return server;
+    }
+
+=======
         
         // Register handlers
         ToolHandlers.register(server);
@@ -626,24 +833,44 @@ class McpServerTest {
         return server;
     }
     
+>>>>>>> origin/main
     @Test
     void testGreetTool() {
         ObjectNode args = objectMapper.createObjectNode();
         args.put("name", "Java");
+<<<<<<< HEAD
+
+        ToolResponse response = syncServer.callTool("greet", args);
+
+=======
         
         ToolResponse response = syncServer.callTool("greet", args);
         
+>>>>>>> origin/main
         assertFalse(response.isError());
         assertEquals(1, response.getContent().size());
         assertTrue(response.getContent().get(0).getText().contains("Java"));
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> origin/main
     @Test
     void testCalculateTool() {
         ObjectNode args = objectMapper.createObjectNode();
         args.put("operation", "add");
         args.put("a", 5);
         args.put("b", 3);
+<<<<<<< HEAD
+
+        ToolResponse response = syncServer.callTool("calculate", args);
+
+        assertFalse(response.isError());
+        assertTrue(response.getContent().get(0).getText().contains("8"));
+    }
+
+=======
         
         ToolResponse response = syncServer.callTool("calculate", args);
         
@@ -651,15 +878,22 @@ class McpServerTest {
         assertTrue(response.getContent().get(0).getText().contains("8"));
     }
     
+>>>>>>> origin/main
     @Test
     void testDivideByZero() {
         ObjectNode args = objectMapper.createObjectNode();
         args.put("operation", "divide");
         args.put("a", 10);
         args.put("b", 0);
+<<<<<<< HEAD
+
+        ToolResponse response = syncServer.callTool("calculate", args);
+
+=======
         
         ToolResponse response = syncServer.callTool("calculate", args);
         
+>>>>>>> origin/main
         assertTrue(response.isError());
     }
 }

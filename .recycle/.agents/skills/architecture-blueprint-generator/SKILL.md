@@ -25,7 +25,11 @@ ${FOCUS_ON_EXTENSIBILITY=true|false} <!-- Emphasize extension points and pattern
   - Package dependencies and import statements
   - Framework-specific patterns and conventions
   - Build and deployment configurations" : "Focus on ${PROJECT_TYPE} specific patterns and practices"}
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> origin/main
 - ${ARCHITECTURE_PATTERN == "Auto-detect" ? "Determine the architectural pattern(s) by analyzing:
   - Folder organization and namespacing
   - Dependency flow and component boundaries
@@ -131,7 +135,11 @@ Document implementation patterns for cross-cutting concerns:
 ### 9. Technology-Specific Architectural Patterns
 ${PROJECT_TYPE == "Auto-detect" ? "For each detected technology stack, document specific architectural patterns:" : `Document ${PROJECT_TYPE}-specific architectural patterns:`}
 
+<<<<<<< HEAD
+${(PROJECT_TYPE == ".NET" || PROJECT_TYPE == "Auto-detect") ?
+=======
 ${(PROJECT_TYPE == ".NET" || PROJECT_TYPE == "Auto-detect") ? 
+>>>>>>> origin/main
 "#### .NET Architectural Patterns (if detected)
 - Host and application model implementation
 - Middleware pipeline organization
@@ -140,7 +148,11 @@ ${(PROJECT_TYPE == ".NET" || PROJECT_TYPE == "Auto-detect") ?
 - API implementation patterns (controllers, minimal APIs, etc.)
 - Dependency injection container configuration" : ""}
 
+<<<<<<< HEAD
+${(PROJECT_TYPE == "Java" || PROJECT_TYPE == "Auto-detect") ?
+=======
 ${(PROJECT_TYPE == "Java" || PROJECT_TYPE == "Auto-detect") ? 
+>>>>>>> origin/main
 "#### Java Architectural Patterns (if detected)
 - Application container and bootstrap process
 - Dependency injection framework usage (Spring, CDI, etc.)
@@ -149,7 +161,11 @@ ${(PROJECT_TYPE == "Java" || PROJECT_TYPE == "Auto-detect") ?
 - ORM configuration and usage patterns
 - Service implementation patterns" : ""}
 
+<<<<<<< HEAD
+${(PROJECT_TYPE == "React" || PROJECT_TYPE == "Auto-detect") ?
+=======
 ${(PROJECT_TYPE == "React" || PROJECT_TYPE == "Auto-detect") ? 
+>>>>>>> origin/main
 "#### React Architectural Patterns (if detected)
 - Component composition and reuse strategies
 - State management architecture
@@ -158,7 +174,11 @@ ${(PROJECT_TYPE == "React" || PROJECT_TYPE == "Auto-detect") ?
 - Data fetching and caching patterns
 - Rendering optimization strategies" : ""}
 
+<<<<<<< HEAD
+${(PROJECT_TYPE == "Angular" || PROJECT_TYPE == "Auto-detect") ?
+=======
 ${(PROJECT_TYPE == "Angular" || PROJECT_TYPE == "Auto-detect") ? 
+>>>>>>> origin/main
 "#### Angular Architectural Patterns (if detected)
 - Module organization strategy
 - Component hierarchy design
@@ -167,7 +187,11 @@ ${(PROJECT_TYPE == "Angular" || PROJECT_TYPE == "Auto-detect") ?
 - Reactive programming patterns
 - Route guard implementation" : ""}
 
+<<<<<<< HEAD
+${(PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect") ?
+=======
 ${(PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect") ? 
+>>>>>>> origin/main
 "#### Python Architectural Patterns (if detected)
 - Module organization approach
 - Dependency management strategy
@@ -176,7 +200,11 @@ ${(PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect") ?
 - Asynchronous programming approach" : ""}
 
 ### 10. Implementation Patterns
+<<<<<<< HEAD
+${INCLUDES_IMPLEMENTATION_PATTERNS ?
+=======
 ${INCLUDES_IMPLEMENTATION_PATTERNS ? 
+>>>>>>> origin/main
 "Document concrete implementation patterns for key architectural components:
 
 - **Interface Design Patterns**:
@@ -225,7 +253,11 @@ ${INCLUDES_IMPLEMENTATION_PATTERNS ?
 - Note cloud service integration patterns
 
 ### 13. Extension and Evolution Patterns
+<<<<<<< HEAD
+${FOCUS_ON_EXTENSIBILITY ?
+=======
 ${FOCUS_ON_EXTENSIBILITY ? 
+>>>>>>> origin/main
 "Provide detailed guidance for extending the architecture:
 
 - **Feature Addition Patterns**:
@@ -246,7 +278,11 @@ ${FOCUS_ON_EXTENSIBILITY ?
   - Anti-corruption layer patterns
   - Service facade implementation" : "Document key extension points in the architecture."}
 
+<<<<<<< HEAD
+${INCLUDES_CODE_EXAMPLES ?
+=======
 ${INCLUDES_CODE_EXAMPLES ? 
+>>>>>>> origin/main
 "### 14. Architectural Pattern Examples
 Extract representative code examples that illustrate key architectural patterns:
 
@@ -267,7 +303,11 @@ Extract representative code examples that illustrate key architectural patterns:
 
 Include enough context with each example to show the pattern clearly, but keep examples concise and focused on architectural concepts." : ""}
 
+<<<<<<< HEAD
+${INCLUDES_DECISION_RECORDS ?
+=======
 ${INCLUDES_DECISION_RECORDS ? 
+>>>>>>> origin/main
 "### 15. Architectural Decision Records
 Document key architectural decisions evident in the codebase:
 

@@ -8,6 +8,28 @@
 # CT 100 (netbox)
 Wed Dec 17 08:37:10 PM HST 2025
 
+<<<<<<< HEAD
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+LISTEN 0      100        127.0.0.1:25         0.0.0.0:*    users:(("master",pid=496,fd=13))
+LISTEN 0      200        127.0.0.1:5432       0.0.0.0:*    users:(("postgres",pid=378,fd=7))
+LISTEN 0      4096       127.0.0.1:12345      0.0.0.0:*    users:(("alloy",pid=177,fd=3))
+LISTEN 0      4096       127.0.0.1:8125       0.0.0.0:*    users:(("netdata",pid=376,fd=215))
+LISTEN 0      511        127.0.0.1:6379       0.0.0.0:*    users:(("redis-server",pid=199,fd=6))
+LISTEN 0      4096         0.0.0.0:19999      0.0.0.0:*    users:(("netdata",pid=376,fd=6))
+LISTEN 0      100            [::1]:25            [::]:*    users:(("master",pid=496,fd=14))
+LISTEN 0      4096               *:8080             *:*    users:(("filebrowser",pid=179,fd=7))
+LISTEN 0      511                *:443              *:*    users:(("apache2",pid=258327,fd=6),("apache2",pid=258326,fd=6),("apache2",pid=277,fd=6))
+LISTEN 0      511                *:80               *:*    users:(("apache2",pid=258327,fd=4),("apache2",pid=258326,fd=4),("apache2",pid=277,fd=4))
+LISTEN 0      4096               *:22               *:*    users:(("sshd",pid=225,fd=3),("systemd",pid=1,fd=39))
+LISTEN 0      1024               *:8443             *:*    users:(("proxmox-datacen",pid=257,fd=15),("proxmox-datacen",pid=257,fd=13))
+LISTEN 0      4096               *:9080             *:*    users:(("promtail",pid=158852,fd=7))
+LISTEN 0      4096               *:9095             *:*    users:(("promtail",pid=158852,fd=35))
+LISTEN 0      4096               *:9100             *:*    users:(("prometheus-node",pid=108,fd=3))
+LISTEN 0      511            [::1]:6379          [::]:*    users:(("redis-server",pid=199,fd=7))
+LISTEN 0      4096           [::1]:8125          [::]:*    users:(("netdata",pid=376,fd=214))
+LISTEN 0      200            [::1]:5432          [::]:*    users:(("postgres",pid=378,fd=6))
+LISTEN 0      4096            [::]:19999         [::]:*    users:(("netdata",pid=376,fd=7))
+=======
 State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                                                                  
 LISTEN 0      100        127.0.0.1:25         0.0.0.0:*    users:(("master",pid=496,fd=13))                                                        
 LISTEN 0      200        127.0.0.1:5432       0.0.0.0:*    users:(("postgres",pid=378,fd=7))                                                       
@@ -28,3 +50,4 @@ LISTEN 0      511            [::1]:6379          [::]:*    users:(("redis-server
 LISTEN 0      4096           [::1]:8125          [::]:*    users:(("netdata",pid=376,fd=214))                                                      
 LISTEN 0      200            [::1]:5432          [::]:*    users:(("postgres",pid=378,fd=6))                                                       
 LISTEN 0      4096            [::]:19999         [::]:*    users:(("netdata",pid=376,fd=7))                                                        
+>>>>>>> origin/main

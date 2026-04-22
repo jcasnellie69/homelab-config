@@ -13,4 +13,7 @@ rootfs: local-lvm:vm-104-disk-0,size=2G
 swap: 512
 tags: community-script;monitoring
 unprivileged: 1
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/main
