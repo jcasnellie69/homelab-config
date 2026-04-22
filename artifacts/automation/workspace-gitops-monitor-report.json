@@ -1,23 +1,19 @@
 {
-  "generated_at": "2026-04-22T01:37:22.426502+00:00",
+  "generated_at": "2026-04-22T02:27:17.760695+00:00",
   "repo": "\\\\192.168.4.60\\homelab-config\\",
   "branch": "chore/workspace-governance-monitor",
-  "tracking": "origin/chore/workspace-governance-monitor",
+  "tracking": "origin/chore/workspace-governance-monitor [ahead 33]",
   "is_clean": false,
   "counts": {
-    "modified": 6,
+    "modified": 2,
     "added": 0,
     "deleted": 0,
     "renamed": 0,
-    "untracked": 11,
-    "other": 0
+    "untracked": 1,
+    "other": 2
   },
   "files": {
     "modified": [
-      ".devcontainer/Dockerfile",
-      ".github/copilot-instructions.md",
-      ".vscode/settings.json",
-      "AGENTS.md",
       "artifacts/automation/pipeline-metadata-summary.json",
       "artifacts/automation/workspace-health-report.json"
     ],
@@ -25,19 +21,12 @@
     "deleted": [],
     "renamed": [],
     "untracked": [
-      ".agents/skills/ai-research-reproduction/",
-      ".agents/skills/analyze-project/",
-      ".agents/skills/env-and-assets-bootstrap/",
-      ".agents/skills/explore-code/",
-      ".agents/skills/explore-run/",
-      ".agents/skills/minimal-run-and-audit/",
-      ".agents/skills/paper-context-resolver/",
-      ".agents/skills/repo-intake-and-plan/",
-      ".agents/skills/run-train/",
-      ".agents/skills/safe-debug/",
-      ".agents/skills/turborepo/"
+      "artifacts/hc/2026-04-21-11-35-merge-main-conflict-refresh.txt"
     ],
-    "other": []
+    "other": [
+      " T scripts/util/pve_tools_check.sh",
+      " T scripts/util/pve_tools_install.sh"
+    ]
   },
   "recommendations": [
     "Review untracked files and include only the intended workspace assets in the next commit.",

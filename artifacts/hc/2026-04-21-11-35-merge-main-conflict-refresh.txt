@@ -1,0 +1,17 @@
+Change summary:
+- Updated `chore/workspace-governance-monitor` by merging `origin/main` to address PR conflict status.
+- Initial merge on Windows failed due to symlink creation permission constraints.
+- Resolved merge path by retrying with temporary symlink-safe mode (`git -c core.symlinks=false merge origin/main`).
+- Cleared temporary pre-merge stash entry after successful merge.
+
+Commands used:
+- `git fetch origin`
+- `git merge origin/main` (failed: symlink permission)
+- `git stash push -u -m "temp-pre-merge-main"`
+- `git -c core.symlinks=false merge origin/main` (success)
+- `git -c core.symlinks=false checkout -- scripts/util/pve_tools_check.sh scripts/util/pve_tools_install.sh`
+- `git stash drop 'stash@{0}'`
+
+Verification plan:
+- Run workspace validation task: `verify workspace automation`.
+- Confirm branch status and then push updated branch to origin.
