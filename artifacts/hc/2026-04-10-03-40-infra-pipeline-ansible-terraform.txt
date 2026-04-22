@@ -1,0 +1,44 @@
+Change: Generate inventory-driven Ansible and Terraform artifacts, add NetBox/OPNsense scaffolding, and introduce GitOps/tooling-currency helpers.
+Date: 2026-04-10
+Workspace: z:\\
+
+Ground truth used:
+- Alpha host confirmed by user as `192.168.4.10`.
+- `artifacts/network-inventory.json` indicates TE10 is labeled Alpha Server.
+- `artifacts/hc/pve-20251227-053822/pve-guests.txt` provides current known LXC service IPs.
+- `artifacts/dhcp-discovery/D122225T0153/pct_configs_summary.txt` shows CT 111 hostname `ansible` with DHCP networking and automation tag.
+
+Planned work:
+- Generate repo-side Ansible inventory and Terraform variable outputs from artifacts of record.
+- Add Ansible Galaxy collection requirements for Proxmox, NetBox, and OPNsense.
+- Add root-friendly bootstrap and GitOps helper scripts.
+- Add a tooling-currency report path and optional Tavily MCP wiring without storing raw secrets.
+
+Executed changes:
+- Added `scripts/session/generate_infra_artifacts.py` to build Ansible, Terraform, NetBox, and OPNsense seed outputs.
+- Added `deploy/ansible/collections/requirements.yml` with `community.proxmox`, `netbox.netbox`, `ansibleguy.opnsense`, `community.general`, and `ansible.posix`.
+- Added `deploy/ansible/bootstrap-control-node.sh` to prepare the Ansible LXC/control node when root access is available.
+- Added `scripts/session/tooling_currency.py` and `scripts/session/gitops_sync.sh`.
+- Added `Tooling Currency` custom agent and updated instructions so agents consult `artifacts/` and `reports/` before making assumptions.
+- Added optional Tavily MCP support using prompted or environment-based secrets instead of tracked credentials.
+- Removed stale local Docker containers `mcp-postgres` and `terraform` after confirming they were exited and non-restarting.
+- Replaced the placeholder image reference in `deploy/docker-compose.yml` with an environment-driven MCP gateway image setting.
+
+Verification after changes:
+- `python scripts/session/generate_infra_artifacts.py --alpha-ip 192.168.4.10`
+  - wrote `reports/automation/ansible-inventory.json`
+  - wrote `deploy/ansible/inventory/generated.yml`
+  - wrote `reports/automation/terraform.auto.tfvars.json`
+  - wrote `reports/automation/opnsense-hosts.json`
+  - wrote `reports/automation/netbox-sync.json`
+  - reported `lxc_hosts=10`
+- `python scripts/session/tooling_currency.py --report artifacts/automation/tooling-currency-report.json`
+  - wrote report successfully
+  - reported `latest tag findings: 0`
+  - reported `mcp servers: 5`
+- `python scripts/session/workspace_health.py --strict --report artifacts/automation/workspace-health-report.json`
+  - `missing markdown links: 0`
+  - `json errors: 0`
+  - `secret findings: 0`
+- `ssh root@192.168.4.10` currently fails with `Permission denied (publickey,password)`, so remote installation into CT 111 was scaffolded but not executed from this workstation session.
+- Active local Docker Desktop extension containers were left intact because they still contribute to the workstation ecosystem; only confirmed stale exited containers were removed.

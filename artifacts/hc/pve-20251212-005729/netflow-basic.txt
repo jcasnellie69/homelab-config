@@ -1,0 +1,62 @@
+=== NetFlow Basic ===
+Timestamp: 2025-12-12T00:58:07-05:00
+Script   : /root/homelab-config/scripts/hc/hc-netflow-basic.sh
+
+NetFlow Basic Health Check
+Timestamp: 2025-12-12T00:58:07-05:00
+Check dir: /var/cache/nfdump
+Freshness threshold: 600s
+
+--- Local host (pve) ---
+[INFO] Local NetFlow cache directory not found: /var/cache/nfdump
+
+Scanning containers for /var/cache/nfdump...
+
+--- Container CTID=100 ---
+[INFO] CTID=100: /var/cache/nfdump not found.
+
+--- Container CTID=102 ---
+[INFO] CTID=102: /var/cache/nfdump not found.
+
+--- Container CTID=103 ---
+[INFO] CTID=103: /var/cache/nfdump not found.
+
+--- Container CTID=104 ---
+[INFO] CTID=104: /var/cache/nfdump not found.
+
+--- Container CTID=105 ---
+[INFO] CTID=105: /var/cache/nfdump not found.
+
+--- Container CTID=106 ---
+[INFO] CTID=106: /var/cache/nfdump not found.
+
+--- Container CTID=108 ---
+[INFO] CTID=108: /var/cache/nfdump not found.
+
+--- Container CTID=109 ---
+[INFO] CTID=109: /var/cache/nfdump not found.
+
+--- Container CTID=110 ---
+NetFlow cache directory found in container.
+Container timestamp: 2025-12-12T05:58:17+00:00
+Check dir: /var/cache/nfdump
+Freshness threshold: 600s
+
+=== Recent NetFlow files (tail) ===
+2025-12-12 05:15:01.0130900200 /var/cache/nfdump/nfcapd.202512120510
+2025-12-12 05:20:01.0141901990 /var/cache/nfdump/nfcapd.202512120515
+2025-12-12 05:25:01.0142855030 /var/cache/nfdump/nfcapd.202512120520
+2025-12-12 05:30:01.0153808720 /var/cache/nfdump/nfcapd.202512120525
+2025-12-12 05:35:01.0164993180 /var/cache/nfdump/nfcapd.202512120530
+2025-12-12 05:40:01.0166501800 /var/cache/nfdump/nfcapd.202512120535
+2025-12-12 05:45:01.0188011740 /var/cache/nfdump/nfcapd.202512120540
+2025-12-12 05:50:01.0189520350 /var/cache/nfdump/nfcapd.202512120545
+2025-12-12 05:55:01.0190981290 /var/cache/nfdump/nfcapd.202512120550
+2025-12-12 05:55:01.0190981290 /var/cache/nfdump/nfcapd.current.158
+
+Latest file  : /var/cache/nfdump/nfcapd.current.158
+Age (seconds): 196
+
+[OK] NetFlow collector (CONTAINER) appears FRESH (<= 600s).
+
+NetFlow basic HC complete.

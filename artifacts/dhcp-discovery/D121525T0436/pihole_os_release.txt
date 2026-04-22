@@ -1,0 +1,20 @@
+### CMD: pct exec 109 -- bash -lc cat /etc/os-release
+### WHEN: 2025-12-15T04:37:09-05:00
+### HOST: pve.primary.node
+
+
+[1mPihole LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mpihole[m
+    💡  [m[33m IP Address: [1;92m192.168.4.208[m
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"

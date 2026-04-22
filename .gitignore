@@ -13,11 +13,22 @@ logs/
 
 # Backups
 *.bak
+*.bak.*
 *~
 
+# Fileserver sync noise
+.recycle/
+*readme(1).txt
+artifacts/pve-script-scan/
+
 # Editor
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/mcp.json
 .idea/
+.claude/
 
 # MkDocs site build
 site/

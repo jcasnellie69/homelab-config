@@ -1,0 +1,91 @@
+{
+	"servers": {
+		"homelab-contextlayer": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@contextlayer/mcp@0.0.3"
+			],
+			"type": "stdio"
+		},
+		"homelab-docker-gateway": {
+			"command": "docker",
+			"args": [
+				"mcp",
+				"gateway",
+				"run"
+			],
+			"type": "stdio"
+		},
+		"homelab-netbox-ipam": {
+			"command": "uvx",
+			"args": [
+				"--from",
+				"git+https://github.com/netboxlabs/netbox-mcp-server",
+				"netbox-mcp-server",
+				"--no-verify-ssl"
+			],
+			"type": "stdio",
+			"env": {
+				"NETBOX_URL": "${input:NETBOX_URL}",
+				"NETBOX_TOKEN": "${input:NETBOX_API_TOKEN}"
+			}
+		},
+		"homelab-klavis-strata": {
+			"type": "http",
+			"url": "https://strata.klavis.ai/mcp/",
+			"headers": {
+				"Authorization": "Bearer ${input:KLAVIS_STRATA_TOKEN}"
+			}
+		},
+		"homelab-netdata-cloud": {
+			"type": "http",
+			"url": "https://app.netdata.cloud/api/v1/mcp",
+			"headers": {
+				"Authorization": "Bearer ${input:NETDATA_CLOUD_API_TOKEN}"
+			},
+			"gallery": "https://api.mcp.github.com",
+			"version": "2.9.0"
+		},
+		"homelab-tavily-search": {
+			"type": "http",
+			"url": "https://mcp.tavily.com/mcp/?tavilyApiKey=${input:TAVILY_API_KEY}"
+		},
+		"homelab-cloudmcp-manager": {
+			"type": "http",
+			"url": "https://148508183.router.cloudmcp.run/mcp"
+		}
+	},
+	"inputs": [
+		{
+			"id": "NETBOX_URL",
+			"type": "promptString",
+			"description": "NetBox base URL (artifact hint: http://192.168.4.140/)",
+			"password": false
+		},
+		{
+			"id": "NETBOX_API_TOKEN",
+			"type": "promptString",
+			"description": "NetBox read-only API token for MCP access",
+			"password": true
+		},
+		{
+			"id": "KLAVIS_STRATA_TOKEN",
+			"type": "promptString",
+			"description": "Klavis Strata bearer token",
+			"password": true
+		},
+		{
+			"id": "NETDATA_CLOUD_API_TOKEN",
+			"type": "promptString",
+			"description": "Netdata Cloud API token (create at app.netdata.cloud > User Settings > API Tokens with scope:mcp)",
+			"password": true
+		},
+		{
+			"id": "TAVILY_API_KEY",
+			"type": "promptString",
+			"description": "Tavily MCP API key",
+			"password": true
+		}
+	]
+}

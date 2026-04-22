@@ -1,0 +1,18 @@
+### CMD: pct exec 109 -- bash -lc ip -br addr
+### WHEN: 2025-12-15T04:37:10-05:00
+### HOST: pve.primary.node
+
+
+[1mPihole LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mpihole[m
+    💡  [m[33m IP Address: [1;92m192.168.4.208[m
+<<<<<<< HEAD
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+eth0@if29        UP             192.168.4.208/24 fd84:e6b1:42ac:406c:be24:11ff:fea4:4281/64 fe80::be24:11ff:fea4:4281/64
+=======
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0@if29        UP             192.168.4.208/24 fd84:e6b1:42ac:406c:be24:11ff:fea4:4281/64 fe80::be24:11ff:fea4:4281/64 
+>>>>>>> origin/main

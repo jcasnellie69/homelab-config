@@ -1,0 +1,20 @@
+host: pve
+when: 2025-12-22T00:44:00-05:00
+artifact_dir: /srv/artifacts/hc/footprint/D122225T0043-test-run
+
+00-node-summary.txt                14 lines
+10-apt-manual-packages.txt        764 lines
+11-dpkg-packages.txt             1118 lines
+20-custom-binaries.txt             92 lines
+30-systemd-enabled.txt             67 lines
+31-systemd-running.txt             56 lines
+32-systemd-timers.txt              17 lines
+40-ip-address.txt                  15 lines
+41-ip-route.txt                     6 lines
+42-listening-ports.txt             30 lines
+50-crontab-root.txt                 5 lines
+51-cron-system.txt                 53 lines
+70-git-repos.txt                   10 lines
+80-pveversion.txt                  64 lines
+81-zpool-status.txt                16 lines
+99-footprint-summary.txt           19 lines

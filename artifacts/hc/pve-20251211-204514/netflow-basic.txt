@@ -1,0 +1,11 @@
+=== NetFlow Basic ===
+Timestamp: 2025-12-11T20:45:20-05:00
+Script   : /root/homelab-config/scripts/hc/hc-netflow-basic.sh
+
+NetFlow Basic Health Check
+Timestamp: 2025-12-11T20:45:20-05:00
+Check dir: /var/cache/nfdump
+Freshness threshold: 600s
+
+[WARN] NetFlow cache directory not found: /var/cache/nfdump
+       Adjust CHECK_DIR in hc-netflow-basic.sh if your path differs.

@@ -1,0 +1,35 @@
+
+[1mHomepage LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mhomepage[m
+    💡  [m[33m IP Address: [1;92m192.168.4.139[m
+# CT 106 (homepage)
+Thu Dec 18 01:04:05 AM EST 2025
+
+<<<<<<< HEAD
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      511          0.0.0.0:8080      0.0.0.0:*    users:(("nginx",pid=1457,fd=5),("nginx",pid=1456,fd=5),("nginx",pid=224,fd=5))
+LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=377,fd=13))
+LISTEN 0      511        127.0.0.1:7400      0.0.0.0:*    users:(("node",pid=1261,fd=22))
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=1457,fd=7),("nginx",pid=1456,fd=7),("nginx",pid=224,fd=7))
+LISTEN 0      511             [::]:8080         [::]:*    users:(("nginx",pid=1457,fd=6),("nginx",pid=1456,fd=6),("nginx",pid=224,fd=6))
+LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=377,fd=14))
+LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=171,fd=3),("systemd",pid=1,fd=63))
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=1457,fd=8),("nginx",pid=1456,fd=8),("nginx",pid=224,fd=8))
+LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=120,fd=3))
+LISTEN 0      511                *:3000            *:*    users:(("next-server (v1",pid=317,fd=21))
+=======
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                                        
+LISTEN 0      511          0.0.0.0:8080      0.0.0.0:*    users:(("nginx",pid=1457,fd=5),("nginx",pid=1456,fd=5),("nginx",pid=224,fd=5))
+LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=377,fd=13))                                              
+LISTEN 0      511        127.0.0.1:7400      0.0.0.0:*    users:(("node",pid=1261,fd=22))                                               
+LISTEN 0      511          0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=1457,fd=7),("nginx",pid=1456,fd=7),("nginx",pid=224,fd=7))
+LISTEN 0      511             [::]:8080         [::]:*    users:(("nginx",pid=1457,fd=6),("nginx",pid=1456,fd=6),("nginx",pid=224,fd=6))
+LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=377,fd=14))                                              
+LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=171,fd=3),("systemd",pid=1,fd=63))                         
+LISTEN 0      511             [::]:80           [::]:*    users:(("nginx",pid=1457,fd=8),("nginx",pid=1456,fd=8),("nginx",pid=224,fd=8))
+LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=120,fd=3))                                      
+LISTEN 0      511                *:3000            *:*    users:(("next-server (v1",pid=317,fd=21))                                     
+>>>>>>> origin/main

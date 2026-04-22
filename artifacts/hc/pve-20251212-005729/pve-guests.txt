@@ -1,0 +1,23 @@
+=== PVE Guests ===
+Timestamp: 2025-12-12T00:57:29-05:00
+Script   : /root/homelab-config/scripts/hc/hc-pve-guests.sh
+
+PVE Guest Inventory
+Timestamp: 2025-12-12T00:57:29-05:00
+
+=== LXC Containers ===
+VMID=100 TYPE=LXC HOSTNAME=netbox STATUS=running DESC="NetBox IPAM + DCIM" TAGS="app"
+VMID=102 TYPE=LXC HOSTNAME=grafana STATUS=running DESC="Grafana + code-server" TAGS="monitoring,ui"
+VMID=103 TYPE=LXC HOSTNAME=prometheus STATUS=running DESC="Prometheus server" TAGS="monitoring"
+VMID=104 TYPE=LXC HOSTNAME=prometheus-pve-exporter STATUS=running DESC="Proxmox Prometheus Exporter" TAGS="monitoring"
+VMID=105 TYPE=LXC HOSTNAME=influxdb STATUS=running DESC="InfluxDB + Telegraf + code-server" TAGS="monitoring,telemetry"
+VMID=106 TYPE=LXC HOSTNAME=homepage STATUS=running DESC="Homepage / NGINX Documentation Portal" TAGS="docs,ui"
+VMID=108 TYPE=LXC HOSTNAME=watchyourlan STATUS=running DESC="WatchYourLAN" TAGS="monitoring,network"
+VMID=109 TYPE=LXC HOSTNAME=pihole STATUS=running DESC="Pi-hole DNS + FTLDNS" TAGS="dns,infra"
+VMID=110 TYPE=LXC HOSTNAME=ntrop STATUS=running DESC="NetFlow Collector (nfdump) / ntrop" TAGS="monitoring,netflow"
+
+=== QEMU Virtual Machines ===
+VMID=101 TYPE=VM NAME="haos16" STATUS=running DESC="Home Assistant OS (Supervised)" TAGS="automation,homeassistant"
+VMID=107 TYPE=VM NAME="pdm" STATUS=running DESC="PDM Utility VM" TAGS="utility"
+
+Guest inventory complete.

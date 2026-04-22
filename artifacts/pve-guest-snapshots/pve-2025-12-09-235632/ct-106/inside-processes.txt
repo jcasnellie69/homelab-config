@@ -1,0 +1,33 @@
+### ps aux | head
+$ pct exec 106 -- sh -c ps aux 2>/dev/null | head -n 40
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.2 102312 11904 ?        Ss   22:45   0:00 /sbin/init
+root          54  0.0  0.3  41196 16084 ?        Ss   22:45   0:00 /lib/systemd/systemd-journald
+root          91  0.0  0.0   5876  3456 ?        Ss   22:45   0:00 dhclient -4 -v -i -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0
+root          96  0.0  0.0   6616  2560 ?        Ss   22:45   0:00 /usr/sbin/cron -f
+message+      97  0.0  0.1   9140  4864 ?        Ss   22:45   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+prometh+     102  0.0  0.3 1022396 13440 ?       Ssl  22:45   0:00 /usr/bin/prometheus-node-exporter
+root         106  0.0  0.1  16592  7552 ?        Ss   22:45   0:00 /lib/systemd/systemd-logind
+systemd+     110  0.0  0.1  17912  7936 ?        Ss   22:45   0:00 /lib/systemd/systemd-networkd
+root         171  0.0  2.0 1151044 84560 ?       Ssl  22:45   0:00 node /usr/bin/pnpm start
+root         180  0.0  0.0   5504  2176 pts/0    Ss+  22:45   0:00 /sbin/agetty -o -p -- \u --noclear --keep-baud - 115200,38400,9600 linux
+root         183  0.0  0.1   9132  4224 pts/1    Ss   22:45   0:00 /bin/login -f
+root         185  0.0  0.0   5504  2048 pts/2    Ss+  22:45   0:00 /sbin/agetty -o -p -- \u --noclear - linux
+root         189  0.0  0.1  15444  6912 ?        Ss   22:45   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root         326  0.0  0.1  42672  4632 ?        Ss   22:45   0:00 /usr/lib/postfix/sbin/master -w
+postfix      327  0.0  0.1  43060  7040 ?        S    22:45   0:00 pickup -l -t unix -u -c
+postfix      328  0.0  0.1  43104  6912 ?        S    22:45   0:00 qmgr -l -t unix -u
+root         333  0.0  0.1   8004  4352 pts/1    S+   22:45   0:00 -bash
+root         344  0.0  1.9 1212476 81752 ?       Sl   22:45   0:00 node /root/.local/share/pnpm/.tools/pnpm/10.8.1/bin/pnpm start
+root         355  0.0  0.0   2584  1536 ?        S    22:45   0:00 sh -c next start
+root         356  0.0  3.4 22360200 146708 ?     Sl   22:45   0:02 next-server (v15.4.5)
+root         929  0.0  0.0  10376  1480 ?        Ss   23:00   0:00 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+www-data     932  0.0  0.1  11976  4424 ?        S    23:00   0:00 nginx: worker process
+www-data     933  0.0  0.1  12240  4424 ?        S    23:00   0:00 nginx: worker process
+root         968  0.0  0.0   2584  1536 pts/1    S+   23:57   0:00 sh -c ps aux 2>/dev/null | head -n 40
+root         969  0.0  0.1  11048  4480 pts/1    R+   23:57   0:00 ps aux
+root         970  0.0  0.0   5480  1792 pts/1    S+   23:57   0:00 head -n 40
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
