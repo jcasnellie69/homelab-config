@@ -1,0 +1,13 @@
+Change summary:
+- Updated `.devcontainer/Dockerfile` sudoers permission step to quote expanded path:
+  - from: `chmod 0440 /etc/sudoers.d/${USER} # hadolint ignore=SC2086`
+  - to:   `chmod 0440 "/etc/sudoers.d/${USER}"`
+
+Why:
+- Removes ineffective inline lint suppression comment and hardens path handling around shell expansion.
+- Keeps behavior the same while reducing Dockerfile/shell lint friction.
+
+Validation:
+- Devcontainer smoke build completed successfully:
+  - task: `workspace: devcontainer smoke`
+  - status: success
