@@ -1,0 +1,315 @@
+{
+  "generated_at": "2026-04-11T12:47:45.997437+00:00",
+  "sources": {
+    "network_inventory": "artifacts\\network-inventory.json",
+    "observability_service_map": "docs\\observability-service-map.md"
+  },
+  "network": {
+    "total_devices": 124,
+    "top_categories": [
+      [
+        "Unknown",
+        20
+      ],
+      [
+        "Smart Hub",
+        17
+      ],
+      [
+        "Lighting/Smart",
+        17
+      ],
+      [
+        "Smart Plug/IoT",
+        17
+      ],
+      [
+        "Mobile/Apple",
+        12
+      ],
+      [
+        "Network/Router",
+        9
+      ],
+      [
+        "Security/Camera",
+        7
+      ],
+      [
+        "Amazon Device",
+        6
+      ],
+      [
+        "Appliance",
+        5
+      ],
+      [
+        "Infrastructure",
+        5
+      ]
+    ],
+    "status_counts": {
+      "Active": 96,
+      "Inactive": 6,
+      "Idle": 22
+    },
+    "top_ports": [
+      [
+        "TE5",
+        74
+      ],
+      [
+        "Not on Switch",
+        31
+      ],
+      [
+        "TE2",
+        12
+      ],
+      [
+        "TE10",
+        3
+      ],
+      [
+        "TE3",
+        2
+      ],
+      [
+        "TE1",
+        1
+      ],
+      [
+        "TE4",
+        1
+      ]
+    ],
+    "high_priority_devices": [
+      {
+        "ip": "192.168.4.190",
+        "hostname": "USA92JDN74.lan",
+        "priority": "Critical",
+        "status": "Active"
+      },
+      {
+        "ip": "169.254.198.204",
+        "hostname": "\u2014",
+        "priority": "Critical",
+        "status": "Inactive"
+      },
+      {
+        "ip": "192.168.4.144",
+        "hostname": "her-iphone.lan",
+        "priority": "Critical",
+        "status": "Idle"
+      },
+      {
+        "ip": "192.168.4.1",
+        "hostname": "Blink-Mini.lan",
+        "priority": "Critical",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.172",
+        "hostname": "S380HB.lan",
+        "priority": "Critical",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.181",
+        "hostname": "apple-tv-hub.lan",
+        "priority": "Critical",
+        "status": "Idle"
+      },
+      {
+        "ip": "192.168.4.110",
+        "hostname": "apple-4k-5.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.103",
+        "hostname": "C425.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.69",
+        "hostname": "USA92JDN74.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.121",
+        "hostname": "Watch.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.189",
+        "hostname": "iPhone.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.82",
+        "hostname": "H200.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.95",
+        "hostname": "iPad.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.131",
+        "hostname": "amazon-600e64510.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.228",
+        "hostname": "Samsung-Dryer.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.249",
+        "hostname": "H200.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.61",
+        "hostname": "EP25.lan",
+        "priority": "High",
+        "status": "Idle"
+      },
+      {
+        "ip": "192.168.4.94",
+        "hostname": "aqara-m2.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.56",
+        "hostname": "net_a1_BDD2.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.89",
+        "hostname": "Blink-Mini.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.97",
+        "hostname": "HPCC1C50.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.109",
+        "hostname": "ChamberTV.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.102",
+        "hostname": "gdocntl.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.126",
+        "hostname": "hubv3-03021743206.lan",
+        "priority": "High",
+        "status": "Active"
+      },
+      {
+        "ip": "192.168.4.176",
+        "hostname": "Watch.lan",
+        "priority": "High",
+        "status": "Idle"
+      }
+    ]
+  },
+  "observability": {
+    "service_count": 9,
+    "required_services": [
+      {
+        "ctid": "100",
+        "role": "NetBox + Loki + Netdata",
+        "services": "netbox, loki, netdata",
+        "should_be_running": "YES",
+        "notes": "Telegraf not required"
+      },
+      {
+        "ctid": "102",
+        "role": "Grafana + Loki + code-server",
+        "services": "grafana, loki, promtail",
+        "should_be_running": "YES",
+        "notes": "Telegraf not required (disable)"
+      },
+      {
+        "ctid": "103",
+        "role": "Prometheus server",
+        "services": "prometheus, node-exporter",
+        "should_be_running": "YES",
+        "notes": "Telegraf optional"
+      },
+      {
+        "ctid": "105",
+        "role": "Telemetry Hub (canonical)",
+        "services": "influxdb, telegraf, loki, promtail",
+        "should_be_running": "YES",
+        "notes": "Only Telegraf sending \u2192 Influx"
+      },
+      {
+        "ctid": "106",
+        "role": "Homepage + nginx",
+        "services": "homepage, nginx",
+        "should_be_running": "YES",
+        "notes": "No telemetry agent needed"
+      },
+      {
+        "ctid": "108",
+        "role": "WatchYourLAN",
+        "services": "watchyourlan",
+        "should_be_running": "YES",
+        "notes": "No exporter needed"
+      },
+      {
+        "ctid": "109",
+        "role": "Pi-hole + Netdata + WA MQTT",
+        "services": "pihole-FTL, netdata, wa-mqtt",
+        "should_be_running": "YES",
+        "notes": "Feeds CT105 via HTTP API or log mount"
+      },
+      {
+        "ctid": "110",
+        "role": "Netflow Collector (nfdump)",
+        "services": "nfdump, nfdump@default",
+        "should_be_running": "YES",
+        "notes": "Feeds CT105 via stats file or exec"
+      },
+      {
+        "ctid": "HOST",
+        "role": "Netify DPI Engine",
+        "services": "netifyd",
+        "should_be_running": "YES",
+        "notes": "Logs mounted or shipped into CT105"
+      }
+    ]
+  },
+  "pipeline_targets": {
+    "github_actions_context": "artifacts/automation/pipeline-metadata-summary.json",
+    "workspace_health_report": "artifacts/automation/workspace-health-report.json",
+    "ansible_inventory": "reports/automation/ansible-inventory.json",
+    "terraform_vars": "reports/automation/terraform.auto.tfvars.json",
+    "opnsense_seed": "reports/automation/opnsense-hosts.json",
+    "netbox_export": "reports/automation/netbox-sync.json"
+  }
+}
