@@ -5,3 +5,7 @@
 ## 2025-05-18 - Copy-to-clipboard for Code Blocks
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
+
+## 2026-04-24 - Dynamic Theme Toggle
+**Learning:** Hardcoded dark mode (`slate`) reduces accessibility for users who prefer or require light mode.
+**Action:** Implementing `prefers-color-scheme` with manual toggles empowers users and respects system settings.
