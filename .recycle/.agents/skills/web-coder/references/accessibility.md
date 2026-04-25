@@ -138,11 +138,7 @@ element.addEventListener('keydown', (e) => {
   <!-- Labels -->
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" required aria-required="true">
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Error messages -->
   <input
     type="email"
@@ -152,11 +148,7 @@ element.addEventListener('keydown', (e) => {
   <span id="email-error" role="alert">
     Please enter a valid email
   </span>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Fieldset for groups -->
   <fieldset>
     <legend>Choose an option</legend>
@@ -169,11 +161,7 @@ element.addEventListener('keydown', (e) => {
       Option B
     </label>
   </fieldset>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Help text -->
   <label for="password">Password:</label>
   <input
@@ -303,11 +291,7 @@ element.addEventListener('keydown', (e) => {
 function openModal() {
   modal.showModal();
   modal.querySelector('button').focus();
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   // Trap focus
   modal.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {

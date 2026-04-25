@@ -18,11 +18,7 @@ This section of the prompt contains the specific settings and configurations req
 Any settings that are not specified will be set to default values. The default values are provided in `[square brackets]`.
 
 ### Basic Project Information
-<<<<<<< HEAD
-1. Project to containerize:
-=======
 1. Project to containerize: 
->>>>>>> origin/main
    - `[ProjectName (provide path to .csproj file)]`
 
 2. .NET version to use:
@@ -35,11 +31,7 @@ Any settings that are not specified will be set to default values. The default v
    - `[Specify base image to use for build stage (Default None)]`
 
 5. Custom base image for the run stage of the Docker image ("None" to use standard Microsoft base image):
-<<<<<<< HEAD
-   - `[Specify base image to use for run stage (Default None)]`
-=======
    - `[Specify base image to use for run stage (Default None)]`   
->>>>>>> origin/main
 
 ### Container Configuration
 1. Ports that must be exposed in the container image:

@@ -37,11 +37,7 @@ Bidirectional filtering:
 
 **Better alternative:** Use CROSSFILTER in DAX measures:
 ```dax
-<<<<<<< HEAD
-Countries Sold =
-=======
 Countries Sold = 
->>>>>>> origin/main
 CALCULATE(
     DISTINCTCOUNT(Customer[Country]),
     CROSSFILTER(Customer[CustomerKey], Sales[CustomerKey], BOTH)
@@ -53,11 +49,7 @@ CALCULATE(
 - Use USERELATIONSHIP for role-playing dimensions:
 
 ```dax
-<<<<<<< HEAD
-Sales by Ship Date =
-=======
 Sales by Ship Date = 
->>>>>>> origin/main
 CALCULATE(
     [Total Sales],
     USERELATIONSHIP(Sales[ShipDate], Date[Date])
@@ -113,11 +105,7 @@ relationship_operations(
   definitions: [{
     fromTable: "Sales",
     fromColumn: "ProductKey",
-<<<<<<< HEAD
-    toTable: "Product",
-=======
     toTable: "Product", 
->>>>>>> origin/main
     toColumn: "ProductKey",
     crossFilteringBehavior: "OneDirection",
     isActive: true

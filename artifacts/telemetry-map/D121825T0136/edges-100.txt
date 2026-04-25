@@ -13,11 +13,7 @@ Wed Dec 17 08:37:19 PM HST 2025
 
 ## /etc/telegraf/telegraf.conf (outputs)
 114:  ##   ex: urls = ["https://us-west-2-1.aws.cloud2.influxdata.com"]
-<<<<<<< HEAD
-115:[[outputs.influxdb_v2]]
-=======
 115:[[outputs.influxdb_v2]] 
->>>>>>> origin/main
 116:  urls = ["$INFLUX_HOST"]
 117:  token = "$INFLUX_TOKEN"
 118:  organization = "$INFLUX_ORG"
@@ -309,7 +305,4 @@ Wed Dec 17 08:37:19 PM HST 2025
 14029:#   # token_file = "/path/to/auth/token"
 14031:#   token = "s.CDDrgg5zPv5ssI0Z2P4qxJj2"
 14256:#   # http_proxy_url = ""
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

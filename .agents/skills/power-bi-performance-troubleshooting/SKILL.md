@@ -15,11 +15,7 @@ Begin by clearly defining the performance issue:
 ```
 Issue Classification:
 □ Model loading/refresh performance
-<<<<<<< HEAD
-□ Report page loading performance
-=======
 □ Report page loading performance  
->>>>>>> origin/main
 □ Visual interaction responsiveness
 □ Query execution speed
 □ Capacity resource constraints
@@ -160,11 +156,7 @@ Key Metrics to Monitor:
 ```
 Fabric Capacity Metrics App:
 - CPU and memory utilization trends
-<<<<<<< HEAD
-- Query volume and patterns
-=======
 - Query volume and patterns  
->>>>>>> origin/main
 - Refresh performance tracking
 - User activity analysis
 - Resource bottleneck identification
@@ -185,21 +177,12 @@ Premium Capacity Monitoring:
 -- Replace inefficient patterns:
 
 ❌ Poor Performance:
-<<<<<<< HEAD
-Sales Growth =
-([Total Sales] - CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))) /
-CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))
-
-✅ Optimized Version:
-Sales Growth =
-=======
 Sales Growth = 
 ([Total Sales] - CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))) / 
 CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))
 
 ✅ Optimized Version:
 Sales Growth = 
->>>>>>> origin/main
 VAR CurrentMonth = [Total Sales]
 VAR PreviousMonth = CALCULATE([Total Sales], PREVIOUSMONTH('Date'[Date]))
 RETURN

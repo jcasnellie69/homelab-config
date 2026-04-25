@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# CT 103 (prometheus)
-=======
 # CT 103 (prometheus) 
->>>>>>> origin/main
 [1mPrometheus LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 

@@ -201,21 +201,13 @@ element.addEventListener('click', (event) => {
   // Target elements
   event.target; // Element that triggered event
   event.currentTarget; // Element with listener attached
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   // Mouse position
   event.clientX; // X relative to viewport
   event.clientY; // Y relative to viewport
   event.pageX; // X relative to document
   event.pageY; // Y relative to document
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   // Keyboard
   event.key; // 'a', 'Enter', 'ArrowUp'
   event.code; // 'KeyA', 'Enter', 'ArrowUp'
@@ -223,11 +215,7 @@ element.addEventListener('click', (event) => {
   event.shiftKey; // true if Shift pressed
   event.altKey; // true if Alt pressed
   event.metaKey; // true if Meta/Cmd pressed
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   // Control event flow
   event.preventDefault(); // Prevent default action
   event.stopPropagation(); // Stop bubbling
@@ -312,20 +300,12 @@ fetch('https://api.example.com/data')
 async function fetchData() {
   try {
     const response = await fetch('https://api.example.com/data');
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     // Check if successful
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     const data = await response.json();
     return data;
   } catch (error) {

@@ -14,11 +14,7 @@ ${MIGRATION_TYPE="Framework Version|Architecture Refactoring|Technology Migratio
 ${SOURCE_REFERENCE="branch|commit|tag"}
 <!-- Source reference point (before state) -->
 
-<<<<<<< HEAD
-${TARGET_REFERENCE="branch|commit|tag"}
-=======
 ${TARGET_REFERENCE="branch|commit|tag"}  
->>>>>>> origin/main
 <!-- Target reference point (after state) -->
 
 ${ANALYSIS_SCOPE="Entire project|Specific folder|Modified files only"}
@@ -51,31 +47,19 @@ ${VALIDATION_REQUIRED="true|false"}
 - Document new dependencies and removed ones
 
 #### Code Transformation Analysis
-<<<<<<< HEAD
-${MIGRATION_TYPE == "Framework Version" ?
-=======
 ${MIGRATION_TYPE == "Framework Version" ? 
->>>>>>> origin/main
   "- Identify API changes between framework versions
    - Analyze new features being used
    - Document obsolete methods/properties
    - Note syntax or convention changes" : ""}
 
-<<<<<<< HEAD
-${MIGRATION_TYPE == "Architecture Refactoring" ?
-=======
 ${MIGRATION_TYPE == "Architecture Refactoring" ? 
->>>>>>> origin/main
   "- Analyze architectural pattern changes
    - Identify new abstractions introduced
    - Document responsibility reorganization
    - Note changes in data flows" : ""}
 
-<<<<<<< HEAD
-${MIGRATION_TYPE == "Technology Migration" ?
-=======
 ${MIGRATION_TYPE == "Technology Migration" ? 
->>>>>>> origin/main
   "- Analyze replacement of one technology with another
    - Identify functional equivalences
    - Document API and syntax changes
@@ -96,11 +80,7 @@ Create a `.github/copilot-migration-instructions.md` file with this structure:
 
 ## Migration Context
 - **Type**: ${MIGRATION_TYPE}
-<<<<<<< HEAD
-- **From**: ${SOURCE_REFERENCE}
-=======
 - **From**: ${SOURCE_REFERENCE} 
->>>>>>> origin/main
 - **To**: ${TARGET_REFERENCE}
 - **Date**: [GENERATION_DATE]
 - **Scope**: ${ANALYSIS_SCOPE}
@@ -108,11 +88,7 @@ Create a `.github/copilot-migration-instructions.md` file with this structure:
 ## Automatic Transformation Rules
 
 ### 1. Mandatory Transformations
-<<<<<<< HEAD
-${AUTOMATION_LEVEL != "Conservative" ?
-=======
 ${AUTOMATION_LEVEL != "Conservative" ? 
->>>>>>> origin/main
   "[AUTOMATIC_TRANSFORMATION_RULES]
    - **Old Pattern**: [OLD_CODE]
    - **New Pattern**: [NEW_CODE]
@@ -120,11 +96,7 @@ ${AUTOMATION_LEVEL != "Conservative" ?
    - **Action**: Transformation to apply automatically" : ""}
 
 ### 2. Transformations with Validation
-<<<<<<< HEAD
-${VALIDATION_REQUIRED == "true" ?
-=======
 ${VALIDATION_REQUIRED == "true" ? 
->>>>>>> origin/main
   "[TRANSFORMATIONS_WITH_VALIDATION]
    - **Detected Pattern**: [DESCRIPTION]
    - **Suggested Transformation**: [NEW_APPROACH]
@@ -132,11 +104,7 @@ ${VALIDATION_REQUIRED == "true" ?
    - **Alternatives**: [ALTERNATIVE_OPTIONS]" : ""}
 
 ### 3. API Correspondences
-<<<<<<< HEAD
-${CHANGE_FOCUS == "API Changes" || MIGRATION_TYPE == "Framework Version" ?
-=======
 ${CHANGE_FOCUS == "API Changes" || MIGRATION_TYPE == "Framework Version" ? 
->>>>>>> origin/main
   "[API_CORRESPONDENCE_TABLE]
    | Old API   | New API   | Notes     | Example        |
    | --------- | --------- | --------- | -------------- |
@@ -145,11 +113,7 @@ ${CHANGE_FOCUS == "API Changes" || MIGRATION_TYPE == "Framework Version" ?
 ### 4. New Patterns to Adopt
 [DETECTED_EMERGING_PATTERNS]
 - **Pattern**: [PATTERN_NAME]
-<<<<<<< HEAD
-- **Usage**: [WHEN_TO_USE]
-=======
 - **Usage**: [WHEN_TO_USE] 
->>>>>>> origin/main
 - **Implementation**: [HOW_TO_IMPLEMENT]
 - **Benefits**: [ADVANTAGES]
 
@@ -162,15 +126,6 @@ ${CHANGE_FOCUS == "API Changes" || MIGRATION_TYPE == "Framework Version" ?
 
 ## File Type Specific Instructions
 
-<<<<<<< HEAD
-${GENERATE_EXAMPLES == "true" ?
-  "### Configuration Files
-   [CONFIG_TRANSFORMATION_EXAMPLES]
-
-   ### Main Source Files
-   [SOURCE_TRANSFORMATION_EXAMPLES]
-
-=======
 ${GENERATE_EXAMPLES == "true" ? 
   "### Configuration Files
    [CONFIG_TRANSFORMATION_EXAMPLES]
@@ -178,7 +133,6 @@ ${GENERATE_EXAMPLES == "true" ?
    ### Main Source Files
    [SOURCE_TRANSFORMATION_EXAMPLES]
    
->>>>>>> origin/main
    ### Test Files
    [TEST_TRANSFORMATION_EXAMPLES]" : ""}
 
@@ -214,19 +168,6 @@ How to report incorrect transformations to Copilot:
 
 ### Phase 3: Contextual Examples Generation
 
-<<<<<<< HEAD
-${GENERATE_EXAMPLES == "true" ?
-  "#### Transformation Examples
-   For each identified pattern, generate:
-
-   \`\`\`
-   // BEFORE (${SOURCE_REFERENCE})
-   [OLD_CODE_EXAMPLE]
-
-   // AFTER (${TARGET_REFERENCE})
-   [NEW_CODE_EXAMPLE]
-
-=======
 ${GENERATE_EXAMPLES == "true" ? 
   "#### Transformation Examples
    For each identified pattern, generate:
@@ -238,7 +179,6 @@ ${GENERATE_EXAMPLES == "true" ?
    // AFTER (${TARGET_REFERENCE}) 
    [NEW_CODE_EXAMPLE]
    
->>>>>>> origin/main
    // COPILOT INSTRUCTIONS
    When you see this pattern [TRIGGER], transform it to [NEW_PATTERN] following these steps: [STEPS]
    \`\`\`" : ""}
@@ -251,13 +191,8 @@ ${GENERATE_EXAMPLES == "true" ?
 - Adjust rules based on results
 - Document exceptions and edge cases
 
-<<<<<<< HEAD
-#### Iterative Optimization
-${AUTOMATION_LEVEL == "Aggressive" ?
-=======
 #### Iterative Optimization  
 ${AUTOMATION_LEVEL == "Aggressive" ? 
->>>>>>> origin/main
   "- Refine rules to maximize automation
    - Reduce false positives in detection
    - Improve transformation accuracy
@@ -267,11 +202,7 @@ ${AUTOMATION_LEVEL == "Aggressive" ?
 
 Migration instructions that enable GitHub Copilot to:
 1. **Automatically apply** the same transformations during future modifications
-<<<<<<< HEAD
-2. **Maintain consistency** with newly adopted conventions
-=======
 2. **Maintain consistency** with newly adopted conventions  
->>>>>>> origin/main
 3. **Avoid obsolete patterns** by automatically proposing alternatives
 4. **Accelerate future migrations** by capitalizing on acquired experience
 5. **Reduce errors** by automating repetitive transformations
@@ -285,11 +216,7 @@ These instructions transform Copilot into an intelligent migration assistant, ca
 ### Framework Version Migration
 Perfect for documenting the transition from Angular 14 to Angular 17, React Class Components to Hooks, or .NET Framework to .NET Core. Automatically identifies breaking changes and generates corresponding transformation rules.
 
-<<<<<<< HEAD
-### Technology Stack Evolution
-=======
 ### Technology Stack Evolution  
->>>>>>> origin/main
 Essential when replacing a technology entirely: jQuery to React, REST to GraphQL, SQL to NoSQL. Creates a comprehensive migration guide with pattern mappings.
 
 ### Architecture Refactoring
@@ -303,11 +230,7 @@ Useful for adopting new patterns: Repository Pattern, Dependency Injection, Obse
 ### 🧠 **Artificial Intelligence Enhancement**
 Unlike traditional migration documentation, these instructions "train" GitHub Copilot to reproduce your technology evolution decisions automatically during future code modifications.
 
-<<<<<<< HEAD
-### 🔄 **Knowledge Capitalization**
-=======
 ### 🔄 **Knowledge Capitalization**  
->>>>>>> origin/main
 Transforms specific project experience into reusable rules, avoiding the loss of migration expertise and accelerating future similar transformations.
 
 ### 🎯 **Context-Aware Precision**

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# cmd: bash -lc
-=======
 # cmd: bash -lc 
->>>>>>> origin/main
 for d in /usr/local/bin /usr/local/sbin /opt /srv; do
   echo "### $d"
   [[ -d "$d" ]] && find "$d" -type f -executable 2>/dev/null | sort
@@ -93,7 +89,4 @@ done
 /srv/homelab-share/homelab-config/scripts/util/pve_tools_readme(1).txt
 /srv/homelab-share/homelab-config/scripts/util/pve_tools_readme.txt
 /srv/homelab-share/homelab-config/scripts/util/pve_tools_util_structure.txt
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

@@ -89,11 +89,7 @@ import ServiceLifecycle
 struct MCPService: Service {
     let server: Server
     let transport: Transport
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     func run() async throws {
         try await server.start(transport: transport) { clientInfo, capabilities in
             logger.info("Client connected", metadata: [
@@ -101,19 +97,11 @@ struct MCPService: Service {
                 "version": .string(clientInfo.version)
             ])
         }
-<<<<<<< HEAD
-
-        // Keep service running
-        try await Task.sleep(for: .days(365 * 100))
-    }
-
-=======
         
         // Keep service running
         try await Task.sleep(for: .days(365 * 100))
     }
     
->>>>>>> origin/main
     func shutdown() async throws {
         logger.info("Shutting down MCP server")
         await server.stop()
@@ -127,11 +115,7 @@ do {
     let server = await createServer()
     let transport = StdioTransport(logger: logger)
     let service = MCPService(server: server, transport: transport)
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     let serviceGroup = ServiceGroup(
         services: [service],
         configuration: .init(
@@ -139,11 +123,7 @@ do {
         ),
         logger: logger
     )
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     try await serviceGroup.run()
 } catch {
     logger.error("Fatal error", metadata: ["error": .string("\(error)")])
@@ -167,18 +147,6 @@ func createServer() async -> Server {
             tools: .init(listChanged: true)
         )
     )
-<<<<<<< HEAD
-
-    // Register tool handlers
-    await registerToolHandlers(server: server)
-
-    // Register resource handlers
-    await registerResourceHandlers(server: server)
-
-    // Register prompt handlers
-    await registerPromptHandlers(server: server)
-
-=======
     
     // Register tool handlers
     await registerToolHandlers(server: server)
@@ -189,7 +157,6 @@ func createServer() async -> Server {
     // Register prompt handlers
     await registerPromptHandlers(server: server)
     
->>>>>>> origin/main
     return server
 }
 ```
@@ -264,19 +231,6 @@ func registerToolHandlers(server: Server) async {
         logger.debug("Listing available tools")
         return .init(tools: getToolDefinitions())
     }
-<<<<<<< HEAD
-
-    await server.withMethodHandler(CallTool.self) { params in
-        logger.info("Tool called", metadata: ["name": .string(params.name)])
-
-        switch params.name {
-        case "greet":
-            return handleGreet(params: params)
-
-        case "calculate":
-            return handleCalculate(params: params)
-
-=======
     
     await server.withMethodHandler(CallTool.self) { params in
         logger.info("Tool called", metadata: ["name": .string(params.name)])
@@ -288,7 +242,6 @@ func registerToolHandlers(server: Server) async {
         case "calculate":
             return handleCalculate(params: params)
             
->>>>>>> origin/main
         default:
             logger.warning("Unknown tool requested", metadata: ["name": .string(params.name)])
             return .init(
@@ -306,17 +259,10 @@ private func handleGreet(params: CallTool.Params) -> CallTool.Result {
             isError: true
         )
     }
-<<<<<<< HEAD
-
-    let greeting = "Hello, \(name)! Welcome to MCP."
-    logger.debug("Generated greeting", metadata: ["name": .string(name)])
-
-=======
     
     let greeting = "Hello, \(name)! Welcome to MCP."
     logger.debug("Generated greeting", metadata: ["name": .string(name)])
     
->>>>>>> origin/main
     return .init(
         content: [.text(greeting)],
         isError: false
@@ -332,11 +278,7 @@ private func handleCalculate(params: CallTool.Params) -> CallTool.Result {
             isError: true
         )
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     let result: Double
     switch operation {
     case "add":
@@ -359,20 +301,12 @@ private func handleCalculate(params: CallTool.Params) -> CallTool.Result {
             isError: true
         )
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     logger.debug("Calculation performed", metadata: [
         "operation": .string(operation),
         "result": .string("\(result)")
     ])
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     return .init(
         content: [.text("Result: \(result)")],
         isError: false
@@ -414,17 +348,6 @@ private let logger = Logger(label: "com.example.mcp-server.resources")
 
 actor ResourceState {
     private var subscriptions: Set<String> = []
-<<<<<<< HEAD
-
-    func addSubscription(_ uri: String) {
-        subscriptions.insert(uri)
-    }
-
-    func removeSubscription(_ uri: String) {
-        subscriptions.remove(uri)
-    }
-
-=======
     
     func addSubscription(_ uri: String) {
         subscriptions.insert(uri)
@@ -434,7 +357,6 @@ actor ResourceState {
         subscriptions.remove(uri)
     }
     
->>>>>>> origin/main
     func isSubscribed(_ uri: String) -> Bool {
         subscriptions.contains(uri)
     }
@@ -447,17 +369,10 @@ func registerResourceHandlers(server: Server) async {
         logger.debug("Listing available resources")
         return .init(resources: getResourceDefinitions(), nextCursor: nil)
     }
-<<<<<<< HEAD
-
-    await server.withMethodHandler(ReadResource.self) { params in
-        logger.info("Reading resource", metadata: ["uri": .string(params.uri)])
-
-=======
     
     await server.withMethodHandler(ReadResource.self) { params in
         logger.info("Reading resource", metadata: ["uri": .string(params.uri)])
         
->>>>>>> origin/main
         switch params.uri {
         case "resource://data/example":
             let jsonData = """
@@ -469,11 +384,7 @@ func registerResourceHandlers(server: Server) async {
             return .init(contents: [
                 .text(jsonData, uri: params.uri, mimeType: "application/json")
             ])
-<<<<<<< HEAD
-
-=======
             
->>>>>>> origin/main
         case "resource://config":
             let config = """
             {
@@ -484,31 +395,19 @@ func registerResourceHandlers(server: Server) async {
             return .init(contents: [
                 .text(config, uri: params.uri, mimeType: "application/json")
             ])
-<<<<<<< HEAD
-
-=======
             
->>>>>>> origin/main
         default:
             logger.warning("Unknown resource requested", metadata: ["uri": .string(params.uri)])
             throw MCPError.invalidParams("Unknown resource URI: \(params.uri)")
         }
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     await server.withMethodHandler(ResourceSubscribe.self) { params in
         logger.info("Client subscribed to resource", metadata: ["uri": .string(params.uri)])
         await state.addSubscription(params.uri)
         return .init()
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     await server.withMethodHandler(ResourceUnsubscribe.self) { params in
         logger.info("Client unsubscribed from resource", metadata: ["uri": .string(params.uri)])
         await state.removeSubscription(params.uri)
@@ -549,16 +448,6 @@ func registerPromptHandlers(server: Server) async {
         logger.debug("Listing available prompts")
         return .init(prompts: getPromptDefinitions(), nextCursor: nil)
     }
-<<<<<<< HEAD
-
-    await server.withMethodHandler(GetPrompt.self) { params in
-        logger.info("Getting prompt", metadata: ["name": .string(params.name)])
-
-        switch params.name {
-        case "code-review":
-            return handleCodeReviewPrompt(params: params)
-
-=======
     
     await server.withMethodHandler(GetPrompt.self) { params in
         logger.info("Getting prompt", metadata: ["name": .string(params.name)])
@@ -567,7 +456,6 @@ func registerPromptHandlers(server: Server) async {
         case "code-review":
             return handleCodeReviewPrompt(params: params)
             
->>>>>>> origin/main
         default:
             logger.warning("Unknown prompt requested", metadata: ["name": .string(params.name)])
             throw MCPError.invalidParams("Unknown prompt: \(params.name)")
@@ -582,35 +470,21 @@ private func handleCodeReviewPrompt(params: GetPrompt.Params) -> GetPrompt.Resul
             messages: []
         )
     }
-<<<<<<< HEAD
-
-    let focus = params.arguments?["focus"]?.stringValue ?? "general quality"
-
-=======
     
     let focus = params.arguments?["focus"]?.stringValue ?? "general quality"
     
->>>>>>> origin/main
     let description = "Code review for \(language) with focus on \(focus)"
     let messages: [Prompt.Message] = [
         .user("Please review this \(language) code with focus on \(focus)."),
         .assistant("I'll review the code focusing on \(focus). Please share the code."),
         .user("Here's the code to review: [paste code here]")
     ]
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     logger.debug("Generated code review prompt", metadata: [
         "language": .string(language),
         "focus": .string(focus)
     ])
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     return .init(description: description, messages: messages)
 }
 ```
@@ -627,32 +501,19 @@ final class ServerTests: XCTestCase {
             name: "greet",
             arguments: ["name": .string("Swift")]
         )
-<<<<<<< HEAD
-
-        let result = handleGreet(params: params)
-
-        XCTAssertFalse(result.isError ?? true)
-        XCTAssertEqual(result.content.count, 1)
-
-=======
         
         let result = handleGreet(params: params)
         
         XCTAssertFalse(result.isError ?? true)
         XCTAssertEqual(result.content.count, 1)
         
->>>>>>> origin/main
         if case .text(let message) = result.content[0] {
             XCTAssertTrue(message.contains("Swift"))
         } else {
             XCTFail("Expected text content")
         }
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     func testCalculateTool() async throws {
         let params = CallTool.Params(
             name: "calculate",
@@ -662,32 +523,19 @@ final class ServerTests: XCTestCase {
                 "b": .number(3)
             ]
         )
-<<<<<<< HEAD
-
-        let result = handleCalculate(params: params)
-
-        XCTAssertFalse(result.isError ?? true)
-        XCTAssertEqual(result.content.count, 1)
-
-=======
         
         let result = handleCalculate(params: params)
         
         XCTAssertFalse(result.isError ?? true)
         XCTAssertEqual(result.content.count, 1)
         
->>>>>>> origin/main
         if case .text(let message) = result.content[0] {
             XCTAssertTrue(message.contains("8"))
         } else {
             XCTFail("Expected text content")
         }
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     func testDivideByZero() async throws {
         let params = CallTool.Params(
             name: "calculate",
@@ -697,15 +545,9 @@ final class ServerTests: XCTestCase {
                 "b": .number(0)
             ]
         )
-<<<<<<< HEAD
-
-        let result = handleCalculate(params: params)
-
-=======
         
         let result = handleCalculate(params: params)
         
->>>>>>> origin/main
         XCTAssertTrue(result.isError ?? false)
     }
 }

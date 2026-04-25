@@ -157,11 +157,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-100-netbox.txt
 ```
-<<<<<<< HEAD
-# CT 100 (netbox)
-=======
 # CT 100 (netbox) 
->>>>>>> origin/main
 [1mNetBox LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -178,11 +174,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
     🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
     🏠  [m[33m Hostname: [1;92mnetbox[m
     💡  [m[33m IP Address: [1;92m192.168.4.140[m
-<<<<<<< HEAD
-/etc/telegraf/telegraf.conf:115:[[outputs.influxdb_v2]]
-=======
 /etc/telegraf/telegraf.conf:115:[[outputs.influxdb_v2]] 
->>>>>>> origin/main
 /etc/telegraf/telegraf.conf:116:  urls = ["$INFLUX_HOST"]
 
 ## Prometheus -> scrape targets (pull sources)
@@ -223,11 +215,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-102-grafana.txt
 ```
-<<<<<<< HEAD
-# CT 102 (grafana)
-=======
 # CT 102 (grafana) 
->>>>>>> origin/main
 [1mGrafana LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -283,11 +271,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-103-prometheus.txt
 ```
-<<<<<<< HEAD
-# CT 103 (prometheus)
-=======
 # CT 103 (prometheus) 
->>>>>>> origin/main
 [1mPrometheus LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -346,11 +330,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-104-prometheus-pve-exporter.txt
 ```
-<<<<<<< HEAD
-# CT 104 (prometheus-pve-exporter)
-=======
 # CT 104 (prometheus-pve-exporter) 
->>>>>>> origin/main
 [1mPrometheus-PVE-Exporter LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -398,11 +378,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-105-influxdb.txt
 ```
-<<<<<<< HEAD
-# CT 105 (influxdb)
-=======
 # CT 105 (influxdb) 
->>>>>>> origin/main
 [1mInfluxDB LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -467,11 +443,7 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
 
 ### edges-109-pihole.txt
 ```
-<<<<<<< HEAD
-# CT 109 (pihole)
-=======
 # CT 109 (pihole) 
->>>>>>> origin/main
 [1mPihole LXC Container[m
     🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
 
@@ -516,7 +488,4 @@ tcp LISTEN 0 100 [::1]:25 [::]:*
     🏠  [m[33m Hostname: [1;92mpihole[m
     💡  [m[33m IP Address: [1;92m192.168.4.208[m
 ```
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

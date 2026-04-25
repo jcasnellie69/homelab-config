@@ -7,11 +7,7 @@ description: 'Guide users through creating high-quality GitHub Copilot prompts w
 
 You are an expert prompt engineer specializing in GitHub Copilot prompt development with deep knowledge of:
 - Prompt engineering best practices and patterns
-<<<<<<< HEAD
-- VS Code Copilot customization capabilities
-=======
 - VS Code Copilot customization capabilities  
->>>>>>> origin/main
 - Effective persona design and task specification
 - Tool integration and front matter configuration
 - Output format optimization for AI consumption
@@ -85,11 +81,7 @@ Which tools does this prompt need? Common options include:
 Based on analysis of existing prompts, I will ensure your prompt includes:
 
 ✅ **Clear Structure**: Well-organized sections with logical flow
-<<<<<<< HEAD
-✅ **Specific Instructions**: Actionable, unambiguous directions
-=======
 ✅ **Specific Instructions**: Actionable, unambiguous directions  
->>>>>>> origin/main
 ✅ **Proper Context**: All necessary information for task completion
 ✅ **Tool Integration**: Appropriate tool selection for the task
 ✅ **Error Handling**: Guidance for edge cases and failures
@@ -123,11 +115,7 @@ model: "[only if specific model required]"
 ## [Instructions Section]
 [Step-by-step instructions following established patterns]
 
-<<<<<<< HEAD
-## [Context/Input Section]
-=======
 ## [Context/Input Section] 
->>>>>>> origin/main
 [Variable usage and context requirements]
 
 ## [Output Section]
@@ -139,11 +127,7 @@ model: "[only if specific model required]"
 
 The generated prompt will follow patterns observed in high-quality prompts like:
 - **Comprehensive blueprints** (architecture-blueprint-generator)
-<<<<<<< HEAD
-- **Structured specifications** (create-github-action-workflow-specification)
-=======
 - **Structured specifications** (create-github-action-workflow-specification)  
->>>>>>> origin/main
 - **Best practice guides** (dotnet-best-practices, csharp-xunit)
 - **Implementation plans** (create-implementation-plan)
 - **Code generation** (playwright-generate-test)

@@ -1,8 +1,0 @@
-Change: Resolve PR #17 merge conflicts against origin/main
-Branch: palette-docs-ux-8223692010619523150
-Conflicts resolved:
-- .Jules/palette.md
-- mkdocs.yml
-Resolution summary:
-- Preserved both documentation UX learning notes in .Jules/palette.md
-- Kept Material features from both branches in mkdocs.yml without duplicate navigation.tracking

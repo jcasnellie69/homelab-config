@@ -8,7 +8,4 @@ Search paths:
 
 -- backup images matching CTID --
 (no backup images found for CTID=106)
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

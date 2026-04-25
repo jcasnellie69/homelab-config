@@ -1,14 +1,8 @@
 # Azure Architecture: [Resource Group Name]
 
-<<<<<<< HEAD
-**Subscription**: [subscription-name]
-**Region**: [primary-region]
-**Resource Count**: [count]
-=======
 **Subscription**: [subscription-name]  
 **Region**: [primary-region]  
 **Resource Count**: [count]  
->>>>>>> origin/main
 **Generated**: [date]
 
 ## Overview

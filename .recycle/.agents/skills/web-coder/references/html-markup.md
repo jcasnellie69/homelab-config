@@ -90,11 +90,7 @@ HTML that clearly describes its meaning to both the browser and the developer.
       </ul>
     </nav>
   </header>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <main>
     <article>
       <header>
@@ -107,22 +103,14 @@ HTML that clearly describes its meaning to both the browser and the developer.
       </footer>
     </article>
   </main>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <aside>
     <h3>Related Content</h3>
     <ul>
       <li><a href="/related">Related Article</a></li>
     </ul>
   </aside>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <footer>
     <p>&copy; 2026 Company Name</p>
   </footer>
@@ -155,39 +143,19 @@ Contains metadata about the document.
 <head>
   <!-- Character encoding -->
   <meta charset="UTF-8">
-<<<<<<< HEAD
-
-  <!-- Responsive viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-=======
   
   <!-- Responsive viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
->>>>>>> origin/main
   <!-- SEO metadata -->
   <meta name="description" content="Page description for search engines">
   <meta name="keywords" content="html, web, development">
   <meta name="author" content="Author Name">
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Open Graph (social media) -->
   <meta property="og:title" content="Page Title">
   <meta property="og:description" content="Page description">
   <meta property="og:image" content="https://example.com/image.jpg">
-<<<<<<< HEAD
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-
-=======
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -195,7 +163,6 @@ Contains metadata about the document.
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
   
->>>>>>> origin/main
   <!-- Preload critical resources -->
   <link rel="preload" href="critical.css" as="style">
   <link rel="preconnect" href="https://api.example.com">
@@ -211,17 +178,6 @@ Contains metadata about the document.
   <!-- Text input -->
   <label for="name">Name:</label>
   <input type="text" id="name" name="name" required>
-<<<<<<< HEAD
-
-  <!-- Email input -->
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-
-  <!-- Password input -->
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" minlength="8" required>
-
-=======
   
   <!-- Email input -->
   <label for="email">Email:</label>
@@ -231,7 +187,6 @@ Contains metadata about the document.
   <label for="password">Password:</label>
   <input type="password" id="password" name="password" minlength="8" required>
   
->>>>>>> origin/main
   <!-- Select dropdown -->
   <label for="country">Country:</label>
   <select id="country" name="country">
@@ -239,29 +194,17 @@ Contains metadata about the document.
     <option value="us">United States</option>
     <option value="uk">United Kingdom</option>
   </select>
-<<<<<<< HEAD
-
-  <!-- Textarea -->
-  <label for="message">Message:</label>
-  <textarea id="message" name="message" rows="4"></textarea>
-
-=======
   
   <!-- Textarea -->
   <label for="message">Message:</label>
   <textarea id="message" name="message" rows="4"></textarea>
   
->>>>>>> origin/main
   <!-- Checkbox -->
   <label>
     <input type="checkbox" name="terms" required>
     I agree to the terms
   </label>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Radio buttons -->
   <fieldset>
     <legend>Choose an option:</legend>
@@ -274,11 +217,7 @@ Contains metadata about the document.
       Option B
     </label>
   </fieldset>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Submit button -->
   <button type="submit">Submit</button>
 </form>

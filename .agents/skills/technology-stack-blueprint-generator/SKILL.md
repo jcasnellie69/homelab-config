@@ -77,11 +77,7 @@ ${PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect" ? "#### Python Analy
 - API design patterns" : ""}
 
 ### 3. Implementation Patterns & Conventions
-<<<<<<< HEAD
-${INCLUDE_CONVENTIONS ?
-=======
 ${INCLUDE_CONVENTIONS ? 
->>>>>>> origin/main
 "Document coding conventions and patterns for each technology area:
 
 #### Naming Conventions
@@ -106,11 +102,7 @@ ${INCLUDE_CONVENTIONS ?
 - Testing patterns" : ""}
 
 ### 4. Usage Examples
-<<<<<<< HEAD
-${INCLUDE_USAGE_PATTERNS ?
-=======
 ${INCLUDE_USAGE_PATTERNS ? 
->>>>>>> origin/main
 "Extract representative code examples showing standard implementation patterns:
 
 #### API Implementation Examples
@@ -139,11 +131,7 @@ ${INCLUDE_USAGE_PATTERNS ?
 - API integration pattern" : ""}
 
 ### 5. Technology Stack Map
-<<<<<<< HEAD
-${DEPTH_LEVEL == "Comprehensive" || DEPTH_LEVEL == "Implementation-Ready" ?
-=======
 ${DEPTH_LEVEL == "Comprehensive" || DEPTH_LEVEL == "Implementation-Ready" ? 
->>>>>>> origin/main
 "Create a comprehensive technology map including:
 
 #### Core Framework Usage
@@ -172,100 +160,60 @@ ${DEPTH_LEVEL == "Comprehensive" || DEPTH_LEVEL == "Implementation-Ready" ?
 
 ### 6. Technology-Specific Implementation Details
 
-<<<<<<< HEAD
-${PROJECT_TYPE == ".NET" || PROJECT_TYPE == "Auto-detect" ?
-=======
 ${PROJECT_TYPE == ".NET" || PROJECT_TYPE == "Auto-detect" ? 
->>>>>>> origin/main
 "#### .NET Implementation Details (if detected)
 - **Dependency Injection Pattern**:
   - Service registration approach (Scoped/Singleton/Transient patterns)
   - Configuration binding patterns
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **Controller Patterns**:
   - Base controller usage
   - Action result types and patterns
   - Route attribute conventions
   - Filter usage (authorization, validation, etc.)
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **Data Access Patterns**:
   - ORM configuration and usage
   - Entity configuration approach
   - Relationship definitions
   - Query patterns and optimization approaches
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **API Design Patterns** (if used):
   - Endpoint organization
   - Parameter binding approaches
   - Response type handling
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **Language Features Used**:
   - Detect specific language features from code
   - Identify common patterns and idioms
   - Note any specific version-dependent features" : ""}
 
-<<<<<<< HEAD
-${PROJECT_TYPE == "React.js" || PROJECT_TYPE == "Auto-detect" ?
-=======
 ${PROJECT_TYPE == "React.js" || PROJECT_TYPE == "Auto-detect" ? 
->>>>>>> origin/main
 "#### React Implementation Details (if detected)
 - **Component Structure**:
   - Function vs class components
   - Props interface definitions
   - Component composition patterns
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **Hook Usage Patterns**:
   - Custom hook implementation style
   - useState patterns
   - useEffect cleanup approaches
   - Context usage patterns
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **State Management**:
   - Local vs global state decisions
   - State management library patterns
   - Store configuration
   - Selector patterns
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
 - **Styling Approach**:
   - CSS methodology (CSS modules, styled-components, etc.)
   - Theme implementation
   - Responsive design patterns" : ""}
 
 ### 7. Blueprint for New Code Implementation
-<<<<<<< HEAD
-${DEPTH_LEVEL == "Implementation-Ready" ?
-=======
 ${DEPTH_LEVEL == "Implementation-Ready" ? 
->>>>>>> origin/main
 "Based on the analysis, provide a detailed blueprint for implementing new features:
 
 - **File/Class Templates**: Standard structure for common component types
@@ -275,11 +223,7 @@ ${DEPTH_LEVEL == "Implementation-Ready" ?
 - **Testing Requirements**: Standard test patterns for different component types
 - **Documentation Requirements**: Standard doc patterns for new features" : ""}
 
-<<<<<<< HEAD
-${INCLUDE_DIAGRAMS ?
-=======
 ${INCLUDE_DIAGRAMS ? 
->>>>>>> origin/main
 "### 8. Technology Relationship Diagrams
 - **Stack Diagram**: Visual representation of the complete technology stack
 - **Dependency Flow**: How different technologies interact

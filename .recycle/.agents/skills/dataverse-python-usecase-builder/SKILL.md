@@ -114,30 +114,18 @@ class Status(IntEnum):
 # 3. SERVICE CLASS (SINGLETON PATTERN)
 class DataverseService:
     _instance = None
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance._initialize()
         return cls._instance
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     def _initialize(self):
         # Authentication setup
         # Client initialization
         pass
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     # Methods here
 
 # 4. SPECIFIC OPERATIONS

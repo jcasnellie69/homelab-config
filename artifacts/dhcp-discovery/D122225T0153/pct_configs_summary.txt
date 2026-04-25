@@ -155,7 +155,4 @@ rootfs: local-lvm:vm-111-disk-0,size=20G
 swap: 512
 tags: automation
 unprivileged: 1
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

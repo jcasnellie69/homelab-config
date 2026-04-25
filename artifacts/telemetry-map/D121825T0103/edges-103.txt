@@ -304,7 +304,4 @@ Wed Dec 17 08:04:12 PM HST 2025
 /etc/telegraf/telegraf.d/prom.conf:19:  token        = "${INFLUX_TOKEN}"
 /etc/telegraf/telegraf.d/prom.conf:20:  organization = "${INFLUX_ORG}"
 /etc/telegraf/telegraf.d/prom.conf:21:  bucket       = "${INFLUX_BUCKET}"
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

@@ -124,11 +124,7 @@ Types: `"Integer"`, `"Float"`, `"Boolean"`, `"String"`, `"Array"`, `"Object"`
 }
 ```
 
-<<<<<<< HEAD
-Comparison operators: `equals`, `not`, `greater`, `greaterOrEquals`, `less`, `lessOrEquals`, `contains`
-=======
 Comparison operators: `equals`, `not`, `greater`, `greaterOrEquals`, `less`, `lessOrEquals`, `contains`  
->>>>>>> origin/main
 Logical: `and: [...]`, `or: [...]`
 
 ---

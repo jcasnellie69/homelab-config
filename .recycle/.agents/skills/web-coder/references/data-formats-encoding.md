@@ -21,11 +21,7 @@ Lightweight data interchange format.
 }
 ```
 
-<<<<<<< HEAD
-**Permitted Types**: string, number, boolean, null, array, object
-=======
 **Permitted Types**: string, number, boolean, null, array, object  
->>>>>>> origin/main
 **Not Permitted**: undefined, functions, dates, RegExp
 
 ### JavaScript Methods
@@ -149,11 +145,7 @@ String.fromCharCode(65); // 'A'
 
 7-bit encoding (128 characters).
 
-<<<<<<< HEAD
-**Range**: 0-127
-=======
 **Range**: 0-127  
->>>>>>> origin/main
 **Includes**: English letters, digits, common symbols
 
 ### Code Point vs Code Unit

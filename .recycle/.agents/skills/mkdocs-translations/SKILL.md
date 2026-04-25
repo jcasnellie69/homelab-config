@@ -8,13 +8,8 @@ description: 'Generate a language translation for a mkdocs documentation stack.'
 ## Role
 You are a professional technical writer and translator.
 
-<<<<<<< HEAD
-## Required Input
-**Before proceeding, ask the user to specify the target translation language and locale code.**
-=======
 ## Required Input  
 **Before proceeding, ask the user to specify the target translation language and locale code.**  
->>>>>>> origin/main
 Examples:
 - Spanish (`es`)
 - French (`fr`)
@@ -25,11 +20,7 @@ Use this value consistently in folder names, translated content paths, and MkDoc
 
 ---
 
-<<<<<<< HEAD
-## Objective
-=======
 ## Objective  
->>>>>>> origin/main
 Translate all documentation from the `docs/docs/en` and `docs/docs/includes/en` folders into the specified target language. Preserve the original folder structure and all Markdown formatting.
 
 ---
@@ -51,28 +42,17 @@ The following is the task list you must complete. Check each item off as it is d
 
 Before starting to create **any** new files, create a new git branch using the terminal command `git checkout -b docs-translation-<language>`.
 
-<<<<<<< HEAD
-- Create a new folder under `docs/docs/` named using the ISO 639-1 or locale code provided by the user.
-  Examples:
-  - `es` for Spanish
-  - `fr` for French
-=======
 - Create a new folder under `docs/docs/` named using the ISO 639-1 or locale code provided by the user.  
   Examples:  
   - `es` for Spanish  
   - `fr` for French  
->>>>>>> origin/main
   - `pt-BR` for Brazilian Portuguese
 - Mirror the exact folder and file structure from the original `en` directories.
 - For each translated file:
   - Preserve all Markdown formatting, including headings, code blocks, metadata, and links.
   - Maintain the original filename.
   - Do **not** wrap the translated content in Markdown code blocks.
-<<<<<<< HEAD
-  - Append this line at the end of the file:
-=======
   - Append this line at the end of the file:  
->>>>>>> origin/main
     *Translated using GitHub Copilot and GPT-4o.*
   - Save the translated file into the corresponding target language folder.
 
@@ -80,15 +60,9 @@ Before starting to create **any** new files, create a new git branch using the t
 
 ## Include Path Updates
 
-<<<<<<< HEAD
-- Update include references in files to reflect the new locale.
-  Example:
-    `includes/en/introduction-event.md` → `includes/es/introduction-event.md`
-=======
 - Update include references in files to reflect the new locale.  
   Example:  
     `includes/en/introduction-event.md` → `includes/es/introduction-event.md`  
->>>>>>> origin/main
   Replace `es` with the actual locale code provided by the user.
 
 ---
@@ -106,30 +80,18 @@ Before starting to create **any** new files, create a new git branch using the t
 ## Translation Rules
 
 - Use accurate, clear, and technically appropriate translations.
-<<<<<<< HEAD
-- Always use computer industry-standard terminology.
-  Example: prefer "Stack Tecnológica" over "Pila Tecnológica".
-
-**Do not:**
-- Comment on, suggest changes for, or attempt to fix any formatting or Markdown linting issues.
-=======
 - Always use computer industry-standard terminology.  
   Example: prefer "Stack Tecnológica" over "Pila Tecnológica".
 
 **Do not:**
 - Comment on, suggest changes for, or attempt to fix any formatting or Markdown linting issues.  
->>>>>>> origin/main
   This includes, but is not limited to:
   - Missing blank lines around headings or lists
   - Trailing punctuation in headings
   - Missing alt text for images
   - Improper heading levels
   - Line length or spacing issues
-<<<<<<< HEAD
-- Do not say things like:
-=======
 - Do not say things like:  
->>>>>>> origin/main
   _"There are some linting issues, such as…"_
   _"Would you like me to fix…"_
 - Never prompt the user about any linting or formatting issues.

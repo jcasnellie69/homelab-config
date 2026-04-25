@@ -95,15 +95,6 @@ XML-based vector graphics.
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <!-- Rectangle -->
   <rect x="10" y="10" width="80" height="60" fill="red" />
-<<<<<<< HEAD
-
-  <!-- Circle -->
-  <circle cx="150" cy="40" r="30" fill="blue" />
-
-  <!-- Path -->
-  <path d="M10 100 L100 100 L50 150 Z" fill="green" />
-
-=======
   
   <!-- Circle -->
   <circle cx="150" cy="40" r="30" fill="blue" />
@@ -111,7 +102,6 @@ XML-based vector graphics.
   <!-- Path -->
   <path d="M10 100 L100 100 L50 150 Z" fill="green" />
   
->>>>>>> origin/main
   <!-- Text -->
   <text x="50" y="180" font-size="20">Hello SVG</text>
 </svg>
@@ -319,17 +309,6 @@ fetch('audio.mp3')
     // Create source
     const source = audioContext.createBufferSource();
     source.buffer = audioBuffer;
-<<<<<<< HEAD
-
-    // Create gain node (volume)
-    const gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.5;
-
-    // Connect: source -> gain -> destination
-    source.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-=======
     
     // Create gain node (volume)
     const gainNode = audioContext.createGain();
@@ -339,7 +318,6 @@ fetch('audio.mp3')
     source.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
->>>>>>> origin/main
     // Play
     source.start();
   });
@@ -377,19 +355,11 @@ Art direction and format switching:
   <!-- Different formats -->
   <source srcset="image.avif" type="image/avif">
   <source srcset="image.webp" type="image/webp">
-<<<<<<< HEAD
-
-  <!-- Different crops for mobile/desktop -->
-  <source media="(max-width: 600px)" srcset="image-mobile.jpg">
-  <source media="(min-width: 601px)" srcset="image-desktop.jpg">
-
-=======
   
   <!-- Different crops for mobile/desktop -->
   <source media="(max-width: 600px)" srcset="image-mobile.jpg">
   <source media="(min-width: 601px)" srcset="image-desktop.jpg">
   
->>>>>>> origin/main
   <!-- Fallback -->
   <img src="image.jpg" alt="Fallback">
 </picture>

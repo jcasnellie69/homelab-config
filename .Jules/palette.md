@@ -5,7 +5,3 @@
 ## 2025-04-08 - Code Copy & Scroll Tracking in Docs
 **Learning:** Infrastructure and script documentation contains many code blocks and long configuration matrices. Users frequently copy/paste commands or share links to specific sections. The default MkDocs experience lacks one-click copying and dynamic URL hashing.
 **Action:** Enabled `content.code.copy` and `navigation.tracking` in Material for MkDocs. Always enable these features by default for technical, code-heavy documentation sites to reduce manual selection errors and improve shareability.
-
-## 2025-05-18 - Copy-to-clipboard for Code Blocks
-**Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
-**Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.

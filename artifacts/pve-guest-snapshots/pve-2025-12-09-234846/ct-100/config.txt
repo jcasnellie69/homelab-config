@@ -15,7 +15,4 @@ searchdomain: primary.node
 swap: 1000
 tags: community-script;network
 unprivileged: 1
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

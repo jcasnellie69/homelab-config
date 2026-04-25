@@ -26,11 +26,7 @@ Protocol for transferring hypertext between client and server. Foundation of dat
 | CONNECT | Establish tunnel | No | No | No |
 | TRACE | Echo request | Yes | Yes | No |
 
-<<<<<<< HEAD
-**Safe**: Doesn't modify server state
-=======
 **Safe**: Doesn't modify server state  
->>>>>>> origin/main
 **Idempotent**: Multiple identical requests have same effect as single request
 
 ## Status Codes
@@ -369,11 +365,7 @@ example.com → 93.184.216.34
 
 ### IP Addressing
 
-<<<<<<< HEAD
-**IPv4**: `192.168.1.1` (32-bit)
-=======
 **IPv4**: `192.168.1.1` (32-bit)  
->>>>>>> origin/main
 **IPv6**: `2001:0db8:85a3:0000:0000:8a2e:0370:7334` (128-bit)
 
 ### Ports
@@ -390,11 +382,7 @@ example.com → 93.184.216.34
 
 ### Bandwidth & Latency
 
-<<<<<<< HEAD
-**Bandwidth**: Amount of data transferred per unit time (Mbps, Gbps)
-=======
 **Bandwidth**: Amount of data transferred per unit time (Mbps, Gbps)  
->>>>>>> origin/main
 **Latency**: Time delay in data transmission (milliseconds)
 
 **Round Trip Time (RTT)**: Time for request to reach server and response to return

@@ -192,11 +192,7 @@ class ExampleTool
 {
     /**
      * Performs a greeting with the provided name.
-<<<<<<< HEAD
-     *
-=======
      * 
->>>>>>> origin/main
      * @param string $name The name to greet
      * @return string A greeting message
      */
@@ -205,11 +201,7 @@ class ExampleTool
     {
         return "Hello, {$name}!";
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     /**
      * Performs arithmetic calculations.
      */
@@ -224,11 +216,7 @@ class ExampleTool
             'add' => $a + $b,
             'subtract' => $a - $b,
             'multiply' => $a * $b,
-<<<<<<< HEAD
-            'divide' => $b != 0 ? $a / $b :
-=======
             'divide' => $b != 0 ? $a / $b : 
->>>>>>> origin/main
                 throw new \InvalidArgumentException('Division by zero'),
             default => throw new \InvalidArgumentException('Invalid operation')
         };
@@ -340,11 +328,7 @@ class PromptGenerator
             ]
         ];
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     /**
      * Generates documentation prompt.
      */
@@ -376,74 +360,43 @@ use App\Tools\ExampleTool;
 class ToolsTest extends TestCase
 {
     private ExampleTool $tool;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     protected function setUp(): void
     {
         $this->tool = new ExampleTool();
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     public function testGreet(): void
     {
         $result = $this->tool->greet('World');
         $this->assertSame('Hello, World!', $result);
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     public function testCalculateAdd(): void
     {
         $result = $this->tool->performCalculation(5, 3, 'add');
         $this->assertSame(8.0, $result);
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     public function testCalculateDivide(): void
     {
         $result = $this->tool->performCalculation(10, 2, 'divide');
         $this->assertSame(5.0, $result);
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     public function testCalculateDivideByZero(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Division by zero');
-<<<<<<< HEAD
-
-        $this->tool->performCalculation(10, 0, 'divide');
-    }
-
-=======
         
         $this->tool->performCalculation(10, 0, 'divide');
     }
     
->>>>>>> origin/main
     public function testCalculateInvalidOperation(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid operation');
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/main
         $this->tool->performCalculation(5, 3, 'modulo');
     }
 }

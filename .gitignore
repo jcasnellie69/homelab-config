@@ -22,13 +22,8 @@ logs/
 artifacts/pve-script-scan/
 
 # Editor
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-!.vscode/tasks.json
-!.vscode/mcp.json
+.vscode/
 .idea/
-.claude/
 
 # MkDocs site build
 site/

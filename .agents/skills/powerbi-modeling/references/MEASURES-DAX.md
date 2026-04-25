@@ -68,11 +68,7 @@ YoY Growth = DIVIDE([Total Sales] - [PY Sales], [PY Sales])
 
 ### Percentage Calculations
 ```dax
-<<<<<<< HEAD
-Sales % of Total =
-=======
 Sales % of Total = 
->>>>>>> origin/main
 DIVIDE(
     [Total Sales],
     CALCULATE([Total Sales], REMOVEFILTERS(Product))
@@ -83,11 +79,7 @@ Margin % = DIVIDE([Gross Profit], [Total Sales])
 
 ### Running Totals
 ```dax
-<<<<<<< HEAD
-Running Total =
-=======
 Running Total = 
->>>>>>> origin/main
 CALCULATE(
     [Total Sales],
     FILTER(
@@ -183,11 +175,7 @@ Use variables to:
 - Enable debugging
 
 ```dax
-<<<<<<< HEAD
-Gross Margin % =
-=======
 Gross Margin % = 
->>>>>>> origin/main
 VAR TotalSales = [Total Sales]
 VAR TotalCost = [Total Cost]
 VAR GrossProfit = TotalSales - TotalCost

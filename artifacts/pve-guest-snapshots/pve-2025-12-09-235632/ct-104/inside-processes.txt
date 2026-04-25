@@ -22,7 +22,4 @@ postfix    24177  0.0  1.2  43052  6784 ?        S    18:49   0:00 pickup -l -t 
 root       24194  0.0  0.2   2580  1408 pts/1    S+   18:57   0:00 sh -c ps aux 2>/dev/null | head -n 40
 root       24195  0.0  0.8  11044  4608 pts/1    R+   18:57   0:00 ps aux
 root       24196  0.0  0.3   5476  1664 pts/1    S+   18:57   0:00 head -n 40
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

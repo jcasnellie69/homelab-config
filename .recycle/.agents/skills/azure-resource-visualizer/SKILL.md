@@ -68,39 +68,23 @@ graph TB
             SUBNET2[Subnet: data<br/>10.0.2.0/24]
             NSG[Network Security Group]
         end
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/main
         subgraph "Compute Layer"
             APP[App Service<br/>Plan: P1v2]
             FUNC[Function App<br/>Runtime: .NET 8]
         end
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/main
         subgraph "Data Layer"
             SQL[Azure SQL Database<br/>DTU: S1]
             STORAGE[Storage Account<br/>Type: Standard LRS]
         end
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/main
         subgraph "Security & Identity"
             KV[Key Vault]
             MI[Managed Identity]
         end
     end
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     %% Define relationships with descriptive labels
     APP -->|"HTTPS requests"| FUNC
     FUNC -->|"SQL connection"| SQL
@@ -157,11 +141,7 @@ Use [template-architecture.md](./assets/template-architecture.md) as a template 
 
 ### Tool Usage Patterns
 
-<<<<<<< HEAD
-1. **Azure MCP Search**:
-=======
 1. **Azure MCP Search**: 
->>>>>>> origin/main
    - Use `intent="list resource groups"` to discover resource groups
    - Use `intent="list resources in group"` with group name to get all resources
    - Use `intent="get resource details"` for individual resource analysis

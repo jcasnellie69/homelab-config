@@ -62,23 +62,6 @@ repositories {
 
 dependencies {
     implementation("io.modelcontextprotocol:kotlin-sdk:0.7.2")
-<<<<<<< HEAD
-
-    // Ktor for transports
-    implementation("io.ktor:ktor-server-netty:3.0.0")
-    implementation("io.ktor:ktor-client-cio:3.0.0")
-
-    // Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-
-    // Logging
-    implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
-    implementation("ch.qos.logback:logback-classic:1.5.12")
-
-=======
     
     // Ktor for transports
     implementation("io.ktor:ktor-server-netty:3.0.0")
@@ -94,7 +77,6 @@ dependencies {
     implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
     implementation("ch.qos.logback:logback-classic:1.5.12")
     
->>>>>>> origin/main
     // Testing
     testImplementation(kotlin("test"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
@@ -132,15 +114,6 @@ private val logger = KotlinLogging.logger {}
 
 fun main() = runBlocking {
     logger.info { "Starting MCP server..." }
-<<<<<<< HEAD
-
-    val config = loadConfig()
-    val server = createServer(config)
-
-    // Use stdio transport
-    val transport = StdioServerTransport()
-
-=======
     
     val config = loadConfig()
     val server = createServer(config)
@@ -148,7 +121,6 @@ fun main() = runBlocking {
     // Use stdio transport
     val transport = StdioServerTransport()
     
->>>>>>> origin/main
     logger.info { "Server '${config.name}' v${config.version} ready" }
     server.connect(transport)
 }
@@ -184,17 +156,10 @@ fun createServer(config: Config): Server {
     ) {
         config.description
     }
-<<<<<<< HEAD
-
-    // Register all tools
-    server.registerTools()
-
-=======
     
     // Register all tools
     server.registerTools()
     
->>>>>>> origin/main
     return server
 }
 ```
@@ -261,17 +226,10 @@ fun Server.registerTool1() {
         val param1 = request.params.arguments["param1"] as? String
             ?: throw IllegalArgumentException("param1 is required")
         val param2 = (request.params.arguments["param2"] as? Number)?.toInt() ?: 0
-<<<<<<< HEAD
-
-        // Perform tool logic
-        val result = performTool1Logic(param1, param2)
-
-=======
         
         // Perform tool logic
         val result = performTool1Logic(param1, param2)
         
->>>>>>> origin/main
         CallToolResult(
             content = listOf(
                 TextContent(text = result)
@@ -311,11 +269,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 
 class ServerTest {
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     @Test
     fun `test server creation`() = runTest {
         val config = Config(
@@ -323,15 +277,6 @@ class ServerTest {
             version = "1.0.0",
             description = "Test server"
         )
-<<<<<<< HEAD
-
-        val server = createServer(config)
-
-        assertEquals("test-server", server.serverInfo.name)
-        assertEquals("1.0.0", server.serverInfo.version)
-    }
-
-=======
         
         val server = createServer(config)
         
@@ -339,16 +284,11 @@ class ServerTest {
         assertEquals("1.0.0", server.serverInfo.version)
     }
     
->>>>>>> origin/main
     @Test
     fun `test tool1 execution`() = runTest {
         val config = Config()
         val server = createServer(config)
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/main
         // Test tool execution
         // Note: You'll need to implement proper testing utilities
         // for calling tools in the server
@@ -499,11 +439,7 @@ kotlin {
     jvm()
     js(IR) { nodejs() }
     wasmJs()
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     sourceSets {
         commonMain.dependencies {
             implementation("io.modelcontextprotocol:kotlin-sdk:0.7.2")

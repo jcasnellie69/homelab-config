@@ -72,11 +72,7 @@ When context files don't provide specific guidance:
    - Logging approaches
    - Documentation style
    - Testing patterns
-<<<<<<< HEAD
-
-=======
    
->>>>>>> origin/main
 3. Follow the most consistent patterns found in the codebase
 4. When conflicting patterns exist, prioritize patterns in newer files or files with higher test coverage
 5. Never introduce patterns not found in the existing codebase
@@ -120,32 +116,20 @@ ${CODE_QUALITY_FOCUS.includes("Testability") || CODE_QUALITY_FOCUS == "All" ? `#
 
 ## Documentation Requirements
 
-<<<<<<< HEAD
-${DOCUMENTATION_LEVEL == "Minimal" ?
-=======
 ${DOCUMENTATION_LEVEL == "Minimal" ? 
->>>>>>> origin/main
 `- Match the level and style of comments found in existing code
 - Document according to patterns observed in the codebase
 - Follow existing patterns for documenting non-obvious behavior
 - Use the same format for parameter descriptions as existing code` : ""}
 
-<<<<<<< HEAD
-${DOCUMENTATION_LEVEL == "Standard" ?
-=======
 ${DOCUMENTATION_LEVEL == "Standard" ? 
->>>>>>> origin/main
 `- Follow the exact documentation format found in the codebase
 - Match the XML/JSDoc style and completeness of existing comments
 - Document parameters, returns, and exceptions in the same style
 - Follow existing patterns for usage examples
 - Match class-level documentation style and content` : ""}
 
-<<<<<<< HEAD
-${DOCUMENTATION_LEVEL == "Comprehensive" ?
-=======
 ${DOCUMENTATION_LEVEL == "Comprehensive" ? 
->>>>>>> origin/main
 `- Follow the most detailed documentation patterns found in the codebase
 - Match the style and completeness of the best-documented code
 - Document exactly as the most thoroughly documented files do
@@ -154,11 +138,7 @@ ${DOCUMENTATION_LEVEL == "Comprehensive" ?
 
 ## Testing Approach
 
-<<<<<<< HEAD
-${TESTING_REQUIREMENTS.includes("Unit") || TESTING_REQUIREMENTS == "All" ?
-=======
 ${TESTING_REQUIREMENTS.includes("Unit") || TESTING_REQUIREMENTS == "All" ? 
->>>>>>> origin/main
 `### Unit Testing
 - Match the exact structure and style of existing unit tests
 - Follow the same naming conventions for test classes and methods
@@ -166,42 +146,26 @@ ${TESTING_REQUIREMENTS.includes("Unit") || TESTING_REQUIREMENTS == "All" ?
 - Apply the same mocking approach used in the codebase
 - Follow existing patterns for test isolation` : ""}
 
-<<<<<<< HEAD
-${TESTING_REQUIREMENTS.includes("Integration") || TESTING_REQUIREMENTS == "All" ?
-=======
 ${TESTING_REQUIREMENTS.includes("Integration") || TESTING_REQUIREMENTS == "All" ? 
->>>>>>> origin/main
 `### Integration Testing
 - Follow the same integration test patterns found in the codebase
 - Match existing patterns for test data setup and teardown
 - Use the same approach for testing component interactions
 - Follow existing patterns for verifying system behavior` : ""}
 
-<<<<<<< HEAD
-${TESTING_REQUIREMENTS.includes("E2E") || TESTING_REQUIREMENTS == "All" ?
-=======
 ${TESTING_REQUIREMENTS.includes("E2E") || TESTING_REQUIREMENTS == "All" ? 
->>>>>>> origin/main
 `### End-to-End Testing
 - Match the existing E2E test structure and patterns
 - Follow established patterns for UI testing
 - Apply the same approach for verifying user journeys` : ""}
 
-<<<<<<< HEAD
-${TESTING_REQUIREMENTS.includes("TDD") || TESTING_REQUIREMENTS == "All" ?
-=======
 ${TESTING_REQUIREMENTS.includes("TDD") || TESTING_REQUIREMENTS == "All" ? 
->>>>>>> origin/main
 `### Test-Driven Development
 - Follow TDD patterns evident in the codebase
 - Match the progression of test cases seen in existing code
 - Apply the same refactoring patterns after tests pass` : ""}
 
-<<<<<<< HEAD
-${TESTING_REQUIREMENTS.includes("BDD") || TESTING_REQUIREMENTS == "All" ?
-=======
 ${TESTING_REQUIREMENTS.includes("BDD") || TESTING_REQUIREMENTS == "All" ? 
->>>>>>> origin/main
 `### Behavior-Driven Development
 - Match the existing Given-When-Then structure in tests
 - Follow the same patterns for behavior descriptions
@@ -254,29 +218,17 @@ ${PROJECT_TYPE == "Python" || PROJECT_TYPE == "Auto-detect" || PROJECT_TYPE == "
 
 ## Version Control Guidelines
 
-<<<<<<< HEAD
-${VERSIONING == "Semantic" ?
-=======
 ${VERSIONING == "Semantic" ? 
->>>>>>> origin/main
 `- Follow Semantic Versioning patterns as applied in the codebase
 - Match existing patterns for documenting breaking changes
 - Follow the same approach for deprecation notices` : ""}
 
-<<<<<<< HEAD
-${VERSIONING == "CalVer" ?
-=======
 ${VERSIONING == "CalVer" ? 
->>>>>>> origin/main
 `- Follow Calendar Versioning patterns as applied in the codebase
 - Match existing patterns for documenting changes
 - Follow the same approach for highlighting significant changes` : ""}
 
-<<<<<<< HEAD
-${VERSIONING == "Custom" ?
-=======
 ${VERSIONING == "Custom" ? 
->>>>>>> origin/main
 `- Match the exact versioning pattern observed in the codebase
 - Follow the same changelog format used in existing documentation
 - Apply the same tagging conventions used in the project` : ""}

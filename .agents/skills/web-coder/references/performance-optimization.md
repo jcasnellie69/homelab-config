@@ -62,25 +62,6 @@ Measures visual stability - unexpected layout shifts.
 ## Other Performance Metrics
 
 ### First Contentful Paint (FCP)
-<<<<<<< HEAD
-Time when first content element renders.
-**Target**: < 1.8s
-
-### Time to First Byte (TTFB)
-Time for browser to receive first byte of response.
-**Target**: < 600ms
-
-### Time to Interactive (TTI)
-When page becomes fully interactive.
-**Target**: < 3.8s
-
-### Speed Index
-How quickly content is visually displayed.
-**Target**: < 3.4s
-
-### Total Blocking Time (TBT)
-Sum of blocking time for all long tasks.
-=======
 Time when first content element renders.  
 **Target**: < 1.8s
 
@@ -98,7 +79,6 @@ How quickly content is visually displayed.
 
 ### Total Blocking Time (TBT)
 Sum of blocking time for all long tasks.  
->>>>>>> origin/main
 **Target**: < 200ms
 
 ## Image Optimization
@@ -333,11 +313,7 @@ Inline above-the-fold CSS, defer the rest:
     body { margin: 0; font-family: sans-serif; }
     .header { height: 60px; background: #333; }
   </style>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   <!-- Non-critical CSS deferred -->
   <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="styles.css"></noscript>
@@ -388,36 +364,21 @@ Break up with `requestIdleCallback`:
 ```javascript
 function processLargeArray(items) {
   let index = 0;
-<<<<<<< HEAD
-
-  function processChunk() {
-    const deadline = performance.now() + 50; // 50ms budget
-
-=======
   
   function processChunk() {
     const deadline = performance.now() + 50; // 50ms budget
     
->>>>>>> origin/main
     while (index < items.length && performance.now() < deadline) {
       // Process item
       processItem(items[index]);
       index++;
     }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/main
     if (index < items.length) {
       requestIdleCallback(processChunk);
     }
   }
-<<<<<<< HEAD
-
-=======
   
->>>>>>> origin/main
   requestIdleCallback(processChunk);
 }
 ```

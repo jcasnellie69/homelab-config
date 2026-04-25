@@ -27,7 +27,4 @@ postfix      687  0.0  1.3  43056  6912 ?        S    17:32   0:00 pickup -l -t 
 root        1113  0.0  0.2   2580  1408 pts/1    S+   18:56   0:00 sh -c ps aux 2>/dev/null | head -n 40
 root        1114  0.0  0.8  11044  4480 pts/1    R+   18:56   0:00 ps aux
 root        1115  0.0  0.3   5476  1664 pts/1    S+   18:56   0:00 head -n 40
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main

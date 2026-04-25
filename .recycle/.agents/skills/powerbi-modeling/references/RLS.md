@@ -37,11 +37,7 @@ Fixed rules per role:
 // Role: West Region
 [Region] = "West"
 
-<<<<<<< HEAD
-// Role: East Region
-=======
 // Role: East Region  
->>>>>>> origin/main
 [Region] = "East"
 ```
 
@@ -79,11 +75,7 @@ SecurityMapping table:
 
 ```dax
 // On Region dimension
-<<<<<<< HEAD
-[Region] IN
-=======
 [Region] IN 
->>>>>>> origin/main
     SELECTCOLUMNS(
         FILTER(SecurityMapping, [UserEmail] = USERPRINCIPALNAME()),
         "Region", [Region]
@@ -94,11 +86,7 @@ SecurityMapping table:
 Users see their data plus subordinates:
 ```dax
 // Using PATH functions for hierarchy
-<<<<<<< HEAD
-PATHCONTAINS(Employee[ManagerPath],
-=======
 PATHCONTAINS(Employee[ManagerPath], 
->>>>>>> origin/main
     LOOKUPVALUE(Employee[EmployeeID], Employee[Email], USERPRINCIPALNAME()))
 ```
 
