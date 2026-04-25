@@ -1,4 +1,0 @@
-=== NetFlow Basic ===
-Timestamp: 2025-12-11T20:49:32-05:00
-Script   : /root/homelab-config/scripts/hc/hc-netflow-basic.sh
-

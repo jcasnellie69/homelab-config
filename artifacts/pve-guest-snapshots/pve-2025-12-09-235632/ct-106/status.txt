@@ -1,4 +1,0 @@
-### pct status 106
-$ pct status 106
-status: running
-

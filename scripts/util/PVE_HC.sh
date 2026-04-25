@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# PVE_HC.sh v0.5 — Proxmox Node + Guests Health Check
+# pve_hc_script.sh v0.5 — Proxmox Node + Guests Health Check
 # Output: $HOME/homelab-config/reports/pve_hc-YYYYmmdd-HHMMSS.txt
 
 set -euo pipefail
@@ -12,7 +12,7 @@ mkdir -p "$OUTDIR"
 
 crit=0
 warn=0
-hr() { printf '%*s\n' 80 | tr ' ' '-'; }
+hr() { printf '%*s\n' 80 '' | tr ' ' '-'; }
 sect() { hr | tee -a "$OUT"; echo "# $1" | tee -a "$OUT"; hr | tee -a "$OUT"; }
 toGi() { awk -v k="$1" 'BEGIN{printf "%.1fGi", k/1048576}'; }   # k = KiB
 
@@ -78,14 +78,14 @@ if command -v zpool >/dev/null 2>&1; then
     arc_persist=$(grep -Eo 'zfs_arc_max[=][0-9]+' /etc/modprobe.d/zfs.conf | head -n1 | cut -d= -f2 || true)
   fi
   # Defaults: if empty or "0", it's effectively unlimited (subject to ZFS heuristics)
-  [[ -z "${arc_runtime:-}" || "$arc_runtime" = "0" ]] && { echo "WARN: ARC runtime cap not set (unbounded)."; warn=$((warn+1)); } | tee -a "$OUT"
-  [[ -z "${arc_persist:-}" || "$arc_persist" = "0" ]] && { echo "WARN: ARC persistent cap not set in /etc/modprobe.d/zfs.conf."; warn=$((warn+1)); } | tee -a "$OUT"
+  if [[ -z "${arc_runtime:-}" || "$arc_runtime" = "0" ]]; then echo "WARN: ARC runtime cap not set (unbounded)." >> "$OUT"; warn=$((warn+1)); fi
+  if [[ -z "${arc_persist:-}" || "$arc_persist" = "0" ]]; then echo "WARN: ARC persistent cap not set in /etc/modprobe.d/zfs.conf." >> "$OUT"; warn=$((warn+1)); fi
 
   if [[ -n "${arc_runtime:-}" && "$arc_runtime" != "0" ]]; then
     # Compare runtime cap to 25% host RAM
     quarter=$(( host_total_kib * 1024 / 4 ))   # meminfo in KiB; arc_max is bytes
     if (( arc_runtime > quarter )); then
-      echo "WARN: ARC runtime cap ($(awk -v b=$arc_runtime 'BEGIN{printf \"%.1fGi\", b/1073741824}')) > 25% of host RAM ($(toGi $((host_total_kib/4))) )." | tee -a "$OUT"
+      echo "WARN: ARC runtime cap ($(awk -v b="$arc_runtime" 'BEGIN{printf \"%.1fGi\", b/1073741824}')) > 25% of host RAM ($(toGi $((host_total_kib/4))) )." | tee -a "$OUT"
       warn=$((warn+1))
     else
       echo "ARC runtime cap within safe range." | tee -a "$OUT"
@@ -94,7 +94,7 @@ if command -v zpool >/dev/null 2>&1; then
   if [[ -n "${arc_persist:-}" && "$arc_persist" != "0" ]]; then
     quarter=$(( host_total_kib * 1024 / 4 ))
     if (( arc_persist > quarter )); then
-      echo "WARN: ARC persistent cap ($(awk -v b=$arc_persist 'BEGIN{printf \"%.1fGi\", b/1073741824}')) > 25% of host RAM ($(toGi $((host_total_kib/4))) )." | tee -a "$OUT"
+      echo "WARN: ARC persistent cap ($(awk -v b="$arc_persist" 'BEGIN{printf \"%.1fGi\", b/1073741824}')) > 25% of host RAM ($(toGi $((host_total_kib/4))) )." | tee -a "$OUT"
       warn=$((warn+1))
     else
       echo "ARC persistent cap within safe range." | tee -a "$OUT"
@@ -127,7 +127,7 @@ fi
 sect "GUEST LIMITS (VMs)"
 if command -v qm >/dev/null 2>&1; then
   printf "%-6s %-18s %-8s %-8s\n" "VMID" "NAME" "MEM(MB)" "BALLOON" | tee -a "$OUT"
-  while read -r VMID NAME STATUS MEM BOOTDISK PID; do
+  while read -r VMID NAME _ _ _ _; do
     [[ "$VMID" == "VMID" || -z "$VMID" ]] && continue
     cname="$(qm config "$VMID" | awk -F': ' '/^name:/{print $2; exit}')"
     mem="$(qm config "$VMID" | awk -F': ' '/^memory:/{print $2; exit}')"
@@ -145,7 +145,7 @@ fi
 sect "GUEST LIMITS (LXCs)"
 if command -v pct >/dev/null 2>&1; then
   printf "%-6s %-22s %-8s %-8s\n" "CTID" "NAME" "MEM(MB)" "SWAP(MB)" | tee -a "$OUT"
-  while read -r CTID STATUS LOCK NAME REST; do
+  while read -r CTID _ _ NAME _; do
     [[ "$CTID" == "VMID" || -z "$CTID" ]] && continue
     mem="$(pct config "$CTID" | awk -F': ' '/^memory:/{print $2; exit}')"
     swap="$(pct config "$CTID" | awk -F': ' '/^swap:/{print $2; exit}')"

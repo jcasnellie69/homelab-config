@@ -1,6 +1,0 @@
-### CMD: ip route
-### WHEN: 2025-12-15T04:36:18-05:00
-### HOST: pve.primary.node
-
-default via 192.168.4.1 dev vmbr0 proto kernel onlink 
-192.168.4.0/24 dev vmbr0 proto kernel scope link src 192.168.4.249 
