@@ -13,13 +13,7 @@ logs/
 
 # Backups
 *.bak
-*.bak.*
 *~
-
-# Fileserver sync noise
-.recycle/
-*readme(1).txt
-artifacts/pve-script-scan/
 
 # Editor
 .vscode/
