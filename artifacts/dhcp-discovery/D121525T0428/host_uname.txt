@@ -1,5 +1,0 @@
-### CMD: uname -a
-### WHEN: 2025-12-15T04:28:15-05:00
-### HOST: pve.primary.node
-
-Linux pve 6.8.12-15-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-15 (2025-09-12T11:02Z) x86_64 GNU/Linux
