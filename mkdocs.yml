@@ -8,6 +8,11 @@ theme:
     scheme: slate
   features:
     - navigation.instant
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
 plugins:
   - search
 nav:
