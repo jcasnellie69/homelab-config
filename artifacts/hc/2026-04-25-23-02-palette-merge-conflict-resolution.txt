@@ -1,0 +1,17 @@
+Change: Resolved merge conflicts between palette-ux-mkdocs-theme-12599623147265053969 and origin/main
+Date: 2026-04-25T23:02:31Z
+
+Conflicts resolved:
+1. mkdocs.yml - content conflict: accepted primary/accent color additions from main
+2. .Jules/palette.md - modify/delete conflict: kept file (part of this PR's documentation)
+
+Resolution:
+- mkdocs.yml: merged both palette entries to include primary: indigo, accent: indigo from main
+  while retaining this PR's light/dark toggle structure
+- .Jules/palette.md: retained the file as it documents this PR's rationale
+
+Resulting mkdocs.yml palette config:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default, primary: indigo, accent: indigo + toggle
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate, primary: indigo, accent: indigo + toggle

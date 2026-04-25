@@ -36,7 +36,7 @@ while getopts ":s:o:p:yh" opt; do
     s) SUBNET="$OPTARG" ;;
     o) ART_BASE="$OPTARG" ;;
     p) PIHOLE_CTID="$OPTARG" ;;
-    y) NONINTERACTIVE=1 ;;
+    y) export NONINTERACTIVE=1 ;;
     h) usage; exit 0 ;;
     *) usage; exit 2 ;;
   esac

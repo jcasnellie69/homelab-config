@@ -1,7 +1,0 @@
-### pct status 102
-$ pct status 102
-status: running
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
