@@ -1,8 +1,0 @@
----
-service_role: monitoring
-vmid: 103
-validation_ports: [9090]
-reachability_state: partial
-notes:
-  - ICMP responded from 192.168.4.132 during the latest validation.
-  - TCP 9090 was not reachable from the controller at that time.

@@ -1,7 +1,0 @@
----
-service_role: docs_portal
-vmid: 106
-validation_ports: [22, 80]
-reachability_state: reachable
-notes:
-  - SSH and HTTP were both reachable during the latest controller validation.
