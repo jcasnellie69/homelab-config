@@ -6,6 +6,9 @@
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
 
+## 2025-04-14 - Accessibility via Media Queries in MkDocs
+**Learning:** Hardcoding a static documentation theme (e.g., exclusively dark mode) creates accessibility barriers for users who rely on different contrast levels or have specific systemic color preferences.
+**Action:** Implement dynamic color palettes utilizing `prefers-color-scheme` media queries alongside descriptive, manual toggles in `mkdocs.yml` to maximize readability and conform to user OS-level accessibility settings.
 ## 2026-04-13 - Accessible Documentation Themes
 **Learning:** Hardcoded dark or light themes in documentation sites (like MkDocs) reduce accessibility and ignore user system preferences (`prefers-color-scheme`). Providing manual toggles and respecting system settings is an important UX pattern.
 **Action:** Always configure the `theme.palette` section in `mkdocs.yml` with a media-query-based approach and include manual toggles (light/dark/auto) to maximize accessibility.

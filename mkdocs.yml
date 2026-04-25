@@ -5,6 +5,8 @@ repo_url: https://github.com/jcasnellie69/homelab-config
 theme:
   name: material
   palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
