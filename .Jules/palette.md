@@ -6,6 +6,9 @@
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
 
+## 2025-05-19 - Dynamic Color Scheme Preferences
+**Learning:** Hardcoding a single theme (like `scheme: slate`) forces users into a viewing experience that may ignore their system-level accessibility settings (e.g., `prefers-color-scheme`). Allowing user choice is a key accessibility principle.
+**Action:** When configuring documentation themes like Material for MkDocs, implement dynamic palettes that respect system preferences while providing manual toggles to switch between light and dark modes.
 ## 2026-04-15 - Dynamic Color Schemes in Documentation
 **Learning:** Hardcoded color schemes (like `slate`) in documentation themes ignore user system preferences, creating accessibility issues for users who require specific contrast levels.
 **Action:** Always configure documentation color schemes to use media queries (`prefers-color-scheme`) with a manual toggle switch to respect user preference and maximize accessibility.
