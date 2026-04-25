@@ -5,3 +5,23 @@
 ## 2025-05-18 - Copy-to-clipboard for Code Blocks
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
+
+## 2025-05-19 - Dynamic Color Scheme Preferences
+**Learning:** Hardcoding a single theme (like `scheme: slate`) forces users into a viewing experience that may ignore their system-level accessibility settings (e.g., `prefers-color-scheme`). Allowing user choice is a key accessibility principle.
+**Action:** When configuring documentation themes like Material for MkDocs, implement dynamic palettes that respect system preferences while providing manual toggles to switch between light and dark modes.
+## 2026-04-15 - Dynamic Color Schemes in Documentation
+**Learning:** Hardcoded color schemes (like `slate`) in documentation themes ignore user system preferences, creating accessibility issues for users who require specific contrast levels.
+**Action:** Always configure documentation color schemes to use media queries (`prefers-color-scheme`) with a manual toggle switch to respect user preference and maximize accessibility.
+## 2025-04-14 - Accessibility via Media Queries in MkDocs
+**Learning:** Hardcoding a static documentation theme (e.g., exclusively dark mode) creates accessibility barriers for users who rely on different contrast levels or have specific systemic color preferences.
+**Action:** Implement dynamic color palettes utilizing `prefers-color-scheme` media queries alongside descriptive, manual toggles in `mkdocs.yml` to maximize readability and conform to user OS-level accessibility settings.
+## 2026-04-13 - Accessible Documentation Themes
+**Learning:** Hardcoded dark or light themes in documentation sites (like MkDocs) reduce accessibility and ignore user system preferences (`prefers-color-scheme`). Providing manual toggles and respecting system settings is an important UX pattern.
+**Action:** Always configure the `theme.palette` section in `mkdocs.yml` with a media-query-based approach and include manual toggles (light/dark/auto) to maximize accessibility.
+## 2026-04-12 - Respecting System Color Preferences in Documentation Sites
+**Learning:** Hardcoding a static color theme (like `slate`) for documentation sites forces users into a specific visual experience, which may ignore their system-level accessibility or visual preferences.
+**Action:** Use media queries (e.g., `prefers-color-scheme`) combined with manual toggles in MkDocs and similar frameworks to ensure users receive their preferred color scheme automatically while retaining the ability to override it.
+
+## 2025-06-25 - Light/Dark Mode Toggles in Documentation
+**Learning:** Hardcoding a dark (or light) theme in generated documentation sites reduces accessibility. Users have varying visual preferences and needs, and some experience eye strain reading light text on dark backgrounds (or vice-versa).
+**Action:** Configure Material for MkDocs to respect the user's system color preference via `media` queries and provide a manual toggle switch between light and dark modes to ensure optimal readability.
