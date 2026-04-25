@@ -1,0 +1,23 @@
+Change: Enable MkDocs Material UX features (content.code.copy + navigation.tracking)
+Date: 2026-04-25T22:43:33Z
+Branch: palette-docs-ux-8223692010619523150
+PR: #17
+
+Features enabled in mkdocs.yml:
+  - content.code.copy   → Adds a copy-to-clipboard button on all code blocks
+  - navigation.tracking → Updates the browser URL hash as users scroll through sections
+
+Diff summary (mkdocs.yml features block after change):
+  features:
+    - navigation.instant
+    - navigation.top
+    - navigation.tracking    ← newly enabled
+    - search.suggest
+    - search.highlight
+    - content.code.copy      ← newly enabled
+
+mkdocs build --strict output:
+  INFO    -  Cleaning site directory
+  INFO    -  Building documentation to directory: .../site
+  INFO    -  Documentation built in 0.28 seconds
+  (exit code 0 — no errors or warnings from build)
