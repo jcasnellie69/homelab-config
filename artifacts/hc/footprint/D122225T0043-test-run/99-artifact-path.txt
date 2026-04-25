@@ -1,1 +1,0 @@
-/srv/artifacts/hc/footprint/D122225T0043-test-run.tgz

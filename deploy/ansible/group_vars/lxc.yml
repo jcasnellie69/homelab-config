@@ -1,9 +1,0 @@
----
-lxc_validation_mode: read_only
-lxc_common_checks:
-  - ping
-  - expected_service_ports
-  - service_role_alignment
-lxc_agent_policy:
-  install_agents_only_when_confirmed: true
-  prefer_mcp_over_custom_tokens: true

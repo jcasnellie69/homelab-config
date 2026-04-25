@@ -1,5 +1,0 @@
-### CMD: date
-### WHEN: 2025-12-15T04:28:15-05:00
-### HOST: pve.primary.node
-
-Mon Dec 15 04:28:15 AM EST 2025
