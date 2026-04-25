@@ -1,0 +1,10 @@
+
+[1mHomepage LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mhomepage[m
+    💡  [m[33m IP Address: [1;92m192.168.4.139[m
+# CT 106 (homepage)
+Thu Dec 18 01:08:56 AM EST 2025
+

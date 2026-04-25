@@ -1,0 +1,39 @@
+PVE guest snapshot (lite)
+Host : pve
+Time : 2025-12-10-200831
+======================================
+
+=== pct list ===
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        running                 watchyourlan
+109        running                 pihole
+110        running                 ntrop.pve.local
+
+=== qm list ===
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
+       101 haos16.0             running    6000              32.00 449014
+       107 PDM                  running    4096              32.00 448883
+=======
+VMID       Status     Lock         Name                
+100        running                 netbox              
+102        running                 grafana             
+103        running                 prometheus          
+104        running                 prometheus-pve-exporter
+105        running                 influxdb            
+106        running                 homepage            
+108        running                 watchyourlan        
+109        running                 pihole              
+110        running                 ntrop.pve.local     
+
+=== qm list ===
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       101 haos16.0             running    6000              32.00 449014    
+       107 PDM                  running    4096              32.00 448883    
+>>>>>>> origin/main

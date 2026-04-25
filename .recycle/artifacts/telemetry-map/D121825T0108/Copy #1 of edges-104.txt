@@ -1,0 +1,10 @@
+
+[1mPrometheus-PVE-Exporter LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus-pve-exporter[m
+    💡  [m[33m IP Address: [1;92m192.168.4.131[m
+# CT 104 (prometheus-pve-exporter)
+Wed Dec 17 08:08:54 PM HST 2025
+

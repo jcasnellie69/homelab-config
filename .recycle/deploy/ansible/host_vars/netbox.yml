@@ -1,0 +1,10 @@
+---
+service_role: historical_netbox_reference
+vmid: 100
+validation_ports: []
+reachability_state: absent_or_repurposed
+netbox_deployment_status: absent
+notes:
+  - No live NetBox service was confirmed during the 2026-04-11 validation.
+  - Historical references to CT 100 and 192.168.4.140 are stale and should not be treated as current deployment facts.
+  - The current host answering at 192.168.4.140 should not be reused automatically for a future NetBox deployment.

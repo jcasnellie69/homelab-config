@@ -1,0 +1,8 @@
+### hostname -f
+$ pct exec 105 -- hostname -f
+influxdb.primary.node
+
+### uname -a
+$ pct exec 105 -- uname -a
+Linux influxdb 6.8.12-15-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-15 (2025-09-12T11:02Z) x86_64 GNU/Linux
+

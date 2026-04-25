@@ -1,0 +1,14 @@
+=== Backup validation for CT 103 =============================
+Search paths:
+  Logs : /var/log/vzdump
+  Dumps: /var/lib/vz/dump
+
+-- vzdump logs matching CTID --
+(no vzdump logs found for CTID=103)
+
+-- backup images matching CTID --
+(no backup images found for CTID=103)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

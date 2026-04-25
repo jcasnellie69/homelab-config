@@ -1,0 +1,67 @@
+# cmd: bash -lc systemctl list-unit-files --type=service --state=enabled --no-pager
+# host: pve
+# when: 2025-12-22T00:43:58-05:00
+
+UNIT FILE                              STATE   PRESET
+apparmor.service                       enabled enabled
+blk-availability.service               enabled enabled
+chrony.service                         enabled enabled
+console-setup.service                  enabled enabled
+corosync.service                       enabled enabled
+cron.service                           enabled enabled
+e2scrub_reap.service                   enabled enabled
+filebrowser.service                    enabled enabled
+getty@.service                         enabled enabled
+iptag.service                          enabled enabled
+keyboard-setup.service                 enabled enabled
+ksmtuned.service                       enabled enabled
+lm-sensors.service                     enabled enabled
+lvm2-monitor.service                   enabled enabled
+lxc-monitord.service                   enabled enabled
+lxc-net.service                        enabled enabled
+lxc.service                            enabled enabled
+lxcfs.service                          enabled enabled
+netifyd.service                        enabled enabled
+networking.service                     enabled enabled
+nmbd.service                           enabled enabled
+nvmefc-boot-connections.service        enabled enabled
+nvmf-autoconnect.service               enabled enabled
+open-iscsi.service                     enabled enabled
+ping-instances.service                 enabled enabled
+postfix.service                        enabled enabled
+proxmox-boot-cleanup.service           enabled enabled
+proxmox-firewall.service               enabled enabled
+pve-cluster.service                    enabled enabled
+pve-firewall-commit.service            enabled enabled
+pve-firewall.service                   enabled enabled
+pve-guests.service                     enabled enabled
+pve-ha-crm.service                     enabled enabled
+pve-ha-lrm.service                     enabled enabled
+pve-lxc-syscalld.service               enabled enabled
+pve-query-machine-capabilities.service enabled enabled
+pve-sdn-commit.service                 enabled enabled
+pvebanner.service                      enabled enabled
+pvedaemon.service                      enabled enabled
+pvefw-logger.service                   enabled enabled
+pvenetcommit.service                   enabled enabled
+pveproxy.service                       enabled enabled
+pvescheduler.service                   enabled enabled
+pvestatd.service                       enabled enabled
+qmeventd.service                       enabled enabled
+rbdmap.service                         enabled enabled
+rpcbind.service                        enabled enabled
+samba-ad-dc.service                    enabled enabled
+smartmontools.service                  enabled enabled
+smbd.service                           enabled enabled
+softflowd.service                      enabled enabled
+spiceproxy.service                     enabled enabled
+ssh.service                            enabled enabled
+systemd-pstore.service                 enabled enabled
+zfs-import-cache.service               enabled enabled
+zfs-import-scan.service                enabled disabled
+zfs-mount.service                      enabled enabled
+zfs-share.service                      enabled enabled
+zfs-volume-wait.service                enabled enabled
+zfs-zed.service                        enabled enabled
+
+60 unit files listed.

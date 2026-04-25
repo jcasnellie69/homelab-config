@@ -1,0 +1,99 @@
+<<<<<<< HEAD
+# cmd: bash -lc
+=======
+# cmd: bash -lc 
+>>>>>>> origin/main
+for d in /usr/local/bin /usr/local/sbin /opt /srv; do
+  echo "### $d"
+  [[ -d "$d" ]] && find "$d" -type f -executable 2>/dev/null | sort
+  echo
+done
+
+# host: pve
+# when: 2025-12-22T00:43:58-05:00
+
+### /usr/local/bin
+/usr/local/bin/filebrowser
+/usr/local/bin/iptag-run
+/usr/local/bin/ping-instances.sh
+
+### /usr/local/sbin
+/usr/local/sbin/mcp-task2
+/usr/local/sbin/mcp-task3
+/usr/local/sbin/mcp-task4
+/usr/local/sbin/mcp-task6
+/usr/local/sbin/mode-footprint-profile.sh
+/usr/local/sbin/netify-config-report.sh
+/usr/local/sbin/netify-lookup.sh
+/usr/local/sbin/netify-mk-txt-aliases.sh
+/usr/local/sbin/netify-sync-config-to-artifacts.sh
+/usr/local/sbin/pve-dns-hardening.sh
+/usr/local/sbin/pve-guest-snapshot.sh
+/usr/local/sbin/pve-scan-guest-scripts.sh
+/usr/local/sbin/setup-docsify.sh
+
+### /opt
+/opt/iptag/iptag
+
+### /srv
+/srv/homelab-share/homelab-config/docs/artifacts-index.md
+/srv/homelab-share/homelab-config/docs/netify-config-matrix.md
+/srv/homelab-share/homelab-config/docs/observability-service-map.md
+/srv/homelab-share/homelab-config/docs/policy-observability.md
+/srv/homelab-share/homelab-config/docs/README.md
+/srv/homelab-share/homelab-config/docs/SESSION-AUTOMATION.md
+/srv/homelab-share/homelab-config/docs/session-logs/20251211-204446-BUILD-HC-AUTOMATION.md
+/srv/homelab-share/homelab-config/docs/telemetry-pipeline.md
+/srv/homelab-share/homelab-config/.git/COMMIT_EDITMSG
+/srv/homelab-share/homelab-config/.git/config
+/srv/homelab-share/homelab-config/.git/description
+/srv/homelab-share/homelab-config/.git/HEAD
+/srv/homelab-share/homelab-config/.git/hooks/applypatch-msg.sample
+/srv/homelab-share/homelab-config/.git/hooks/commit-msg.sample
+/srv/homelab-share/homelab-config/.git/hooks/fsmonitor-watchman.sample
+/srv/homelab-share/homelab-config/.git/hooks/post-update.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-applypatch.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-commit.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-merge-commit.sample
+/srv/homelab-share/homelab-config/.git/hooks/prepare-commit-msg.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-push.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-rebase.sample
+/srv/homelab-share/homelab-config/.git/hooks/pre-receive.sample
+/srv/homelab-share/homelab-config/.git/hooks/push-to-checkout.sample
+/srv/homelab-share/homelab-config/.git/hooks/update.sample
+/srv/homelab-share/homelab-config/.git/info/exclude
+/srv/homelab-share/homelab-config/.git/logs/HEAD
+/srv/homelab-share/homelab-config/.git/logs/refs/heads/master
+/srv/homelab-share/homelab-config/.git/objects/58/6389439997c3113af539a1a17e5525bd3542bb
+/srv/homelab-share/homelab-config/.git/objects/73/70bb48e07c722a0a02f62cd981435b29d129c4
+/srv/homelab-share/homelab-config/.git/objects/8a/b68ff2abbec35d5404bc5de7b7e68ce27fdc40
+/srv/homelab-share/homelab-config/.git/objects/cd/252b820b68fba4b01db3c56142282a6410b8c3
+/srv/homelab-share/homelab-config/logs/sessions/20251211-204446-BUILD-HC-AUTOMATION.log
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-005907.txt
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-010102.txt
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-010519.txt
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-010744.txt
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-011320.txt
+/srv/homelab-share/homelab-config/reports/pve_hc-20250921-012024.txt
+/srv/homelab-share/homelab-config/scripts/dhcp/dhcp-discovery-collect.sh
+/srv/homelab-share/homelab-config/scripts/hc/hc
+/srv/homelab-share/homelab-config/scripts/hc/hc-artifacts-index.sh
+/srv/homelab-share/homelab-config/scripts/hc/hc-master.sh
+/srv/homelab-share/homelab-config/scripts/hc/hc-netflow-basic.sh
+/srv/homelab-share/homelab-config/scripts/hc/hc-pve-guests.sh
+/srv/homelab-share/homelab-config/scripts/hc/hc-storage-zfs.sh
+/srv/homelab-share/homelab-config/scripts/hc/pve-lxc-systemd-scan.sh
+/srv/homelab-share/homelab-config/scripts/session/new-session.sh
+/srv/homelab-share/homelab-config/scripts/telemetry/telemetry-map-collect.sh
+/srv/homelab-share/homelab-config/scripts/telemetry/telemetry-map-render.sh
+/srv/homelab-share/homelab-config/scripts/util/pve_hc_script.sh
+/srv/homelab-share/homelab-config/scripts/util/pve_hc_script.sh.bak.1758430971
+/srv/homelab-share/homelab-config/scripts/util/pve_tools_check.sh
+/srv/homelab-share/homelab-config/scripts/util/pve_tools_install.sh
+/srv/homelab-share/homelab-config/scripts/util/pve_tools_readme(1).txt
+/srv/homelab-share/homelab-config/scripts/util/pve_tools_readme.txt
+/srv/homelab-share/homelab-config/scripts/util/pve_tools_util_structure.txt
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

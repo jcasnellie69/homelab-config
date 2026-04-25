@@ -1,0 +1,81 @@
+# Merge Conflict Resolution Evidence
+
+## Date
+2026-04-10T02:07:00Z
+
+## Change Summary
+Resolved merge conflicts when merging main branch into palette-ux-mkdocs-improvements-11221471268000097849 branch.
+
+## Context
+PR #19 was attempting to merge main INTO the feature branch (reverse direction). This created 345+ merge conflicts due to significant divergence between branches.
+
+## Resolution Strategy
+
+### Conflicts Resolved
+- **Total conflicts:** 345
+  - 340 "both added" (AA) - files added in both branches
+  - 1 "both modified" (UU) - mkdocs.yml
+  - 4 other types (typechange for symlinks)
+
+### Key Files
+
+#### mkdocs.yml (both modified)
+Combined features from both branches:
+- From feature branch: navigation.path, navigation.indexes, navigation.tracking
+- From main: toc.follow
+- Result: All features preserved and combined
+
+#### .Jules/palette.md (both added)
+Accepted version from main (has more comprehensive content)
+
+#### Agent skills and artifacts (340 files - both added)
+Accepted all versions from main branch - these are new additions that don't conflict with feature branch work
+
+#### pve_tools_*.sh (typechange - symlink vs file)
+Main branch converted these to symlinks (canonical PascalCase → symlink)
+Kept the symlink approach from main
+
+## Verification Commands
+
+```bash
+# Fetch and merge
+git fetch origin main:refs/remotes/origin/main
+git merge origin/main
+
+# Resolve mkdocs.yml manually
+# Accept main version for all "both added" files
+git checkout --theirs <files>
+git add .
+
+# Commit merge
+git commit
+```
+
+## Resulting State
+
+### Merge Commit
+dd1e1fc - "Merge main into palette-ux-mkdocs-improvements branch"
+
+### mkdocs.yml Features (Combined)
+- navigation.instant
+- navigation.top
+- search.suggest
+- search.highlight
+- content.code.copy
+- navigation.path
+- navigation.indexes
+- navigation.tracking
+- toc.follow (NEW from main)
+
+### Files from Main Branch
+- All agent skills under .agents/skills/ (60+ files)
+- All artifacts under artifacts/ (200+ files)
+- .Jules/palette.md (extended version)
+- scripts/util/test_PVE_HC.sh (NEW)
+- Updated scripts/util/PVE_HC.sh
+
+## Impact
+The merge successfully combines:
+1. MkDocs UX improvements from the feature branch
+2. New agent skills, artifacts, and infrastructure updates from main
+3. No functionality lost, all features preserved

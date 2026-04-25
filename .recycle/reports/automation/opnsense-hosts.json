@@ -1,0 +1,90 @@
+{
+  "alpha_host": {
+    "hostname": "alpha",
+    "ip": "192.168.4.10"
+  },
+  "planned_vm": {
+    "name": "opnsense-alpha",
+    "vmid": 401,
+    "target_host": "alpha",
+    "management_subnet": "192.168.4.0/24",
+    "playbook": "deploy/ansible/playbooks/opnsense-alpha-onboard.yml"
+  },
+  "netbox_dependency": {
+    "hostname": "netbox",
+    "ip": "192.168.4.140"
+  },
+  "ansible_control_node": {
+    "hostname": "ansible",
+    "vmid": 111,
+    "status": "stopped",
+    "ip": null
+  },
+  "candidate_seed_hosts": [
+    {
+      "ip": "192.168.4.190",
+      "hostname": "USA92JDN74.lan",
+      "priority": "Critical",
+      "status": "Active"
+    },
+    {
+      "ip": "169.254.198.204",
+      "hostname": "\u2014",
+      "priority": "Critical",
+      "status": "Inactive"
+    },
+    {
+      "ip": "192.168.4.144",
+      "hostname": "her-iphone.lan",
+      "priority": "Critical",
+      "status": "Idle"
+    },
+    {
+      "ip": "192.168.4.1",
+      "hostname": "Blink-Mini.lan",
+      "priority": "Critical",
+      "status": "Active"
+    },
+    {
+      "ip": "192.168.4.172",
+      "hostname": "S380HB.lan",
+      "priority": "Critical",
+      "status": "Active"
+    },
+    {
+      "ip": "192.168.4.181",
+      "hostname": "apple-tv-hub.lan",
+      "priority": "Critical",
+      "status": "Idle"
+    },
+    {
+      "ip": "192.168.4.110",
+      "hostname": "apple-4k-5.lan",
+      "priority": "High",
+      "status": "Active"
+    },
+    {
+      "ip": "192.168.4.103",
+      "hostname": "C425.lan",
+      "priority": "High",
+      "status": "Active"
+    },
+    {
+      "ip": "192.168.4.69",
+      "hostname": "USA92JDN74.lan",
+      "priority": "High",
+      "status": "Active"
+    },
+    {
+      "ip": "192.168.4.121",
+      "hostname": "Watch.lan",
+      "priority": "High",
+      "status": "Active"
+    }
+  ],
+  "notes": [
+    "Use community.proxmox to manage the initial VM lifecycle from Alpha.",
+    "Use ansibleguy.opnsense for OPNsense API-driven provisioning once credentials are available.",
+    "Use netbox.netbox to sync IPAM/DCIM records from NetBox CT 100."
+  ]
+}

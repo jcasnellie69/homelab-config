@@ -1,0 +1,27 @@
+agent: 1
+bios: ovmf
+boot: order=scsi0
+cores: 2
+cpu: host
+description:   <a href='https%3A//Helper-Scripts.com' target='_blank' rel='noopener noreferrer'>%0A    <img src='https%3A//raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/images/logo-81x112.png' alt='Logo' style='width%3A81px;height%3A112px;'/>%0A  </a>%0A%0A  <h2 style='font-size%3A 24px; margin%3A 20px 0;'>Homeassistant OS VM</h2>%0A%0A  <p style='margin%3A 16px 0;'>%0A    <a href='https%3A//ko-fi.com/community_scripts' target='_blank' rel='noopener noreferrer'>%0A      <img src='https%3A//img.shields.io/badge/&#x2615;-Buy us a coffee-blue' alt='spend Coffee' />%0A    </a>%0A  </p>%0A%0A  <span style='margin%3A 0 10px;'>%0A    <i class="fa fa-github fa-fw" style="color%3A #f5f5f5;"></i>%0A    <a href='https%3A//github.com/community-scripts/ProxmoxVE' target='_blank' rel='noopener noreferrer' style='text-decoration%3A none; color%3A #00617f;'>GitHub</a>%0A  </span>%0A  <span style='margin%3A 0 10px;'>%0A    <i class="fa fa-comments fa-fw" style="color%3A #f5f5f5;"></i>%0A    <a href='https%3A//github.com/community-scripts/ProxmoxVE/discussions' target='_blank' rel='noopener noreferrer' style='text-decoration%3A none; color%3A #00617f;'>Discussions</a>%0A  </span>%0A  <span style='margin%3A 0 10px;'>%0A    <i class="fa fa-exclamation-circle fa-fw" style="color%3A #f5f5f5;"></i>%0A    <a href='https%3A//github.com/community-scripts/ProxmoxVE/issues' target='_blank' rel='noopener noreferrer' style='text-decoration%3A none; color%3A #00617f;'>Issues</a>%0A  </span>%0A</div>
+efidisk0: local-lvm:vm-101-disk-0,efitype=4m,size=4M
+hotplug: disk,network,usb,cpu
+localtime: 1
+memory: 6000
+meta: creation-qemu=9.2.0,ctime=1753940823
+name: haos16.0
+net0: virtio=02:B7:A1:09:9C:98,bridge=vmbr0
+onboot: 1
+ostype: l26
+scsi0: local-lvm:vm-101-disk-1,cache=writethrough,discard=on,size=32G,ssd=1
+scsihw: virtio-scsi-pci
+serial0: socket
+smbios1: uuid=754b9e0c-61fb-4308-8b78-54ac26fb2c34
+spice_enhancements: foldersharing=1,videostreaming=all
+tablet: 0
+tags: community-script
+usb0: host=3-1.1
+usb1: host=3-1.2
+usb2: host=3-1.3
+vga: serial0
+vmgenid: b70b431b-8869-47b6-b139-681a33212fe5

@@ -1,0 +1,48 @@
+site_name: homelab-config
+site_description: Homelab documentation and artifacts
+site_author: "homelab"
+repo_url: https://github.com/jcasnellie69/homelab-config
+theme:
+  name: material
+  palette:
+    scheme: slate
+  features:
+    - navigation.instant
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - navigation.path
+    - navigation.indexes
+    - navigation.tracking
+    - toc.follow
+plugins:
+  - search
+nav:
+  - Home: index.md
+  - Artifacts: artifacts-index.md
+  - Telemetry: telemetry-pipeline.md
+  - Docs:
+      - Overview: DOCS_INDEX.md
+      - Orchestration: orchestration.md
+      - Repo Audit: repo-audit.md
+      - Source of Truth: source-of-truth.md
+      - Network Live State: network-live-state.md
+      - OPNsense Prerequisites: opnsense-prereq.md
+      - NetBox Status: netbox-status.md
+      - VLAN Topology: vlan-topology.md
+      - LXC Agent Matrix: lxc-agent-matrix.md
+      - BAU Operations: bau-operations.md
+      - GitLab CI Guide: ci/gitlab-ci.md
+      - Jules Handoff: jules-handoff.md
+      - Session Automation: SESSION-AUTOMATION.md
+      - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
+      - MCP Filesystem: mcp-filesystem.md
+      - Netify Config Matrix: netify-config-matrix.md
+      - Observability Service Map: observability-service-map.md
+      - Policy Observability: policy-observability.md
+  - Session Logs:
+      - Build HC Automation: session-logs/20251211-204446-BUILD-HC-AUTOMATION.md
+markdown_extensions:
+  - toc:
+      permalink: true

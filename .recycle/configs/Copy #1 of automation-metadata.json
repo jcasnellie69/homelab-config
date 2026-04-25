@@ -1,0 +1,108 @@
+{
+    "version": 1,
+    "description": "Metadata contract for homelab automation, GitHub Actions, Ansible, Terraform, NetBox, and future OPNsense onboarding.",
+    "sources": {
+        "network_inventory": "artifacts/network-inventory.json",
+        "observability_service_map": "docs/observability-service-map.md",
+        "orchestration_reference": "docs/orchestration.md",
+        "netbox_mcp_reference": "docs/netbox mcp instructions.md",
+        "session_logs": "docs/session-logs/",
+        "workspace_health": "artifacts/automation/workspace-health-report.json",
+        "infra_summary": "artifacts/automation/pipeline-metadata-summary.json"
+    },
+    "environment": {
+        "alpha": {
+            "hostname": "alpha",
+            "ip": "192.168.4.10",
+            "role": "proxmox_host"
+        },
+        "netbox": {
+            "vmid": 100,
+            "ip": "192.168.4.140",
+            "role": "ipam_dcim"
+        },
+        "ansible": {
+            "vmid": 111,
+            "ip": null,
+            "status": "stopped",
+            "role": "automation_control_node"
+        }
+    },
+    "stages": [
+        {
+            "name": "validate",
+            "outputs": [
+                "artifacts/automation/workspace-health-report.json"
+            ]
+        },
+        {
+            "name": "aggregate",
+            "outputs": [
+                "artifacts/automation/pipeline-metadata-summary.json"
+            ]
+        },
+        {
+            "name": "plan-ansible",
+            "outputs": [
+                "reports/automation/ansible-inventory.json",
+                "deploy/ansible/inventory/generated.yml"
+            ]
+        },
+        {
+            "name": "plan-terraform",
+            "outputs": [
+                "reports/automation/terraform.auto.tfvars.json"
+            ]
+        },
+        {
+            "name": "future-opnsense",
+            "outputs": [
+                "reports/automation/opnsense-hosts.json"
+            ]
+        },
+        {
+            "name": "sync-netbox",
+            "outputs": [
+                "reports/automation/netbox-sync.json"
+            ]
+        },
+        {
+            "name": "currency",
+            "outputs": [
+                "artifacts/automation/tooling-currency-report.json"
+            ]
+        },
+        {
+            "name": "gitops-monitor",
+            "outputs": [
+                "artifacts/automation/workspace-gitops-monitor-report.json"
+            ]
+        }
+    ],
+    "ansible": {
+        "collections_requirements": "deploy/ansible/collections/requirements.yml",
+        "bootstrap_script": "deploy/ansible/bootstrap-control-node.sh",
+        "recommended_collections": [
+            "community.proxmox",
+            "netbox.netbox",
+            "ansibleguy.opnsense",
+            "community.general",
+            "ansible.posix"
+        ]
+    },
+    "gitops": {
+        "monitor_script": "scripts/session/workspace_gitops_monitor.py",
+        "sync_script": "scripts/session/gitops_sync.sh",
+        "sync_script_windows": "scripts/session/gitops_sync.ps1",
+        "monitor_report": "artifacts/automation/workspace-gitops-monitor-report.json"
+    },
+    "integrations": {
+        "github_actions": true,
+        "ansible": true,
+        "terraform": true,
+        "netbox": "wired_via_mcp_config",
+        "opnsense": "alpha_onboarding_scaffolded",
+        "gitops": "active",
+        "tooling_currency": true
+    }
+}
