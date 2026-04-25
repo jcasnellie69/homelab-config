@@ -1,0 +1,3 @@
+## 2025-04-25 - Dynamic Color Scheme Toggle
+**Learning:** Hardcoding a static color theme (like `slate`) limits accessibility for users preferring a light mode or those who rely on system preferences. Using `prefers-color-scheme` in `mkdocs.yml` allows the documentation to automatically adapt to user OS settings. Adding a manual toggle control lets users easily override this preference on a per-session basis, providing maximum accessibility.
+**Action:** When configuring documentation themes (e.g., Material for MkDocs), avoid static single-theme choices and implement responsive palettes with explicit toggles as a standard practice for better usability.
