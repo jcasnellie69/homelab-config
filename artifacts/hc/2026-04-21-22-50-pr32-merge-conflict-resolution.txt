@@ -1,0 +1,7 @@
+Change: Resolve PR #32 merge conflict by merging origin/main into branch copilot/fix-shellcheck-errors
+Conflict file:
+- scripts/session/bootstrap-root-automation.sh (add/add)
+Resolution:
+- Kept the safe non-eval implementation: run_cmd executes via "$@"
+- Kept unquoted argument-passing callsites for run_cmd
+- Preserved shellcheck-focused branch intent while reconciling with main
