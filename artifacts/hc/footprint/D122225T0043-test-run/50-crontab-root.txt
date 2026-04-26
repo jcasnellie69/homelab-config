@@ -1,5 +1,0 @@
-# cmd: bash -lc crontab -l || true
-# host: pve
-# when: 2025-12-22T00:43:59-05:00
-
-no crontab for root

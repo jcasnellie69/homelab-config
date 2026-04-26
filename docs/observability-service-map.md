@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD060 -->
 # Observability Service Map
 #-------------------------------------------------------------------------------
 # DATE       | CHGID   | REASON

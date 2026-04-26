@@ -29,13 +29,14 @@ EOT
 SUBNET="$SUBNET_DEFAULT"
 ART_BASE="$ART_BASE_DEFAULT"
 PIHOLE_CTID="$PIHOLE_CTID_DEFAULT"
+NONINTERACTIVE=0
 
 while getopts ":s:o:p:yh" opt; do
   case "$opt" in
     s) SUBNET="$OPTARG" ;;
     o) ART_BASE="$OPTARG" ;;
     p) PIHOLE_CTID="$OPTARG" ;;
-    y) ;;  # non-interactive mode (reserved; no prompts to skip currently)
+    y) export NONINTERACTIVE=1 ;;
     h) usage; exit 0 ;;
     *) usage; exit 2 ;;
   esac

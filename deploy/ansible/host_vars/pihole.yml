@@ -1,7 +1,0 @@
----
-service_role: dns_infra
-vmid: 109
-validation_ports: [22, 53, 80]
-reachability_state: reachable
-notes:
-  - DNS, HTTP, and SSH were all reachable during the latest controller validation.
