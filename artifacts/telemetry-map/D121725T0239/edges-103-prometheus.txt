@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+# CT 103 (prometheus)
+=======
+# CT 103 (prometheus)
+>>>>>>> origin/main
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m
+192.168.4.132
+
+## Telegraf -> outputs (push destinations)
+
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m
+/etc/telegraf/telegraf.d/prom.conf:5:  urls = [
+/etc/telegraf/telegraf.d/prom.conf:17:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/prom.conf:18:  urls         = ["${INFLUX_URL}"]
+
+## Prometheus -> scrape targets (pull sources)
+
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m
+/etc/prometheus/prometheus.yml:5:scrape_configs:
+/etc/prometheus/prometheus.yml:6:  - job_name: prometheus
+/etc/prometheus/prometheus.yml:8:      - targets: ['192.168.7.114:9090']
+/etc/prometheus/prometheus.yml:12:  - job_name: node-exporter
+/etc/prometheus/prometheus.yml:5:scrape_configs:
+/etc/prometheus/prometheus.yml:6:  - job_name: prometheus
+/etc/prometheus/prometheus.yml:8:      - targets: ['192.168.7.114:9090']
+/etc/prometheus/prometheus.yml:12:  - job_name: node-exporter
+
+## Promtail -> Loki clients (push)
+
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m
+
+## Loki listen ports (sanity if Loki exists here)
+
+[1mPrometheus LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus[m
+    💡  [m[33m IP Address: [1;92m192.168.4.132[m

@@ -1,0 +1,1 @@
+[WARN] Command failed for pihole_dhcp_conf: pct exec 109 -- bash -lc for f in /etc/dnsmasq.d/*dhcp* /etc/dnsmasq.d/02-pihole-dhcp.conf; do [ -f "$f" ] && { echo "==== $f ===="; sed -n "1,260p" "$f"; echo; }; done

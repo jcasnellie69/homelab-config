@@ -1,0 +1,149 @@
+
+============================================================
+SUNSET CANDIDATES REPORT
+
+============================================================
+Timestamp : Thu Dec 18 12:45:30 AM EST 2025
+Host      : pve
+
+
+============================================================
+HOST MEMORY / SWAP / HUGEPAGES
+
+============================================================
+               total        used        free      shared  buff/cache   available
+Mem:            11Gi        10Gi       549Mi       4.4Mi       687Mi       974Mi
+Swap:          8.0Gi       2.8Gi       5.2Gi
+
+MemAvailable:     997528 kB
+SwapTotal:       8388604 kB
+SwapFree:        5479860 kB
+HugePages_Total:       8
+HugePages_Free:        7
+Hugepagesize:    1048576 kB
+Hugetlb:         8388608 kB
+
+
+============================================================
+LXC LIST
+
+============================================================
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        stopped                 watchyourlan
+109        running                 pihole
+110        stopped                 ntrop.pve.local
+111        stopped                 ansible
+=======
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        stopped                 watchyourlan
+109        running                 pihole
+110        stopped                 ntrop.pve.local
+111        stopped                 ansible
+>>>>>>> origin/main
+
+
+============================================================
+LXC RESOURCE LIMITS (memory/swap/cores, mp mounts)
+
+============================================================
+CT 100:
+cores: 2
+hostname: netbox
+memory: 3840
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:FA:57:0B,ip=dhcp,type=veth
+onboot: 1
+swap: 1000
+
+CT 102:
+cores: 1
+hostname: grafana
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:5B:7E:44,ip=dhcp,type=veth
+onboot: 1
+swap: 512
+
+CT 103:
+cores: 1
+hostname: prometheus
+memory: 2048
+mp0: /etc/prometheus/file_sd,mp=/etc/prometheus/file_sd,ro=1
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:C5:C3:81,ip=dhcp,type=veth
+onboot: 1
+swap: 512
+
+CT 104:
+cores: 1
+hostname: prometheus-pve-exporter
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:A5:71:20,ip=dhcp,type=veth
+onboot: 1
+swap: 512
+
+CT 105:
+cores: 4
+hostname: influxdb
+memory: 5000
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:F2:AC:2A,ip=dhcp,type=veth
+onboot: 1
+swap: 1000
+
+CT 106:
+cores: 2
+hostname: homepage
+memory: 4096
+mp0: /srv/artifacts,mp=/srv/artifacts
+mp1: /srv/homelab-share/homelab-config,mp=/mnt/homelab-config,ro=1
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:9B:14:AE,ip=dhcp,type=veth
+onboot: 1
+swap: 512
+
+CT 108:
+cores: 1
+hostname: watchyourlan
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:38:E4:19,ip=dhcp,type=veth
+onboot: 1
+swap: 512
+
+CT 109:
+cores: 1
+hostname: pihole
+memory: 512
+net0: name=eth0,bridge=vmbr0,firewall=0,gw=192.168.4.1,hwaddr=BC:24:11:A4:42:81,ip=192.168.4.208/24,type=veth
+onboot: 1
+swap: 512
+
+CT 110:
+cores: 1
+hostname: ntrop.pve.local
+memory: 768
+net0: name=eth0,bridge=vmbr0,firewall=1,hwaddr=BC:24:11:4E:3F:F3,ip=dhcp,type=veth
+swap: 768
+
+CT 111:
+cores: 1
+hostname: ansible
+memory: 512
+net0: name=eth0,bridge=vmbr0,hwaddr=BC:24:11:9C:DC:E6,ip=dhcp,type=veth
+swap: 512
+
+
+============================================================
+LXC LIVE MEMORY USAGE (from cgroup if available)
+
+============================================================
+CT 100 (netbox) running  mem_current=unavailable
+CT 102 (grafana) running  mem_current=unavailable

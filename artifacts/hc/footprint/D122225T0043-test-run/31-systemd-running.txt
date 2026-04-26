@@ -1,0 +1,56 @@
+# cmd: bash -lc systemctl list-units --type=service --state=running --no-pager
+# host: pve
+# when: 2025-12-22T00:43:59-05:00
+
+  UNIT                      LOAD   ACTIVE SUB     DESCRIPTION
+  chrony.service            loaded active running chrony, an NTP client/server
+  cron.service              loaded active running Regular background program processing daemon
+  dbus.service              loaded active running D-Bus System Message Bus
+  dm-event.service          loaded active running Device-mapper event daemon
+  filebrowser.service       loaded active running FileBrowser Quantum
+  getty@tty1.service        loaded active running Getty on tty1
+  iptag.service             loaded active running IP-Tag service
+  ksmtuned.service          loaded active running Kernel Samepage Merging (KSM) Tuning Daemon
+  lxc-monitord.service      loaded active running LXC Container Monitoring Daemon
+  lxcfs.service             loaded active running FUSE filesystem for LXC
+  netifyd.service           loaded active running Netify Agent
+  nmbd.service              loaded active running Samba NMB Daemon
+  ping-instances.service    loaded active running Ping instances every 5 minutes and restart if necessary
+  polkit.service            loaded active running Authorization Manager
+  postfix@-.service         loaded active running Postfix Mail Transport Agent (instance -)
+  proxmox-firewall.service  loaded active running Proxmox nftables firewall
+  pve-cluster.service       loaded active running The Proxmox VE cluster filesystem
+  pve-container@100.service loaded active running PVE LXC Container: 100
+  pve-container@103.service loaded active running PVE LXC Container: 103
+  pve-container@104.service loaded active running PVE LXC Container: 104
+  pve-container@105.service loaded active running PVE LXC Container: 105
+  pve-container@106.service loaded active running PVE LXC Container: 106
+  pve-container@109.service loaded active running PVE LXC Container: 109
+  pve-firewall.service      loaded active running Proxmox VE firewall
+  pve-ha-crm.service        loaded active running PVE Cluster HA Resource Manager Daemon
+  pve-ha-lrm.service        loaded active running PVE Local HA Resource Manager Daemon
+  pve-lxc-syscalld.service  loaded active running Proxmox VE LXC Syscall Daemon
+  pvedaemon.service         loaded active running PVE API Daemon
+  pvefw-logger.service      loaded active running Proxmox VE firewall logger
+  pveproxy.service          loaded active running PVE API Proxy Server
+  pvescheduler.service      loaded active running Proxmox VE scheduler
+  pvestatd.service          loaded active running PVE Status Daemon
+  qmeventd.service          loaded active running PVE Qemu Event Daemon
+  rpcbind.service           loaded active running RPC bind portmap service
+  rrdcached.service         loaded active running LSB: start or stop rrdcached
+  smartmontools.service     loaded active running Self Monitoring and Reporting Technology (SMART) Daemon
+  smbd.service              loaded active running Samba SMB Daemon
+  softflowd.service         loaded active running Softflowd NetFlow/IPFIX exporter
+  spiceproxy.service        loaded active running PVE SPICE Proxy Server
+  ssh.service               loaded active running OpenBSD Secure Shell server
+  systemd-journald.service  loaded active running Journal Service
+  systemd-logind.service    loaded active running User Login Management
+  systemd-udevd.service     loaded active running Rule-based Manager for Device Events and Files
+  user@0.service            loaded active running User Manager for UID 0
+  watchdog-mux.service      loaded active running Proxmox VE watchdog multiplexer
+  zfs-zed.service           loaded active running ZFS Event Daemon (zed)
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+46 loaded units listed.

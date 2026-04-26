@@ -1,0 +1,66 @@
+LXC systemd service inventory - Wed Dec 10 11:49:13 PM EST 2025
+CTID range: 100..110
+
+=== CT 100 ===
+  collecting systemd service list...
+  failed/activating units:
+      loki.service                                       loaded    activating auto-restart Loki service
+      netbox-rq.service                                  loaded    activating auto-restart NetBox Request Queue Worker
+      netbox.service                                     loaded    activating auto-restart NetBox WSGI Service
+    ● nvmf-autoconnect.service                           loaded    failed     failed       Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed     failed       LSB: OpenIPMI Driver init script
+    ● telegraf.service                                   loaded    failed     failed       Telegraf
+
+=== CT 101 ===
+  CT 101 does not exist, skipping.
+
+=== CT 102 ===
+  collecting systemd service list...
+  failed/activating units:
+    ● filebrowser.service                                loaded    failed   failed  Filebrowser
+    ● nvmf-autoconnect.service                           loaded    failed   failed  Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed   failed  LSB: OpenIPMI Driver init script
+    ● telegraf.service                                   loaded    failed   failed  Telegraf
+
+=== CT 103 ===
+  collecting systemd service list...
+  failed/activating units:
+    ● nvmf-autoconnect.service                           loaded    failed   failed  Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed   failed  LSB: OpenIPMI Driver init script
+
+=== CT 104 ===
+  collecting systemd service list...
+  failed/activating units:
+    ● nvmf-autoconnect.service                           loaded    failed   failed  Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed   failed  LSB: OpenIPMI Driver init script
+
+=== CT 105 ===
+  collecting systemd service list...
+  failed/activating units:
+    ● alloy.service                                      loaded    failed   failed  Vendor-agnostic OpenTelemetry Collector distribution with programmable pipelines
+    ● nvmf-autoconnect.service                           loaded    failed   failed  Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed   failed  LSB: OpenIPMI Driver init script
+
+=== CT 106 ===
+  collecting systemd service list...
+  failed/activating units:
+    ● nvmf-autoconnect.service                           loaded    failed   failed  Connect NVMe-oF subsystems automatically during boot
+    ● openipmi.service                                   loaded    failed   failed  LSB: OpenIPMI Driver init script
+
+=== CT 107 ===
+  CT 107 does not exist, skipping.
+
+=== CT 108 ===
+  collecting systemd service list...
+  no failed/activating units found.
+
+=== CT 109 ===
+  collecting systemd service list...
+  failed/activating units:
+      wa-mqtt.service                      loaded    activating start   start Publish WhatsApp active device metrics to MQTT
+
+=== CT 110 ===
+  collecting systemd service list...
+  no failed/activating units found.
+
+Artifacts written to: /srv/artifacts/hc-lxc-systemd/2025-12-10-234913

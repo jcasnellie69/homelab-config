@@ -1,0 +1,61 @@
+=== PVE Guests ===
+Timestamp: 2025-12-11T20:45:14-05:00
+Script   : /root/homelab-config/scripts/hc/hc-pve-guests.sh
+
+PVE Guests Health Check
+Timestamp: 2025-12-11T20:45:14-05:00
+
+=== Virtual Machines (qm list) ===
+<<<<<<< HEAD
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
+       101 haos16.0             running    6000              32.00 449014
+       107 PDM                  running    4096              32.00 448883
+=======
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
+       101 haos16.0             running    6000              32.00 449014
+       107 PDM                  running    4096              32.00 448883
+>>>>>>> origin/main
+
+--- VM detailed states ---
+VMID=101 NAME=haos16.0 STATE=running
+VMID=107 NAME=PDM STATE=running
+
+=== Containers (pct list) ===
+<<<<<<< HEAD
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        running                 watchyourlan
+109        running                 pihole
+110        running                 ntrop.pve.local
+=======
+VMID       Status     Lock         Name
+100        running                 netbox
+102        running                 grafana
+103        running                 prometheus
+104        running                 prometheus-pve-exporter
+105        running                 influxdb
+106        running                 homepage
+108        running                 watchyourlan
+109        running                 pihole
+110        running                 ntrop.pve.local
+>>>>>>> origin/main
+
+--- LXC detailed states ---
+CTID=100 STATUS=running
+CTID=102 STATUS=running
+CTID=103 STATUS=running
+CTID=104 STATUS=running
+CTID=105 STATUS=running
+CTID=106 STATUS=running
+CTID=108 STATUS=running
+CTID=109 STATUS=running
+CTID=110 STATUS=running
+
+Notes:
+ - Later we can add expectations (e.g., 'these CTs must be running').
+ - For now, this is a snapshot of current state for HC runs.

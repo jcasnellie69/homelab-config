@@ -1,0 +1,31 @@
+[mcp_servers.playwright]
+args = ["@playwright/mcp@latest"]
+command = "npx"
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+
+trusted_projects = ["/root"]
+
+# Additional MCP servers
+
+[mcp_servers.docker]
+image = "docker:latest"
+command = "docker"
+args = ["run", "--rm"]
+trusted_projects = ["/srv/homelab-share"]
+
+[mcp_servers.gateway]
+url = "http://localhost:8080"
+token_secret = "MCP_GATEWAY_TOKEN"
+trusted_projects = ["/root", "/srv/homelab-share"]
+
+[mcp_servers.github]
+api = "https://api.github.com"
+token_secret = "GITHUB_PAT"
+trusted_projects = ["/root"]
+
+[mcp_servers.prometheus]
+url = "http://prometheus:9090"
+scrape_interval = "30s"
+trusted_projects = ["/srv/homelab-share/homelab-config"]

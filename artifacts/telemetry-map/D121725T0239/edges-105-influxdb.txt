@@ -1,0 +1,65 @@
+<<<<<<< HEAD
+# CT 105 (influxdb)
+=======
+# CT 105 (influxdb)
+>>>>>>> origin/main
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+192.168.4.130
+
+## Telegraf -> outputs (push destinations)
+
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+/etc/telegraf/telegraf.conf:45:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.conf:47:  urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/netflow_input.conf:10:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/netflow_input.conf:12: urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/system.conf:62:  [[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/system.conf:64:  urls = ["$INFLUX_HOST"]
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:73:[[outputs.influxdb_v2]]
+/etc/telegraf/telegraf.d/timewarp_traffic.conf:74:  urls = ["$INFLUX_HOST"]
+
+## Prometheus -> scrape targets (pull sources)
+
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+
+## Promtail -> Loki clients (push)
+
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+/etc/promtail/config.yml:5:clients:
+/etc/promtail/config.yml:6:  - url: http://192.168.7.116:3100/loki/api/v1/push
+/etc/promtail/config.yml:5:clients:
+/etc/promtail/config.yml:6:  - url: http://192.168.7.116:3100/loki/api/v1/push
+
+## Loki listen ports (sanity if Loki exists here)
+
+[1mInfluxDB LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92minfluxdb[m
+    💡  [m[33m IP Address: [1;92m192.168.4.130[m
+/etc/loki/config.yml:5:  http_listen_port: 3100
+/etc/loki/config.yml:6:  grpc_listen_port: 9096
+/etc/loki/config.yml:5:  http_listen_port: 3100
+/etc/loki/config.yml:6:  grpc_listen_port: 9096
+/etc/loki/loki-config.yaml:4:  http_listen_port: 3100
