@@ -518,7 +518,7 @@ def collect_code_metrics() -> dict:
                     if ext in SOURCE_EXTS and size < 1_000_000:  # Skip huge files
                         try:
                             with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
-                                metrics["total_lines"] += len(f.readlines())
+                                metrics["total_lines"] += sum(1 for _ in f)
                         except Exception:
                             pass
                 except Exception:
