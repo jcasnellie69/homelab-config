@@ -5,6 +5,10 @@
 ## 2025-05-18 - Copy-to-clipboard for Code Blocks
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
+
+## 2025-05-18 - Responsive Color Palettes in MkDocs
+**Learning:** Hardcoding a single theme (e.g., `scheme: slate`) in MkDocs documentation limits accessibility and ignores user system preferences. Material for MkDocs supports media queries like `(prefers-color-scheme)` to detect the user's OS preference, and toggles can be added for manual control.
+**Action:** Always implement a responsive color palette array instead of a single hardcoded scheme in `mkdocs.yml` to improve visual accessibility and respect user settings.
 ## 2025-02-23 - MkDocs Theme Toggle
 **Learning:** Hardcoding a static theme (like 'slate') in MkDocs ignores user system preferences (`prefers-color-scheme`), which impacts accessibility and comfort. Providing a manual toggle with media queries is a much better approach.
 **Action:** Always configure MkDocs with an interactive palette toggle that defaults to the user's system preferences using the `media` attribute.
