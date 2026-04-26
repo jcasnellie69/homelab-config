@@ -3,6 +3,7 @@
 Make these necessary changes to the app.
 
 - Install client library
+
 ```
 pip install azure-monitor-opentelemetry
 ```
@@ -37,12 +38,14 @@ If the app has IaC template such as Bicep or terraform files representing its cl
 ## Send data
 
 Create a logger that is configured to send telemetry.
+
 ```python
 logger = logging.getLogger("<your_logger_namespace>")
 logger.setLevel(logging.INFO)
 ```
 
 Then send telemetry events by calling its logging methods.
+
 ```python
 logger.info("info log")
 ```

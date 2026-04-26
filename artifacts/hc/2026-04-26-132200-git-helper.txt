@@ -1,0 +1,9 @@
+Change: Added helper script scripts/git_stage_and_push.sh to stage/commit/push local changes
+Date: 2026-04-26 13:22:00 UTC
+
+Files added:
+- scripts/git_stage_and_push.sh — helper to stage, commit, and push repository changes from repo root
+
+Notes:
+- The script requires running from the repository root and will push to origin/<current-branch>.
+- This helps avoid leaving untracked or uncommitted files after running generator scripts locally.

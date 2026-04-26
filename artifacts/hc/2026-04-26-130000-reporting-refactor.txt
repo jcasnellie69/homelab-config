@@ -1,0 +1,14 @@
+Change: Added reporting collection + publish scripts and GitHub Actions workflow to orchestrate them.
+Date: 2026-04-26 13:00:00 UTC
+
+Files added:
+- scripts/reporting/collect_inventory.sh — collects inventory, writes raw log, JSON metadata, and markdown fragment under /srv/artifacts/hc
+- scripts/reporting/collect_health.sh — collects health, writes raw log, JSON metadata, and markdown fragment under /srv/artifacts/hc
+- scripts/reporting/publish_docs.sh — generates docs/inventory/index.md and docs/health/index.md from fragments under /srv/artifacts/hc/fragments
+- .github/workflows/reporting.yml — invokes the scripts on schedule and workflow_dispatch; commits docs only when changed
+- docs/REPORTING.md — documents the flow
+
+Notes:
+- Collection scripts are intentionally authoritative and runnable manually from the repository root.
+- GitHub Actions contains no collection logic beyond invoking the repository scripts.
+- Raw evidence remains in /srv/artifacts/hc and is not deleted by publishing.

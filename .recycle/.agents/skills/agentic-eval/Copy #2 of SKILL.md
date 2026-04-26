@@ -157,7 +157,7 @@ def evaluate_with_rubric(output: str, rubric: dict) -> float:
 ## Best Practices
 
 | Practice | Rationale |
-|----------|-----------|
+| ---------- | ----------- |
 | **Clear criteria** | Define specific, measurable evaluation criteria upfront |
 | **Iteration limits** | Set max iterations (3-5) to prevent infinite loops |
 | **Convergence check** | Stop if output score isn't improving between iterations |

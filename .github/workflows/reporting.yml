@@ -1,0 +1,44 @@
+name: Reporting — collect & publish
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  reporting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Make reporting scripts executable
+        run: |
+          chmod +x scripts/reporting/*.sh
+
+      - name: Run collection scripts
+        run: |
+          # Collection logic is intentionally inside the repository scripts
+          ./scripts/reporting/collect_inventory.sh
+          ./scripts/reporting/collect_health.sh
+
+      - name: Publish docs from fragments
+        run: |
+          ./scripts/reporting/publish_docs.sh
+
+      - name: Commit generated docs if changed
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+          git add docs/inventory docs/health || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(reporting): update generated docs [skip ci]" || true
+            git push origin HEAD:${{ github.ref }}
+          else
+            echo "No doc changes to commit."
+          fi
