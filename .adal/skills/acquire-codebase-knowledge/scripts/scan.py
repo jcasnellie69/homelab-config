@@ -209,7 +209,7 @@ def get_directory_tree(max_depth: int = TREE_MAX_DEPTH) -> List[str]:
     files = []
 
     def walk(path: Path, depth: int):
-        if depth > max_depth or should_exclude(path):
+        if depth > max_depth or should_exclude(path) or len(files) >= TREE_LIMIT:
             return
         try:
             for item in sorted(path.iterdir()):
