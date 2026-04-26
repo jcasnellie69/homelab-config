@@ -70,6 +70,7 @@ check_container() {
   fi
 
   # Inline script executed inside the container
+  # shellcheck disable=SC2016
   pct exec "${ctid}" -- bash -lc '
 CHECK_DIR="'"${CHECK_DIR}"'"
 FRESH_THRESHOLD_SEC="\"${FRESH_THRESHOLD_SEC}\""

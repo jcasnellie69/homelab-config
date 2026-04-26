@@ -1,0 +1,37 @@
+Change: Fix ShellCheck warnings/errors in scripts/ to pass CI (PR #24)
+Date: 2026-04-21T01:43:00Z
+Branch: copilot/fix-shellcheck-errors
+Target PR: #24 (chore/workspace-governance-monitor)
+
+## Issues Fixed
+
+### SC2034 (warning) - Unused variables
+- scripts/hc/hc-netflow-basic.sh:125 — `status` in read loop → renamed to `_status`
+- scripts/util/PVE_HC.sh:132 — `STATUS`, `MEM`, `BOOTDISK`, `PID` in read loop → renamed to `_status`, `_mem`, `_bootdisk`, `_pid`
+- scripts/util/PVE_HC.sh:150 — `STATUS`, `LOCK` in read loop → renamed to `_status`, `_lock`
+- scripts/dhcp/dhcp-discovery-collect.sh — `NONINTERACTIVE` variable removed; `-y` getopts case kept as no-op
+
+### SC2183 (warning) - printf format string mismatch
+- scripts/util/PVE_HC.sh:14 — `printf '%*s\n' 80` → `printf '%80s\n' ''` (embed width in format, pass explicit empty string)
+
+### SC2294 (warning) - eval with arrays
+- scripts/session/bootstrap-root-automation.sh — new file added to this branch; implements `run_cmd()` using `"$@"` (direct execution) instead of `eval "$@"`. All internal callers within the file pass unquoted arguments (e.g., `run_cmd install -d -m 700 "${SSH_DIR}"`) rather than a single quoted shell string.
+
+### SC2030/SC2031 (info) - subshell variable modification
+- scripts/util/PVE_HC.sh:83-84 — `{ echo ...; warn=$((warn+1)); } | tee -a` pipeline → restructured as `if/then` blocks to avoid pipeline subshell
+
+### SC2086 (info) - unquoted variable in awk -v
+- scripts/util/PVE_HC.sh:90,99 — `awk -v b=$arc_runtime` → `awk -v b="$arc_runtime"` (and same for arc_persist)
+
+### SC2016 (info) - intentional single-quote shell embedding
+- scripts/hc/hc-netflow-basic.sh — added `# shellcheck disable=SC2016` before bash -lc heredoc using '"$VAR"' pattern
+- scripts/dhcp/dhcp-discovery-collect.sh — added `# shellcheck disable=SC2016` for bash -lc commands with $() expansions
+- scripts/telemetry/telemetry-map-collect.sh — added `# shellcheck disable=SC2016` before pct exec bash -lc commands
+
+### SC2028 (info) - echo with \n escape sequences
+- scripts/telemetry/telemetry-map-render.sh:54 — `echo "...\n..."` → `printf '...\n...\n'` with separate arguments
+
+## Validation
+shellcheck exit code after fixes:
+Exit code: 0
+ShellCheck result: PASS (exit 0)
