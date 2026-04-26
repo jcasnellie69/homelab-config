@@ -70,9 +70,10 @@ check_container() {
   fi
 
   # Inline script executed inside the container
+  # shellcheck disable=SC2016
   pct exec "${ctid}" -- bash -lc '
 CHECK_DIR="'"${CHECK_DIR}"'"
-FRESH_THRESHOLD_SEC="'"${FRESH_THRESHOLD_SEC}"'"
+FRESH_THRESHOLD_SEC="\"${FRESH_THRESHOLD_SEC}\""
 
 echo "NetFlow cache directory found in container."
 echo "Container timestamp: $(date -Iseconds)"
@@ -122,7 +123,7 @@ if command -v pct >/dev/null 2>&1; then
   echo "Scanning containers for ${CHECK_DIR}..."
   echo
 
-  while read -r ctid status rest; do
+  while read -r ctid _ rest; do
     [ "${ctid}" = "VMID" ] && continue
     [ -z "${ctid}" ] && continue
     check_container "${ctid}" || true

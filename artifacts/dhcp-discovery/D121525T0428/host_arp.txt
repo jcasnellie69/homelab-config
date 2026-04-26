@@ -1,9 +1,0 @@
-### CMD: arp -an
-### WHEN: 2025-12-15T04:28:15-05:00
-### HOST: pve.primary.node
-
-? (192.168.4.130) at bc:24:11:f2:ac:2a [ether] on vmbr0
-? (192.168.4.208) at bc:24:11:a4:42:81 [ether] on vmbr0
-? (192.168.4.213) at f4:4e:b4:e3:6d:0f [ether] on vmbr0
-? (192.168.4.1) at 24:2d:6c:f7:3c:d4 [ether] on vmbr0
-? (192.168.4.211) at <incomplete> on vmbr0

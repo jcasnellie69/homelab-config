@@ -1,8 +1,0 @@
----
-service_role: telemetry_hub
-vmid: 105
-validation_ports: [8086]
-reachability_state: partial
-notes:
-  - ICMP responded from 192.168.4.130 during the latest validation.
-  - TCP 8086 was not reachable from the controller at that time.
