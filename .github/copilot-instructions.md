@@ -55,3 +55,26 @@ This repository manages homelab configuration for:
 - Document all infrastructure changes with artifacts
 - Maintain evidence trail for auditing and rollback purposes
 - Use descriptive names for artifacts that indicate their purpose
+
+## Agent quick-start (concise)
+
+- Working directory: `/srv/homelab-config` (source of truth).
+- Evidence artifact: always create a timestamped file under `/srv/artifacts/hc/` for any change (see "Artifact Requirements" above).
+- Useful commands (run from repo root or `/srv/homelab-config`):
+	- Build docs: `mkdocs build` (site output -> `site/`)
+	- Serve docs locally: `mkdocs serve`
+	- Run shell scripts: `bash scripts/<path>.sh` or `pwsh scripts\<path>.ps1` on Windows
+- Key locations:
+	- Docs: `docs/` and `mkdocs.yml`
+	- Automation scripts: `scripts/` (helpers for telemetry, HC, session automation)
+	- Evidence artifacts: `artifacts/hc/`
+	- Repository onboarding: `CONTRIBUTING.md`, `Readme.md`
+
+### For AI coding agents — quick rules
+
+- Preserve existing content in this file; add only short, actionable guidance and links.
+- Prefer linking to docs ("link, don't embed"). If a full explanation exists in `docs/` or `CONTRIBUTING.md`, add a link rather than copy.
+- Keep `description` fields in customizations explicit and keyword-rich (use the "Use when:" pattern).
+- Avoid `applyTo: "**"` unless the instruction truly applies everywhere.
+
+If you make edits to repo files, add an artifact in `artifacts/hc/` documenting the change and the commands you ran. See the repository `CONTRIBUTING.md` for local lint/test guidance.

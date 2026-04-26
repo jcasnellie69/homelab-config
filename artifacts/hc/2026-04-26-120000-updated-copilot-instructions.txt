@@ -1,0 +1,16 @@
+Change: Updated .github/copilot-instructions.md to add concise Agent Quick Start and AI agent guidance
+Date: 2026-04-26 12:00:00 UTC
+
+Actions taken:
+- Read agent-customization skill and repository customization guidance
+- Scanned repository for existing customization files (`.github/copilot-instructions.md`)
+- Updated `.github/copilot-instructions.md` to include:
+  - Agent quick-start commands (mkdocs build/serve)
+  - Key repo locations (docs/, scripts/, artifacts/hc/)
+  - Concise rules for AI coding agents (link, don't embed; description patterns; applyTo warnings)
+
+Files changed:
+- .github/copilot-instructions.md (appended Agent quick-start and agent guidance)
+
+Notes:
+- This artifact documents the change and the commands that an agent should run when working with the repository's docs and automation.

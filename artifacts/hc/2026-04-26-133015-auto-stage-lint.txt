@@ -1,0 +1,15 @@
+Change: Added hourly GitHub Actions workflow and CI script to auto-run linter fixers and stage untracked changes
+Date: 2026-04-26 13:30:15 UTC
+
+Files added:
+- .github/workflows/auto-stage-lint.yml — workflow scheduled hourly to run auto-stage-and-fix
+- scripts/ci/auto_stage_and_fix.sh — script to run ruff, eslint, stylelint, markdownlint (when available), stage changes and push
+
+Behavior:
+- On each run the workflow sets up Python and Node, installs ruff, and runs the script.
+- The script attempts to auto-fix issues (if tools/config present), stages all changes, commits, and pushes to the current branch when diffs exist.
+
+Notes and caveats:
+- Actions will attempt to install ruff via pip; additional project-specific fixers may be added to `scripts/ci/project_fix.sh`.
+- The workflow uses `git push origin <branch>`; ensure the Actions runner has permission to push (GITHUB_TOKEN has push rights for the repo unless restricted).
+- Review the list of auto-fixers and adjust per-project rules to avoid committing undesired formatting changes.

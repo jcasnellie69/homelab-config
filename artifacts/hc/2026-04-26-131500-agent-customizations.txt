@@ -1,0 +1,10 @@
+Change: Added AGENTS.md, artifact-creator skill and helper script
+Date: 2026-04-26 13:15:00 UTC
+
+Files added:
+- .github/AGENTS.md — documentation of suggested repo agents (reporting-runner, artifact-creator)
+- scripts/reporting/create_artifact.sh — helper script to create timestamped artifact files under /srv/artifacts/hc
+- .github/skills/create-artifact/SKILL.md — skill descriptor for agent-invocable artifact creation
+
+Notes:
+- The create-artifact skill is a thin wrapper around `scripts/reporting/create_artifact.sh` and is intended for use by human or automated agents to consistently create evidence artifacts.
