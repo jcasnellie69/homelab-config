@@ -6,6 +6,9 @@
 **Learning:** In technical documentation, code blocks are heavily utilized. Users often need to copy the configuration or commands from these blocks to their terminal.
 **Action:** Always enable `content.code.copy` feature in `mkdocs.yml` when using Material for MkDocs to significantly improve user experience when consuming technical documentation.
 
+## 2026-04-23 - Color Scheme Toggle for Material for MkDocs
+**Learning:** Hardcoding a documentation site's color scheme (like forcing `slate` for dark mode) is poor UX and accessibility. Users have varying visual preferences and system settings. The `mkdocs-material` theme supports an automatic color palette that syncs with `(prefers-color-scheme)` media queries and allows for a manual toggle.
+**Action:** When configuring Material for MkDocs, always use the array format for `palette` with `media` queries to respect user system preferences (light/dark mode) by default, while providing a manual toggle.
 ## 2025-05-18 - Responsive Color Palettes in MkDocs
 **Learning:** Hardcoding a single theme (e.g., `scheme: slate`) in MkDocs documentation limits accessibility and ignores user system preferences. Material for MkDocs supports media queries like `(prefers-color-scheme)` to detect the user's OS preference, and toggles can be added for manual control.
 **Action:** Always implement a responsive color palette array instead of a single hardcoded scheme in `mkdocs.yml` to improve visual accessibility and respect user settings.
