@@ -6,6 +6,7 @@ Use Azure Portal to auto-instrument a webapp hosted in Azure App Service for App
 - Node.js app hosted in Azure App Service
 
 Construct a url to bring the user to the Application Insights blade in Azure Portal for the App Service App.
+
 ```
 https://portal.azure.com/#resource/subscriptions/{subscription_id}/resourceGroups/{resource_group_name}/providers/Microsoft.Web/sites/{app_service_name}/monitoringSettings
 ```

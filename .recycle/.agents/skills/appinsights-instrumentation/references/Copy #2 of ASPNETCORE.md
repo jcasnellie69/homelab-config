@@ -3,7 +3,8 @@
 Make these necessary changes to the app.
 
 - Install client library
-```
+
+```bash
 dotnet add package Azure.Monitor.OpenTelemetry.AspNetCore
 ```
 
@@ -20,7 +21,7 @@ The App Insights resource has a connection string. Add the connection string as 
 
 After getting the connection string, set this environment variable with its value.
 
-```
+```text
 "APPLICATIONINSIGHTS_CONNECTION_STRING={your_application_insights_connection_string}"
 ```
 
