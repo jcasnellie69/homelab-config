@@ -19,7 +19,7 @@ Patterns for adding safety, trust, and policy enforcement to AI agent systems.
 
 Governance patterns ensure AI agents operate within defined boundaries — controlling which tools they can call, what content they can process, how much they can do, and maintaining accountability through audit trails.
 
-```
+```text
 User Request → Intent Classification → Policy Check → Tool Execution → Audit Log
                      ↓                      ↓               ↓
               Threat Detection         Allow/Deny      Trust Update
