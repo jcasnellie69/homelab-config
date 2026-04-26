@@ -1,0 +1,11 @@
+### hostname -f
+$ pct exec 106 -- hostname -f
+homepage.lan
+
+### uname -a
+$ pct exec 106 -- uname -a
+Linux homepage 6.8.12-15-pve #1 SMP PREEMPT_DYNAMIC PMX 6.8.12-15 (2025-09-12T11:02Z) x86_64 GNU/Linux
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

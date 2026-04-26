@@ -1,0 +1,29 @@
+Change: Create orchestration source-of-truth and execute NetBox MCP + OPNsense-on-Alpha onboarding workflow
+Date: 2026-04-10
+Branch: chore/workspace-governance-monitor
+
+Context
+- User requested a durable `orchestration.md` describing the evidence-first instruction model, onboarding approach, and repeatable methods for adding new technology/capabilities.
+- Validation targets for this pass:
+  1. NetBox MCP wired into workspace config and validated.
+  2. OPNsense onboarding for PVE Alpha advanced from planning into concrete workspace automation assets.
+
+Planned verification
+- Confirm workspace and root MCP configs remain valid after NetBox additions.
+- Verify NetBox endpoint reachability and MCP server startup path.
+- Generate or validate OPNsense-on-Alpha orchestration assets.
+- Re-run workspace health and tooling checks after changes.
+
+Results
+- `uvx --from git+https://github.com/netboxlabs/netbox-mcp-server netbox-mcp-server --help` completed successfully and printed the CLI help output.
+- A live NetBox MCP server instance was started locally on `http://127.0.0.1:8010/mcp`; a GET probe returned `406 Not Acceptable`, confirming the endpoint was live and expecting MCP-aware headers.
+- NetBox host `192.168.4.140` responded to ICMP, but ports `80` and `443` were refusing connections from this workstation during this session.
+- Alpha `192.168.4.10` management ports `22` and `8006` were reachable.
+- `python scripts/session/generate_infra_artifacts.py --alpha-ip 192.168.4.10` regenerated the inventory and added `opnsense-alpha` under the `future_opnsense` inventory group.
+- Final verification passed:
+  - `missing markdown links: 0`
+  - `json errors: 0`
+  - `secret findings: 0`
+  - `latest tag findings: 0`
+  - `mcp servers: 6`
+  - `npx --yes markdownlint-cli "docs/**/*.md" "WIKI/**/*.md"` returned no output (clean pass)

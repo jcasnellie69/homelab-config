@@ -1,0 +1,47 @@
+name: Ansible Validation
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_dry_check:
+        description: "Run manual connectivity and OPNsense dry-run checks"
+        required: false
+        default: "false"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      ANSIBLE_CONFIG: ${{ github.workspace }}/deploy/ansible/ansible.cfg
+      ANSIBLE_FORCE_COLOR: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Ansible
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install ansible-core
+
+      - name: Install Ansible collections
+        run: ansible-galaxy collection install -r deploy/ansible/collections/requirements.yml
+
+      - name: Regenerate infrastructure artifacts
+        run: python scripts/session/generate_infra_artifacts.py --alpha-ip 192.168.4.10
+
+      - name: Validate inventory
+        run: ansible-inventory -i deploy/ansible/inventory/generated.yml --list
+
+      - name: Syntax-check playbooks
+        run: |
+          ansible-playbook -i deploy/ansible/inventory/lab/hosts.yml deploy/ansible/playbooks/lab-connectivity.yml --syntax-check
+          ansible-playbook -i deploy/ansible/inventory/lab/hosts.yml deploy/ansible/playbooks/proxmox-readonly-discovery.yml --syntax-check
+          ansible-playbook -i deploy/ansible/inventory/generated.yml deploy/ansible/playbooks/opnsense-alpha-onboard.yml --syntax-check
+
+      - name: Optional connectivity dry-run
+        if: ${{ inputs.run_dry_check == 'true' }}
+        run: ansible-playbook -i deploy/ansible/inventory/lab/hosts.yml deploy/ansible/playbooks/lab-connectivity.yml

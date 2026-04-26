@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  mcp-gateway:
+    image: "${MCP_GATEWAY_IMAGE:-docker/mcp-gateway}"
+    container_name: mcp-gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - MCP_GATEWAY_TOKEN=${MCP_GATEWAY_TOKEN}
+      - OTHER_ENV=${OTHER_ENV:-example}
+    # Prefer a local `.env` or secret manager for runtime values.
+    # env_file:
+    #   - .env

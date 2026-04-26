@@ -1,0 +1,28 @@
+=== Storage (ZFS) ===
+Timestamp: 2025-12-11T20:49:32-05:00
+Script   : /root/homelab-config/scripts/hc/hc-storage-zfs.sh
+
+ZFS Storage Health Check
+Timestamp: 2025-12-11T20:49:32-05:00
+
+=== zpool list ===
+NAME    SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+vpool  1.81T  2.31M  1.81T        -         -     0%     0%  1.00x    ONLINE  -
+
+=== zpool status ===
+  pool: vpool
+ state: ONLINE
+  scan: scrub repaired 0B in 00:00:00 with 0 errors on Sun Nov  9 00:24:01 2025
+config:
+
+	NAME                                        STATE     READ WRITE CKSUM
+	vpool                                       ONLINE       0     0     0
+	  mirror-0                                  ONLINE       0     0     0
+	    nvme-CT2000P310SSD8_24514CF8F7FF        ONLINE       0     0     0
+	    nvme-WD_Blue_SN5000_2TB_25201W804546_1  ONLINE       0     0     0
+
+errors: No known data errors
+
+Notes:
+ - Later we can parse health, errors, and thresholds.
+ - For now, this dumps baseline info into HC artifacts.

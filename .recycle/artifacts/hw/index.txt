@@ -1,0 +1,4 @@
+/srv/artifacts/hw/hwloc-pve-D121325T0857.xml
+/srv/artifacts/hw/hwloc-pve-D121325T0859.xml
+/srv/artifacts/hw/hwloc-pve-D121725T0157.xml
+/srv/artifacts/hw/hwloc-pve-D121725T2332.xml

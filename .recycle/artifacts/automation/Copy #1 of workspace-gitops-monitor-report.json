@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-04-11T12:47:52.724842+00:00",
+  "repo": "\\\\192.168.4.60\\homelab-config\\",
+  "branch": "chore/workspace-governance-monitor",
+  "tracking": "origin/chore/workspace-governance-monitor",
+  "is_clean": false,
+  "counts": {
+    "modified": 15,
+    "added": 0,
+    "deleted": 0,
+    "renamed": 0,
+    "untracked": 6,
+    "other": 0
+  },
+  "files": {
+    "modified": [
+      "artifacts/automation/pipeline-metadata-summary.json",
+      "artifacts/automation/workspace-gitops-monitor-report.json",
+      "artifacts/automation/workspace-health-report.json",
+      "deploy/ansible/group_vars/proxmox.yml",
+      "deploy/ansible/host_vars/netbox.yml",
+      "deploy/ansible/inventory/lab/hosts.yml",
+      "docs/DOCS_INDEX.md",
+      "docs/bau-operations.md",
+      "docs/index.md",
+      "docs/install-reports/install-report-discovery-reconciliation.md",
+      "docs/install-reports/install-report-netbox-integration.md",
+      "docs/lxc-agent-matrix.md",
+      "docs/repo-audit.md",
+      "docs/source-of-truth.md",
+      "mkdocs.yml"
+    ],
+    "added": [],
+    "deleted": [],
+    "renamed": [],
+    "untracked": [
+      "artifacts/hc/2026-04-11-08-37-network-live-state-phase.txt",
+      "artifacts/hc/2026-04-11-08-40-proxmox-api-probe.txt",
+      "deploy/ansible/snippets/",
+      "docs/netbox-status.md",
+      "docs/network-live-state.md",
+      "docs/opnsense-prereq.md"
+    ],
+    "other": []
+  },
+  "recommendations": [
+    "Review untracked files and include only the intended workspace assets in the next commit.",
+    "Run workspace health and tooling currency audits before pushing."
+  ]
+}

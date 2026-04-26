@@ -1,0 +1,16 @@
+
+[1mPrometheus-PVE-Exporter LXC Container[m
+    🌐  [m[33m Provided by: [1;92mcommunity-scripts ORG [33m| GitHub: [1;92mhttps://github.com/community-scripts/ProxmoxVE[m
+
+    🖥️  [m[33m OS: [1;92mDebian GNU/Linux - Version: 12[m
+    🏠  [m[33m Hostname: [1;92mprometheus-pve-exporter[m
+    💡  [m[33m IP Address: [1;92m192.168.4.131[m
+# CT 104 (prometheus-pve-exporter)
+Wed Dec 17 08:08:44 PM HST 2025
+
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                             
+LISTEN 0      2048         0.0.0.0:9221      0.0.0.0:*    users:(("pve_exporter",pid=269,fd=6),("pve_exporter",pid=172,fd=6))
+LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=321,fd=13))                                   
+LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=321,fd=14))                                   
+LISTEN 0      4096               *:9100            *:*    users:(("prometheus-node",pid=105,fd=3))                           
+LISTEN 0      4096               *:22              *:*    users:(("sshd",pid=188,fd=3),("systemd",pid=1,fd=39))              

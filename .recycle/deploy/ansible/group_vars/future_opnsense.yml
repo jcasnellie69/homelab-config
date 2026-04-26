@@ -1,0 +1,15 @@
+---
+pve_api_host: 192.168.4.10
+pve_node: alpha
+opnsense_vm_name: opnsense-alpha
+opnsense_vm_id: 401
+opnsense_memory_mb: 4096
+opnsense_cores: 2
+opnsense_bridge: vmbr0
+opnsense_disk_storage: local-lvm
+opnsense_disk_size: 32G
+opnsense_iso_storage: local
+opnsense_iso_image: OPNsense.iso
+opnsense_management_subnet: 192.168.4.0/24
+opnsense_lan_ip_cidr: 192.168.4.254/24
+opnsense_check_mode: true

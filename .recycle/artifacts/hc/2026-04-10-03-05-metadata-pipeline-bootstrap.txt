@@ -1,0 +1,31 @@
+Change: Add metadata-driven workspace health automation, root bootstrap scaffolding, and pipeline summary generation.
+Date: 2026-04-10
+Workspace: z:\\
+
+Planned work:
+- Add a root-friendly bootstrap script for `/root` homelab automation runtime.
+- Add a workspace health audit script for docs, JSON, and secret hygiene.
+- Add a metadata summary builder that combines network inventory and observability service map data.
+- Add a machine-readable automation metadata contract and local VS Code tasks.
+- Upgrade CI workflow to verify the workspace automatically when metadata or automation files change.
+
+Executed changes:
+- Added `scripts/session/workspace_health.py`.
+- Added `scripts/session/build_pipeline_metadata.py`.
+- Added `scripts/session/bootstrap-root-automation.sh`.
+- Added `configs/automation-metadata.json`.
+- Added `.vscode/tasks.json` for local workspace health, metadata, devcontainer, and root-bootstrap dry-run tasks.
+- Upgraded `.github/workflows/lint.yml` into a broader workspace-health workflow.
+- Updated `plan/process-autonomous-workspace-1.md` to mark metadata flow and validation tasks complete.
+
+Verification after changes:
+- `python scripts/session/workspace_health.py --strict --report artifacts/automation/workspace-health-report.json`
+  - `missing markdown links: 0`
+  - `json errors: 0`
+  - `secret findings: 0`
+  - report written successfully
+- `python scripts/session/build_pipeline_metadata.py --output artifacts/automation/pipeline-metadata-summary.json`
+  - `total devices: 124`
+  - `observability services: 9`
+- VS Code validation reports `No errors found` for the new Python, shell, JSON, YAML, and plan files.
+- Attempted direct host-side `bash -n` verification hit a Windows/WSL path limitation on `Z:\`; CI now runs `shellcheck -x` on push/PR to cover that path automatically.

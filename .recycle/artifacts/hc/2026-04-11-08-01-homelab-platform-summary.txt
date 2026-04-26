@@ -1,0 +1,20 @@
+Homelab automation platform build summary
+Timestamp: 2026-04-11T08:01:21.4413434-04:00
+
+Evidence collected:
+- artifacts/hc/2026-04-11-07-46-alpha-live-discovery.txt
+- artifacts/hc/2026-04-11-07-47-lab-reachability.txt
+
+Validation commands:
+- workspace: alpha opnsense readiness
+- workspace: netbox mcp validate
+- workspace: infra artifacts
+- verify workspace automation
+
+Key results:
+- alpha reachable on 22/tcp and 8006/tcp
+- homepage reachable on 22/tcp and 80/tcp
+- pihole reachable on 22/tcp, 53/tcp, and 80/tcp
+- netbox only reachable by ICMP; 80/443/22 blocked
+- ansible-playbook not installed on this workstation
+- no Proxmox or OPNsense API credentials were present in the environment
