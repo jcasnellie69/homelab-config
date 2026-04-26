@@ -6,32 +6,48 @@ theme:
   name: material
   palette:
     # Palette toggle for system preference
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+    # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
+
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.top
+    - navigation.tracking
     - search.suggest
     - search.highlight
     - content.code.copy
-    - navigation.path
-    - navigation.indexes
-    - navigation.tracking
-    - toc.follow
 plugins:
   - search
 nav:
@@ -40,17 +56,6 @@ nav:
   - Telemetry: telemetry-pipeline.md
   - Docs:
       - Overview: DOCS_INDEX.md
-      - Orchestration: orchestration.md
-      - Repo Audit: repo-audit.md
-      - Source of Truth: source-of-truth.md
-      - Network Live State: network-live-state.md
-      - OPNsense Prerequisites: opnsense-prereq.md
-      - NetBox Status: netbox-status.md
-      - VLAN Topology: vlan-topology.md
-      - LXC Agent Matrix: lxc-agent-matrix.md
-      - BAU Operations: bau-operations.md
-      - GitLab CI Guide: ci/gitlab-ci.md
-      - Jules Handoff: jules-handoff.md
       - Session Automation: SESSION-AUTOMATION.md
       - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
       - MCP Filesystem: mcp-filesystem.md

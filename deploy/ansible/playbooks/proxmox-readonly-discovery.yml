@@ -1,8 +1,0 @@
----
-- name: Collect read-only facts from Proxmox hosts
-  hosts: proxmox
-  gather_facts: false
-  tasks:
-    - name: Include Proxmox discovery role
-      ansible.builtin.include_role:
-        name: proxmox_readonly_discovery

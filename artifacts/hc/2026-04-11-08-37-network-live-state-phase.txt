@@ -1,3 +1,0 @@
-Network live-state execution phase
-Timestamp: 2026-04-11T08:37:57.1260153-04:00
-Goal: verify live Proxmox NIC/bridge state, vmbr1 trunk-readiness, and NetBox presence/absence without touching vmbr0.
