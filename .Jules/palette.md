@@ -52,3 +52,6 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+## 2025-04-28 - Navigation Breadcrumbs in MkDocs
+**Learning:** In deeply nested documentation structures, users can easily lose their orientation. Enabling breadcrumbs via `navigation.path` in Material for MkDocs provides essential context and an easy way to navigate back up the hierarchy. This is a high-value, low-effort UX win.
+**Action:** Always consider enabling `navigation.path` in `mkdocs.yml` when using the Material theme for documentation sites with nested navigation trees.
