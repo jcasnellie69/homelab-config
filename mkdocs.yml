@@ -5,46 +5,34 @@ repo_url: https://github.com/jcasnellie69/homelab-config
 theme:
   name: material
   palette:
-    # Palette toggle for system preference
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.top
     - navigation.tracking
+    - navigation.path
     - search.suggest
     - search.highlight
     - content.code.copy
