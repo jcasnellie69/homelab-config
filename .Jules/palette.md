@@ -52,3 +52,6 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+## 2025-05-19 - Safe YAML Configuration Extraction for Planners
+**Learning:** When generating a plan that relies on precise configurations (like `mkdocs.yml`), standard `cat` or `grep` commands might truncate output before reaching the needed sections, leading to groundedness violations during plan review.
+**Action:** Always use specific line extraction tools like `sed -n 'X,Yp'` or `grep -A/B` with sufficient lines to read full YAML blocks before committing to replacing them in a plan.
