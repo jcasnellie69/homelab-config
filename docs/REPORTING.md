@@ -37,7 +37,18 @@ Docs generation targets:
 
 - `docs/inventory/index.md` — created from fragments with `-inventory.md` suffix
 - `docs/health/index.md` — created from fragments with `-health.md` suffix
+- `docs/network-inventory/index.md` — created from the latest DHCP discovery artifact with `scripts/dhcp/dhcp-discovery-publish.sh`
 
 Evidence retention:
 
 All raw evidence and metadata are stored under `/srv/artifacts/hc/` and must not be removed by the publish step or by CI.
+
+DHCP discovery follows the same split between raw evidence and published docs:
+
+```bash
+./scripts/dhcp/dhcp-discovery-collect.sh
+./scripts/dhcp/dhcp-discovery-publish.sh
+git add docs/network-inventory/index.md
+git commit -m "docs: publish network inventory"
+git push origin main
+```
