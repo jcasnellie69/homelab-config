@@ -321,6 +321,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../network-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../artifacts-index/" class="md-nav__link">
         
   
@@ -383,10 +410,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -404,8 +431,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -633,10 +660,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -654,8 +681,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -768,9 +795,17 @@ mkdocs build
 <ul>
 <li><code>docs/inventory/index.md</code> — created from fragments with <code>-inventory.md</code> suffix</li>
 <li><code>docs/health/index.md</code> — created from fragments with <code>-health.md</code> suffix</li>
+<li><code>docs/network-inventory/index.md</code> — created from the latest DHCP discovery artifact with <code>scripts/dhcp/dhcp-discovery-publish.sh</code></li>
 </ul>
 <p>Evidence retention:</p>
 <p>All raw evidence and metadata are stored under <code>/srv/artifacts/hc/</code> and must not be removed by the publish step or by CI.</p>
+<p>DHCP discovery follows the same split between raw evidence and published docs:</p>
+<pre><code class="language-bash">./scripts/dhcp/dhcp-discovery-collect.sh
+./scripts/dhcp/dhcp-discovery-publish.sh
+git add docs/network-inventory/index.md
+git commit -m &quot;docs: publish network inventory&quot;
+git push origin main
+</code></pre>
 
 
 
