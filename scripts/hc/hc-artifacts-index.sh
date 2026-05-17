@@ -7,7 +7,8 @@
 
 set -euo pipefail
 
-OUT_FILE="${HOME}/homelab-config/docs/artifacts-index.md"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+OUT_FILE="${REPO_ROOT}/docs/artifacts-index.md"
 
 {
   echo "# Artifacts Index (/srv/artifacts)"

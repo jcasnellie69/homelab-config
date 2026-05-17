@@ -52,3 +52,5 @@ git add docs/network-inventory/index.md
 git commit -m "docs: publish network inventory"
 git push origin main
 ```
+
+The HC entrypoint follows the same rule: `scripts/hc/hc` runs the master health check and writes raw evidence under `/srv/artifacts/hc/<host>-<timestamp>/`. To update the published artifacts index, run `scripts/hc/hc-artifacts-index.sh` from any checkout location; it writes to that checkout's `docs/artifacts-index.md`.

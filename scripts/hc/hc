@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Thin wrapper so "hc" is the main HC entrypoint.
-# Delegates to hc-master.sh, keeps paths and future args flexible.
+# Delegates to the hc-master.sh next to this file.
 
-exec /root/homelab-config/scripts/hc/hc-master.sh "$@"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+exec "${SCRIPT_DIR}/hc-master.sh" "$@"
