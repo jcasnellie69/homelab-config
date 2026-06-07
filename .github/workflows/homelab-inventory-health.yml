@@ -1,0 +1,36 @@
+name: Homelab Inventory & Health
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 (runner local timezone)
+  workflow_dispatch: {}
+
+jobs:
+  collect-and-publish:
+    runs-on: [self-hosted, homelab]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure scripts are executable
+        run: |
+          chmod -R +x ./scripts || true
+
+      - name: Validate environment
+        run: |
+          ./scripts/hc/hc-validate.sh
+
+      - name: Collect inventory
+        run: |
+          ./scripts/inventory/inventory-collect.sh
+        env:
+          ARTIFACT_BASE: /srv/artifacts/hc
+
+      - name: Publish docs
+        run: |
+          ./scripts/publish/publish-health-docs.sh
+
+      - name: Show artifact summary
+        run: |
+          echo "Generated artifacts:" 
+          ls -1d /srv/artifacts/hc/* | tail -n 20 || true

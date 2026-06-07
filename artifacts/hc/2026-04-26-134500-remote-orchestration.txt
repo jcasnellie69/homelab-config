@@ -1,0 +1,15 @@
+Change: Add remote orchestration to run reporting scripts on cluster nodes
+Date: 2026-04-26 13:45:00 UTC
+
+Files added:
+- scripts/ci/remote_run_on_nodes.sh  — deploys `scripts/` to each node and runs collection scripts
+- .github/workflows/reporting-remote.yml — hourly workflow to SSH to nodes and trigger collection
+
+Notes:
+- The workflow expects repo secrets: SSH_PRIVATE_KEY, SSH_NODES (comma list), SSH_USER. Optional: SSH_PORT, RUN_AS_SUDO.
+- The runner writes the SSH key to ~/.ssh/id_rsa; `remote_run_on_nodes.sh` uses ssh/scp (tar over ssh) to upload and run scripts on each node.
+- Collected artifacts remain on each node under /srv/artifacts/hc/ and are not moved or deleted by the workflow.
+
+Operational guidance:
+- Ensure each node allows SSH access for the provided `SSH_USER` and key and that `~/homelab-config` is writable.
+- If writing to `/srv/artifacts/hc/` requires root, set the `RUN_AS_SUDO` secret to `true` and ensure `SSH_USER` can sudo without password for the invoked commands.

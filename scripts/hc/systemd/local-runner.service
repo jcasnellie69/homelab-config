@@ -1,0 +1,13 @@
+[Unit]
+Description=Homelab reporting local runner
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/srv/homelab-config
+ExecStart=/srv/homelab-config/scripts/hc/local-runner.sh
+User=homelab
+Group=homelab
+
+[Install]
+WantedBy=multi-user.target

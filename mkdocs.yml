@@ -24,6 +24,12 @@ nav:
       - Session Automation: SESSION-AUTOMATION.md
       - MCP Filesystem Swimlane: mcp-filesystem-swimlane.md
       - MCP Filesystem: mcp-filesystem.md
+      - Inventory:
+        - Inventory Index: docs/inventory/index.md
+        - Latest Inventory: docs/inventory/latest.md
+      - Health:
+        - Health Index: docs/health/index.md
+        - Latest Health: docs/health/latest.md
       - Netify Config Matrix: netify-config-matrix.md
       - Observability Service Map: observability-service-map.md
       - Policy Observability: policy-observability.md

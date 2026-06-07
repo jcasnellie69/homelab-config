@@ -1,0 +1,43 @@
+name: Reporting - Remote Collect
+
+on:
+  schedule:
+    - cron: '0 * * * *' # hourly
+  workflow_dispatch: {}
+
+jobs:
+  remote-collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare SSH key (runner-local deploy key)
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Set node env
+        run: |
+          echo "NODES=${SSH_NODES}" >> $GITHUB_ENV
+          echo "SSH_USER=${SSH_USER}" >> $GITHUB_ENV
+          echo "SSH_PORT=${SSH_PORT:-22}" >> $GITHUB_ENV
+          echo "RUN_AS_SUDO=${RUN_AS_SUDO:-false}" >> $GITHUB_ENV
+        env:
+          SSH_NODES: ${{ secrets.SSH_NODES }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          RUN_AS_SUDO: ${{ secrets.RUN_AS_SUDO }}
+
+      - name: Make remote-run script executable
+        run: |
+          chmod +x ./scripts/ci/remote_run_on_nodes.sh
+
+      - name: Run remote reporting on cluster nodes
+        run: |
+          ./scripts/ci/remote_run_on_nodes.sh
