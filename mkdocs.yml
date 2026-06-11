@@ -44,6 +44,7 @@ theme:
   features:
     - navigation.instant
     - navigation.top
+    - navigation.path
     - navigation.tracking
     - search.suggest
     - search.highlight
