@@ -28,6 +28,7 @@ nav:
       - Inventory:
         - Inventory Index: docs/inventory/index.md
         - Latest Inventory: docs/inventory/latest.md
+        - Network Signal Archaeology: network-signal-archaeology.md
       - Health:
         - Health Index: docs/health/index.md
         - Latest Health: docs/health/latest.md
@@ -39,3 +40,5 @@ nav:
 markdown_extensions:
   - toc:
       permalink: true
+  - admonition
+  - md_in_html
