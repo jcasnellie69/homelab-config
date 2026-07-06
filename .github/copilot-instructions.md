@@ -23,6 +23,14 @@ When making changes:
 2. Include relevant context, commands, outputs, or configuration snapshots
 3. Name artifacts descriptively with timestamps (e.g., `YYYY-MM-DD-HH-MM-description.txt`)
 
+### Changelog Requirement
+
+This rule existed before 2026-07-06 but was not being followed by automated agents (notably `google-labs-jules[bot]`, which opened ~135 near-duplicate PRs across this repo and `network-inventory` over seven weeks with no artifact or log entry for any of them) — see `CHANGELOG.md` for the incident. As a result it is now explicit:
+
+1. Any nontrivial change (new/changed docs, scripts, workflows, config, or a decision not to merge/change something) must add a dated entry to `CHANGELOG.md` in the same PR/commit — not just an artifact under `/srv/artifacts/hc/`.
+2. The entry should say what changed and why, and link the commit/PR. Artifacts are for raw evidence; `CHANGELOG.md` is for the human-readable narrative that lets the next agent or person reconstruct "how did we get here" without excavating git history.
+3. If you are about to re-attempt something a previous PR already tried and failed at (e.g. reviewer feedback was never addressed), check `CHANGELOG.md` and the PR's own review comments first, and fix the actual issue instead of opening a fresh attempt from scratch.
+
 ### Example Workflow
 
 ```bash
