@@ -1,8 +1,42 @@
+# D070726 | CHG-AUTOFIX-DISABLE-001 | disabled scheduled trigger | JC | github-actions
+#
+# Schedule trigger disabled: this workflow's own script (auto_stage_and_fix.sh)
+# runs `git add -A` with no path scoping, then commits and `git push`es
+# directly to whatever branch triggered it. On a `schedule` trigger that
+# means direct, unreviewed pushes to `main` on every green run -- exactly
+# the "never push directly to a protected branch" invariant the
+# repo-health-curator system (landed in this same change) exists to enforce.
+# The two cannot coexist as designed.
+#
+# Investigated (read-only, unauthenticated GitHub API; no gh install/auth
+# per operator instruction) why ~1,360 hourly scheduled runs since
+# 2026-04-26 all reported conclusion=success yet zero corresponding
+# "chore(auto-fix)" commits exist anywhere in `git log`:
+#   - `main` branch protection is OFF (confirmed via
+#     GET /repos/.../branches/main -> "protected": false), so branch
+#     protection is not what blocked the pushes.
+#   - This workflow declares no `permissions:` block at all, unlike
+#     repo-health-curator.yml (which explicitly sets
+#     `contents: read` / `pull-requests: write`). Its GITHUB_TOKEN
+#     therefore inherits the repository's default workflow token
+#     permission, which is almost certainly read-only for a repo of this
+#     vintage -- meaning `git push` in auto_stage_and_fix.sh most likely
+#     fails on every run.
+#   - The script swallows that failure: `git push origin "$BRANCH" || true`
+#     followed by `exit 0`, so a failed push still reports job success.
+#   - Job-log text could not be fetched to confirm the exact push error
+#     (`GET .../actions/jobs/{id}/logs` -> 403 "Must have admin rights to
+#     Repository"); this is the best-evidenced explanation available
+#     without elevated/gh access, not a confirmed root cause.
+# `workflow_dispatch` is left enabled for an intentional, reviewed manual
+# run. Do not re-enable the schedule without re-scoping the script to
+# specific paths and adding an explicit `permissions: contents: write`
+# (or, better, routing auto-fixes through a PR instead of a direct push).
 name: Auto Stage & Lint Fix
 
 on:
-  schedule:
-    - cron: '0 * * * *' # run at top of every hour
+  # schedule:
+  #   - cron: '0 * * * *' # disabled -- see header comment above
   workflow_dispatch: {}
 
 jobs:
