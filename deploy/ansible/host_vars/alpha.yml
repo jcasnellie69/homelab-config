@@ -1,0 +1,16 @@
+---
+node_role: proxmox_host
+confirmed_management_ip: 192.168.4.10
+historical_management_ip_artifact: 192.168.4.249
+current_validation:
+  ping: true
+  tcp_22: true
+  tcp_8006: true
+interfaces:
+  primary_bridge: vmbr0
+  vlan_aware: true
+  allowed_vids: 2-4094
+gateway_ipv4: 192.168.4.1
+notes:
+  - 192.168.4.10 is currently reachable and is treated as the active management address.
+  - The 192.168.4.249 address appears in older DHCP discovery artifacts and is tracked as historical/stale until re-verified from the host.
