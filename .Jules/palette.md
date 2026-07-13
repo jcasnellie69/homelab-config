@@ -52,3 +52,6 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+## 2025-07-13 - Icon-Only Button Accessibility
+**Learning:** Icon-only buttons (like pagination controls using chevron icons) often lack accessible names for screen readers, meaning they are announced generically as "button" or not at all. Furthermore, when dynamic elements like active page numbers change state, screen readers need to be informed of the currently active element.
+**Action:** Always provide an `aria-label` attribute on icon-only buttons. Add `aria-hidden="true"` to decorative inner icons (like Bootstrap Icons `<i>` tags) to avoid redundant or confusing screen reader announcements. Use `aria-current="page"` dynamically on pagination controls to indicate the currently selected page.
