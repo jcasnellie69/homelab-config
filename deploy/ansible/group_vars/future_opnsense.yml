@@ -1,0 +1,53 @@
+---
+pve_api_host: 192.168.4.10
+pve_node: pve-plex-oasis-alpha
+opnsense_vm_name: opnsense-alpha
+opnsense_vm_id: 401
+opnsense_memory_mb: 4096
+opnsense_cores: 2
+opnsense_sockets: 1
+opnsense_onboot: false
+opnsense_disk_storage: local-lvm
+opnsense_disk_size: 32G
+opnsense_iso_storage: local
+opnsense_iso_image: OPNsense.iso
+opnsense_management_subnet: 192.168.4.0/24
+opnsense_lan_ip_cidr: 192.168.4.254/24
+
+# Stage 1 creates only a management-side VM shell. Do not attach a routed or
+# trunked data-plane NIC until vmbr1 and its physical uplink are validated.
+opnsense_management_bridge: vmbr0
+opnsense_trunk_bridge: vmbr1
+opnsense_trunk_bridge_required: false
+opnsense_vm_net:
+  net0: "virtio,bridge={{ opnsense_management_bridge }}"
+
+opnsense_expected_vlan_baseline:
+  current_default_vlan: 1
+  current_subnet: 192.168.4.0/24
+  future_segments:
+    management: "Proxmox, automation, controller access"
+    core_infra: "DNS, IPAM, telemetry, monitoring"
+    user_apps: "Homepage and UI services"
+    iot_discovery: "IoT, HomeKit, Matter/Thread, cameras, smart hubs"
+
+opnsense_preflight_required_ports:
+  alpha:
+    host: 192.168.4.10
+    ports: [22, 8006]
+  pihole:
+    host: 192.168.4.208
+    ports: [22, 53, 80]
+  homepage:
+    host: 192.168.4.139
+    ports: [22, 80]
+
+opnsense_rollback_checks:
+  - "Proxmox UI reachable at 192.168.4.10:8006"
+  - "SSH reachable at 192.168.4.10:22"
+  - "Pi-hole reachable at 192.168.4.208:53 and :80"
+  - "Default gateway remains 192.168.4.1 during stage 1"
+
+# Keep mutation disabled until Proxmox credentials, ISO presence, and bridge
+# assumptions are validated from Semaphore or this control LXC.
+opnsense_check_mode: true

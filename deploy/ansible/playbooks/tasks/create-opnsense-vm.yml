@@ -1,0 +1,24 @@
+---
+- name: Create the OPNsense VM shell on Alpha
+  community.proxmox.proxmox_kvm:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_api_user_runtime }}"
+    api_token_id: "{{ pve_api_token_id_runtime }}"
+    api_token_secret: "{{ pve_api_token_secret_runtime }}"
+    node: "{{ pve_node }}"
+    vmid: "{{ opnsense_vm_id }}"
+    name: "{{ opnsense_vm_name }}"
+    memory: "{{ opnsense_memory_mb }}"
+    cores: "{{ opnsense_cores }}"
+    sockets: "{{ opnsense_sockets }}"
+    scsihw: virtio-scsi-pci
+    scsi:
+      scsi0: "{{ opnsense_disk_storage }}:{{ opnsense_disk_size | regex_replace('G$', '') }}"
+    ide:
+      ide2: "{{ opnsense_iso_storage }}:iso/{{ opnsense_iso_image }},media=cdrom"
+    net: "{{ opnsense_vm_net }}"
+    boot: order=scsi0;ide2;net0
+    onboot: "{{ opnsense_onboot | bool }}"
+    state: present
+  check_mode: "{{ opnsense_check_mode }}"
+  no_log: true
