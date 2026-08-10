@@ -779,7 +779,7 @@
                             <button id="resetFilters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 100%;">Reset</button>
                         </th>
                         <th style="padding: 8px;">
-                            <select id="filterStatus" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
+                            <select id="filterStatus" aria-label="Filter by Status" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
                                 <option value="">All</option>
                                 <option value="ERROR">ERROR</option>
                                 <option value="WARNING">WARNING</option>
@@ -788,16 +788,16 @@
                             </select>
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterIpPrefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterIpPrefix" aria-label="Filter by IP Prefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCountry" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCountry" aria-label="Filter by Country" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterRegion" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterRegion" aria-label="Filter by Region" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCity" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCity" aria-label="Filter by City" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                     </tr>
                 </thead>
@@ -862,17 +862,17 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="firstPage" title="First Page">
+                    <button class="pagination-btn" id="firstPage" title="First Page" aria-label="First Page">
                         <i class="bi bi-chevron-bar-left"></i>
                     </button>
-                    <button class="pagination-btn" id="prevPage" title="Previous Page">
+                    <button class="pagination-btn" id="prevPage" title="Previous Page" aria-label="Previous Page">
                         <i class="bi bi-chevron-left"></i>
                     </button>
                     <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
-                    <button class="pagination-btn" id="nextPage" title="Next Page">
+                    <button class="pagination-btn" id="nextPage" title="Next Page" aria-label="Next Page">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                    <button class="pagination-btn" id="lastPage" title="Last Page">
+                    <button class="pagination-btn" id="lastPage" title="Last Page" aria-label="Last Page">
                         <i class="bi bi-chevron-bar-right"></i>
                     </button>
                 </div>
