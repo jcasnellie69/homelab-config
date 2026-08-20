@@ -766,7 +766,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th><input type="checkbox" id="selectAll" checked></th>
+                        <th><input type="checkbox" id="selectAll" aria-label="Select all rows" checked></th>
                         <th>Line</th>
                         <th>Status</th>
                         <th>IP Prefix</th>
@@ -817,7 +817,7 @@
              data-tuned-city="{{.TunedEntry.Name}}"
              data-h3-cells="{{.TunedEntry.H3Cells}}"
              data-bounding-box="{{.TunedEntry.BoundingBox}}">
-                <td><input type="checkbox" class="row-checkbox" checked></td>
+                <td><input type="checkbox" class="row-checkbox" aria-label="Select row" checked></td>
                 <td>{{.Line}}</td>
                 <td><span class="status-badge status-{{if eq .Status "ERROR"}}error{{else if eq .Status "WARNING"}}warning{{else if eq .Status "SUGGESTION"}}suggestion{{else}}ok{{end}}"><i class="bi {{if eq .Status "ERROR"}}bi-x-circle-fill{{else if eq .Status "WARNING"}}bi-exclamation-triangle-fill{{else if eq .Status "SUGGESTION"}}bi-lightbulb-fill{{else}}bi-check-circle-fill{{end}}"></i>{{.Status}}</span></td>
                 <td><strong>{{.IPPrefix}}</strong></td>
@@ -862,17 +862,17 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="firstPage" title="First Page">
+                    <button class="pagination-btn" id="firstPage" title="First Page" aria-label="First Page">
                         <i class="bi bi-chevron-bar-left"></i>
                     </button>
-                    <button class="pagination-btn" id="prevPage" title="Previous Page">
+                    <button class="pagination-btn" id="prevPage" title="Previous Page" aria-label="Previous Page">
                         <i class="bi bi-chevron-left"></i>
                     </button>
                     <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
-                    <button class="pagination-btn" id="nextPage" title="Next Page">
+                    <button class="pagination-btn" id="nextPage" title="Next Page" aria-label="Next Page">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                    <button class="pagination-btn" id="lastPage" title="Last Page">
+                    <button class="pagination-btn" id="lastPage" title="Last Page" aria-label="Last Page">
                         <i class="bi bi-chevron-bar-right"></i>
                     </button>
                 </div>
