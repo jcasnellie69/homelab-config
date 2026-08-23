@@ -736,7 +736,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <span><i class="bi bi-list-ul" style="margin-right: 10px;"></i>Entries</span>
                                 <div class="mode-toggle-container">
-                                    <div class="mode-toggle" id="modeToggle" onclick="toggleMode()" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleMode(); }">
+                                    <div class="mode-toggle" id="modeToggle" aria-label="Toggle between Viewing and Tuning modes" onclick="toggleMode()" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleMode(); }">
                                         <span class="mode-toggle-text active" id="viewingText">Viewing Mode</span>
                                         <div class="mode-toggle-slider"></div>
                                         <span class="mode-toggle-text" id="tuningText">Tuning Mode</span>
@@ -749,24 +749,24 @@
                         <th colspan="7" style="background-color: #6b6b6b; padding: 8px;">
                             <div style="display: flex; justify-content: space-between; gap: 5px;">
                                 <div style="display: flex; gap: 5px;">
-                                    <button id="toggleFilters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 130px;">
+                                    <button id="toggleFilters" aria-label="Toggle Filters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 130px;">
                                         <i class="bi bi-funnel-fill" style="margin-right: 5px;"></i>Show Filters
                                     </button>
-                                    <button id="toggleExpandAll" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 145px;">
+                                    <button id="toggleExpandAll" aria-label="Toggle Expand All Rows" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 145px;">
                                         <i class="bi bi-arrows-expand" style="margin-right: 5px;"></i>Expand Rows
                                     </button>
-                                    <button id="tuneAll" class="tune-all-btn" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em;">
+                                    <button id="tuneAll" class="tune-all-btn" aria-label="Tune All Selected Rows" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em;">
                                         <i class="bi bi-wrench" style="margin-right: 5px;"></i>Tune All
                                     </button>
                                 </div>
-                                <button id="downloadCSV" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em;">
+                                <button id="downloadCSV" aria-label="Download CSV Report" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em;">
                                     <i class="bi bi-filetype-csv" style="margin-right: 5px;"></i>Download
                                 </button>
                             </div>
                         </th>
                     </tr>
                     <tr>
-                        <th><input type="checkbox" id="selectAll" checked></th>
+                        <th><input type="checkbox" id="selectAll" aria-label="Select all rows" checked></th>
                         <th>Line</th>
                         <th>Status</th>
                         <th>IP Prefix</th>
@@ -779,7 +779,7 @@
                             <button id="resetFilters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 100%;">Reset</button>
                         </th>
                         <th style="padding: 8px;">
-                            <select id="filterStatus" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
+                            <select id="filterStatus" aria-label="Filter by Status" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
                                 <option value="">All</option>
                                 <option value="ERROR">ERROR</option>
                                 <option value="WARNING">WARNING</option>
@@ -788,16 +788,16 @@
                             </select>
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterIpPrefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterIpPrefix" aria-label="Filter by IP Prefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCountry" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCountry" aria-label="Filter by Country" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterRegion" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterRegion" aria-label="Filter by Region" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCity" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCity" aria-label="Filter by City" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                     </tr>
                 </thead>
@@ -817,7 +817,7 @@
              data-tuned-city="{{.TunedEntry.Name}}"
              data-h3-cells="{{.TunedEntry.H3Cells}}"
              data-bounding-box="{{.TunedEntry.BoundingBox}}">
-                <td><input type="checkbox" class="row-checkbox" checked></td>
+                <td><input type="checkbox" class="row-checkbox" aria-label="Select row {{.Line}}" checked></td>
                 <td>{{.Line}}</td>
                 <td><span class="status-badge status-{{if eq .Status "ERROR"}}error{{else if eq .Status "WARNING"}}warning{{else if eq .Status "SUGGESTION"}}suggestion{{else}}ok{{end}}"><i class="bi {{if eq .Status "ERROR"}}bi-x-circle-fill{{else if eq .Status "WARNING"}}bi-exclamation-triangle-fill{{else if eq .Status "SUGGESTION"}}bi-lightbulb-fill{{else}}bi-check-circle-fill{{end}}"></i>{{.Status}}</span></td>
                 <td><strong>{{.IPPrefix}}</strong></td>
@@ -862,23 +862,23 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="firstPage" title="First Page">
+                    <button class="pagination-btn" id="firstPage" aria-label="Go to first page" title="First Page">
                         <i class="bi bi-chevron-bar-left"></i>
                     </button>
-                    <button class="pagination-btn" id="prevPage" title="Previous Page">
+                    <button class="pagination-btn" id="prevPage" aria-label="Go to previous page" title="Previous Page">
                         <i class="bi bi-chevron-left"></i>
                     </button>
                     <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
-                    <button class="pagination-btn" id="nextPage" title="Next Page">
+                    <button class="pagination-btn" id="nextPage" aria-label="Go to next page" title="Next Page">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                    <button class="pagination-btn" id="lastPage" title="Last Page">
+                    <button class="pagination-btn" id="lastPage" aria-label="Go to last page" title="Last Page">
                         <i class="bi bi-chevron-bar-right"></i>
                     </button>
                 </div>
                 <div class="page-size-selector">
                     <label for="pageSize" style="color: #333333; font-size: 0.9em;">Rows per page:</label>
-                    <select id="pageSize">
+                    <select id="pageSize" aria-label="Select rows per page">
                         <option value="100" selected>100</option>
                         <option value="all">All</option>
                     </select>
@@ -893,7 +893,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <span><i class="bi bi-map-fill" style="margin-right: 10px;"></i>Geographic Coverage Map</span>
                             <div class="mode-toggle-container" style="font-size: 1em;">
-                                <div class="mode-toggle" id="mapModeToggle" onclick="switchMapMode()" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchMapMode();}" style="width: 170px;">
+                                <div class="mode-toggle" id="mapModeToggle" aria-label="Toggle between BBox and H3 Cells map modes" onclick="switchMapMode()" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchMapMode();}" style="width: 170px;">
                                     <span class="mode-toggle-text active" id="mapModeBboxText">BBox</span>
                                     <div class="mode-toggle-slider" style="width: 81px;"></div>
                                     <span class="mode-toggle-text" id="mapModeH3Text">H3 Cells</span>
@@ -912,7 +912,7 @@
         <div class="modal-content" tabindex="0">
             <h2>
                 <i class="bi bi-geo-alt" style="margin-right: 10px;"></i>Location Matches
-                <span class="close" tabindex="0">&times;</span>
+                <span class="close" tabindex="0" aria-label="Close modal" role="button">&times;</span>
             </h2>
             <div id="matchesList" class="matches-container"></div>
         </div>
