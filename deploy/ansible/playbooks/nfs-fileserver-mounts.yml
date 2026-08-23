@@ -1,0 +1,84 @@
+---
+# D082326T2358 | CHG-NFS-PERSIST-001 | persist fileserver NFS mounts + order guest start | JC | alpha (pve host)
+#
+# Context: fileserver exports are bind-mounted into guests (CT 409 mp0/mp1).
+# Before this change the exports were never mounted on the host, so the binds
+# served empty local directories -- every artifact write landed on local disk
+# while appearing to be on the share. Open since 2026-05-28.
+#
+# ORDERING: pve-guests.service ships with NO ordering against remote-fs.target
+# (verified on alpha: its After= list contains only pve services, basic.target
+# and sysinit.target). An fstab entry alone therefore races container start.
+# The drop-in below closes that race. Without it the failure mode is
+# intermittent and silent -- guests come up bound to empty directories.
+#
+# Idempotent; safe to re-run.
+
+- name: Persist fileserver NFS mounts on the Proxmox host
+  hosts: alpha
+  gather_facts: false
+  vars:
+    nfs_server: "192.168.4.60"
+    nfs_mount_opts: "_netdev,nofail,x-systemd.mount-timeout=30"
+    nfs_exports:
+      - mount_path: /mnt/fileserver/artifacts
+        src_path: /srv/artifacts
+      - mount_path: /mnt/fileserver/homelab-config
+        src_path: /srv/homelab-config
+
+  tasks:
+    - name: Ensure mount points exist
+      ansible.builtin.file:
+        path: "{{ item.mount_path }}"
+        state: directory
+        mode: "0755"
+      loop: "{{ nfs_exports }}"
+      loop_control:
+        label: "{{ item.mount_path }}"
+
+    - name: Ensure fileserver exports are mounted and recorded in fstab
+      ansible.posix.mount:
+        path: "{{ item.mount_path }}"
+        src: "{{ nfs_server }}:{{ item.src_path }}"
+        fstype: nfs4
+        opts: "{{ nfs_mount_opts }}"
+        state: mounted
+      loop: "{{ nfs_exports }}"
+      loop_control:
+        label: "{{ item.mount_path }}"
+
+    - name: Ensure pve-guests drop-in directory exists
+      ansible.builtin.file:
+        path: /etc/systemd/system/pve-guests.service.d
+        state: directory
+        mode: "0755"
+
+    - name: Order guest start after the fileserver mounts
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/pve-guests.service.d/10-fileserver-mounts.conf
+        mode: "0644"
+        content: |
+          # D082326T2358 | CHG-NFS-PERSIST-001 | order guests after NFS mounts | JC | alpha
+          # pve-guests.service has no stock ordering against remote-fs.target.
+          # Without this, containers bind-mounting /mnt/fileserver/* can start
+          # before the NFS mounts complete and silently bind empty directories.
+          [Unit]
+          Wants=mnt-fileserver-artifacts.mount mnt-fileserver-homelab\x2dconfig.mount
+          After=mnt-fileserver-artifacts.mount mnt-fileserver-homelab\x2dconfig.mount
+          After=remote-fs.target
+      notify: Reload systemd
+
+    - name: Verify both paths are backed by NFS
+      ansible.builtin.command:
+        cmd: "findmnt --noheadings --output FSTYPE --target {{ item.mount_path }}"
+      loop: "{{ nfs_exports }}"
+      loop_control:
+        label: "{{ item.mount_path }}"
+      register: nfs_verify
+      changed_when: false
+      failed_when: "'nfs4' not in nfs_verify.stdout"
+
+  handlers:
+    - name: Reload systemd
+      ansible.builtin.systemd_service:
+        daemon_reload: true
