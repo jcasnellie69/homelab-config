@@ -63,6 +63,7 @@ nav:
       - Netify Config Matrix: netify-config-matrix.md
       - Observability Service Map: observability-service-map.md
       - Policy Observability: policy-observability.md
+      - Switch Baseline: switch-baseline.md
   - Session Logs:
       - Build HC Automation: session-logs/20251211-204446-BUILD-HC-AUTOMATION.md
 markdown_extensions:
