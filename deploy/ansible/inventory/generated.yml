@@ -21,11 +21,11 @@ all:
       inventory_tags: ["monitoring", "ui"]
     prometheus:
       hostname: prometheus
-      vmid: 103
-      ansible_host: 192.168.4.132
+      vmid: 203
+      ansible_host: 192.168.4.210
       status: running
       description: Prometheus server
-      inventory_tags: ["192.168.4.132", "monitoring"]
+      inventory_tags: ["192.168.4.210", "monitoring"]
     prometheus-pve-exporter:
       hostname: prometheus-pve-exporter
       vmid: 104

@@ -11,6 +11,14 @@
 #                      hardening found on alpha; canonical source of
 #                      truth is now this repo, not the alpha checkout.
 #                                                            JC    PVE
+# 2026-08-26 CHG-PR128-REDACT-001 Fix credential redaction: sanitize_desc
+#                      only matched `password:`/`password%3A` (URL-encoded
+#                      colon) despite the header above claiming `password=`
+#                      support since 2026-07-12. Added `password=` and
+#                      `password%3D` (URL-encoded equals) patterns so
+#                      installer-script credentials in that form actually
+#                      get redacted from HC artifacts instead of leaking.
+#                                                            JC    PVE
 #===================================================================
 
 set -euo pipefail
@@ -36,6 +44,8 @@ sanitize_desc() {
   s="$(printf '%s' "$s" | sed 's/%0A$//')"
   s="$(printf '%s' "$s" | sed -E 's/(password%3A )[^\"]+/\1[REDACTED]/Ig')"
   s="$(printf '%s' "$s" | sed -E 's/(password: )[^"]+/\1[REDACTED]/Ig')"
+  s="$(printf '%s' "$s" | sed -E 's/(password%3D)[^\"]+/\1[REDACTED]/Ig')"
+  s="$(printf '%s' "$s" | sed -E 's/(password=)[^"]+/\1[REDACTED]/Ig')"
   s="${s//\"/\\\"}"
   printf '%s' "$s"
 }
