@@ -1,0 +1,11 @@
+D082626 | CHG-PP-ATTRIBUTION-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: address Copilot review findings on PR #161 (CLAUDE.md p.p. convention)
+
+Findings addressed:
+1. The change-header format example still hard-coded `JC` as the only
+   signature, while the bullet immediately below it explains the new
+   `p.p. <agent-identifier> for JC` alternative -- internally
+   inconsistent. Reworded the format line to use a `<signature>`
+   placeholder and explicitly list both valid forms.
+2. Missing evidence artifact under artifacts/hc/ per
+   .github/copilot-instructions.md -- this file is that artifact.
