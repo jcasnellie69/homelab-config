@@ -1,0 +1,102 @@
+# D082626 | CHG-PR-RISK-TIER-001 | p.p. claude-sonnet-5 for JC | ct409
+#
+# Labels every PR by risk tier based on changed file paths, and enables
+# GitHub's native auto-merge for Tier A (docs-only) PRs. Tier B and Tier C
+# are labeled for visibility but never auto-merged by this workflow --
+# Tier B is expected to be enabled explicitly (by an agent, after its own
+# validation, or by the operator) via `gh pr merge --auto`; Tier C is
+# additionally hard-blocked from merging at all without operator review by
+# branch protection's "Require review from Code Owners" (see CODEOWNERS).
+#
+# This workflow only ever adds labels and enables auto-merge -- it never
+# approves, merges, or pushes anything itself, and it cannot bypass
+# branch protection or CODEOWNERS requirements.
+
+name: PR risk tiering
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  tier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine tier from changed file paths
+        id: tier
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          files="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}/files" --paginate --jq '.[].filename')"
+          echo "Changed files:"
+          echo "$files"
+
+          all_md=true
+          all_tier_b=true
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            case "$f" in
+              *.md) : ;;
+              *) all_md=false ;;
+            esac
+            case "$f" in
+              deploy/ansible/playbooks/opnsense-preflight.yml| \
+              deploy/ansible/playbooks/proxmox-readonly-discovery.yml| \
+              deploy/ansible/playbooks/lab-connectivity.yml| \
+              deploy/ansible/playbooks/docker-vm-health-check.yml| \
+              *.md) : ;;
+              *) all_tier_b=false ;;
+            esac
+          done <<< "$files"
+
+          if [ "$all_md" = "true" ]; then
+            echo "tier=A" >> "$GITHUB_OUTPUT"
+          elif [ "$all_tier_b" = "true" ]; then
+            echo "tier=B" >> "$GITHUB_OUTPUT"
+          else
+            echo "tier=C" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Ensure tier labels exist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh label create "tier:auto" --repo "$REPO" --color "0E8A16" \
+            --description "Docs-only, auto-merges on green CI" --force
+          gh label create "tier:fast-track" --repo "$REPO" --color "FBCA04" \
+            --description "Known-safe read-only playbook, agent-verifiable" --force
+          gh label create "tier:manual-review" --repo "$REPO" --color "B60205" \
+            --description "Touches live infra/credentials/CI perms, operator review required" --force
+
+      - name: Apply tier label
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          TIER: ${{ steps.tier.outputs.tier }}
+        run: |
+          gh pr edit "$PR_NUMBER" --repo "$REPO" \
+            --remove-label "tier:auto" --remove-label "tier:fast-track" --remove-label "tier:manual-review" \
+            2>/dev/null || true
+          case "$TIER" in
+            A) gh pr edit "$PR_NUMBER" --repo "$REPO" --add-label "tier:auto" ;;
+            B) gh pr edit "$PR_NUMBER" --repo "$REPO" --add-label "tier:fast-track" ;;
+            C) gh pr edit "$PR_NUMBER" --repo "$REPO" --add-label "tier:manual-review" ;;
+          esac
+
+      - name: Enable auto-merge for Tier A
+        if: steps.tier.outputs.tier == 'A'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh pr merge "$PR_NUMBER" --repo "$REPO" --auto --squash
