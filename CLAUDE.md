@@ -3,6 +3,9 @@
 D070726 | CHG-REPO-HEALTH-LAND-001 | add repo-level operating guidance during
 repo-health-curator landing | JC | ct409
 
+D082626 | CHG-PP-ATTRIBUTION-001 | require p.p. attribution on agent-made
+change headers | p.p. claude-sonnet-5 for JC | ct409
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Standing orders
@@ -10,7 +13,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 These apply to every session working in this repository, not just this change:
 
 - Every created/modified file gets a compact column change header:
-  `D<MMDDYY> | CHG-ID | reason | JC | target system`
+  `D<MMDDYY> | CHG-ID | reason | <signature> | target system`, where
+  `<signature>` is `JC` (operator edited directly) or
+  `p.p. <agent-identifier> for JC` (an agent edited on the operator's
+  authority) — see the next bullet.
+- The signature slot is a signature, not a label: it identifies who is
+  accountable for the change. When an agent (not the operator directly)
+  made the edit, the slot reads `p.p. <agent-identifier> for JC` — the
+  classic business-letter "per procurationem" mark for someone acting on
+  another's authority, borrowed here so a reader can tell at a glance
+  whether the operator or a delegated agent touched the file, without
+  hunting through session logs. `JC` alone means the operator made the
+  edit directly. This does not change who is accountable (the operator
+  always is, per the operator-directs-agents model); it only changes what
+  the file itself discloses about who physically made the edit.
 - Never overwrite a file without a timestamped backup (`D<MMDDYY>T<HHMM>` suffix).
 - Never delete logs or backups; session histories count as logs.
 - Nothing runs on a schedule unless the code it executes is committed.
