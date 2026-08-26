@@ -13,8 +13,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 These apply to every session working in this repository, not just this change:
 
 - Every created/modified file gets a compact column change header:
-  `D<MMDDYY> | CHG-ID | reason | JC | target system`
-- The `JC` slot is a signature, not a label: it identifies who is
+  `D<MMDDYY> | CHG-ID | reason | <signature> | target system`, where
+  `<signature>` is `JC` (operator edited directly) or
+  `p.p. <agent-identifier> for JC` (an agent edited on the operator's
+  authority) — see the next bullet.
+- The signature slot is a signature, not a label: it identifies who is
   accountable for the change. When an agent (not the operator directly)
   made the edit, the slot reads `p.p. <agent-identifier> for JC` — the
   classic business-letter "per procurationem" mark for someone acting on
