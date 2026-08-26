@@ -51,3 +51,18 @@ opnsense_rollback_checks:
 # Keep mutation disabled until Proxmox credentials, ISO presence, and bridge
 # assumptions are validated from Semaphore or this control LXC.
 opnsense_check_mode: true
+
+# Gate 2 (D080926): WAN + isolated LAN-test trunk, two-bridge split.
+# See docs/opnsense-vlan-port-map.md "Gate 2 Topology" for the MAC-verified
+# physical mapping this is based on. Do not flip opnsense_gate2_check_mode to
+# false until the switch side (MokerLink TE7/TE12) has been configured to
+# match: TE7 carries the AT&T WAN uplink, TE12 is tagged VLAN 80 only.
+opnsense_gate2_check_mode: true
+opnsense_wan_bridge: vmbr1
+opnsense_wan_nic: nic2
+opnsense_lan_test_bridge: vmbr2
+opnsense_lan_test_nic: nic3
+opnsense_lan_test_vlan: 80
+opnsense_gate2_vm_net:
+  net1: "virtio,bridge={{ opnsense_wan_bridge }}"
+  net2: "virtio,bridge={{ opnsense_lan_test_bridge }}"

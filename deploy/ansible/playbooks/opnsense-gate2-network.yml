@@ -1,0 +1,130 @@
+---
+# D080926 | CHG-OPNSENSE-GATE2-001 | Gate 2: WAN + isolated LAN-test trunk | JC | alpha
+- name: Stage OPNsense Gate 2 WAN and LAN-test network
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../group_vars/future_opnsense.yml
+
+  pre_tasks:
+    - name: Resolve Proxmox API credentials from environment or Semaphore key binding
+      ansible.builtin.set_fact:
+        pve_api_token_full_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+            | default(ansible_user | default(''), true)
+          }}
+        pve_api_user_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_USER')
+            | default(
+                (
+                  (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                   | default(ansible_user | default(''), true)).split('!')[0]
+                ),
+                true
+              )
+          }}
+        pve_api_token_id_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_ID')
+            | default(
+                (
+                  (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                   | default(ansible_user | default(''), true)).split('!')[1]
+                  if '!' in (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                             | default(ansible_user | default(''), true))
+                  else ''
+                ),
+                true
+              )
+          }}
+        pve_api_token_secret_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_SECRET')
+            | default(ansible_password | default(''), true)
+          }}
+      no_log: true
+
+    - name: Capture Proxmox API credential presence
+      ansible.builtin.set_fact:
+        pve_api_credentials_present: >-
+          {{
+            pve_api_user_runtime | length > 0 and
+            pve_api_token_id_runtime | length > 0 and
+            pve_api_token_secret_runtime | length > 0
+          }}
+      no_log: true
+
+    - name: Stop when Proxmox API credentials are missing and mutation is requested
+      ansible.builtin.assert:
+        that:
+          - pve_api_credentials_present | bool
+        fail_msg: >-
+          Export PVE_API_USER, PVE_API_TOKEN_ID, and PVE_API_TOKEN_SECRET
+          before running Gate 2 with mutation enabled.
+      when: not opnsense_gate2_check_mode | bool
+
+    - name: Query existing OPNsense VM runtime status
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/qemu/{{ opnsense_vm_id }}/status/current"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_opnsense_status
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Query existing OPNsense VM config
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/qemu/{{ opnsense_vm_id }}/config"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_opnsense_config
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Assert VM 401 is still in Gate 1 stage-safe shape before Gate 2 mutation
+      ansible.builtin.assert:
+        that:
+          - pve_opnsense_status.json.data.status == 'stopped'
+          - pve_opnsense_config.json.data.net0 is search('bridge=' ~ opnsense_management_bridge)
+        fail_msg: >-
+          VM {{ opnsense_vm_id }} is not stopped and stage-safe on
+          {{ opnsense_management_bridge }}; refuse Gate 2 mutation. Stop the
+          VM and confirm its Gate 1 shape before attaching the WAN/LAN-test
+          NICs.
+        success_msg: "VM {{ opnsense_vm_id }} confirmed stopped and stage-safe; proceeding with Gate 2."
+      when: pve_api_credentials_present | bool
+
+  tasks:
+    - name: Report Gate 2 network plan
+      ansible.builtin.debug:
+        msg:
+          - "WAN bridge: {{ opnsense_wan_bridge }} over {{ opnsense_wan_nic }} (AT&T)"
+          - "LAN-test bridge: {{ opnsense_lan_test_bridge }} over {{ opnsense_lan_test_nic }} (MokerLink, VLAN {{ opnsense_lan_test_vlan }} only)"
+          - "VM net attach: {{ opnsense_gate2_vm_net }}"
+          - "Check mode: {{ opnsense_gate2_check_mode }}"
+          - "Reminder: switch side (MokerLink TE7 WAN passthrough, TE12 tagged VLAN {{ opnsense_lan_test_vlan }}) is a manual, out-of-band step and is not verified by this playbook."
+
+    - name: Create the Gate 2 bridges on alpha
+      ansible.builtin.include_tasks: tasks/create-opnsense-gate2-bridges.yml
+      when: pve_api_credentials_present | bool
+
+    - name: Attach the Gate 2 NICs to VM 401
+      ansible.builtin.include_tasks: tasks/attach-opnsense-gate2-nics.yml
+      when: pve_api_credentials_present | bool
+
+    - name: Report post-attach next steps
+      ansible.builtin.debug:
+        msg:
+          - "vmbr1/vmbr2 staged and net1/net2 attached (or would be, in check mode)."
+          - "Confirm the MokerLink switch side is configured before booting."
+          - "Boot VM {{ opnsense_vm_id }} via the Proxmox console to begin the OPNsense installer."
+          - "Configure OPNsense LAN-side DHCP only on the VLAN {{ opnsense_lan_test_vlan }} interface (net2), never on net0."
+      when: pve_api_credentials_present | bool

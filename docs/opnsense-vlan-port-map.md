@@ -8,7 +8,43 @@ MAC table and the live Proxmox alpha interface state.
 This is a planning document only. It does not authorize switch, bridge, gateway,
 DHCP, DNS, WAN, or firewall cutover changes.
 
-## New Physical Fact (D072826, not yet integrated into gates below)
+## Gate 2 Topology (D080926, reconciled and confirmed live)
+
+Resolves the D072826 "New Physical Fact" note below: OPNsense doesn't have
+its own physical SFPs — it's a VM on `alpha`, and what's isolated is alpha's
+own `nic2`/`nic3` ports. Physical cabling is now connected and confirmed:
+
+| Alpha NIC | MAC | Switch port | Link | Physical path | Role |
+| --- | --- | --- | --- | --- | --- |
+| `nic1` | `38:05:25:33:ED:65` | — | — | (recorded for completeness, not in use for this plan) | — |
+| `nic0` | `38:05:25:33:ED:66` | `TE10` | up, 2500Mb/s | Management/VM/LXC path | `vmbr0`, unchanged, rollback path |
+| `nic2` | `38:05:25:33:ED:67` | `TE7` | up, 10000Mb/s, confirmed AT&T negotiating 10G full-duplex | AT&T 10G circuit | `vmbr1` — real WAN uplink |
+| `nic3` | `38:05:25:33:ED:68` | `TE12` | up, 10000Mb/s | MokerLink switch | `vmbr2` — LAN-side, VLAN 80 first |
+
+Deviation from the original single-`vmbr1`-trunk plan further down this doc:
+OPNsense VM `401` gets **three** NICs instead of two, splitting WAN and
+LAN-test onto separate bridges instead of trunking both through one:
+
+| OPNsense NIC | Proxmox bridge | Physical path | Purpose |
+| --- | --- | --- | --- |
+| `net0` | `vmbr0` | alpha `nic0` | Temporary management/staging access only |
+| `net1` | `vmbr1` | alpha `nic2` ← AT&T 10G | Real WAN uplink |
+| `net2` | `vmbr2` | alpha `nic3` ← MokerLink `TE12` | LAN-side, VLAN `80` test first, later segments after proven |
+
+Intent: stage OPNsense with a real WAN uplink so it's fully provable and
+ready to take over as the live gateway once validated — not just an
+isolated lab test. This does **not** change the safety boundary in Rollback
+Principles below: the live default gateway stays `192.168.4.1`, and no
+client traffic moves until management, DNS/DHCP, and rollback checks are
+explicitly satisfied. Attaching a real WAN here is provisioning, not
+cutover.
+
+The original `vmbr1`-only proposal (`bridge-vids 2-4094` trunk carrying all
+future VLANs over a single `nic2` link) below is now superseded by the
+two-bridge split above; kept in place for historical context on the
+reasoning, not as the current plan.
+
+### Original note (D072826, superseded by the above)
 
 Operator reports OPNsense's own SFP ports are physically isolated from each
 other: one goes to the AT&T 5G port (likely WAN uplink candidate), the other
@@ -167,9 +203,10 @@ First switch mutation candidate, once approved:
 Keep `TE10` unchanged during `TE7` testing. This preserves alpha management,
 current VM/LXC connectivity, and the existing gateway path.
 
-## Proposed Proxmox Intent
+## Proposed Proxmox Intent (superseded — see Gate 2 Topology above)
 
-Do not create this yet. This is the target shape after approval:
+Historical single-trunk proposal, kept for context. Do not create this;
+the current plan is the two-bridge split in "Gate 2 Topology" above.
 
 ```text
 auto vmbr1
@@ -181,14 +218,10 @@ iface vmbr1 inet manual
     bridge-vids 2-4094
 ```
 
-OPNsense VM `401` target NIC shape after approval:
-
-| OPNsense NIC | Proxmox bridge | Purpose |
-| --- | --- | --- |
-| `net0` | `vmbr0` | Temporary management/staging only |
-| `net1` | `vmbr1` | Tagged VLAN trunk for lab/test and later segment rollout |
-
-Do not make `vmbr1` an IP-bearing bridge. Alpha host management must remain on
+Current target shape (per Gate 2 Topology above): `vmbr1` over `nic2` as a
+plain (non-VLAN-trunk) WAN bridge, `vmbr2` over `nic3` as the VLAN-aware
+LAN-test bridge (`bridge_vids` starting at `80`). Neither bridge is
+IP-bearing on the Proxmox host. Alpha host management must remain on
 `vmbr0` until a separate management migration is fully tested.
 
 ## Rollout Gates
@@ -206,13 +239,16 @@ Gate 1, safe OPNsense staging:
 - Make the OPNsense Ansible playbook resume-safe for existing VM `401`.
 - Confirm OPNsense still has only the expected stage NICs before attaching a trunk.
 
-Gate 2, isolated trunk test:
+Gate 2, WAN attach + isolated LAN trunk test (updated D080926, two-bridge split):
 
-- Configure only `TE7` as the first test trunk.
-- Create `vmbr1` over `nic2` with no IP address.
-- Attach OPNsense `net1` to `vmbr1`.
-- Enable only VLAN `80` first.
-- Test OPNsense DHCP/firewall behavior only on VLAN `80`.
+- Configure `TE7` (alpha `nic2`) for the AT&T WAN uplink.
+- Configure `TE12` (alpha `nic3`) as the first LAN-test trunk, tagged VLAN `80`.
+- Create `vmbr1` over `nic2` (WAN, no IP address) and `vmbr2` over `nic3`
+  (VLAN-aware, no IP address) via `community.proxmox.proxmox_node_network`.
+- Attach OPNsense `net1` to `vmbr1` (WAN) and `net2` to `vmbr2` (LAN-test).
+- Enable only VLAN `80` on the `vmbr2`/`TE12` side first.
+- Test OPNsense DHCP/firewall behavior only on VLAN `80`. Do not move the
+  live default gateway or any client traffic — see Rollback Principles.
 
 Gate 3, service migration preparation:
 
