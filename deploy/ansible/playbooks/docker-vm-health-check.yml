@@ -93,7 +93,7 @@
       ansible.builtin.file:
         path: "{{ docker_health_artifact_dir }}"
         state: directory
-        mode: "0755"
+        mode: "0750"
       delegate_to: localhost
 
     - name: Verify QEMU guest agent is reachable for the Docker VM
@@ -133,10 +133,18 @@
         docker_root_use_pct: "{{ (docker_vm_health_text | regex_search('HC_ROOT_USE_PCT=([0-9]+)', '\\1') | first | default('100')) | int }}"
         docker_restarting_container_count: "{{ (docker_vm_health_text | regex_search('HC_RESTARTING_CONTAINER_COUNT=([0-9]+)', '\\1') | first | default('0')) | int }}"
 
+    - name: Warn if root usage has crossed the advisory threshold
+      ansible.builtin.debug:
+        msg: >-
+          WARNING: Docker VM root usage is {{ docker_root_use_pct }}%, at or
+          above the {{ docker_health_warn_root_pct }}% advisory threshold
+          (critical threshold is {{ docker_health_critical_root_pct }}%).
+      when: docker_root_use_pct | int >= docker_health_warn_root_pct | int
+
     - name: Write local Docker VM health artifact
       ansible.builtin.copy:
         dest: "{{ docker_health_artifact_dir }}/{{ docker_health_timestamp }}-docker-vm-health-{{ docker_vm_name }}.txt"
-        mode: "0644"
+        mode: "0640"
         content: |
           D082226 | CHG-DOCKER-SCRYPTED-SPACE-20260822 | Docker VM health artifact | JC | docker-vm-109
           Timestamp: {{ docker_health_timestamp }}
