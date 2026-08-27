@@ -1,0 +1,29 @@
+D082626 | CHG-PR-RISK-TIER-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: address Copilot review findings on PR #163 (PR risk tiering)
+
+Finding 1 (real, fixed): GITHUB_TOKEN permissions block only declared
+`contents: read` and `pull-requests: write`. `gh label create` and
+`gh pr edit --add-label/--remove-label` call the labels endpoint, which
+is part of the Issues API even for pull requests -- both calls need
+`issues: write`. Added it to the permissions block.
+
+Finding 2 (investigated, found NOT to be a bug): Copilot claimed
+CODEOWNERS entries with a path and no owner are invalid/ignored, so the
+Tier B carve-out lines wouldn't actually exempt those playbooks from the
+broader /deploy/ansible/playbooks/ @jcasnellie69 rule.
+
+Verified against GitHub's own CODEOWNERS validator, run against the
+actual pushed branch:
+
+  $ gh api "repos/jcasnellie69/homelab-config/codeowners/errors?ref=chore/pr-risk-tiering"
+  {"errors":[]}
+
+Zero errors reported. An owner-less line after a broader pattern is
+documented GitHub behavior for exactly this carve-out purpose (last-match
+-wins; a later pattern with no owners removes the ownership requirement
+for matching paths). No change made -- the CODEOWNERS file works as
+designed.
+
+Verified:
+- Workflow YAML parses after the permissions fix.
+- gh api codeowners/errors endpoint against the live branch: 0 errors.
