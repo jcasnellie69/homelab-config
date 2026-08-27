@@ -1,0 +1,12 @@
+[Unit]
+Description=Run the repository inventory agent hourly
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=10m
+AccuracySec=1m
+Unit=repository-scan-agent.service
+
+[Install]
+WantedBy=timers.target

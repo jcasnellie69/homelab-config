@@ -1,0 +1,56 @@
+---
+- name: Deploy scheduled repository scan agent
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: true
+  vars:
+    repository_root: /mnt/repos/homelab-config
+  tasks:
+    - name: Install repository scanner executable mode
+      ansible.builtin.file:
+        path: "{{ repository_root }}/scripts/reporting/{{ item }}"
+        state: file
+        owner: root
+        group: root
+        mode: "0750"
+      loop:
+        - scan_repositories.py
+        - curate_repositories.py
+
+    - name: Install repository scan systemd units
+      ansible.builtin.copy:
+        src: "{{ repository_root }}/ops/systemd/{{ item }}"
+        dest: "/etc/systemd/system/{{ item }}"
+        remote_src: true
+        owner: root
+        group: root
+        mode: "0644"
+      loop:
+        - repository-scan-agent.service
+        - repository-scan-agent.timer
+        - repository-curator-agent.service
+        - repository-curator-agent.timer
+      notify: Reload systemd
+
+    - name: Flush systemd reload before enabling timer
+      ansible.builtin.meta: flush_handlers
+
+    - name: Enable and start repository scan timer
+      ansible.builtin.systemd_service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop:
+        - repository-scan-agent.timer
+
+    # repository-curator-agent.timer is deliberately installed but left
+    # disabled/stopped here (see CLAUDE.md "Curator timer is deliberately
+    # disabled"). It performs commits/pushes and is gated on explicit
+    # operator sign-off, not on this playbook running. Do not add it to the
+    # enable/start loop above without that sign-off.
+
+  handlers:
+    - name: Reload systemd
+      ansible.builtin.systemd_service:
+        daemon_reload: true

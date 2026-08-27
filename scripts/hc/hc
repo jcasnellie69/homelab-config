@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 # Thin wrapper so "hc" is the main HC entrypoint.
 # Delegates to the hc-master.sh next to this file.
+#
+# 2026-07-12 CR-0416 (JC): SCRIPT_DIR must follow symlinks - this is invoked
+# via /usr/local/bin/hc, a symlink into the deployed checkout, and plain
+# `dirname "${BASH_SOURCE[0]}"` resolves to the symlink's own directory
+# (/usr/local/bin) rather than the real script location, breaking hc-master.sh
+# lookup. `readlink -f` resolves the symlink first.
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 
 exec "${SCRIPT_DIR}/hc-master.sh" "$@"

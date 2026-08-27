@@ -1,0 +1,10 @@
+---
+service_role: monitoring
+vmid: 203
+validation_ports: [9090]
+reachability_state: reachable
+notes:
+  - "Corrected D080826 (CHG-PR128-UNBLOCK-001): prior vmid 103 /
+     192.168.4.132 was stale, conflicted with the corrected value in
+     inventory/lab/hosts.yml, and referred to a different host entirely."
+  - Verified live via `pct exec 203 -- hostname -I` -> 192.168.4.210.
