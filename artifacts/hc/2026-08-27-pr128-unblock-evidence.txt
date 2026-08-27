@@ -1,0 +1,41 @@
+D082626 | CHG-PR128-UNBLOCK-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: retroactive evidence artifact for commit b7b93e8
+
+Per .github/copilot-instructions.md evidence-first requirement, discovered
+after the fact via Copilot review comments on later PRs in this same
+session -- this backfills the artifact that commit b7b93e8 should have
+included.
+
+Four issues fixed in that commit, each verified before pushing:
+
+1. MD041 (markdownlint): docs/runbooks/disk_triage_insights.md and
+   docs/session-logs/20260707-ct409-triage.md were missing a top-level H1
+   as their effective first line.
+   Verified: npx markdownlint-cli against the repo's real
+   .markdownlint.json -- 0 MD041 violations remaining on both files.
+
+2. repository-scan-agent.yml enabled repository-curator-agent.timer
+   alongside repository-scan-agent.timer in its enable/start loop,
+   contradicting CLAUDE.md's "curator timer stays disabled without
+   operator sign-off" policy.
+   Verified: removed from the enable/start loop; ansible-lint clean
+   (0 failures, production profile).
+
+3. hc-pve-guests.sh's sanitize_desc only redacted password:/password%3A
+   variants despite its own header claiming password= support since
+   2026-07-12.
+   Verified: added password= and password%3D patterns; tested against
+   sample strings ("password=hunter2secret" -> "password=[REDACTED]",
+   etc.) via isolated bash function extraction.
+
+4. Inventory precedence conflicts: inventory/generated.yml and
+   host_vars/prometheus.yml had stale Prometheus (vmid 103, 192.168.4.132)
+   vs. the corrected inventory/lab/hosts.yml (vmid 203, 192.168.4.210);
+   inventory/lab/hosts.yml and host_vars/pihole.yml mismarked Pi-hole as
+   vmid 109 (actually the Docker VM) instead of LXC 115.
+   Verified: reconciled all four files to the live-verified values;
+   yaml.safe_load clean on all four.
+
+All four issues originated as GitHub Copilot review comments on this PR
+(2026-07-29, still visible on the PR thread) -- this artifact and commit
+b7b93e8 are the fix.
