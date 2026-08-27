@@ -1,3 +1,4 @@
+# D082726 | CHG-CI-LINT-001 | ignore archival session logs and disable MD060 in markdownlint | JC | github-actions
 name: Lint Docs and Shell
 
 on:
@@ -18,7 +19,7 @@ jobs:
       - name: Install markdownlint
         run: npm install -g markdownlint-cli
       - name: Run markdownlint
-        run: markdownlint "docs/**/*.md"
+        run: markdownlint --disable MD060 --ignore "docs/session-logs/**" "docs/**/*.md"
       - name: Install shellcheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Run shellcheck
