@@ -1,0 +1,31 @@
+D082626 | CHG-NFS-PERSIST-001 | p.p. claude-sonnet-5 for JC | ct409+alpha
+Change: address Copilot review finding on PR #158 (nfs-fileserver-mounts.yml)
+
+Finding: the pve-guests.service.d drop-in used Wants=/After= against the
+two .mount units, which only orders relative to them -- it does not
+require them to actually succeed. Combined with `nofail` on the fstab
+entries (deliberate: alpha must still boot if the fileserver is
+unreachable), this meant an unreachable NFS server at boot would let the
+mount job fail while pve-guests.service still started, reintroducing
+the exact silent empty-directory bind-mount fault this playbook exists
+to fix -- just gated on a rarer trigger (NFS down at boot) instead of no
+ordering at all.
+
+Verified this is a real gap, not just plausible-sounding: RequiresMountsFor=
+is the correct systemd primitive here per systemd.unit(5) -- it adds both
+Requires= and After= for the mount(s) backing the given paths, so
+pve-guests.service will not start unless the mounts actually succeeded.
+This does not reintroduce the "hung host" risk nofail exists to prevent:
+RequiresMountsFor= only gates pve-guests.service (guest auto-start), not
+alpha's own boot sequence -- alpha still boots fine if the mount fails,
+guests simply don't auto-start until it's fixed, rather than starting
+against empty local directories.
+
+Fix: replaced Wants=/After=<mount-unit-names> with
+RequiresMountsFor=/mnt/fileserver/artifacts /mnt/fileserver/homelab-config,
+keeping After=remote-fs.target. Also removes the fragile \x2d-escaped
+mount-unit-name dependency (RequiresMountsFor takes plain paths).
+
+Verified:
+- ansible-playbook --syntax-check playbooks/nfs-fileserver-mounts.yml: pass
+- ansible-lint playbooks/nfs-fileserver-mounts.yml: 0 failures, production profile
