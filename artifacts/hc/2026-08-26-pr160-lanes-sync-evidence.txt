@@ -1,0 +1,21 @@
+D082626 | CHG-PR-RISK-TIER-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: sync LANES.md onto feat/opnsense-staged-deployment, evidence artifact
+
+Per .github/copilot-instructions.md evidence-first requirement (flagged
+via Copilot review comment on this PR after the fact -- this artifact
+backfills it).
+
+Companion to the feat/repo-health-curator sync (PR #159). Same
+verification:
+
+  $ git show origin/main:LANES.md | md5sum
+  0a87e86cebbe6fbf0515d060bab394bc  -
+
+  $ md5sum LANES.md   (this branch, after copying from origin/main)
+  0a87e86cebbe6fbf0515d060bab394bc  LANES.md   <- matches exactly, no drift
+
+This branch diverged from feat/repo-health-curator before LANES.md
+existed on main, so it needs its own copy rather than inheriting one
+through a merge-base. Content is byte-identical, propagated verbatim
+per LANES.md's own "write: human operator ONLY" rule -- not authored or
+edited here.
