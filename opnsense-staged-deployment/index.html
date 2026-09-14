@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../DOCS_INDEX/">
+        <link rel="prev" href="../telemetry-pipeline/">
       
       
-        <link rel="next" href="../mcp-filesystem-swimlane/">
+        <link rel="next" href="../opnsense-vlan-port-map/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Session Automation - homelab-config</title>
+        <title>OPNsense Staged Deployment - homelab-config</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-automation-framework-permanent-reference" class="md-skip">
+        <a href="#opnsense-staged-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session Automation
+              OPNsense Staged Deployment
             
           </span>
         </div>
@@ -403,10 +403,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../opnsense-staged-deployment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Staged Deployment
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -422,6 +449,125 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status-d072826-chg-opnsense-sync-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status (D072826, CHG-OPNSENSE-SYNC-001)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Baseline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-1-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1 Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semaphore-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaphore Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-validation-before-network-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Validation Before Network Changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp-and-dns-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP and DNS Transition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candidate-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidate Segments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback Checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-blockers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Blockers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -484,20 +630,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -518,7 +662,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -561,37 +705,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session Automation
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../SESSION-AUTOMATION/" class="md-nav__link">
         
   
   
@@ -607,87 +724,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Purpose
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Entry Script
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine log:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Directory Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -949,10 +985,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
+  <a href="#status-d072826-chg-opnsense-sync-001" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Purpose
+        Status (D072826, CHG-OPNSENSE-SYNC-001)
       
     </span>
   </a>
@@ -960,49 +996,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
+  <a href="#current-baseline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Entry Script
+        Current Baseline
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine log:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
+  <a href="#stage-1-scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Directory Layout
+        Stage 1 Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semaphore-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaphore Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-validation-before-network-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Validation Before Network Changes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcp-and-dns-transition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHCP and DNS Transition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candidate-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Candidate Segments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback Checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-blockers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Blockers
       
     </span>
   </a>
@@ -1029,27 +1103,264 @@
   
 
 
-<h1 id="session-automation-framework-permanent-reference">SESSION AUTOMATION FRAMEWORK — PERMANENT REFERENCE<a class="headerlink" href="#session-automation-framework-permanent-reference" title="Permanent link">&para;</a></h1>
-<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>This framework provides z/OS-style session journaling for homelab development.<br />
-It automatically creates properly structured session logs (Markdown + machine logs) with timestamps, operator headers, and persistent recordkeeping suitable for Git.</p>
-<hr />
-<h2 id="2-entry-script">2. Entry Script<a class="headerlink" href="#2-entry-script" title="Permanent link">&para;</a></h2>
-<p><code>/root/homelab-config/scripts/session/new-session.sh</code></p>
-<p>This script creates:</p>
-<h3 id="markdown-session-document">Markdown session document:<a class="headerlink" href="#markdown-session-document" title="Permanent link">&para;</a></h3>
-<p><code>docs/session-logs/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.md</code></p>
-<h3 id="machine-log">Machine log:<a class="headerlink" href="#machine-log" title="Permanent link">&para;</a></h3>
-<p><code>logs/sessions/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.log</code></p>
-<p>Each session includes:
-- ISO timestamp
-- Sortable session ID
-- z/OS-style header (DATE, CHGID, REASON, USER, SYSTEM)
-- Operator notes section
-- Commands section
-- Results section</p>
-<hr />
-<h2 id="3-directory-layout">3. Directory Layout<a class="headerlink" href="#3-directory-layout" title="Permanent link">&para;</a></h2>
+<h1 id="opnsense-staged-deployment">OPNsense Staged Deployment<a class="headerlink" href="#opnsense-staged-deployment" title="Permanent link">&para;</a></h1>
+<h2 id="status-d072826-chg-opnsense-sync-001">Status (D072826, CHG-OPNSENSE-SYNC-001)<a class="headerlink" href="#status-d072826-chg-opnsense-sync-001" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Gate 1 (safe VM staging): complete.</strong> VM <code>401</code> exists on alpha, stopped,
+  <code>onboot: 0</code>, only <code>net0</code> on <code>vmbr0</code> — verified live, matches the expected
+  stage-safe shape asserted by <code>playbooks/opnsense-alpha-onboard.yml</code>.</li>
+<li><strong>Gates 2-4 (trunk test, DHCP/DNS migration, client segment moves): not
+  started.</strong> <code>vmbr1</code> does not exist. No switch port has been retagged. No
+  DHCP/DNS traffic has moved off Pi-hole. See <code>docs/opnsense-vlan-port-map.md</code>
+  for the gate definitions.</li>
+<li><strong>OPNsense itself has never been installed</strong> on VM 401 — it's a shell VM
+  with the ISO attached, never booted through the installer.</li>
+<li>The Proxmox API token bootstrap (<code>docs/proxmox-api-token-bootstrap.md</code>) is
+  done; the automation pipeline (<code>playbooks/opnsense-alpha-onboard.yml</code>) is
+  fixed and validated as of this change (<code>SDN.Use</code> ACL added, module versions
+  confirmed) — see that doc's Status section for detail.</li>
+<li>New physical-topology fact from the operator, not yet reconciled with the
+  plan below: OPNsense's own SFP ports are isolated — one to the AT&amp;T 5G
+  port, one to a separate air-gapped switch. See
+  <code>docs/opnsense-vlan-port-map.md</code>'s "New Physical Fact" note.</li>
+<li>This status section exists so the next session doesn't have to re-derive
+  state from <code>TURNOVER-CODEX-SESSIONS.md</code> transcripts again.</li>
+</ul>
+<h2 id="current-baseline">Current Baseline<a class="headerlink" href="#current-baseline" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Proxmox node <code>alpha</code> is the live management endpoint at <code>192.168.4.10</code>.</li>
+<li><code>vmbr0</code> is the active management bridge and must remain unchanged.</li>
+<li>Current network operation is flat <code>192.168.4.0/24</code> on default VLAN 1.</li>
+<li>Existing DNS dependency is Pi-hole at <code>192.168.4.208</code>.</li>
+<li>NetBox is an intentional LXC service at <code>192.168.4.114</code> and should remain a
+  future source-of-truth candidate. The inventory group should avoid colliding
+  with the <code>netbox</code> host name.</li>
+<li>Historical planning requires a future <code>vmbr1</code> VLAN trunk with no IP address,
+  but the first trunk path is now scoped to alpha <code>nic2</code> on MokerLink <code>TE7</code>.
+  Alpha <code>nic3</code> on <code>TE12</code> remains spare or second-stage trunk capacity.</li>
+</ul>
+<h2 id="stage-1-scope">Stage 1 Scope<a class="headerlink" href="#stage-1-scope" title="Permanent link">&para;</a></h2>
+<p>Maintain the staged OPNsense VM shell on Proxmox without changing routing, DHCP,
+DNS, or the active management bridge.</p>
+<p>Planned VM:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>opnsense-alpha</code></td>
+</tr>
+<tr>
+<td>VMID</td>
+<td><code>401</code></td>
+</tr>
+<tr>
+<td>Current status</td>
+<td><code>stopped</code></td>
+</tr>
+<tr>
+<td>On boot</td>
+<td>disabled</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td><code>1</code> socket, <code>2</code> cores</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td><code>4096</code> MB</td>
+</tr>
+<tr>
+<td>Disk</td>
+<td><code>local-lvm</code>, <code>32G</code></td>
+</tr>
+<tr>
+<td>ISO</td>
+<td><code>local:iso/OPNsense.iso</code></td>
+</tr>
+<tr>
+<td>Stage 1 NIC</td>
+<td><code>virtio,bridge=vmbr0</code></td>
+</tr>
+<tr>
+<td>Future trunk</td>
+<td><code>vmbr1</code> over alpha <code>nic2</code> / MokerLink <code>TE7</code>, not created or attached until approved</td>
+</tr>
+</tbody>
+</table>
+<h2 id="semaphore-jobs">Semaphore Jobs<a class="headerlink" href="#semaphore-jobs" title="Permanent link">&para;</a></h2>
+<p>Semaphore project <code>1</code> is seeded to use <code>/mnt/repos/homelab-config/deploy/ansible</code>
+as a local repository.</p>
+<p>Configured templates:</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Playbook</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPNsense preflight</td>
+<td><code>playbooks/opnsense-preflight.yml</code></td>
+<td>Non-destructive reachability and assumptions check</td>
+</tr>
+<tr>
+<td>Lab connectivity</td>
+<td><code>playbooks/lab-connectivity.yml</code></td>
+<td>Validate known management and service endpoints</td>
+</tr>
+<tr>
+<td>Proxmox discovery</td>
+<td><code>playbooks/proxmox-readonly-discovery.yml</code></td>
+<td>Read-only host/interface discovery</td>
+</tr>
+<tr>
+<td>OPNsense VM stage</td>
+<td><code>playbooks/opnsense-alpha-onboard.yml</code></td>
+<td>Create/update VM shell, check-mode by default</td>
+</tr>
+</tbody>
+</table>
+<p>Environment variables needed for Proxmox mutation:</p>
+<ul>
+<li><code>PVE_API_USER</code></li>
+<li><code>PVE_API_TOKEN_ID</code></li>
+<li><code>PVE_API_TOKEN_SECRET</code></li>
+</ul>
+<p>Do not disable <code>opnsense_check_mode</code> until the ISO exists and Proxmox API
+credentials are available.</p>
+<p>The <code>OPNsense - preflight</code> template has been run successfully from Semaphore.</p>
+<p>The onboarding playbook is resume-safe for VMID <code>401</code>: if the VM already exists,
+it validates that the VM is stopped, <code>onboot</code> is disabled, and only <code>net0</code> is
+attached to <code>vmbr0</code>. It refuses mutation if unexpected NICs or bridges are
+present.</p>
+<h2 id="required-validation-before-network-changes">Required Validation Before Network Changes<a class="headerlink" href="#required-validation-before-network-changes" title="Permanent link">&para;</a></h2>
+<p>Run on <code>alpha</code> before creating or attaching <code>vmbr1</code>:</p>
+<pre><code class="language-bash">pct list
+ip -br link
+bridge link show
+bridge vlan show
+for nic in nic2 nic3; do
+  echo &quot;=== $nic ===&quot;
+  ethtool &quot;$nic&quot; | egrep 'Speed|Duplex|Link detected'
+done
+</code></pre>
+<p>Expected result:</p>
+<ul>
+<li><code>nic0</code> remains the management path for <code>vmbr0</code>.</li>
+<li><code>nic2</code> remains linked at 10G and maps to MokerLink <code>TE7</code>.</li>
+<li><code>nic3</code> remains linked at 10G and maps to MokerLink <code>TE12</code>.</li>
+<li><code>vmbr1</code> is created only after the <code>TE7</code> test trunk is approved.</li>
+<li><code>vmbr1</code> has no IP address.</li>
+</ul>
+<p>Current detailed VLAN and switch-port planning lives in
+<code>docs/opnsense-vlan-port-map.md</code>.</p>
+<h2 id="dhcp-and-dns-transition">DHCP and DNS Transition<a class="headerlink" href="#dhcp-and-dns-transition" title="Permanent link">&para;</a></h2>
+<p>Stage 1 does not move DHCP or DNS. Keep the current gateway and Pi-hole online.</p>
+<p>Later DHCP/DNS transition order:</p>
+<ol>
+<li>Export current Pi-hole DHCP/static reservation data.</li>
+<li>Capture <code>network-inventory</code> critical and high-priority clients.</li>
+<li>Seed OPNsense static mappings from the authoritative inventory.</li>
+<li>Enable OPNsense DHCP on a test VLAN or isolated interface first.</li>
+<li>Move one low-risk client segment before moving management or core infra.</li>
+<li>Keep Pi-hole as DNS until OPNsense DHCP behavior is proven.</li>
+</ol>
+<h2 id="candidate-segments">Candidate Segments<a class="headerlink" href="#candidate-segments" title="Permanent link">&para;</a></h2>
+<p>Candidate VLAN IDs are now assigned for planning in
+<code>docs/opnsense-vlan-port-map.md</code>. They are not approved for live switch or
+Proxmox application yet.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">VLAN</th>
+<th>Segment</th>
+<th>Candidate subnet</th>
+<th>Timing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>1</code></td>
+<td>Legacy LAN</td>
+<td><code>192.168.4.0/24</code></td>
+<td>Remains active during early stages</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>10</code></td>
+<td>Management</td>
+<td><code>192.168.10.0/24</code></td>
+<td>Late cutover only</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>20</code></td>
+<td>Core infra</td>
+<td><code>192.168.20.0/24</code></td>
+<td>After DHCP/DNS import is proven</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>30</code></td>
+<td>Services</td>
+<td><code>192.168.30.0/24</code></td>
+<td>After core infra path is proven</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>40</code></td>
+<td>IoT</td>
+<td><code>192.168.40.0/24</code></td>
+<td>After discovery/firewall rules are defined</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>50</code></td>
+<td>Cameras/security</td>
+<td><code>192.168.50.0/24</code></td>
+<td>After recorder/hub dependencies are mapped</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>60</code></td>
+<td>Clients</td>
+<td><code>192.168.60.0/24</code></td>
+<td>After Wi-Fi VLAN support is confirmed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>70</code></td>
+<td>Guest</td>
+<td><code>192.168.70.0/24</code></td>
+<td>Low-risk client-style segment if supported</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>80</code></td>
+<td>Lab/test</td>
+<td><code>192.168.80.0/24</code></td>
+<td>First OPNsense DHCP/firewall test VLAN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rollback-checks">Rollback Checks<a class="headerlink" href="#rollback-checks" title="Permanent link">&para;</a></h2>
+<p>Rollback is "do nothing to the live network" for stage 1. If VM work causes
+unexpected issues, stop the VM and confirm:</p>
+<ul>
+<li><code>192.168.4.10:8006</code> Proxmox UI is reachable.</li>
+<li><code>192.168.4.10:22</code> SSH is reachable.</li>
+<li><code>192.168.4.208:53</code> and <code>192.168.4.208:80</code> Pi-hole is reachable.</li>
+<li>Default gateway remains <code>192.168.4.1</code>.</li>
+</ul>
+<h2 id="known-blockers">Known Blockers<a class="headerlink" href="#known-blockers" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Proxmox API credentials are not present in this repo.</li>
+<li>OPNsense API credentials do not exist until after install and API enablement.</li>
+<li><code>vmbr1</code> must not be built until the <code>TE7</code> test trunk is approved.</li>
+<li>Candidate VLAN subnets must be checked for collisions before use.</li>
+<li>MokerLink switch config should be exported or screenshotted before any port
+  mode changes.</li>
+</ul>
 
 
 

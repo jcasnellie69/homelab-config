@@ -1,0 +1,1880 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Homelab documentation and artifacts">
+      
+      
+        <meta name="author" content="homelab">
+      
+      
+      
+        <link rel="prev" href="../opnsense-staged-deployment/">
+      
+      
+        <link rel="next" href="../proxmox-api-token-bootstrap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>OPNsense VLAN and Port Map - homelab-config</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#opnsense-vlan-and-port-map" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="homelab-config" class="md-header__button md-logo" aria-label="homelab-config" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            homelab-config
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OPNsense VLAN and Port Map
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_4" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_4">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_5" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_5">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jcasnellie69/homelab-config" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="homelab-config" class="md-nav__button md-logo" aria-label="homelab-config" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    homelab-config
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jcasnellie69/homelab-config" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artifacts-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telemetry-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opnsense-staged-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Staged Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense VLAN and Port Map
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense VLAN and Port Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gate-2-topology-d080926-reconciled-and-confirmed-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate 2 Topology (D080926, reconciled and confirmed live)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate 2 Topology (D080926, reconciled and confirmed live)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#original-note-d072826-superseded-by-the-above" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original note (D072826, superseded by the above)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Facts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-vlan-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed VLAN Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-switch-port-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Switch-Port Intent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-proxmox-intent-superseded-see-gate-2-topology-above" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Proxmox Intent (superseded — see Gate 2 Topology above)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollout-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollout Gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxmox-api-token-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox API Token Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCS_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SESSION-AUTOMATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp-filesystem-swimlane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Filesystem Swimlane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mcp-filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Filesystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netify-config-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netify Config Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../observability-service-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability Service Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../policy-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Logs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Session Logs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-logs/20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build HC Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gate-2-topology-d080926-reconciled-and-confirmed-live" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gate 2 Topology (D080926, reconciled and confirmed live)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gate 2 Topology (D080926, reconciled and confirmed live)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#original-note-d072826-superseded-by-the-above" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Original note (D072826, superseded by the above)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Facts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-vlan-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed VLAN Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-switch-port-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Switch-Port Intent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-proxmox-intent-superseded-see-gate-2-topology-above" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Proxmox Intent (superseded — see Gate 2 Topology above)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollout-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollout Gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="opnsense-vlan-and-port-map">OPNsense VLAN and Port Map<a class="headerlink" href="#opnsense-vlan-and-port-map" title="Permanent link">&para;</a></h1>
+<h2 id="scope">Scope<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h2>
+<p>This document refactors the OPNsense rollout around the current MokerLink 1
+MAC table and the live Proxmox alpha interface state.</p>
+<p>This is a planning document only. It does not authorize switch, bridge, gateway,
+DHCP, DNS, WAN, or firewall cutover changes.</p>
+<h2 id="gate-2-topology-d080926-reconciled-and-confirmed-live">Gate 2 Topology (D080926, reconciled and confirmed live)<a class="headerlink" href="#gate-2-topology-d080926-reconciled-and-confirmed-live" title="Permanent link">&para;</a></h2>
+<p>Resolves the D072826 "New Physical Fact" note below: OPNsense doesn't have
+its own physical SFPs — it's a VM on <code>alpha</code>, and what's isolated is alpha's
+own <code>nic2</code>/<code>nic3</code> ports. Physical cabling is now connected and confirmed:</p>
+<table>
+<thead>
+<tr>
+<th>Alpha NIC</th>
+<th>MAC</th>
+<th>Switch port</th>
+<th>Link</th>
+<th>Physical path</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nic1</code></td>
+<td><code>38:05:25:33:ED:65</code></td>
+<td>—</td>
+<td>—</td>
+<td>(recorded for completeness, not in use for this plan)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>nic0</code></td>
+<td><code>38:05:25:33:ED:66</code></td>
+<td><code>TE10</code></td>
+<td>up, 2500Mb/s</td>
+<td>Management/VM/LXC path</td>
+<td><code>vmbr0</code>, unchanged, rollback path</td>
+</tr>
+<tr>
+<td><code>nic2</code></td>
+<td><code>38:05:25:33:ED:67</code></td>
+<td><code>TE7</code></td>
+<td>up, 10000Mb/s, confirmed AT&amp;T negotiating 10G full-duplex</td>
+<td>AT&amp;T 10G circuit</td>
+<td><code>vmbr1</code> — real WAN uplink</td>
+</tr>
+<tr>
+<td><code>nic3</code></td>
+<td><code>38:05:25:33:ED:68</code></td>
+<td><code>TE12</code></td>
+<td>up, 10000Mb/s</td>
+<td>MokerLink switch</td>
+<td><code>vmbr2</code> — LAN-side, VLAN 80 first</td>
+</tr>
+</tbody>
+</table>
+<p>Deviation from the original single-<code>vmbr1</code>-trunk plan further down this doc:
+OPNsense VM <code>401</code> gets <strong>three</strong> NICs instead of two, splitting WAN and
+LAN-test onto separate bridges instead of trunking both through one:</p>
+<table>
+<thead>
+<tr>
+<th>OPNsense NIC</th>
+<th>Proxmox bridge</th>
+<th>Physical path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>net0</code></td>
+<td><code>vmbr0</code></td>
+<td>alpha <code>nic0</code></td>
+<td>Temporary management/staging access only</td>
+</tr>
+<tr>
+<td><code>net1</code></td>
+<td><code>vmbr1</code></td>
+<td>alpha <code>nic2</code> ← AT&amp;T 10G</td>
+<td>Real WAN uplink</td>
+</tr>
+<tr>
+<td><code>net2</code></td>
+<td><code>vmbr2</code></td>
+<td>alpha <code>nic3</code> ← MokerLink <code>TE12</code></td>
+<td>LAN-side, VLAN <code>80</code> test first, later segments after proven</td>
+</tr>
+</tbody>
+</table>
+<p>Intent: stage OPNsense with a real WAN uplink so it's fully provable and
+ready to take over as the live gateway once validated — not just an
+isolated lab test. This does <strong>not</strong> change the safety boundary in Rollback
+Principles below: the live default gateway stays <code>192.168.4.1</code>, and no
+client traffic moves until management, DNS/DHCP, and rollback checks are
+explicitly satisfied. Attaching a real WAN here is provisioning, not
+cutover.</p>
+<p>The original <code>vmbr1</code>-only proposal (<code>bridge-vids 2-4094</code> trunk carrying all
+future VLANs over a single <code>nic2</code> link) below is now superseded by the
+two-bridge split above; kept in place for historical context on the
+reasoning, not as the current plan.</p>
+<h3 id="original-note-d072826-superseded-by-the-above">Original note (D072826, superseded by the above)<a class="headerlink" href="#original-note-d072826-superseded-by-the-above" title="Permanent link">&para;</a></h3>
+<p>Operator reports OPNsense's own SFP ports are physically isolated from each
+other: one goes to the AT&amp;T 5G port (likely WAN uplink candidate), the other
+connects to a separate air-gapped switch. This is distinct from the
+<code>vmbr1</code>/alpha-<code>nic2</code>/<code>nic3</code> trunk plan below, which is about Proxmox host
+NICs, not OPNsense's own interfaces — the two may need to be reconciled
+before Gate 2 planning proceeds. Flagging here so it isn't lost; does not
+change anything in Gates 0-4 below yet, and needs a live topology recheck
+(which OPNsense NIC/SFP maps to which physical link) before any trunk/WAN
+decisions are finalized.</p>
+<h2 id="current-facts">Current Facts<a class="headerlink" href="#current-facts" title="Permanent link">&para;</a></h2>
+<p>Current flat LAN:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LAN subnet</td>
+<td><code>192.168.4.0/24</code></td>
+</tr>
+<tr>
+<td>Current gateway</td>
+<td><code>192.168.4.1</code></td>
+</tr>
+<tr>
+<td>Current DNS/DHCP dependency</td>
+<td>Pi-hole at <code>192.168.4.208</code></td>
+</tr>
+<tr>
+<td>Alpha management</td>
+<td><code>192.168.4.10</code> on <code>vmbr0</code> / <code>nic0</code></td>
+</tr>
+<tr>
+<td>Alpha SFP test address</td>
+<td><code>nic2</code> = <code>192.168.4.13/32</code></td>
+</tr>
+<tr>
+<td>Alpha SFP test address</td>
+<td><code>nic3</code> = <code>192.168.4.14/32</code></td>
+</tr>
+<tr>
+<td>OPNsense VM</td>
+<td>VMID <code>401</code>, stopped, <code>onboot</code> disabled, currently staged on <code>vmbr0</code> only</td>
+</tr>
+<tr>
+<td>Future Proxmox trunk bridge</td>
+<td><code>vmbr1</code>, not created yet</td>
+</tr>
+</tbody>
+</table>
+<p>Current MokerLink 1 learned-port evidence from 2026-06-07:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th style="text-align: right;">Learned count</th>
+<th>Current interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TE1</code></td>
+<td style="text-align: right;">20</td>
+<td>Dense downstream/access path; reconfirm before VLAN changes</td>
+</tr>
+<tr>
+<td><code>TE4</code></td>
+<td style="text-align: right;">3</td>
+<td>Small access/downstream path; reconfirm before VLAN changes</td>
+</tr>
+<tr>
+<td><code>TE5</code></td>
+<td style="text-align: right;">70</td>
+<td>Main dense Wi-Fi/downstream path; current gateway MAC is here</td>
+</tr>
+<tr>
+<td><code>TE7</code></td>
+<td style="text-align: right;">1</td>
+<td>Alpha <code>nic2</code>, candidate first OPNsense trunk</td>
+</tr>
+<tr>
+<td><code>TE9</code></td>
+<td style="text-align: right;">22</td>
+<td>Dense downstream/access path; reconfirm before VLAN changes</td>
+</tr>
+<tr>
+<td><code>TE10</code></td>
+<td style="text-align: right;">12</td>
+<td>Alpha <code>vmbr0</code>/VM/LXC path plus <code>pve</code> node MACs; preserve as rollback path</td>
+</tr>
+<tr>
+<td><code>TE11</code></td>
+<td style="text-align: right;">2</td>
+<td>Charlie host and Pi-hole LXC</td>
+</tr>
+<tr>
+<td><code>TE12</code></td>
+<td style="text-align: right;">1</td>
+<td>Alpha <code>nic3</code>, spare or second-stage trunk</td>
+</tr>
+</tbody>
+</table>
+<p>No current dynamic entries were provided for <code>TE2</code>, <code>TE3</code>, <code>TE6</code>, or <code>TE8</code>.</p>
+<p>Important current mappings:</p>
+<table>
+<thead>
+<tr>
+<th>MAC</th>
+<th>Port</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>38:05:25:33:ED:66</code></td>
+<td><code>TE10</code></td>
+<td>alpha <code>nic0</code> / <code>vmbr0</code></td>
+</tr>
+<tr>
+<td><code>38:05:25:33:ED:67</code></td>
+<td><code>TE7</code></td>
+<td>alpha <code>nic2</code></td>
+</tr>
+<tr>
+<td><code>38:05:25:33:ED:68</code></td>
+<td><code>TE12</code></td>
+<td>alpha <code>nic3</code></td>
+</tr>
+<tr>
+<td><code>02:09:57:24:3E:E5</code></td>
+<td><code>TE10</code></td>
+<td>Docker VM <code>109</code>, current reservation <code>192.168.4.76</code></td>
+</tr>
+<tr>
+<td><code>BC:24:11:E6:D8:FA</code></td>
+<td><code>TE10</code></td>
+<td>OPNsense VM <code>401</code> current stage NIC</td>
+</tr>
+<tr>
+<td><code>84:47:09:71:62:50</code></td>
+<td><code>TE11</code></td>
+<td>Charlie host <code>vmbr0</code></td>
+</tr>
+<tr>
+<td><code>BC:24:11:A4:42:81</code></td>
+<td><code>TE11</code></td>
+<td>Pi-hole LXC <code>115</code> at <code>192.168.4.208</code></td>
+</tr>
+</tbody>
+</table>
+<p>LLDP neighbor evidence from the MokerLink UI on 2026-06-07:</p>
+<table>
+<thead>
+<tr>
+<th>Local port</th>
+<th>Chassis ID</th>
+<th>Port ID</th>
+<th>System name</th>
+<th>Current interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TE1</code></td>
+<td><code>30:29:2B:1A:92:E0</code></td>
+<td><code>1</code></td>
+<td><code>eero</code></td>
+<td>Eero/downstream path</td>
+</tr>
+<tr>
+<td><code>TE5</code></td>
+<td><code>24:2D:6C:F7:3C:C0</code></td>
+<td><code>4</code></td>
+<td><code>eero</code></td>
+<td>Eero/downstream path; high blast radius</td>
+</tr>
+<tr>
+<td><code>TE7</code></td>
+<td><code>38:05:25:33:ED:67</code></td>
+<td><code>38:05:25:33:ED:67</code></td>
+<td>none</td>
+<td>Alpha <code>nic2</code> direct LLDP advertisement</td>
+</tr>
+<tr>
+<td><code>TE9</code></td>
+<td><code>40:47:5E:F0:68:60</code></td>
+<td><code>1</code></td>
+<td><code>eero</code></td>
+<td>Eero/downstream path</td>
+</tr>
+<tr>
+<td><code>TE12</code></td>
+<td><code>38:05:25:33:ED:68</code></td>
+<td><code>38:05:25:33:ED:68</code></td>
+<td>none</td>
+<td>Alpha <code>nic3</code> direct LLDP advertisement</td>
+</tr>
+</tbody>
+</table>
+<p>SNMP status from 2026-06-07:</p>
+<table>
+<thead>
+<tr>
+<th>Probe source</th>
+<th>Target</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ansible/control LXC <code>192.168.4.137</code></td>
+<td><code>192.168.4.2/udp/161</code></td>
+<td>initially closed, then open after enabling SNMP management service</td>
+</tr>
+<tr>
+<td>Alpha <code>192.168.4.10</code></td>
+<td><code>192.168.4.2/udp/161</code></td>
+<td>initially closed, then open after enabling SNMP management service</td>
+</tr>
+</tbody>
+</table>
+<p>The switch management interface is reachable at <code>192.168.4.2</code> over HTTP, but
+SNMP required the global management-service enable toggle before it listened.
+Read-only SNMPv2c polling now works from the control LXC using the switch's
+current community configuration. Replace any default community with a
+non-default read-only community after discovery and restrict manager access if
+the switch supports it.</p>
+<p>SNMP system identity:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sysDescr</code></td>
+<td><code>10G04810GSM</code></td>
+</tr>
+<tr>
+<td><code>sysObjectID</code></td>
+<td><code>.1.3.6.1.4.1.27282.1.3</code></td>
+</tr>
+<tr>
+<td><code>sysName</code></td>
+<td><code>Switch</code></td>
+</tr>
+<tr>
+<td>SNMP enterprise reported by nmap</td>
+<td><code>net-snmp</code></td>
+</tr>
+</tbody>
+</table>
+<p>SNMP interface state:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Oper state</th>
+<th style="text-align: right;">Reported speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TE1</code></td>
+<td>up</td>
+<td style="text-align: right;">2500 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE2</code></td>
+<td>down</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE3</code></td>
+<td>down</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE4</code></td>
+<td>up</td>
+<td style="text-align: right;">2500 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE5</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE6</code></td>
+<td>down</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE7</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE8</code></td>
+<td>down</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE9</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE10</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE11</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+<tr>
+<td><code>TE12</code></td>
+<td>up</td>
+<td style="text-align: right;">10000 Mb/s</td>
+</tr>
+</tbody>
+</table>
+<p>SNMP VLAN and forwarding observations:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static VLANs visible through Q-BRIDGE-MIB</td>
+<td>VLAN <code>1</code>, name <code>default</code></td>
+</tr>
+<tr>
+<td>PVIDs</td>
+<td>physical ports and LAG interfaces all report PVID <code>1</code></td>
+</tr>
+<tr>
+<td>VLAN-aware FDB counts</td>
+<td><code>TE1=25</code>, <code>TE4=3</code>, <code>TE5=66</code>, <code>TE7=1</code>, <code>TE9=20</code>, <code>TE10=12</code>, <code>TE11=2</code>, <code>TE12=1</code></td>
+</tr>
+<tr>
+<td>LLDP-MIB</td>
+<td>not exposed over SNMP, despite LLDP being visible in the switch UI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proposed-vlan-model">Proposed VLAN Model<a class="headerlink" href="#proposed-vlan-model" title="Permanent link">&para;</a></h2>
+<p>These IDs and subnets are proposed for planning. Do not apply them until a
+collision check and switch config export are complete.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">VLAN</th>
+<th>Name</th>
+<th>Candidate subnet</th>
+<th>Initial owner</th>
+<th>Cutover timing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>1</code></td>
+<td>Legacy LAN</td>
+<td><code>192.168.4.0/24</code></td>
+<td>Existing gateway/Pi-hole</td>
+<td>Keep during all early stages</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>10</code></td>
+<td>Management</td>
+<td><code>192.168.10.0/24</code></td>
+<td>OPNsense later</td>
+<td>Late cutover; do not strand Proxmox</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>20</code></td>
+<td>Core infra</td>
+<td><code>192.168.20.0/24</code></td>
+<td>OPNsense later</td>
+<td>After DHCP/DNS import is proven</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>30</code></td>
+<td>Services</td>
+<td><code>192.168.30.0/24</code></td>
+<td>OPNsense later</td>
+<td>After core infra path is proven</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>40</code></td>
+<td>IoT</td>
+<td><code>192.168.40.0/24</code></td>
+<td>OPNsense later</td>
+<td>After device discovery rules are defined</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>50</code></td>
+<td>Cameras/security</td>
+<td><code>192.168.50.0/24</code></td>
+<td>OPNsense later</td>
+<td>After recorder/hub dependencies are mapped</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>60</code></td>
+<td>Clients</td>
+<td><code>192.168.60.0/24</code></td>
+<td>OPNsense later</td>
+<td>After Wi-Fi VLAN capability is confirmed</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>70</code></td>
+<td>Guest</td>
+<td><code>192.168.70.0/24</code></td>
+<td>OPNsense later</td>
+<td>Low-risk first client-style segment if supported</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>80</code></td>
+<td>Lab/test</td>
+<td><code>192.168.80.0/24</code></td>
+<td>OPNsense first</td>
+<td>First DHCP/firewall test VLAN</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>90</code></td>
+<td>Transit/spare</td>
+<td><code>192.168.90.0/24</code></td>
+<td>Reserved</td>
+<td>Only if a routed/firewall transit is needed</td>
+</tr>
+</tbody>
+</table>
+<p>The current <code>192.168.4.0/24</code> network remains the rollback and management
+network until a separate management VLAN is tested from more than one path.</p>
+<h2 id="proposed-switch-port-intent">Proposed Switch-Port Intent<a class="headerlink" href="#proposed-switch-port-intent" title="Permanent link">&para;</a></h2>
+<p>Initial intent, before any cutover:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Current role</th>
+<th>Proposed role</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TE10</code></td>
+<td>Alpha <code>vmbr0</code>, alpha VMs/LXCs, <code>pve</code> node MACs</td>
+<td>Preserve legacy LAN / rollback path</td>
+<td>Do not change until <code>TE10</code> topology is physically confirmed</td>
+</tr>
+<tr>
+<td><code>TE7</code></td>
+<td>Alpha <code>nic2</code> only</td>
+<td>First OPNsense test trunk candidate</td>
+<td>Best first trunk because it has one known MAC and no dense client load</td>
+</tr>
+<tr>
+<td><code>TE12</code></td>
+<td>Alpha <code>nic3</code> only</td>
+<td>Spare or second-stage trunk</td>
+<td>Keep as rollback/alternate until <code>TE7</code> path is proven</td>
+</tr>
+<tr>
+<td><code>TE11</code></td>
+<td>Charlie and Pi-hole</td>
+<td>Keep legacy LAN initially</td>
+<td>Do not move Pi-hole before DHCP/DNS migration plan is proven</td>
+</tr>
+<tr>
+<td><code>TE5</code></td>
+<td>Dense Wi-Fi/downstream, current gateway MAC</td>
+<td>Keep legacy LAN initially</td>
+<td>High blast radius; defer until gateway and Wi-Fi VLAN support are ready</td>
+</tr>
+<tr>
+<td><code>TE9</code></td>
+<td>Dense downstream/access; LLDP system name <code>eero</code></td>
+<td>Keep legacy LAN initially</td>
+<td>Reconfirm attached device/switch/AP before assigning VLANs</td>
+</tr>
+<tr>
+<td><code>TE1</code></td>
+<td>Dense downstream/access; LLDP system name <code>eero</code></td>
+<td>Keep legacy LAN initially</td>
+<td>Reconfirm attached device/switch/AP before assigning VLANs</td>
+</tr>
+<tr>
+<td><code>TE4</code></td>
+<td>Small downstream/access</td>
+<td>Keep legacy LAN initially</td>
+<td>Candidate for low-risk test only after physical use is confirmed</td>
+</tr>
+<tr>
+<td><code>TE2</code>, <code>TE3</code>, <code>TE6</code>, <code>TE8</code></td>
+<td>No current dynamic entries provided</td>
+<td>Available only after physical confirmation</td>
+<td>Do not assume unused without checking link/state and switch UI</td>
+</tr>
+</tbody>
+</table>
+<p>First switch mutation candidate, once approved:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Native/untagged</th>
+<th>Tagged VLANs</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TE7</code></td>
+<td>none or legacy VLAN <code>1</code> only if needed for temporary host testing</td>
+<td><code>80</code> first, later <code>10,20,30,40,50,60,70</code></td>
+<td>OPNsense lab/test trunk via alpha <code>nic2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Keep <code>TE10</code> unchanged during <code>TE7</code> testing. This preserves alpha management,
+current VM/LXC connectivity, and the existing gateway path.</p>
+<h2 id="proposed-proxmox-intent-superseded-see-gate-2-topology-above">Proposed Proxmox Intent (superseded — see Gate 2 Topology above)<a class="headerlink" href="#proposed-proxmox-intent-superseded-see-gate-2-topology-above" title="Permanent link">&para;</a></h2>
+<p>Historical single-trunk proposal, kept for context. Do not create this;
+the current plan is the two-bridge split in "Gate 2 Topology" above.</p>
+<pre><code class="language-text">auto vmbr1
+iface vmbr1 inet manual
+    bridge-ports nic2
+    bridge-stp off
+    bridge-fd 0
+    bridge-vlan-aware yes
+    bridge-vids 2-4094
+</code></pre>
+<p>Current target shape (per Gate 2 Topology above): <code>vmbr1</code> over <code>nic2</code> as a
+plain (non-VLAN-trunk) WAN bridge, <code>vmbr2</code> over <code>nic3</code> as the VLAN-aware
+LAN-test bridge (<code>bridge_vids</code> starting at <code>80</code>). Neither bridge is
+IP-bearing on the Proxmox host. Alpha host management must remain on
+<code>vmbr0</code> until a separate management migration is fully tested.</p>
+<h2 id="rollout-gates">Rollout Gates<a class="headerlink" href="#rollout-gates" title="Permanent link">&para;</a></h2>
+<p>Gate 0, documentation and discovery:</p>
+<ul>
+<li>Export or screenshot current MokerLink VLAN and port configuration.</li>
+<li>Confirm whether <code>TE10</code> is direct alpha, a downstream path, or shared topology.</li>
+<li>Confirm physical attachments for <code>TE1</code>, <code>TE4</code>, <code>TE5</code>, <code>TE9</code>, <code>TE11</code>, <code>TE12</code>.</li>
+<li>Check candidate subnets for collision with VPN, Docker, Proxmox, or existing routes.</li>
+</ul>
+<p>Gate 1, safe OPNsense staging:</p>
+<ul>
+<li>Stop VM <code>401</code> or set <code>onboot: 0</code> before further network work.</li>
+<li>Make the OPNsense Ansible playbook resume-safe for existing VM <code>401</code>.</li>
+<li>Confirm OPNsense still has only the expected stage NICs before attaching a trunk.</li>
+</ul>
+<p>Gate 2, WAN attach + isolated LAN trunk test (updated D080926, two-bridge split):</p>
+<ul>
+<li>Configure <code>TE7</code> (alpha <code>nic2</code>) for the AT&amp;T WAN uplink.</li>
+<li>Configure <code>TE12</code> (alpha <code>nic3</code>) as the first LAN-test trunk, tagged VLAN <code>80</code>.</li>
+<li>Create <code>vmbr1</code> over <code>nic2</code> (WAN, no IP address) and <code>vmbr2</code> over <code>nic3</code>
+  (VLAN-aware, no IP address) via <code>community.proxmox.proxmox_node_network</code>.</li>
+<li>Attach OPNsense <code>net1</code> to <code>vmbr1</code> (WAN) and <code>net2</code> to <code>vmbr2</code> (LAN-test).</li>
+<li>Enable only VLAN <code>80</code> on the <code>vmbr2</code>/<code>TE12</code> side first.</li>
+<li>Test OPNsense DHCP/firewall behavior only on VLAN <code>80</code>. Do not move the
+  live default gateway or any client traffic — see Rollback Principles.</li>
+</ul>
+<p>Gate 3, service migration preparation:</p>
+<ul>
+<li>Export Pi-hole DHCP/static reservations from Pi-hole v6 <code>pihole.toml</code>.</li>
+<li>Build OPNsense static mappings from the corrected inventory.</li>
+<li>Keep Pi-hole DNS active until OPNsense DHCP behavior is proven.</li>
+<li>Do not move Charlie/Pi-hole from <code>TE11</code> during early trunk tests.</li>
+</ul>
+<p>Gate 4, client segment trials:</p>
+<ul>
+<li>Move one low-risk client segment only after VLAN <code>80</code> succeeds.</li>
+<li>Avoid <code>TE5</code> until the gateway and Wi-Fi VLAN behavior are fully understood.</li>
+<li>Keep <code>TE10</code> as rollback until Proxmox management is reachable from the new
+  management VLAN through more than one path.</li>
+</ul>
+<h2 id="rollback-principles">Rollback Principles<a class="headerlink" href="#rollback-principles" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If <code>TE7</code> trunk testing fails, restore <code>TE7</code> to legacy VLAN <code>1</code> or disconnect
+  it; <code>TE10</code> remains the live management path.</li>
+<li>If <code>vmbr1</code> testing fails, remove OPNsense <code>net1</code> and remove <code>vmbr1</code>; <code>vmbr0</code>
+  remains unchanged.</li>
+<li>If OPNsense DHCP testing fails, disable DHCP on the test VLAN and keep Pi-hole
+  and the current gateway online.</li>
+<li>Never move the default gateway from <code>192.168.4.1</code> until all management,
+  DNS/DHCP, and rollback checks are explicitly satisfied.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

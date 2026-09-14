@@ -23,7 +23,7 @@
     
     
       
-        <title>Agent Session Turnover Protocol - homelab-config</title>
+        <title>20260809 opnsense gate2 prep and fleet issues - homelab-config</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agent-session-turnover-protocol" class="md-skip">
+        <a href="#status-for-the-next-session" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Agent Session Turnover Protocol
+              20260809 opnsense gate2 prep and fleet issues
             
           </span>
         </div>
@@ -780,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../session-logs/20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
+      <a href="../20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
         
   
   
@@ -825,8 +825,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -835,10 +833,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trigger" class="md-nav__link">
+  <a href="#status-for-the-next-session" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Trigger
+        Status for the next session
       
     </span>
   </a>
@@ -846,10 +844,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
+  <a href="#1-vlan-10-origin-investigation-closed-unresolved-but-benign" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Purpose
+        1. VLAN-10 origin investigation — closed, unresolved-but-benign
       
     </span>
   </a>
@@ -857,10 +855,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#required-behavior" class="md-nav__link">
+  <a href="#2-recycle-merge-conflict-corruption-issue-134-filed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required behavior
+        2. .recycle/ merge-conflict corruption — Issue #134 filed
       
     </span>
   </a>
@@ -868,10 +866,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#required-turnover-format" class="md-nav__link">
+  <a href="#3-codex-cli-silent-self-update-issue-137-filed" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required turnover format
+        3. codex CLI silent self-update — Issue #137 filed
       
     </span>
   </a>
@@ -879,10 +877,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#completion-criteria" class="md-nav__link">
+  <a href="#4-ct409-provisioning-evidence-captured" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Completion criteria
+        4. CT409 provisioning evidence captured
       
     </span>
   </a>
@@ -890,10 +888,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-session-startup-rule" class="md-nav__link">
+  <a href="#5-opnsense-gate-2-topology-confirmed-deviated-from-the-original-plan-iac-written" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next-session startup rule
+        5. OPNsense Gate 2: topology confirmed, deviated from the original plan, IaC written
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uncommitted-state-as-of-this-session-featopnsense-staged-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uncommitted state as of this session (feat/opnsense-staged-deployment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#immediate-next-actions-in-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Immediate next actions (in order)
       
     </span>
   </a>
@@ -920,92 +940,225 @@
   
 
 
-<h1 id="agent-session-turnover-protocol">Agent Session Turnover Protocol<a class="headerlink" href="#agent-session-turnover-protocol" title="Permanent link">&para;</a></h1>
-<h2 id="trigger">Trigger<a class="headerlink" href="#trigger" title="Permanent link">&para;</a></h2>
-<p>When Joe says <strong><code>TURNOVER</code></strong>, execute this protocol immediately. Do not ask for confirmation. Do not continue implementation work after the trigger.</p>
-<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>Create a durable, repository-backed handoff so the next agent/session resumes from verified state instead of reconstructing completed work.</p>
-<h2 id="required-behavior">Required behavior<a class="headerlink" href="#required-behavior" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Inspect the actual current workspace and repository state. Do not rely only on conversational memory.</li>
-<li>Capture the current session state in <code>turnover/latest.md</code> using the required format below.</li>
-<li>Never include secrets. Refer to credentials only by stored key/environment/template name.</li>
-<li>Do not delete, reorganize, deduplicate, or clean <code>.recycle</code> during turnover.</li>
-<li>Do not create new credentials during turnover.</li>
-<li>Do not make additional infrastructure changes after turnover is triggered.</li>
-<li>Commit <code>turnover/latest.md</code> and push it to the current tracked branch.</li>
-<li>Verify the push succeeded. The GitHub Action <code>Session Turnover Archive</code> will validate and archive the turnover automatically.</li>
-<li>Report only: pushed commit SHA, branch, turnover path, current gate/status, and exact next-session resume instruction.</li>
-</ol>
-<h2 id="required-turnover-format">Required turnover format<a class="headerlink" href="#required-turnover-format" title="Permanent link">&para;</a></h2>
-<pre><code class="language-markdown"># Session Turnover
+  <h1>20260809 opnsense gate2 prep and fleet issues</h1>
 
-- Date/time:
-- Agent/session:
-- Branch:
-- Commit before turnover:
-- Current gate/status:
-
-## Objective and Scope
-
-## Work Completed
-
-## Decisions Made
-
-## Current Implementation State
-
-## Files Created / Modified / Discovered
-
-## IaC / Automation Involved
-
-## Infrastructure Changes Applied
-
-## Planned But Not Applied
-
-## Validation and Evidence
-
-## Errors / Failed Attempts / Partial Work
-
-## Blockers
-
-## Outstanding Work
-
-## Credentials / Integrations Referenced
-
-## Documentation / IaC / Live-State Discrepancies
-
-## Critical `.recycle` Findings
-
-## Logs / Artifacts / Evidence Locations
-
-## Git State
-
-## DO NOT REDO
-
-## NEXT SESSION START HERE
-
-1. Exact first executable step.
-2. Next ordered step.
-3. Verification gate before proceeding.
-</code></pre>
-<h2 id="completion-criteria">Completion criteria<a class="headerlink" href="#completion-criteria" title="Permanent link">&para;</a></h2>
-<p>Turnover is not complete until:</p>
+<p>D080926 | CHG-OPNSENSE-GATE2-001 | Gate 2 IaC written (not yet executed);
+VLAN-10 origin investigation closed as unresolved-but-benign; two fleet
+reliability issues filed (.recycle corruption, codex silent self-update) | JC
+| ct409+alpha</p>
+<h2 id="status-for-the-next-session">Status for the next session<a class="headerlink" href="#status-for-the-next-session" title="Permanent link">&para;</a></h2>
+<p><strong>Branch:</strong> <code>feat/opnsense-staged-deployment</code>, uncommitted changes present —
+see "Uncommitted state" below. Nothing has been pushed since PR #128.</p>
+<p><strong>VM 401</strong> (<code>opnsense-alpha</code>) is still <code>stopped</code>, <code>onboot: 0</code>, only <code>net0</code> on
+<code>vmbr0</code> — unchanged all session. <strong>Nothing live has been mutated.</strong> <code>vmbr1</code>/
+<code>vmbr2</code> do not exist yet on alpha. The Gate 2 playbook is written,
+syntax-checked, and dry-run-verified (safe no-op without credentials), but
+has never been run with real Proxmox API credentials — that's the very next
+action, gated on the operator supplying <code>PVE_API_TOKEN_SECRET</code> themselves
+(deliberately not extracted from Semaphore's Key Store by the assistant this
+session, consistent with the credential-handling boundary from the PR #128
+work).</p>
+<h2 id="1-vlan-10-origin-investigation-closed-unresolved-but-benign">1. VLAN-10 origin investigation — closed, unresolved-but-benign<a class="headerlink" href="#1-vlan-10-origin-investigation-closed-unresolved-but-benign" title="Permanent link">&para;</a></h2>
+<p>Long forensic thread chasing why alpha's <code>vmbr0</code>/<code>nic0</code>/<code>TE10</code> had
+undocumented <code>bridge-vlan-aware yes</code> + <code>bridge-vids 10</code> live, contradicting
+the docs' old "flat VLAN 1" baseline.</p>
+<p><strong>Findings:</strong>
+- <code>/etc/network/interfaces</code> and the (empty) <code>/etc/network/interfaces.d/sdn</code>
+  drop-in were both written at the identical second — <code>2026-06-14
+  06:49:08 UTC</code> — the signature of a Proxmox SDN apply (GUI or internal
+  mechanism), not a manual text edit.
+- Checked every Codex session transcript on both <code>pve-ansible</code> (CT409) and
+  <code>alpha</code> itself (<code>/root/.codex/sessions/</code>) for activity bracketing that
+  timestamp. <strong>No session, on either host, has any logged activity at that
+  exact moment.</strong> The nearest session on <code>alpha</code> (<code>019ec4f4</code>, starting
+  03:07:15 EDT / 18 min later) is entirely Netdata/netflow monitoring work,
+  unrelated.
+- VLAN <code>10</code> is not arbitrary — it exactly matches the "Management" VLAN ID
+  already reserved in <code>docs/opnsense-staged-deployment.md</code>'s candidate
+  segment table, so whatever applied it was consistent with the documented
+  plan, not a rogue/hostile change.
+- Operator confirmed (2026-08-01) the timing lines up with intentional
+  ansible/collection scaffolding work from that period (initial OPNsense
+  collection installs, Semaphore workflow seeding) — not an accident.
+- Could not check <code>docker</code> (<code>192.168.4.76</code>) or <code>fileserver</code> (<code>192.168.4.60</code>)
+  local <code>.codex</code> session histories — no working SSH credential to either
+  host from <code>alpha</code> or CT409 (<code>Permission denied</code>, <code>Too many authentication
+  failures</code>). This remains the one unchecked lead if anyone wants to pick it
+  back up; operator has direct access to both.
+- Evidence preserved: <code>/root/codex-sessions-opnsense-D080126T062434.tgz</code> on
+  CT409 (full local <code>.codex</code> session history backup, includes the two npm
+  debug logs referenced in §3 below).</p>
+<p><strong>Conclusion accepted by operator:</strong> treat as resolved-enough. Not a
+showstopper for Gate 2.</p>
+<h2 id="2-recycle-merge-conflict-corruption-issue-134-filed">2. <code>.recycle/</code> merge-conflict corruption — Issue #134 filed<a class="headerlink" href="#2-recycle-merge-conflict-corruption-issue-134-filed" title="Permanent link">&para;</a></h2>
+<p>While checking <code>.recycle/docs/vlan-topology.md</code> as a possible (but ultimately
+unreliable) source for the VLAN-10 investigation, found it cites an artifact
+(<code>D122225T0153/pve_interfaces.txt</code>) that has <strong>unresolved git merge-conflict
+markers committed directly into its content</strong>, and that the artifact is
+actually scoped to the <code>pve</code> node, not <code>alpha</code> (mis-attribution). A repo-wide
+check found this isn't isolated: <strong>525 files under <code>.recycle/</code> contain
+literal <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> conflict markers</strong> (318 in <code>artifacts/</code>, 207 in
+<code>.agents/</code>), present on both <code>main</code> and this branch — baseline repo state,
+not introduced here.</p>
+<p>Filed as <a href="https://github.com/jcasnellie69/homelab-config/issues/134">Issue #134</a>.
+Not actioned — per standing orders nothing in <code>.recycle</code> gets deleted
+(counts as logs/backups); needs a resolve-in-place-vs-flag decision later,
+and ties into the operator's separately-stated intent to eventually move
+artifact-related content out of <code>.recycle</code>.</p>
+<h2 id="3-codex-cli-silent-self-update-issue-137-filed">3. <code>codex</code> CLI silent self-update — Issue #137 filed<a class="headerlink" href="#3-codex-cli-silent-self-update-issue-137-filed" title="Permanent link">&para;</a></h2>
+<p>Root-caused why <code>codex</code> returned "command not found" on <code>alpha</code>, the
+<code>docker</code> VM, and <code>fileserver</code> (operator-confirmed on all three).</p>
+<p><strong>Root cause:</strong> <code>codex</code> performs an unpinned <code>npm install --global
+@openai/codex</code> on launch when a newer version exists on the registry. npm's
+own upgrade mechanism retires the prior install to hidden temp paths
+(<code>codex</code> → <code>.codex-&lt;random&gt;</code>, <code>@openai/codex</code> → <code>@openai/.codex-&lt;random&gt;</code>)
+before placing the new version — and reports <code>exit 0</code> / "info ok" even when
+the canonical <code>/usr/local/bin/codex</code> symlink never gets recreated. Confirmed
+via <code>/root/.npm/_logs/</code> on alpha: two separate occurrences (2026-06-14 and
+2026-07-30), same retire-without-cleanup pattern both times. No cron/systemd
+timer is involved — purely triggered by someone running <code>codex</code> while a
+newer version exists.</p>
+<p>Filed as <a href="https://github.com/jcasnellie69/homelab-config/issues/137">Issue #137</a>.
+Operator wants to think about a bigger-picture direction before deciding the
+fix — not actioned yet, "being diligent" (manually re-checking <code>command -v
+codex</code>) in the meantime.</p>
+<h2 id="4-ct409-provisioning-evidence-captured">4. CT409 provisioning evidence captured<a class="headerlink" href="#4-ct409-provisioning-evidence-captured" title="Permanent link">&para;</a></h2>
+<p>The container's original creation log (template, disk UUID, all three SSH
+host key fingerprints) only existed in the Proxmox UI's Notes field for CT
+409 — nowhere in the repo. Captured verbatim plus a key-facts table in
+<code>docs/session-logs/20260803-ct409-provisioning-evidence.md</code>, specifically so
+the SSH host key fingerprints are available for future drift/MITM checking.</p>
+<h2 id="5-opnsense-gate-2-topology-confirmed-deviated-from-the-original-plan-iac-written">5. OPNsense Gate 2: topology confirmed, deviated from the original plan, IaC written<a class="headerlink" href="#5-opnsense-gate-2-topology-confirmed-deviated-from-the-original-plan-iac-written" title="Permanent link">&para;</a></h2>
+<p><strong>Physical work done by the operator:</strong> SFP cabling connected for alpha
+<code>nic2</code> and <code>nic3</code>. Link confirmed up on both (10000Mb/s). MAC addresses
+cross-checked against the existing port-map doc and matched exactly:
+<code>nic2</code> = <code>38:05:25:33:ED:67</code> (<code>TE7</code>), <code>nic3</code> = <code>38:05:25:33:ED:68</code> (<code>TE12</code>).
+<code>nic1</code>'s MAC (<code>38:05:25:33:ED:65</code>) recorded for the first time — not
+previously documented, not in use for this plan. AT&amp;T circuit confirmed
+negotiating 10G full-duplex on the <code>nic2</code> path.</p>
+<p><strong>Plan deviation (operator-directed):</strong> the original single-<code>vmbr1</code>-trunk
+Gate 2 plan (one bridge carrying all future VLANs) is superseded by a
+two-bridge split:</p>
+<table>
+<thead>
+<tr>
+<th>NIC</th>
+<th>Bridge</th>
+<th>Physical path</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>net0</code></td>
+<td><code>vmbr0</code></td>
+<td>alpha <code>nic0</code></td>
+<td>Temporary management/staging access only</td>
+</tr>
+<tr>
+<td><code>net1</code></td>
+<td><code>vmbr1</code></td>
+<td>alpha <code>nic2</code> ← AT&amp;T 10G</td>
+<td>Real WAN uplink</td>
+</tr>
+<tr>
+<td><code>net2</code></td>
+<td><code>vmbr2</code></td>
+<td>alpha <code>nic3</code> ← MokerLink <code>TE12</code></td>
+<td>LAN-side, VLAN <code>80</code> test first</td>
+</tr>
+</tbody>
+</table>
+<p>This also resolves the previously-unreconciled "OPNsense SFPs are isolated"
+note from 2026-07-28 — there's no separate physical OPNsense hardware; it's
+alpha's own <code>nic2</code>/<code>nic3</code> that are isolated from each other and from
+<code>vmbr0</code>. Intent stated by the operator: stage OPNsense with a <strong>real</strong> WAN
+uplink so it's fully provable and ready to actually take over as the live
+gateway once validated (operator is now ~95% inclined to put the household
+eero mesh into bridge mode) — this is provisioning, not cutover. The live
+default gateway (<code>192.168.4.1</code>) is not moving as part of this; that stays
+gated behind the existing Rollback Principles in
+<code>docs/opnsense-vlan-port-map.md</code>.</p>
+<p><code>docs/opnsense-vlan-port-map.md</code> updated in place: new "Gate 2 Topology"
+section with the MAC-verified table, old single-trunk proposal marked
+superseded (kept for history), Gate 2 rollout checklist rewritten for the
+two-bridge shape.</p>
+<p><strong>IaC written</strong> (new files, following the existing <code>opnsense-alpha-onboard.yml</code>
+credential-resolution and check-mode-gated pattern):</p>
 <ul>
-<li><code>turnover/latest.md</code> exists and contains all required sections.</li>
-<li>the file is committed;</li>
-<li>the commit is pushed successfully;</li>
-<li>the action can archive it from GitHub;</li>
-<li>the next session has a deterministic starting point.</li>
+<li><code>deploy/ansible/group_vars/future_opnsense.yml</code> — added
+  <code>opnsense_gate2_check_mode</code> (defaults <code>true</code>), <code>opnsense_wan_bridge</code>/<code>_nic</code>,
+  <code>opnsense_lan_test_bridge</code>/<code>_nic</code>/<code>_vlan</code>, <code>opnsense_gate2_vm_net</code>.</li>
+<li><code>deploy/ansible/playbooks/tasks/create-opnsense-gate2-bridges.yml</code> — stages
+  <code>vmbr1</code> (plain, no VLAN awareness, WAN) and <code>vmbr2</code> (VLAN-aware,
+  <code>bridge_vids: 80</code>) via <code>community.proxmox.proxmox_node_network</code>, then
+  <code>state: apply</code> to activate (only when check mode is off).</li>
+<li><code>deploy/ansible/playbooks/tasks/attach-opnsense-gate2-nics.yml</code> — attaches
+  <code>net1</code>/<code>net2</code> to VM 401 via <code>community.proxmox.proxmox_kvm</code>
+  (<code>update: true</code>, <code>update_unsafe: true</code> — required because the module
+  blocks <code>net</code> updates by default).</li>
+<li><code>deploy/ansible/playbooks/opnsense-gate2-network.yml</code> — main playbook;
+  same credential-resolution pre_tasks pattern as <code>opnsense-alpha-onboard.yml</code>;
+  asserts VM 401 is still stopped and stage-safe on <code>vmbr0</code> before allowing
+  any Gate 2 mutation; includes the two task files above; reports next
+  steps (boot via console, configure OPNsense LAN/DHCP only on <code>net2</code>, never
+  <code>net0</code>).</li>
 </ul>
-<h2 id="next-session-startup-rule">Next-session startup rule<a class="headerlink" href="#next-session-startup-rule" title="Permanent link">&para;</a></h2>
-<p>A new agent/session must read, in this order, before changing anything:</p>
+<p><strong>Verified this session:</strong> <code>--syntax-check</code> clean; <code>--check</code> dry run without
+credentials correctly no-ops past the plan-report task (confirms the
+credential-presence gate holds, nothing mutates when creds are absent).
+<strong>Not yet verified:</strong> a real run against live Proxmox API credentials — this
+is the actual next step, intentionally left for the operator to trigger
+(see "Immediate next actions" below) rather than the assistant extracting
+the token secret from Semaphore's Key Store.</p>
+<p><strong>Not done / explicitly flagged, not forgotten:</strong>
+- MokerLink switch-side config (<code>TE7</code> WAN passthrough, <code>TE12</code> tagged VLAN 80
+  only) — manual, out-of-band, not verified or executed by any playbook.
+  Confirm this is done before running Gate 2 with mutation enabled.
+- Task #6 from the earlier plan ("validate onboard pipeline end-to-end
+  against VM 401 via Semaphore") is effectively superseded/absorbed by this
+  Gate 2 work rather than done as originally scoped — the Gate 2 playbook
+  reuses and extends the same credential/assert pattern, but hasn't been
+  wired into Semaphore yet (still a plain <code>ansible-playbook</code> CLI run for
+  now; operator can request Semaphore wiring separately).
+- Booting VM 401 / running the OPNsense installer — not started.</p>
+<h2 id="uncommitted-state-as-of-this-session-featopnsense-staged-deployment">Uncommitted state as of this session (<code>feat/opnsense-staged-deployment</code>)<a class="headerlink" href="#uncommitted-state-as-of-this-session-featopnsense-staged-deployment" title="Permanent link">&para;</a></h2>
+<pre><code class="language-text"> M deploy/ansible/group_vars/future_opnsense.yml
+ M docs/opnsense-vlan-port-map.md
+?? artifacts/decommissioned-checkouts/          (pre-existing, unrelated clutter — not part of this change)
+?? deploy/ansible/playbooks/opnsense-gate2-network.yml
+?? deploy/ansible/playbooks/tasks/attach-opnsense-gate2-nics.yml
+?? deploy/ansible/playbooks/tasks/create-opnsense-gate2-bridges.yml
+?? docs/session-logs/20260726-ct409-fail2ban-pihole-swap.md
+?? docs/session-logs/20260728-pve-quorum-disk-and-opnsense-sync.md
+?? docs/session-logs/20260803-ct409-provisioning-evidence.md
+?? docs/session-logs/20260809-opnsense-gate2-prep-and-fleet-issues.md   (this file)
+</code></pre>
+<p>None of this has been committed yet — operator has not asked for a commit
+this session. <code>artifacts/decommissioned-checkouts/</code> predates this session's
+work and is unrelated; don't bundle it into an OPNsense commit.</p>
+<h2 id="immediate-next-actions-in-order">Immediate next actions (in order)<a class="headerlink" href="#immediate-next-actions-in-order" title="Permanent link">&para;</a></h2>
 <ol>
-<li>repository standing agent instructions;</li>
-<li>this turnover protocol;</li>
-<li><code>turnover/latest.md</code>;</li>
-<li>any source files explicitly referenced by <code>NEXT SESSION START HERE</code>.</li>
+<li>Confirm MokerLink <code>TE7</code>/<code>TE12</code> switch config matches the Gate 2 Topology
+   table (manual, operator).</li>
+<li>Run the Gate 2 playbook for real:
+   <code>bash
+   cd /mnt/repos/homelab-config/deploy/ansible
+   export PVE_API_USER='ansible@pve'
+   export PVE_API_TOKEN_ID='opnsense-automation'
+   read -rs PVE_API_TOKEN_SECRET &amp;&amp; export PVE_API_TOKEN_SECRET
+   ansible-playbook playbooks/opnsense-gate2-network.yml --check -e opnsense_gate2_check_mode=true
+   ansible-playbook playbooks/opnsense-gate2-network.yml -e opnsense_gate2_check_mode=false</code></li>
+<li>Boot VM 401 via the Proxmox console, run the OPNsense installer.</li>
+<li>Configure OPNsense's LAN-side DHCP only on the VLAN 80 interface
+   (<code>net2</code>) — never on <code>net0</code> — to avoid repeating the earlier DHCP-leak
+   incident that forced an emergency shutdown of VM 401 the last time it was
+   booted.</li>
+<li>Test DHCP/firewall behavior confined to VLAN 80 only, per the existing
+   Gate 2 checklist in <code>docs/opnsense-vlan-port-map.md</code>.</li>
+<li>Once the above is stable, commit this session's changes (docs + new
+   Ansible files) as a follow-up commit on <code>feat/opnsense-staged-deployment</code>.</li>
 </ol>
-<p>Resume from the turnover. Do not recreate completed work unless evidence proves it is invalid or absent.</p>
 
 
 

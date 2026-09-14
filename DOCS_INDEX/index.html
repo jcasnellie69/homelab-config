@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../telemetry-pipeline/">
+        <link rel="prev" href="../proxmox-api-token-bootstrap/">
       
       
         <link rel="next" href="../SESSION-AUTOMATION/">
@@ -403,6 +403,87 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../opnsense-staged-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Staged Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opnsense-vlan-port-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense VLAN and Port Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxmox-api-token-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox API Token Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -416,10 +497,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -437,8 +518,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -676,10 +757,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -697,8 +778,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -809,7 +890,40 @@ for the Proxmox VE + LXC infrastructure.</p>
 <p>Observability Policy
    Defines governance for exporters, Telegraf placement, and pipeline integrity.</p>
 </li>
-<li>File: policy-observability.md</li>
+<li>
+<p>File: policy-observability.md</p>
+</li>
+<li>
+<p>OPNsense Staged Deployment
+   Defines the low-risk Proxmox VM stage, Semaphore playbooks, validation
+   checkpoints, DHCP/DNS transition considerations, and rollback checks.</p>
+</li>
+<li>
+<p>File: opnsense-staged-deployment.md</p>
+</li>
+<li>
+<p>Proxmox API Token Bootstrap
+   Defines the SSH bootstrap workflow for creating the Proxmox automation user,
+   least-privilege role, API token, Semaphore key storage, validation, and
+   rollback commands.</p>
+</li>
+<li>
+<p>File: proxmox-api-token-bootstrap.md</p>
+</li>
+<li>
+<p>OPNsense VLAN and Port Map
+   Refactors the OPNsense rollout around the current MokerLink 1 MAC table,
+   candidate VLAN model, Proxmox trunk intent, and cutover gates.</p>
+</li>
+<li>
+<p>File: opnsense-vlan-port-map.md</p>
+</li>
+<li>
+<p>Docker VM Health Check
+   Documents the alpha/QEMU guest-agent workflow for auditing Docker VM 109,
+   Scrypted plugin health, container state, disk usage, and evidence artifacts.</p>
+</li>
+<li>File: runbooks/docker-vm-health-check.md</li>
 </ol>
 <hr />
 <h2 id="purpose-of-docs">Purpose of docs/<a class="headerlink" href="#purpose-of-docs" title="Permanent link">&para;</a></h2>

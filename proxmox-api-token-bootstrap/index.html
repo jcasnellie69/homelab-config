@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../DOCS_INDEX/">
+        <link rel="prev" href="../opnsense-vlan-port-map/">
       
       
-        <link rel="next" href="../mcp-filesystem-swimlane/">
+        <link rel="next" href="../DOCS_INDEX/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Session Automation - homelab-config</title>
+        <title>Proxmox API Token Bootstrap - homelab-config</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-automation-framework-permanent-reference" class="md-skip">
+        <a href="#proxmox-api-token-bootstrap" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session Automation
+              Proxmox API Token Bootstrap
             
           </span>
         </div>
@@ -457,10 +457,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../proxmox-api-token-bootstrap/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox API Token Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -476,6 +503,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generated Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secret-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secret Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-updated-d072826-chg-opnsense-sync-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status (updated D072826, CHG-OPNSENSE-SYNC-001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status (updated D072826, CHG-OPNSENSE-SYNC-001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historical-blocker-resolved-kept-for-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical blocker (resolved, kept for context)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -484,20 +625,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -518,7 +657,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -561,37 +700,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session Automation
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../SESSION-AUTOMATION/" class="md-nav__link">
         
   
   
@@ -607,87 +719,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Purpose
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Entry Script
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine log:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Directory Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -949,10 +980,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
+  <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Purpose
+        Purpose
       
     </span>
   </a>
@@ -960,33 +991,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
+  <a href="#generated-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Entry Script
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
+        Generated Workflow
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Machine log:
+        Run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secret-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secret Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-updated-d072826-chg-opnsense-sync-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status (updated D072826, CHG-OPNSENSE-SYNC-001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status (updated D072826, CHG-OPNSENSE-SYNC-001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historical-blocker-resolved-kept-for-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical blocker (resolved, kept for context)
       
     </span>
   </a>
@@ -995,17 +1070,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Directory Layout
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1029,27 +1093,160 @@
   
 
 
-<h1 id="session-automation-framework-permanent-reference">SESSION AUTOMATION FRAMEWORK — PERMANENT REFERENCE<a class="headerlink" href="#session-automation-framework-permanent-reference" title="Permanent link">&para;</a></h1>
-<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>This framework provides z/OS-style session journaling for homelab development.<br />
-It automatically creates properly structured session logs (Markdown + machine logs) with timestamps, operator headers, and persistent recordkeeping suitable for Git.</p>
-<hr />
-<h2 id="2-entry-script">2. Entry Script<a class="headerlink" href="#2-entry-script" title="Permanent link">&para;</a></h2>
-<p><code>/root/homelab-config/scripts/session/new-session.sh</code></p>
-<p>This script creates:</p>
-<h3 id="markdown-session-document">Markdown session document:<a class="headerlink" href="#markdown-session-document" title="Permanent link">&para;</a></h3>
-<p><code>docs/session-logs/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.md</code></p>
-<h3 id="machine-log">Machine log:<a class="headerlink" href="#machine-log" title="Permanent link">&para;</a></h3>
-<p><code>logs/sessions/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.log</code></p>
-<p>Each session includes:
-- ISO timestamp
-- Sortable session ID
-- z/OS-style header (DATE, CHGID, REASON, USER, SYSTEM)
-- Operator notes section
-- Commands section
-- Results section</p>
-<hr />
-<h2 id="3-directory-layout">3. Directory Layout<a class="headerlink" href="#3-directory-layout" title="Permanent link">&para;</a></h2>
+<h1 id="proxmox-api-token-bootstrap">Proxmox API Token Bootstrap<a class="headerlink" href="#proxmox-api-token-bootstrap" title="Permanent link">&para;</a></h1>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p>Bootstrap a least-privilege Proxmox API token for OPNsense VM lifecycle
+automation and store it in Semaphore Key Store as:</p>
+<pre><code class="language-text">pve-opnsense-api-token
+</code></pre>
+<p>This is required because Proxmox API credentials do not exist yet. The initial
+bootstrap uses SSH to <code>alpha</code>, then switches future automation to API tokens.</p>
+<h2 id="generated-workflow">Generated Workflow<a class="headerlink" href="#generated-workflow" title="Permanent link">&para;</a></h2>
+<p>Script:</p>
+<pre><code class="language-bash">deploy/ansible/scripts/bootstrap-pve-opnsense-api-token.sh
+</code></pre>
+<p>Defaults:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH target</td>
+<td><code>root@192.168.4.10</code></td>
+</tr>
+<tr>
+<td>SSH key override</td>
+<td><code>PVE_SSH_KEY</code></td>
+</tr>
+<tr>
+<td>SSH jump host override</td>
+<td><code>PVE_SSH_PROXYJUMP</code></td>
+</tr>
+<tr>
+<td>Proxmox user</td>
+<td><code>ansible@pve</code></td>
+</tr>
+<tr>
+<td>Token</td>
+<td><code>ansible@pve!opnsense-automation</code></td>
+</tr>
+<tr>
+<td>Role</td>
+<td><code>HomelabOPNsenseAutomation</code></td>
+</tr>
+<tr>
+<td>VM ACL path</td>
+<td><code>/vms</code></td>
+</tr>
+<tr>
+<td>Storage ACL paths</td>
+<td><code>/storage/local</code>, <code>/storage/local-lvm</code></td>
+</tr>
+<tr>
+<td>Semaphore key</td>
+<td><code>pve-opnsense-api-token</code></td>
+</tr>
+</tbody>
+</table>
+<p>Role privileges:</p>
+<pre><code class="language-text">Datastore.AllocateSpace
+Datastore.Audit
+Sys.Audit
+VM.Allocate
+VM.Audit
+VM.Config.CDROM
+VM.Config.CPU
+VM.Config.Disk
+VM.Config.HWType
+VM.Config.Memory
+VM.Config.Network
+VM.Config.Options
+VM.PowerMgmt
+SDN.Use
+</code></pre>
+<p><code>SDN.Use</code> was added D072826 (<code>CHG-OPNSENSE-SYNC-001</code>) after being deliberately
+deferred in the original bootstrap — it's required for the Ansible pipeline
+to manage VM networking end-to-end, not just VM shell CRUD.</p>
+<h2 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h2>
+<p>Use an authenticated Semaphore API session or provide Semaphore login variables:</p>
+<pre><code class="language-bash">export SEMAPHORE_USER=admin
+export SEMAPHORE_PASSWORD='&lt;admin-password&gt;'
+deploy/ansible/scripts/bootstrap-pve-opnsense-api-token.sh
+</code></pre>
+<p>If the token already exists, the script stops without rotating it. To rotate:</p>
+<pre><code class="language-bash">ROTATE_TOKEN=1 deploy/ansible/scripts/bootstrap-pve-opnsense-api-token.sh
+</code></pre>
+<p>If a usable key exists on another reachable LXC, run the script from that LXC
+or point to a mounted/key path without committing the key:</p>
+<pre><code class="language-bash">PVE_SSH_KEY=/path/to/id_rsa \
+  deploy/ansible/scripts/bootstrap-pve-opnsense-api-token.sh
+</code></pre>
+<p>If alpha is reachable only through a jump host:</p>
+<pre><code class="language-bash">PVE_SSH_PROXYJUMP=root@192.168.4.76 \
+  PVE_SSH_KEY=/path/to/id_rsa \
+  deploy/ansible/scripts/bootstrap-pve-opnsense-api-token.sh
+</code></pre>
+<h2 id="secret-handling">Secret Handling<a class="headerlink" href="#secret-handling" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The token secret is captured from <code>pveum user token add</code>.</li>
+<li>The token secret is sent directly to Semaphore Key Store.</li>
+<li>The token secret is not written to Git.</li>
+<li>The token secret is not written to committed artifacts.</li>
+<li>Script output redacts the token secret.</li>
+</ul>
+<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h2>
+<p>The script validates authenticated API access with:</p>
+<pre><code class="language-bash">curl -sk \
+  -H &quot;Authorization: PVEAPIToken=ansible@pve!opnsense-automation=&lt;secret&gt;&quot; \
+  https://192.168.4.10:8006/api2/json/version
+</code></pre>
+<p>Manual non-secret validation:</p>
+<pre><code class="language-bash">pveum user list | grep 'ansible@pve'
+pveum user token list ansible@pve
+pveum acl list | grep -E 'ansible@pve|opnsense-automation|HomelabOPNsenseAutomation'
+</code></pre>
+<h2 id="rollback">Rollback<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h2>
+<p>Run on <code>alpha</code>:</p>
+<pre><code class="language-bash">pveum user token remove ansible@pve opnsense-automation
+pveum acl delete /vms --tokens ansible@pve!opnsense-automation
+pveum acl delete /storage/local --tokens ansible@pve!opnsense-automation
+pveum acl delete /storage/local-lvm --tokens ansible@pve!opnsense-automation
+pveum acl delete /vms --users ansible@pve
+pveum acl delete /storage/local --users ansible@pve
+pveum acl delete /storage/local-lvm --users ansible@pve
+pveum user delete ansible@pve
+pveum role delete HomelabOPNsenseAutomation
+</code></pre>
+<p>Remove the Semaphore key through the UI or API after confirming its ID:</p>
+<pre><code class="language-bash">curl -b /tmp/semaphore-bootstrap-cookies.txt \
+  http://127.0.0.1:3000/api/project/1/keys
+
+curl -X DELETE -b /tmp/semaphore-bootstrap-cookies.txt \
+  http://127.0.0.1:3000/api/project/1/keys/&lt;key-id&gt;
+</code></pre>
+<h2 id="status-updated-d072826-chg-opnsense-sync-001">Status (updated D072826, CHG-OPNSENSE-SYNC-001)<a class="headerlink" href="#status-updated-d072826-chg-opnsense-sync-001" title="Permanent link">&para;</a></h2>
+<p>SSH from this control node (CT409) to <code>alpha</code> works and the bootstrap already
+ran successfully in an earlier session (2026-05-30): the Proxmox user
+<code>ansible@pve</code> and token <code>ansible@pve!opnsense-automation</code> both exist live
+(<code>pveum user list</code> / <code>pveum user token list ansible@pve</code>). The SSH blocker
+described below is historical — it applied to a different, now-superseded
+orchestration LXC and no longer reflects current state. Do not re-run the
+bootstrap script; it stops without rotating an existing token by default.</p>
+<p>The <code>SDN.Use</code> privilege was deliberately left off the <code>HomelabOPNsenseAutomation</code>
+role in that session to avoid an unapproved ACL change; it has since been
+added (see role privileges table above) once explicitly approved.</p>
+<h3 id="historical-blocker-resolved-kept-for-context">Historical blocker (resolved, kept for context)<a class="headerlink" href="#historical-blocker-resolved-kept-for-context" title="Permanent link">&para;</a></h3>
+<p>SSH to <code>root@192.168.4.10</code> failed from an earlier orchestration LXC with:</p>
+<pre><code class="language-text">Permission denied (publickey,password).
+</code></pre>
+<p>Follow-up discovery found Portainer on <code>192.168.4.76:9443</code>, but SSH to
+<code>root@192.168.4.76</code> was also blocked from that LXC at the time. If the
+Proxmox SSH key is inside that Docker LXC, run this bootstrap from there or
+provide a reachable jump/key path via <code>PVE_SSH_PROXYJUMP</code> and <code>PVE_SSH_KEY</code>.</p>
 
 
 

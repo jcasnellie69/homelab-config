@@ -1,0 +1,1054 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Homelab documentation and artifacts">
+      
+      
+        <meta name="author" content="homelab">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CT409 Successor-Session Triage Report - homelab-config</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ct409-successor-session-triage-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="homelab-config" class="md-header__button md-logo" aria-label="homelab-config" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            homelab-config
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CT409 Successor-Session Triage Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_4" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_4">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_5" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_5">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jcasnellie69/homelab-config" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="homelab-config" class="md-nav__button md-logo" aria-label="homelab-config" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    homelab-config
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jcasnellie69/homelab-config" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network-inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../artifacts-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../telemetry-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opnsense-staged-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense Staged Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../opnsense-vlan-port-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OPNsense VLAN and Port Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proxmox-api-token-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox API Token Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DOCS_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SESSION-AUTOMATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp-filesystem-swimlane/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Filesystem Swimlane
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcp-filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Filesystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../netify-config-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netify Config Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability-service-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observability Service Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../policy-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy Observability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Logs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Session Logs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build HC Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ct409-successor-session-triage-report">CT409 Successor-Session Triage Report<a class="headerlink" href="#ct409-successor-session-triage-report" title="Permanent link">&para;</a></h1>
+<p>D070726 | CHG-AGENT-MOVE-003 | CT409 successor-session triage report (turnover
+diff, repo-agent landing plan, docker-mcp check), saved verbatim as filed | JC | ct409</p>
+<p>This is the template for future drift reports: claim | current reality | verdict.</p>
+<hr />
+<h1 id="consolidated-report-ct-409-successor-session">Consolidated Report — CT 409 Successor Session<a class="headerlink" href="#consolidated-report-ct-409-successor-session" title="Permanent link">&para;</a></h1>
+<p>Everything below is read-only reconnaissance. Nothing has been written, committed, or pushed anywhere.</p>
+<hr />
+<h2 id="1-turnover-discrepancies-turnover-cc-fileservermd-vs-current-reality">1. Turnover discrepancies (TURNOVER-CC-FILESERVER.md vs. current reality)<a class="headerlink" href="#1-turnover-discrepancies-turnover-cc-fileservermd-vs-current-reality" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Turnover claim</th>
+<th>Current reality</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§2.2: <code>auto-stage-lint.yml</code> is unmerged, sitting on <code>palette-docs-ux-8223692010619523150</code>, "recommend NOT merging as-is"</td>
+<td><strong>It is already merged and live on <code>main</code></strong> (introduced in commit <code>ac1d4ff</code>, 2026-04-26, authored "assistant"). It's an hourly cron workflow that does an unscoped <code>git add -A</code>, commits, and <code>git push origin $BRANCH</code> — which on a <code>schedule</code> trigger means <strong>pushing straight to <code>main</code>, unreviewed, automatically</strong>.</td>
+<td><strong>Contradicted — and higher severity than the turnover implies.</strong> This isn't a pending decision, it's live automation on <code>main</code> right now.</td>
+</tr>
+<tr>
+<td>Turnover attributes the ~90,430-file CRLF churn to a <em>predates-this-session, out-of-scope</em> issue on the fileserver clone</td>
+<td>CT 409's <code>/mnt/repos/homelab-config</code> checkout shows only 20 dirty entries (3 modified + ~17 untracked), no CRLF churn. <code>.gitattributes</code> has <code>text=auto</code>, which is exactly the kind of setting that produces divergent normalization across checkouts with different <code>core.autocrlf</code>.</td>
+<td>The churn is real but appears to be a <strong>fileserver-local checkout artifact</strong>, not (yet) baked into <code>origin/main</code> history — I found no <code>chore(auto-fix)</code>-style commits anywhere in <code>git log</code>, so <code>auto-stage-lint.yml</code> has apparently never actually produced a commit despite running hourly for ~2.5 months. Worth understanding why (branch protection silently rejecting the push? nothing ever to stage in a fresh Actions checkout?) before assuming it's inert.</td>
+</tr>
+<tr>
+<td>§2.1: curator system is "live production automation... if CT 409's disk is ever lost, this all disappears with no trace"</td>
+<td>Confirmed independently: <code>git status</code> shows the same ~20 untracked/modified paths. <strong>New finding</strong>: only <code>repository-scan-agent.timer</code> is enabled and running (119 successful hourly runs, read-only). <code>repository-curator-agent.timer</code> (the part that would commit/push) is installed but <strong>disabled, and has never fired once</strong> (empty journal).</td>
+<td>Turnover's "at risk of loss" framing is accurate for the <em>code</em>, but overstates automation risk — the piece that could silently push things has never run. The Codex 07-01 session (see §3) explains this: it's a deliberate human-gate (<code>gh</code> was never installed/authenticated), not an oversight.</td>
+</tr>
+<tr>
+<td>§2.6: Docker VM IP drift <code>.149</code>→<code>.224</code>→<code>.76</code>, "trust <code>.76</code>"</td>
+<td>Confirmed live via <code>qm guest exec 109</code> through alpha: hostname <code>docker</code>, reachable, <code>.76</code> is correct.</td>
+<td>Corroborated.</td>
+</tr>
+<tr>
+<td>No mention of <code>SDN.Use</code> gap on the Proxmox API token, or that VM 401's <code>onboot</code> flipped from <code>1</code>→<code>0</code> after the 05-28/05-30 session</td>
+<td>Both surfaced only via the Codex transcripts (§3) — the turnover doc (written on the fileserver, a different host) never saw this because it happened in CT 409-side Codex sessions.</td>
+<td>New information, not a contradiction — the fileserver session simply didn't have visibility into it.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Net assessment:</strong> the turnover is broadly accurate on topology and on the top-priority item (repo-agent needs to land), but it materially understates the <code>auto-stage-lint.yml</code> risk (it's live on <code>main</code>, not a pending merge decision) and slightly overstates curator risk (auto-push has never executed).</p>
+<hr />
+<h2 id="2-repo-agent-inventory-and-divergence-from-the-homelab-config-checkout">2. repo-agent/ inventory and divergence from the homelab-config checkout<a class="headerlink" href="#2-repo-agent-inventory-and-divergence-from-the-homelab-config-checkout" title="Permanent link">&para;</a></h2>
+<p><code>/root/repo-agent/</code> is <strong>not</strong> the full untracked backlog in <code>/mnt/repos/homelab-config</code> — it's a curated subset covering only the repo-health-curator subsystem. Every file it does contain is <strong>byte-identical</strong> to its counterpart in the checkout (verified via <code>diff</code>). Nothing has drifted between the staging copy and the checkout.</p>
+<p><strong>In <code>/root/repo-agent/</code> (all identical to checkout):</strong>
+- <code>scripts/reporting/{scan_repositories.py, curate_repositories.py}</code>
+- <code>configs/repository-curator.json</code>
+- <code>skills/repo-health-curator/**</code>
+- <code>ops/systemd/repository-{scan,curator}-agent.{service,timer}</code>
+- <code>.github/workflows/repo-health-curator.yml</code>
+- <code>github-AGENTS.md</code> ↔ checkout's <code>.github/AGENTS.md</code> (same content, renamed)
+- <code>docs/runbooks/repository-scan-agent.md</code>
+- <code>deploy/ansible/playbooks/repository-scan-agent.yml</code></p>
+<p><strong>In the checkout but NOT staged under repo-agent/</strong> (a separate, older, larger backlog — OPNsense staged-deployment work from 2026-05-28 through 06-07):
+- <code>docs/{DOCS_INDEX.md, mkdocs.yml}</code> modifications, <code>docs/opnsense-staged-deployment.md</code>, <code>docs/opnsense-vlan-port-map.md</code>, <code>docs/proxmox-api-token-bootstrap.md</code>, <code>artifacts/hc/2026-05-28-opnsense-readiness.md</code>, <code>docs/session-logs/20260528-062237-BUILD-HC-AUTOMATION.md</code>, and the full <code>deploy/ansible/</code> tree minus the one curator playbook (<code>ansible.cfg</code>, <code>bootstrap-control-node.sh</code>, <code>collections/</code>, <code>group_vars/</code>, <code>host_vars/</code>, <code>inventory/</code>, <code>playbooks/{lab-connectivity,opnsense-alpha-onboard,opnsense-preflight,proxmox-api-token-validate,proxmox-readonly-discovery}.yml</code>, <code>playbooks/tasks/</code>, <code>roles/</code>, <code>scripts/bootstrap-pve-opnsense-api-token.sh</code>, <code>snippets/</code>, <code>README.md</code>).
+- <code>deploy/ansible/playbooks/disk-remediation.yml</code> + <code>artifacts/remediation_log.md</code> — this one <strong>is</strong> conceptually "repo-agent" scope (it's what the user's item 2 calls "disk-remediation automation") even though it wasn't copied into <code>/root/repo-agent/</code>. It's byte-identical to the loose <code>/root/disk-remediation.yml</code>.</p>
+<p><strong>Systemd/cron references found (only place this automation is wired in):</strong>
+- <code>/etc/systemd/system/repository-{scan,curator}-agent.{service,timer}</code> — installed, matches <code>ops/systemd/</code> exactly.
+- <code>repository-scan-agent.timer</code>: <strong>enabled, active</strong>, hourly since 2026-07-02, 119 runs, all clean.
+- <code>repository-curator-agent.timer</code>: <strong>disabled, inactive, zero runs ever</strong> (per Codex 07-01 transcript, this is intentional — gated on installing/authenticating <code>gh</code>, which was never done).
+- No crontab entries, no <code>/etc/cron.d</code> entries reference any of this. <code>deploy/ansible/playbooks/repository-scan-agent.yml</code> is the only installer, and it was run (both units are present with 07-02 timestamps matching).
+- No secrets found in a pattern scan of the full untracked backlog (private keys, GitHub/AWS/Slack tokens) — one false positive (<code>curate_repositories.py</code>'s own detector regex source).
+- Git identity (<code>user.name</code>/<code>user.email</code>) is <strong>not set locally</strong> in this checkout — a commit here will fail with "Author identity unknown" until set (turnover's convention: <code>jcasnellie69 &lt;jcasnellie@gmail.com&gt;</code>).</p>
+<hr />
+<h2 id="3-proposed-plan-landing-repo-agent-in-homelab-config-not-yet-executed">3. Proposed plan: landing repo-agent in homelab-config (not yet executed)<a class="headerlink" href="#3-proposed-plan-landing-repo-agent-in-homelab-config-not-yet-executed" title="Permanent link">&para;</a></h2>
+<p><strong>Scope decision:</strong> land only the repo-health-curator + disk-remediation material (what the user called out as top priority). Treat the OPNsense staged-deployment backlog (§2, second bullet) as a <strong>separate, adjacent, pre-existing effort</strong> that should get its own change ID later — it's already been drafted piecemeal across three earlier Codex sessions and conflating it with the curator landing would make the diff unreviewable.</p>
+<p><strong>Prerequisite fixes (recommend doing/flagging before or alongside, not silently deferring):</strong>
+1. Set local git identity in <code>/mnt/repos/homelab-config</code> (<code>jcasnellie69 &lt;jcasnellie@gmail.com&gt;</code>), or the commit step fails outright.
+2. <strong>Flag <code>auto-stage-lint.yml</code> to you explicitly</strong> — it's live on <code>main</code>, hourly, doing exactly what the new curator's own policy document calls a hard invariant violation ("never push directly to a protected branch"). Landing a repo-health-curator whose #1 rule contradicts a workflow already running on the same repo is worth a real decision from you: disable it, fix its scope, or explicitly accept the inconsistency. I did not find evidence it has ever actually produced a commit (no <code>chore(auto-fix)</code> commits in <code>git log</code>), so it may be inert in practice, but "inert so far" isn't the same as "safe."
+3. Do <strong>not</strong> name the landing branch under <code>repo-health/**</code> — that prefix is reserved for the curator's own automated checkpoints and would make GitHub's <code>repo-health-curator.yml</code> workflow auto-open a draft PR the moment <code>.github/workflows/repo-health-curator.yml</code> itself lands on that ref. Use a normal human-authored branch name instead.</p>
+<p><strong>Proposed branch:</strong> <code>feat/repo-health-curator</code> off <code>origin/main</code>.</p>
+<p><strong>Proposed commits (grouped by the same "obvious independent intents" logic the curator itself is supposed to follow):</strong>
+1. <code>feat(repo-health): add repository scan/curator scripts, policy, and skill spec</code> — both <code>scripts/reporting/*.py</code>, <code>configs/repository-curator.json</code>, <code>skills/repo-health-curator/**</code>, <code>docs/runbooks/repository-scan-agent.md</code>, and the <code>.github/AGENTS.md</code> diff (adds the <code>repo-health-curator</code> section).
+2. <code>chore(repo-health): add systemd units, ansible deploy playbook, and CI draft-PR workflow</code> — <code>ops/systemd/repository-{scan,curator}-agent.*</code>, <code>deploy/ansible/playbooks/repository-scan-agent.yml</code>, <code>.github/workflows/repo-health-curator.yml</code>.
+3. <code>docs(repo-health): record 2026-07-02 disk remediation run for homepage/watchyourlan</code> — <code>deploy/ansible/playbooks/disk-remediation.yml</code>, <code>artifacts/remediation_log.md</code> (this is a real, already-executed, successful run — 99.93%→83% and 96.99%→80% utilization — worth preserving as-is, not rewriting).
+4. <code>docs: add CLAUDE.md for homelab-config repo</code> (new — see outline below).</p>
+<p><strong>Before pushing:</strong> run the two advisory validations already defined in <code>configs/repository-curator.json</code> (<code>py_compile</code> on the two scripts, <code>ansible-lint</code> on <code>disk-remediation.yml</code> + <code>repository-scan-agent.yml</code>) as a sanity check, then open a normal PR (not draft) against <code>main</code> for your review — do not merge or push to <code>main</code> directly.</p>
+<p><strong>New <code>homelab-config/CLAUDE.md</code> — proposed outline:</strong>
+- Note this <em>is</em> a real git repo (unlike <code>/root</code>), Proxmox+Ansible+MkDocs Material homelab config, GitHub Pages via <code>gh-pages</code>.
+- Document the repo-health-curator subsystem (same shape as the <code>/root/CLAUDE.md</code> I wrote earlier this session, but with real in-repo paths) including the enabled-scan/disabled-curator split and <em>why</em> (gated on <code>gh</code> auth, not accidental).
+- Call out <code>auto-stage-lint.yml</code>'s conflict with the curator's own invariants as a known tension, so nobody "fixes" one without noticing the other.
+- Note the dotdir sprawl (~28 per-tool skill directories at repo root) as pre-existing clutter, not something to clean up incidentally.
+- Point at <code>docs/session-logs/*.md</code> as the session-log convention already in use (two exist: 2025-12-11 and the untracked 2026-05-28 one).</p>
+<hr />
+<h2 id="4-codex-session-transcripts-turnover-codex-sessionsmd-draft">4. Codex session transcripts → TURNOVER-CODEX-SESSIONS.md (draft)<a class="headerlink" href="#4-codex-session-transcripts-turnover-codex-sessionsmd-draft" title="Permanent link">&para;</a></h2>
+<p>All six sessions analyzed (five agents, one bundled pair). Full drafted content, ready to paste into a new file once approved:</p>
+<h3 id="session-2026-05-28t032834z-019e6ca0">Session: 2026-05-28T03:28:34Z (<code>019e6ca0</code>)<a class="headerlink" href="#session-2026-05-28t032834z-019e6ca0" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> Inventory of pve-ansible, Semaphore recovery, staged OPNsense automation buildout — ends mid-task on a blocked SSH passphrase.
+<strong>Completed:</strong> Reset Semaphore admin password; cloned both repos into <code>/mnt/repos/</code>; restored Ansible scaffold from <code>.recycle/</code>; wrote OPNsense preflight/onboard playbooks and the API-token bootstrap script (not executed — SSH blocked); seeded 4 Semaphore templates.
+<strong>In-flight/abandoned:</strong> SSH passphrase prompt left hanging; NFS mount never resolved; Docker/Portainer LXC identification incomplete.
+<strong>Decisions:</strong> OPNsense VM creation stays check-mode only; <code>vmbr0</code> untouched; keep <code>netbox</code> hostname, rename only the inventory group to <code>ipam</code>; Proxmox API token lives in Semaphore's key store, never in git.
+<strong>Loose ends:</strong> Nothing from this session was ever committed.
+<strong>Verification:</strong> All named files CORROBORATED present on disk today. <strong>Contradicted:</strong> the session's closing tone implies delivery, but none of it was committed — still untracked 40+ days later. The actual Proxmox-API credential bootstrap this session left blocked was completed in a <em>later</em> session (05-30), not this one — misattribution risk if read in isolation.</p>
+<h3 id="session-2026-05-28t062144z-resumed-2026-05-30-019e6d3e">Session: 2026-05-28T06:21:44Z, resumed 2026-05-30 (<code>019e6d3e</code>)<a class="headerlink" href="#session-2026-05-28t062144z-resumed-2026-05-30-019e6d3e" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> OPNsense staged deployment continuation — discovery, ISO acquisition, Semaphore credential-injection fix, VM 401 shell creation.
+<strong>Completed:</strong> Downloaded/verified OPNsense 26.1.6 ISO; fixed Semaphore secret-injection via Key Store binding; corrected Proxmox node name; installed <code>community.proxmox</code> for the Semaphore service account; after 4 sequential Semaphore/API failures (missing <code>proxmoxer</code>, version too old, disk-size string, missing <code>SDN.Use</code> ACL), created VM 401 directly via SSH <code>qm create</code>, bypassing the repaired pipeline.
+<strong>In-flight/abandoned:</strong> Semaphore/API-driven creation never worked end-to-end; <code>SDN.Use</code> gap left unfixed deliberately (avoid unapproved ACL change) — <strong>still blocks any future Semaphore-driven VM/network create</strong>.
+<strong>Decisions:</strong> Non-destructive posture maintained throughout; accepted bypassing Semaphore for the actual creation.
+<strong>Verification:</strong> VM 401 config CORROBORATED live, byte-for-byte against the doc. Network non-mutation CORROBORATED. One real discrepancy: doc/transcript show <code>onboot: 1</code> at session close (05-30); live state today shows <code>onboot: 0</code> — changed by something/someone after this session, outside its scope (later resolved by the 06-03 session's "Gate 1," per below).</p>
+<h3 id="session-2026-06-03t072319z-resumed-through-06-08-019e8c5d">Session: 2026-06-03T07:23:19Z, resumed through 06-08 (<code>019e8c5d</code>)<a class="headerlink" href="#session-2026-06-03t072319z-resumed-through-06-08-019e8c5d" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> Docker-mcp install/validation on VM 109, then a multi-day OPNsense/VLAN network-migration staging effort.
+<strong>Completed:</strong> Installed &amp; validated <code>docker-mcp</code> v0.42.2 system-wide only on VM 109 (matches <code>/root/docker-mcp-alpha-validation.md</code> verbatim — every claim in that doc is corroborated by tool-call evidence); brought two 10G SFP links online with iperf3 tests; fixed Docker VM DHCP/gateway; enabled SNMP on the MokerLink switch; produced the VLAN/port-map planning doc; "Gate 1" — set VM 401 <code>onboot: 0</code> and stopped it (this explains the discrepancy flagged in the prior session).
+<strong>In-flight/abandoned:</strong> Session's final action was <code>systemctl reboot</code> on <strong>alpha itself</strong> (for IOMMU/VFIO Wi-Fi passthrough to VM 401) — <strong>no post-reboot confirmation exists in the transcript.</strong> OPNsense web UI still unreachable; full 5-step VLAN cutover not executed; Terraform provider deferred.
+<strong>Verification:</strong> Docker-mcp doc fully CORROBORATED, including the explicit check that only the system-wide path was ever targeted (matches our independent live verification in §5). Alpha reboot outcome is UNVERIFIABLE from this transcript alone — worth a live check given it involved GRUB/initramfs changes on the physical host.</p>
+<h3 id="session-2026-06-09t000620z-019ea9b3">Session: 2026-06-09T00:06:20Z (<code>019ea9b3</code>)<a class="headerlink" href="#session-2026-06-09t000620z-019ea9b3" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> Single request to generate an <code>AGENTS.md</code> contributor guide for <code>/root</code> — abandoned before any work began (8-line transcript, no tool calls, no reply).
+<strong>Verification:</strong> CORROBORATED as abandoned — <code>/root/AGENTS.md</code> doesn't exist. <strong>This is not</strong> the "Linux MCP Runtime" session the fileserver turnover referenced.</p>
+<h3 id="session-2026-06-14t021840z-019ec3ec">Session: 2026-06-14T02:18:40Z (<code>019ec3ec</code>)<a class="headerlink" href="#session-2026-06-14t021840z-019ec3ec" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> GitKraken MCP registration for Codex CLI on this host, then a broad live-infra cleanup pass (Telegraf/InfluxDB, monitoring-plugins, Netdata, PDM TLS, NetBox boot noise).
+<strong>Completed:</strong> Registered <code>gitkraken</code> MCP server in <code>/root/.codex/config.toml</code>; disabled stale Telegraf on <code>prometheus</code> LXC 203 (dead InfluxDB target); installed <code>monitoring-plugins</code> on LXC 203 and VM 109; disabled unneeded <code>rpcbind</code> on both; fixed PDM TLS fingerprint mismatches, added bravo as a remote; cleaned NetBox boot noise (IPv6 SLAAC switch).
+<strong>Loose ends:</strong> Inventory drift never fixed in <code>deploy/ansible/inventory/lab/hosts.yml</code> (<code>prometheus</code> still listed at the stale <code>.132</code>, live address is <code>.210</code>); Telegraf simply off, no replacement metrics sink.
+<strong>Verification:</strong> "Linux MCP Runtime" — <strong>the literal phrase appears nowhere</strong> in either the 06-09 or 06-14 transcripts, nor in <code>gk --help</code> output; it looks like the prior Claude session's own paraphrase, not a real named component. GitKraken CLI setup happened <strong>on this host</strong>, not the Docker VM as the prior turnover implied (partial contradiction). GitKraken CLI is <em>separately</em> present on VM 109 too (<code>/root/.local/share/GitKrakenCLI/gk</code>), unrelated to the Codex MCP wiring — provenance unclear. Notable oddity: <code>/usr/bin/gk</code>'s mtime (2026-06-29) is 15 days <em>after</em> this session registered it, suggesting an auto-update replaced the binary later; not fully explained by either transcript.</p>
+<h3 id="session-2026-07-01t234516z-2026-07-02t072332z-019f2012">Session: 2026-07-01T23:45:16Z → 2026-07-02T07:23:32Z (<code>019f2012</code>)<a class="headerlink" href="#session-2026-07-01t234516z-2026-07-02t072332z-019f2012" title="Permanent link">&para;</a></h3>
+<p><strong>Topic:</strong> GitKraken MCP repair, then a live disk-remediation run on <code>homepage</code>/<code>watchyourlan</code>, then building the repo-health-curator system end to end.
+<strong>Completed:</strong> Fixed GitKraken auth; ran <code>disk-remediation.yml</code> live (tracking ID <code>disk-20260702T055850</code>, matches <code>artifacts/remediation_log.md</code> verbatim — 0 failures); built and enabled the read-only scan agent; designed and installed the full curator system but <strong>deliberately left its timer disabled</strong>, ending on an explicit instruction to the human: install and authenticate <code>gh</code> before the curator can push its first checkpoint.
+<strong>Verification:</strong> This is definitively the session that built everything currently sitting in <code>/root/repo-agent/</code> and the matching checkout backlog — every named file traces to this transcript. The enabled-scan/disabled-curator split is fully explained and still holds today (confirmed: <code>gh</code> is still not installed on this node). Nothing was committed, consistent with ~20 files still untracked.</p>
+<hr />
+<h2 id="5-docker-mcp-status-on-vm-109-192168476">5. docker-mcp status on VM 109 (192.168.4.76)<a class="headerlink" href="#5-docker-mcp-status-on-vm-109-192168476" title="Permanent link">&para;</a></h2>
+<p>Direct SSH to <code>.76</code> is closed (confirmed: <code>Permission denied (publickey,password)</code>), consistent with prior notes. Used the documented path — Proxmox QEMU guest agent via alpha — read-only only (<code>ls</code>, <code>hostname</code>, <code>docker mcp version</code>):</p>
+<ul>
+<li><code>/root/.docker/cli-plugins/docker-mcp</code> → <strong>does not exist</strong></li>
+<li><code>/usr/local/lib/docker/cli-plugins/docker-mcp</code> → <strong>exists</strong>, <code>-rwxr-xr-x</code>, 45,564,088 bytes, dated Jun 3 07:25</li>
+<li><code>docker mcp version</code> → <code>v0.42.2</code></li>
+</ul>
+<p><strong>Status: installed and functional</strong>, system-wide only, exactly as <code>docker-mcp-alpha-validation.md</code> and the 06-03 Codex transcript describe. No discrepancy.</p>
+<hr />
+<h2 id="6-agentsmd-claudemd-conflicts">6. AGENTS.md / CLAUDE.md conflicts<a class="headerlink" href="#6-agentsmd-claudemd-conflicts" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>.github/AGENTS.md</code> (checkout, modified) ↔ <code>/root/repo-agent/github-AGENTS.md</code>: <strong>identical content</strong>, no conflict — the repo-agent copy is just this file's diff staged separately.</li>
+<li>No <code>CLAUDE.md</code> exists anywhere in the <code>homelab-config</code> checkout today — nothing to conflict with there.</li>
+<li><code>/root/CLAUDE.md</code> (written earlier this session, before this turnover context existed) has three gaps now worth fixing when I touch it next, surfaced by everything above:</li>
+<li>It doesn't mention that <code>repo-agent/</code>'s real target (<code>/mnt/repos/homelab-config</code>) currently has this work <strong>uncommitted</strong>, or the urgency around that.</li>
+<li>It doesn't mention the curator timer is installed-but-disabled, or why (gated on <code>gh</code>).</li>
+<li>It doesn't mention that <code>/root/repo-agent/</code> is a <strong>partial</strong> subset of the checkout's untracked backlog (missing the OPNsense-deployment material and two unrelated systemd units — <code>mcp-artifacts-sse.service</code>, <code>mcp-filesystem.service</code>).</li>
+</ul>
+<p>I'd suggest updating <code>/root/CLAUDE.md</code> with these three points as part of whatever you approve next, rather than as a separate ask.</p>
+<hr />
+<p><strong>Waiting on your approval before any of §3 gets executed</strong> (branch creation, commits, push, PR, or the new <code>homelab-config/CLAUDE.md</code>), and before I touch <code>/root/CLAUDE.md</code>. Also flagging as a standalone decision point, independent of the above: what to do about <code>auto-stage-lint.yml</code> being live on <code>main</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -13,28 +13,24 @@
       
       
       
-        <link rel="prev" href="../DOCS_INDEX/">
-      
-      
-        <link rel="next" href="../mcp-filesystem-swimlane/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Session Automation - homelab-config</title>
+        <title>20260728 pve quorum disk and opnsense sync - homelab-config</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-automation-framework-permanent-reference" class="md-skip">
+        <a href="#1-opnsense-backlog-repo-sync-automation-pipeline-fix" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="homelab-config" class="md-header__button md-logo" aria-label="homelab-config" data-md-component="logo">
+    <a href="../.." title="homelab-config" class="md-header__button md-logo" aria-label="homelab-config" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session Automation
+              20260728 pve quorum disk and opnsense sync
             
           </span>
         </div>
@@ -268,7 +264,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="homelab-config" class="md-nav__button md-logo" aria-label="homelab-config" data-md-component="logo">
+    <a href="../.." title="homelab-config" class="md-nav__button md-logo" aria-label="homelab-config" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -298,7 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -325,7 +321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network-inventory/" class="md-nav__link">
+      <a href="../../network-inventory/" class="md-nav__link">
         
   
   
@@ -352,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../artifacts-index/" class="md-nav__link">
+      <a href="../../artifacts-index/" class="md-nav__link">
         
   
   
@@ -379,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../telemetry-pipeline/" class="md-nav__link">
+      <a href="../../telemetry-pipeline/" class="md-nav__link">
         
   
   
@@ -406,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsense-staged-deployment/" class="md-nav__link">
+      <a href="../../opnsense-staged-deployment/" class="md-nav__link">
         
   
   
@@ -433,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../opnsense-vlan-port-map/" class="md-nav__link">
+      <a href="../../opnsense-vlan-port-map/" class="md-nav__link">
         
   
   
@@ -460,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../proxmox-api-token-bootstrap/" class="md-nav__link">
+      <a href="../../proxmox-api-token-bootstrap/" class="md-nav__link">
         
   
   
@@ -484,20 +480,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -518,7 +512,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -536,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DOCS_INDEX/" class="md-nav__link">
+      <a href="../../DOCS_INDEX/" class="md-nav__link">
         
   
   
@@ -561,37 +555,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session Automation
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../SESSION-AUTOMATION/" class="md-nav__link">
         
   
   
@@ -607,87 +574,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Purpose
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Entry Script
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine log:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Directory Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -700,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mcp-filesystem-swimlane/" class="md-nav__link">
+      <a href="../../mcp-filesystem-swimlane/" class="md-nav__link">
         
   
   
@@ -728,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mcp-filesystem/" class="md-nav__link">
+      <a href="../../mcp-filesystem/" class="md-nav__link">
         
   
   
@@ -756,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../netify-config-matrix/" class="md-nav__link">
+      <a href="../../netify-config-matrix/" class="md-nav__link">
         
   
   
@@ -784,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability-service-map/" class="md-nav__link">
+      <a href="../../observability-service-map/" class="md-nav__link">
         
   
   
@@ -812,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../policy-observability/" class="md-nav__link">
+      <a href="../../policy-observability/" class="md-nav__link">
         
   
   
@@ -894,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../session-logs/20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
+      <a href="../20251211-204446-BUILD-HC-AUTOMATION/" class="md-nav__link">
         
   
   
@@ -939,8 +825,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -949,10 +833,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-purpose" class="md-nav__link">
+  <a href="#1-opnsense-backlog-repo-sync-automation-pipeline-fix" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Purpose
+        1. OPNsense backlog: repo sync + automation pipeline fix
       
     </span>
   </a>
@@ -960,49 +844,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-entry-script" class="md-nav__link">
+  <a href="#2-unrelated-surfaced-mid-task-cluster-quorum-loss-pve-node-disk-full" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Entry Script
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Entry Script">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#markdown-session-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Markdown session document:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#machine-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Machine log:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-directory-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Directory Layout
+        2. Unrelated, surfaced mid-task: cluster quorum loss + pve-node disk-full
       
     </span>
   </a>
@@ -1029,27 +874,102 @@
   
 
 
-<h1 id="session-automation-framework-permanent-reference">SESSION AUTOMATION FRAMEWORK — PERMANENT REFERENCE<a class="headerlink" href="#session-automation-framework-permanent-reference" title="Permanent link">&para;</a></h1>
-<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>This framework provides z/OS-style session journaling for homelab development.<br />
-It automatically creates properly structured session logs (Markdown + machine logs) with timestamps, operator headers, and persistent recordkeeping suitable for Git.</p>
-<hr />
-<h2 id="2-entry-script">2. Entry Script<a class="headerlink" href="#2-entry-script" title="Permanent link">&para;</a></h2>
-<p><code>/root/homelab-config/scripts/session/new-session.sh</code></p>
-<p>This script creates:</p>
-<h3 id="markdown-session-document">Markdown session document:<a class="headerlink" href="#markdown-session-document" title="Permanent link">&para;</a></h3>
-<p><code>docs/session-logs/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.md</code></p>
-<h3 id="machine-log">Machine log:<a class="headerlink" href="#machine-log" title="Permanent link">&para;</a></h3>
-<p><code>logs/sessions/YYYYMMDD-HHMMSS-&lt;SESSION&gt;.log</code></p>
-<p>Each session includes:
-- ISO timestamp
-- Sortable session ID
-- z/OS-style header (DATE, CHGID, REASON, USER, SYSTEM)
-- Operator notes section
-- Commands section
-- Results section</p>
-<hr />
-<h2 id="3-directory-layout">3. Directory Layout<a class="headerlink" href="#3-directory-layout" title="Permanent link">&para;</a></h2>
+  <h1>20260728 pve quorum disk and opnsense sync</h1>
+
+<p>D072826 | CHG-OPNSENSE-SYNC-001 | OPNsense backlog landed + automation pipeline
+fixed; pve-node cluster quorum loss and disk-full incident (unrelated,
+surfaced mid-task) diagnosed and remediated | JC | ct409+alpha+pve+charlie</p>
+<h2 id="1-opnsense-backlog-repo-sync-automation-pipeline-fix">1. OPNsense backlog: repo sync + automation pipeline fix<a class="headerlink" href="#1-opnsense-backlog-repo-sync-automation-pipeline-fix" title="Permanent link">&para;</a></h2>
+<p>Followed the plan at the time (see conversation) to pick the OPNsense staged-
+deployment effort back up after ~2 months untracked. Full findings and
+rationale are captured in the commit message and in the docs themselves
+(<code>docs/opnsense-staged-deployment.md</code> Status section,
+<code>docs/proxmox-api-token-bootstrap.md</code> Status section). Summary:</p>
+<ul>
+<li>Discovered <code>main</code> has no <code>deploy/ansible/</code> tree at all — the shared Ansible
+  control-node scaffold (<code>ansible.cfg</code>, <code>inventory/</code>, <code>group_vars/</code>,
+  <code>host_vars/</code>, <code>roles/</code>) only exists on <code>feat/repo-health-curator</code>
+  (committed there, unpushed). Re-based <code>feat/opnsense-staged-deployment</code> onto
+  that branch instead of <code>main</code> for this reason — flagged to the user as a
+  deviation from the original plan (branching off <code>main</code>), not silently done.</li>
+<li>Committed the ~2-month-old untracked OPNsense docs/Ansible backlog
+  (commit <code>c00a755</code> on <code>feat/opnsense-staged-deployment</code>), correcting stale
+  claims (resolved SSH blocker, missing <code>SDN.Use</code>) and fixing
+  <code>deploy/ansible/inventory/lab/hosts.yml</code> prometheus drift (<code>.132</code>/vmid <code>103</code>
+  → live <code>.210</code>/vmid <code>203</code>, verified via <code>pct exec 203 -- hostname -I</code> before
+  changing). Commit locally only, not pushed (per operator's explicit choice).</li>
+<li>Added <code>SDN.Use</code> to the <code>HomelabOPNsenseAutomation</code> Proxmox role (operator
+  approved) — see §2 below for why this took two attempts.</li>
+<li>Confirmed <code>community.proxmox</code> 1.5.0 and <code>proxmoxer</code> 2.3.0 are already
+  installed and current on CT409 — no action needed.</li>
+<li>Still open: re-running <code>opnsense-alpha-onboard.yml</code> with real Proxmox API
+  credentials to prove the pipeline works end-to-end against the existing VM
+  401 without mutating it. Deliberately did not extract the token secret from
+  Semaphore's database myself (hit this boundary twice already this session)
+  — needs the operator to either run it via Semaphore directly or hand me
+  <code>PVE_API_TOKEN_SECRET</code> out-of-band.</li>
+<li>Confirmed by operator: OPNsense's own SFP ports are physically isolated —
+  one to the AT&amp;T 5G port, one to an air-gapped switch. Captured as a flagged,
+  not-yet-integrated note in <code>docs/opnsense-vlan-port-map.md</code> since it doesn't
+  fit the existing <code>vmbr1</code>/alpha-NIC trunk plan as written.</li>
+<li>No network/VM mutation happened as part of this: VM 401 remains stopped,
+  <code>onboot: 0</code>; <code>vmbr1</code> was not created. Gates 2-4 (trunk test, DHCP/DNS
+  migration, client segment moves) untouched, per operator's explicit scope
+  answer earlier in the session.</li>
+</ul>
+<h2 id="2-unrelated-surfaced-mid-task-cluster-quorum-loss-pve-node-disk-full">2. Unrelated, surfaced mid-task: cluster quorum loss + pve-node disk-full<a class="headerlink" href="#2-unrelated-surfaced-mid-task-cluster-quorum-loss-pve-node-disk-full" title="Permanent link">&para;</a></h2>
+<p>While attempting the <code>SDN.Use</code> role change, <code>pveum role modify</code> failed with
+<code>no quorum!</code>. Investigation (all read-only until remediation was explicitly
+approved):</p>
+<ul>
+<li><code>pvecm status</code> on alpha showed only 1/3 nodes (itself); Charlie (<code>.30</code>) and
+  the third node <code>pve</code> (<code>.249</code>) were both ARP-unreachable from alpha and from
+  CT409. Switch management (<code>192.168.4.2</code>) stayed reachable throughout,
+  ruling out a whole-switch failure.</li>
+<li>Operator confirmed this was expected/in-progress: physically working on
+  OPNsense SFP cabling (plugging into the AT&amp;T port), and had intentionally
+  taken Charlie/Pi-hole down. Not an unplanned incident on that count.</li>
+<li>Per operator request, disabled Pi-hole DHCP (<code>pihole-FTL --config
+  dhcp.active false</code>; backed up <code>pihole.toml.D072826T1926</code> first on LXC 115)
+  and cleared its DHCP lease file (116 leases backed up to
+  <code>dhcp.leases.D072826T1928</code>, then truncated) — done while Charlie/Pi-hole
+  were reachable again, ahead of a DHCP handoff to OPNsense.</li>
+<li>Operator brought Charlie back up; cluster briefly showed 2/3 quorate, then
+  the operator brought the third node (<code>pve</code>, <code>192.168.4.249</code>) up too — but
+  quorum kept flapping (3/3 momentarily, then back to 1/3) even after all
+  three nodes were pingable. <code>pve-cluster</code> (pmxcfs) journal on alpha showed
+  repeated <code>[dcdb]</code>/<code>[status] members: 1/1428</code> drops right after briefly
+  recovering.</li>
+<li>Operator flagged the <code>pve</code> node specifically as having "a space issue."
+  Confirmed: <code>pve</code>'s root filesystem (<code>/dev/mapper/pve-root</code>, 110G) was at
+  <strong>100% used, 0 bytes available</strong>. This is the actual root cause of the
+  quorum flapping — pmxcfs cannot reliably sync cluster state with no disk
+  space to write to (RRDC update errors visible in its journal throughout).</li>
+<li>Root cause of the full disk: <code>/var/lib/vz/dump/</code> held 80G across 50 real
+  vzdump backup archives, oldest 2026-01-17, newest 2026-03-23 — <strong>no backup
+  has actually succeeded in over 4 months</strong>. 145 of 195 total backup log
+  entries were 185-byte stubs (fast failures), consistent with the backup job
+  having been silently failing since the disk first filled, with old backups
+  never rotating out because new ones never completed.</li>
+<li>Asked the operator explicitly before deleting anything (these are backup
+  archives, not disposable logs). Operator chose: keep the newest 1-2 backups
+  per VMID (109, 100, 102, 103, 104, 106, 107, 108, 110, 409), delete the
+  rest. Removed 96 files (32 archives + matching <code>.log</code>/<code>.notes</code>), freeing
+  59.6 GB. <code>df -h /</code> went from 100% (0 avail) to 48% (56G avail). Nothing
+  backed up or archived before deletion — operator was informed of exactly
+  what would be removed (per-VMID counts) before it happened and explicitly
+  chose full deletion over a backup-first option.</li>
+<li>Cluster quorum confirmed stable (3/3, <code>Quorate: Yes</code>) twice, 5 seconds
+  apart, after the disk fix. <code>SDN.Use</code> role modification then succeeded
+  immediately.</li>
+</ul>
+<p><strong>Follow-up not done, flagged for the operator:</strong> the vzdump backup job on
+<code>pve</code> is still broken (whatever schedules/runs it needs investigation — it's
+been failing silently for 4+ months without alerting anyone). Freeing space
+today does not fix that job; it will refill on the same trajectory unless the
+underlying failure is found and fixed, and/or Netdata/alerting is extended to
+cover that node's disk (it clearly wasn't, or this would have paged much
+earlier the way the CT409 swap alert did).</p>
 
 
 
@@ -1105,10 +1025,10 @@ It automatically creates properly structured session logs (Markdown + machine lo
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
