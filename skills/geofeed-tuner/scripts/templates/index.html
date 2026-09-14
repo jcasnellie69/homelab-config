@@ -862,17 +862,17 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="firstPage" title="First Page">
+                    <button class="pagination-btn" id="firstPage" title="First Page" aria-label="First Page">
                         <i class="bi bi-chevron-bar-left"></i>
                     </button>
-                    <button class="pagination-btn" id="prevPage" title="Previous Page">
+                    <button class="pagination-btn" id="prevPage" title="Previous Page" aria-label="Previous Page">
                         <i class="bi bi-chevron-left"></i>
                     </button>
                     <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
-                    <button class="pagination-btn" id="nextPage" title="Next Page">
+                    <button class="pagination-btn" id="nextPage" title="Next Page" aria-label="Next Page">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                    <button class="pagination-btn" id="lastPage" title="Last Page">
+                    <button class="pagination-btn" id="lastPage" title="Last Page" aria-label="Last Page">
                         <i class="bi bi-chevron-bar-right"></i>
                     </button>
                 </div>
@@ -2294,6 +2294,7 @@
             const btn = document.createElement('button');
             btn.className = 'pagination-btn' + (pageNum === currentPage ? ' active' : '');
             btn.textContent = pageNum;
+            btn.setAttribute('aria-label', `Page ${pageNum}`);
             btn.addEventListener('click', function() {
                 currentPage = pageNum;
                 updatePagination();
