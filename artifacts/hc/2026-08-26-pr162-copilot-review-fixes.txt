@@ -1,0 +1,9 @@
+D082626 | CHG-PP-ATTRIBUTION-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: address Copilot review findings on PR #162 (CLAUDE.md p.p. convention, opnsense branch)
+
+Companion to PR #161's fix, applied to the identical change on
+feat/opnsense-staged-deployment. Same finding: the change-header format
+example still hard-coded JC as the only signature while the next bullet
+explains the p.p. alternative. Reworded to a <signature> placeholder
+listing both forms. This file is the required evidence artifact per
+.github/copilot-instructions.md, missing from the original commit.
