@@ -766,7 +766,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <th><input type="checkbox" id="selectAll" checked></th>
+                        <th><input type="checkbox" id="selectAll" checked aria-label="Select all rows"></th>
                         <th>Line</th>
                         <th>Status</th>
                         <th>IP Prefix</th>
@@ -776,10 +776,10 @@
                     </tr>
                     <tr id="filterRow" style="background-color: #6b6b6b; display: none;">
                         <th colspan="2" style="padding: 8px;">
-                            <button id="resetFilters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 100%;">Reset</button>
+                            <button id="resetFilters" aria-label="Reset all filters" style="padding: 5px 11px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.9em; width: 100%;">Reset</button>
                         </th>
                         <th style="padding: 8px;">
-                            <select id="filterStatus" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
+                            <select id="filterStatus" aria-label="Filter by status" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%;">
                                 <option value="">All</option>
                                 <option value="ERROR">ERROR</option>
                                 <option value="WARNING">WARNING</option>
@@ -788,16 +788,16 @@
                             </select>
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterIpPrefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterIpPrefix" aria-label="Filter by IP Prefix" placeholder="IP Prefix" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCountry" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCountry" aria-label="Filter by Country" placeholder="Country" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterRegion" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterRegion" aria-label="Filter by Region" placeholder="Region" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                         <th style="padding: 8px;">
-                            <input type="text" id="filterCity" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
+                            <input type="text" id="filterCity" aria-label="Filter by City" placeholder="City" style="padding: 5px 9px; border: 1px solid #888; border-radius: 3px; background-color: #5a5a5a; color: #ffffff; font-size: 0.9em; width: 100%; box-sizing: border-box;">
                         </th>
                     </tr>
                 </thead>
@@ -817,7 +817,7 @@
              data-tuned-city="{{.TunedEntry.Name}}"
              data-h3-cells="{{.TunedEntry.H3Cells}}"
              data-bounding-box="{{.TunedEntry.BoundingBox}}">
-                <td><input type="checkbox" class="row-checkbox" checked></td>
+                <td><input type="checkbox" class="row-checkbox" checked aria-label="Select row {{.Line}}"></td>
                 <td>{{.Line}}</td>
                 <td><span class="status-badge status-{{if eq .Status "ERROR"}}error{{else if eq .Status "WARNING"}}warning{{else if eq .Status "SUGGESTION"}}suggestion{{else}}ok{{end}}"><i class="bi {{if eq .Status "ERROR"}}bi-x-circle-fill{{else if eq .Status "WARNING"}}bi-exclamation-triangle-fill{{else if eq .Status "SUGGESTION"}}bi-lightbulb-fill{{else}}bi-check-circle-fill{{end}}"></i>{{.Status}}</span></td>
                 <td><strong>{{.IPPrefix}}</strong></td>
@@ -862,17 +862,17 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
-                    <button class="pagination-btn" id="firstPage" title="First Page">
+                    <button class="pagination-btn" id="firstPage" title="First Page" aria-label="Go to first page">
                         <i class="bi bi-chevron-bar-left"></i>
                     </button>
-                    <button class="pagination-btn" id="prevPage" title="Previous Page">
+                    <button class="pagination-btn" id="prevPage" title="Previous Page" aria-label="Go to previous page">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-                    <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
-                    <button class="pagination-btn" id="nextPage" title="Next Page">
+                    <div id="pageNumbers" style="display: flex; gap: 5px;" aria-label="Pagination pages"></div>
+                    <button class="pagination-btn" id="nextPage" title="Next Page" aria-label="Go to next page">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                    <button class="pagination-btn" id="lastPage" title="Last Page">
+                    <button class="pagination-btn" id="lastPage" title="Last Page" aria-label="Go to last page">
                         <i class="bi bi-chevron-bar-right"></i>
                     </button>
                 </div>
@@ -908,11 +908,11 @@
     </div>
 
     
-    <div id="locationModal" class="modal" tabindex="-1">
+    <div id="locationModal" class="modal" tabindex="-1" aria-labelledby="modalTitle" role="dialog" aria-modal="true">
         <div class="modal-content" tabindex="0">
-            <h2>
+            <h2 id="modalTitle">
                 <i class="bi bi-geo-alt" style="margin-right: 10px;"></i>Location Matches
-                <span class="close" tabindex="0">&times;</span>
+                <span class="close" tabindex="0" role="button" aria-label="Close modal">&times;</span>
             </h2>
             <div id="matchesList" class="matches-container"></div>
         </div>
