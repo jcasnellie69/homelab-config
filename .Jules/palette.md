@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2024-08-11 - Add ARIA labels to geofeed tuner table filters and modal close button
+**Learning:** Found that inline table filter inputs and icon-only close spans in the geofeed tuner lacked accessible names (`aria-label`) and proper roles. Adding explicit `aria-label` attributes to these UI components significantly improves screen reader support by ensuring users understand the purpose of each interactive element.
+**Action:** When adding inline filters or interactive icons without text (like modal close buttons), ensure they always have appropriate `aria-label` and `role` attributes so screen readers can interpret them correctly.
