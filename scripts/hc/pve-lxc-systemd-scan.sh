@@ -13,6 +13,13 @@
 #                      | which triggers these containers' MOTD banners
 #                      | (community-scripts ANSI-art greeting) ahead of the
 #                      | real systemctl output in every captured artifact.
+# 2026-09-14 | CR-0420 | Code-review follow-up: enumerate CTs from `pct list`
+#                      | instead of probing a fixed 100..410 seq. A CT
+#                      | created above the cap was silently skipped, and
+#                      | ~300 non-existent IDs were probed and logged on
+#                      | every run. The optional START/END args are kept
+#                      | but now filter the real list rather than define it.
+#                      | Signed: p.p. claude-opus-5 for JC
 # USER: JC  | TARGET: PVE host (LXC systemd survey)
 #-------------------------------------------------------------------------------
 
@@ -25,27 +32,30 @@ TS="$(date +%Y-%m-%d-%H%M%S)"
 OUTDIR="${ARTIFACT_ROOT}/${SUBDIR}/${TS}"
 SUMMARY="${OUTDIR}/summary-ct-systemd-${TS}.txt"
 
-START_ID="${1:-100}"
-END_ID="${2:-410}"
+# Optional CTID bounds. Empty means unbounded; the set of CTs scanned is
+# whatever `pct list` reports, not this range (see CR-0420 header note).
+START_ID="${1:-}"
+END_ID="${2:-}"
 
 mkdir -p "${OUTDIR}"
 
 {
-  echo "CTID range: ${START_ID}..${END_ID}"
+  if [ -n "${START_ID}" ] || [ -n "${END_ID}" ]; then
+    echo "CTID filter: ${START_ID:-min}..${END_ID:-max} (applied to pct list)"
+  else
+    echo "CTIDs: every container reported by pct list"
+  fi
 } > "${SUMMARY}"
 
-for CTID in $(seq "${START_ID}" "${END_ID}"); do
+pct list 2>/dev/null | awk 'NR>1 {print $1}' | while read -r CTID; do
+  if [ -n "${START_ID}" ] && [ "${CTID}" -lt "${START_ID}" ]; then continue; fi
+  if [ -n "${END_ID}" ]   && [ "${CTID}" -gt "${END_ID}" ];   then continue; fi
+
   echo "=== CT ${CTID} ===" | tee -a "${SUMMARY}"
 
-  # Check if container exists
-  if ! pct status "${CTID}" &>/dev/null; then
-    echo "  CT ${CTID} does not exist, skipping." | tee -a "${SUMMARY}"
-    echo >> "${SUMMARY}"
-    continue
-  fi
-
-  # Is it running?
-  STATUS="$(pct status "${CTID}" | awk '{print $2}')"
+  # Is it running? (|| true: a CT removed between pct list and here must not
+  # abort the whole survey under set -e / pipefail.)
+  STATUS="$(pct status "${CTID}" 2>/dev/null | awk '{print $2}' || true)"
   if [ "${STATUS}" != "running" ]; then
     echo "  CT ${CTID} is not running (status=${STATUS}), skipping." | tee -a "${SUMMARY}"
     echo >> "${SUMMARY}"
