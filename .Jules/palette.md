@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-05-18 - Icon-Only Button Accessibility
+**Learning:** Icon-only buttons or interactive elements (like span-based close buttons or pagination chevrons) are inaccessible to screen reader users without explicit ARIA labels and roles.
+**Action:** Always provide `aria-label` for icon-only buttons and ensure non-button interactive elements like close `span`s have `role="button"` and an appropriate `aria-label` to ensure they are interpreted correctly by assistive technologies.
