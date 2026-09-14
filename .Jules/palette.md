@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-07-22 - Table Filter and Icon Button Accessibility
+**Learning:** Tables with inline filter inputs and icon-only buttons (like pagination) often lack explicit `<label>` elements. Screen readers require an `aria-label` on these elements to properly identify their purpose, as placeholders or tooltips are not always reliably announced.
+**Action:** Always add `aria-label` to form inputs, selects, and icon-only buttons when an explicit `<label>` element cannot be used to ensure full accessibility for screen reader users.
