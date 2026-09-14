@@ -27,6 +27,11 @@ for the Proxmox VE + LXC infrastructure.
    Defines governance for exporters, Telegraf placement, and pipeline integrity.
    - File: policy-observability.md
 
+4. Docker VM Health Check
+   Documents the alpha/QEMU guest-agent workflow for auditing Docker VM 109,
+   Scrypted plugin health, container state, disk usage, and evidence artifacts.
+   - File: runbooks/docker-vm-health-check.md
+
 ---
 
 ## Purpose of docs/

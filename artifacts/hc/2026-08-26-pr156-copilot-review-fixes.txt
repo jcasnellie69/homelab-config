@@ -1,0 +1,42 @@
+D082626 | CHG-DOCKER-SCRYPTED-SPACE-20260822 | p.p. claude-sonnet-5 for JC | ct409
+Change: address Copilot review findings on PR #156 (docker-vm-health-check.yml)
+
+Findings addressed:
+1. docker_health_warn_root_pct was defined but never used. Added a
+   dedicated warn task that fires when usage crosses the advisory
+   threshold but stays below the critical one.
+2. Local artifact directory mode 0755 -> 0750, matching this repo's
+   convention (hc-checkout-decommission.yml, disk-remediation.yml).
+3. Health artifact file mode 0644 -> 0640, same reasoning -- the
+   artifact contains docker info/container listings/filesystem detail
+   and should be group-readable at most, not world-readable.
+
+Finding investigated and found NOT to be a bug (reverted my own initial
+fix after verifying with real ansible-playbook, not just reasoning about
+it):
+
+Copilot claimed `regex_search(pattern, '\1') | first` truncates
+multi-digit values (e.g. 39 -> "3") because regex_search with one group
+already returns a string. Verified this is false by running real
+ansible-playbook against both forms:
+
+  $ ansible-playbook test with sample="HC_ROOT_USE_PCT=39":
+    without first: "['39']"        <- regex_search returns a LIST
+    with first:    "39"            <- first correctly extracts it
+
+  $ ansible-playbook test of the "fixed" (no-first) expression:
+    (sample | regex_search(...) | default('100')) | int  ->  0
+
+Removing `| first` as originally proposed does not fix a truncation bug
+-- it introduces a worse one: `['39'] | int` evaluates to 0, meaning
+disk-usage would always silently report 0% regardless of actual usage.
+regex_search with an explicit group reference always returns a list in
+real Ansible, regardless of group count -- an initial python-based
+simulation of this behavior (not actual Ansible) produced the wrong
+answer and was discarded once tested against the real tool. Reverted
+the fix; original `| first` usage is correct and left unchanged.
+
+Verified:
+- ansible-playbook --syntax-check playbooks/docker-vm-health-check.yml: pass
+- Manual ansible-playbook test of the regex_search/first claim (both
+  directions, shown above)

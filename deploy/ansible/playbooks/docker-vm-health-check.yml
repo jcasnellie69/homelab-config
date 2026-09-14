@@ -1,0 +1,181 @@
+---
+# D082226 | CHG-DOCKER-SCRYPTED-SPACE-20260822 | add Docker VM health check via Proxmox guest agent | JC | ct409+docker-vm-109
+- name: Audit Docker VM health through the Proxmox guest agent
+  hosts: alpha
+  gather_facts: false
+  vars:
+    docker_vm_vmid: 109
+    docker_vm_name: docker
+    docker_health_artifact_dir: /srv/artifacts/hc
+    docker_health_critical_root_pct: 90
+    docker_health_warn_root_pct: 80
+    docker_health_required_containers:
+      - scrypted
+      - portainer
+      - otel-collector
+    docker_health_fail_on_restarting_containers: true
+    docker_vm_health_script: |
+      set -u
+      echo "D082226 | CHG-DOCKER-SCRYPTED-SPACE-20260822 | Docker VM health check output | JC | docker-vm-109"
+      echo "HC_TIMESTAMP=$(date -u +%Y-%m-%dT%H%M%SZ)"
+      echo "HC_HOSTNAME=$(hostname)"
+
+      root_use_pct="$(df -P / | awk 'NR == 2 { gsub("%", "", $5); print $5 }')"
+      root_avail_kb="$(df -Pk / | awk 'NR == 2 { print $4 }')"
+      echo "HC_ROOT_USE_PCT=${root_use_pct}"
+      echo "HC_ROOT_AVAIL_KB=${root_avail_kb}"
+
+      restarting_count="$(docker ps --filter status=restarting -q | wc -l | tr -d ' ')"
+      echo "HC_RESTARTING_CONTAINER_COUNT=${restarting_count}"
+
+      for container in {{ docker_health_required_containers | join(' ') }}; do
+        metric_name="$(printf '%s' "$container" | sed 's/[^A-Za-z0-9]/_/g')"
+        if docker ps --filter "name=^/${container}$" --filter status=running -q | grep -q .; then
+          echo "HC_CONTAINER_${metric_name}=running"
+        else
+          echo "HC_CONTAINER_${metric_name}=not_running"
+        fi
+      done
+
+      if docker exec scrypted sh -lc "ps -eo args | grep -F '@scrypted/tapo' | grep -v grep >/dev/null" 2>/dev/null; then
+        echo "HC_SCRYPTED_TAPO_PLUGIN=running"
+      else
+        echo "HC_SCRYPTED_TAPO_PLUGIN=not_running"
+      fi
+
+      if docker exec scrypted sh -lc "ps -eo args | grep -F 'scrypted-eufy-security' | grep -v grep >/dev/null" 2>/dev/null; then
+        echo "HC_SCRYPTED_EUFY_PLUGIN=running"
+      else
+        echo "HC_SCRYPTED_EUFY_PLUGIN=not_running"
+      fi
+
+      if docker exec scrypted sh -lc "test -d /server/volume/plugins/scrypted-eufy-security/n-node-v127-linux-x64-20250101/node_modules/eufy-security-client" 2>/dev/null; then
+        echo "HC_SCRYPTED_EUFY_DEPENDENCY=present"
+      else
+        echo "HC_SCRYPTED_EUFY_DEPENDENCY=missing"
+      fi
+
+      echo
+      echo "## df"
+      df -hT / /var/lib/docker /root/.scrypted 2>/dev/null || df -hT /
+      echo
+      echo "## inode"
+      df -i / /var/lib/docker /root/.scrypted 2>/dev/null || df -i /
+      echo
+      echo "## block devices"
+      lsblk -o NAME,SIZE,TYPE,FSTYPE,FSUSE%,MOUNTPOINTS
+      echo
+      echo "## docker info"
+      docker info
+      echo
+      echo "## docker system df"
+      docker system df -v
+      echo
+      echo "## docker ps"
+      docker ps -a --no-trunc --size
+      echo
+      echo "## docker container log sizes"
+      find /var/lib/docker/containers -name "*-json.log" -printf "%s %p\n" 2>/dev/null | sort -n | tail -20
+      echo
+      echo "## scrypted plugins"
+      docker exec scrypted sh -lc "df -h /server/volume; du -hd4 /server/volume/plugins 2>/dev/null | sort -h | tail -80; ps -eo pid,ppid,stat,pcpu,pmem,args | grep -E 'scrypted-main|scrypted-serve|PID' | grep -v grep" 2>&1 || true
+      echo
+      echo "## network"
+      ip -brief addr
+      ip route
+
+  tasks:
+    - name: Build timestamp for Docker health artifact
+      ansible.builtin.set_fact:
+        docker_health_timestamp: "{{ lookup('pipe', 'date -u +%Y-%m-%dT%H%M%SZ') }}"
+
+    - name: Ensure local health artifact directory exists
+      ansible.builtin.file:
+        path: "{{ docker_health_artifact_dir }}"
+        state: directory
+        mode: "0750"
+      delegate_to: localhost
+
+    - name: Verify QEMU guest agent is reachable for the Docker VM
+      ansible.builtin.command:
+        argv:
+          - qm
+          - agent
+          - "{{ docker_vm_vmid | string }}"
+          - ping
+      changed_when: false
+
+    - name: Run Docker VM health script through QEMU guest agent
+      ansible.builtin.command:
+        argv:
+          - qm
+          - guest
+          - exec
+          - "{{ docker_vm_vmid | string }}"
+          - --
+          - bash
+          - -lc
+          - "{{ docker_vm_health_script }}"
+      register: docker_vm_health_raw
+      changed_when: false
+
+    - name: Parse QEMU guest-agent health response
+      ansible.builtin.set_fact:
+        docker_vm_health_qga: "{{ docker_vm_health_raw.stdout | from_json }}"
+
+    - name: Extract Docker VM health text
+      ansible.builtin.set_fact:
+        docker_vm_health_text: "{{ docker_vm_health_qga['out-data'] | default('') }}"
+        docker_vm_health_error_text: "{{ docker_vm_health_qga['err-data'] | default('') }}"
+
+    - name: Extract health metrics
+      ansible.builtin.set_fact:
+        docker_root_use_pct: "{{ (docker_vm_health_text | regex_search('HC_ROOT_USE_PCT=([0-9]+)', '\\1') | first | default('100')) | int }}"
+        docker_restarting_container_count: "{{ (docker_vm_health_text | regex_search('HC_RESTARTING_CONTAINER_COUNT=([0-9]+)', '\\1') | first | default('0')) | int }}"
+
+    - name: Warn if root usage has crossed the advisory threshold
+      ansible.builtin.debug:
+        msg: >-
+          WARNING: Docker VM root usage is {{ docker_root_use_pct }}%, at or
+          above the {{ docker_health_warn_root_pct }}% advisory threshold
+          (critical threshold is {{ docker_health_critical_root_pct }}%).
+      when: docker_root_use_pct | int >= docker_health_warn_root_pct | int
+
+    - name: Write local Docker VM health artifact
+      ansible.builtin.copy:
+        dest: "{{ docker_health_artifact_dir }}/{{ docker_health_timestamp }}-docker-vm-health-{{ docker_vm_name }}.txt"
+        mode: "0640"
+        content: |
+          D082226 | CHG-DOCKER-SCRYPTED-SPACE-20260822 | Docker VM health artifact | JC | docker-vm-109
+          Timestamp: {{ docker_health_timestamp }}
+          VMID: {{ docker_vm_vmid }}
+          Host: {{ inventory_hostname }}
+          Root usage percent: {{ docker_root_use_pct }}
+          Restarting containers: {{ docker_restarting_container_count }}
+          QGA exit code: {{ docker_vm_health_qga.exitcode | default('unknown') }}
+
+          # STDOUT
+          {{ docker_vm_health_text }}
+
+          # STDERR
+          {{ docker_vm_health_error_text }}
+      delegate_to: localhost
+
+    - name: Print artifact path
+      ansible.builtin.debug:
+        msg: "{{ docker_health_artifact_dir }}/{{ docker_health_timestamp }}-docker-vm-health-{{ docker_vm_name }}.txt"
+
+    - name: Assert Docker VM health is acceptable
+      ansible.builtin.assert:
+        that:
+          - docker_vm_health_qga.exitcode | int == 0
+          - docker_root_use_pct | int < docker_health_critical_root_pct | int
+          - "'HC_CONTAINER_scrypted=running' in docker_vm_health_text"
+          - "'HC_CONTAINER_portainer=running' in docker_vm_health_text"
+          - "'HC_CONTAINER_otel_collector=running' in docker_vm_health_text"
+          - "'HC_SCRYPTED_TAPO_PLUGIN=running' in docker_vm_health_text"
+          - "'HC_SCRYPTED_EUFY_PLUGIN=running' in docker_vm_health_text"
+          - "'HC_SCRYPTED_EUFY_DEPENDENCY=present' in docker_vm_health_text"
+          - not docker_health_fail_on_restarting_containers | bool or docker_restarting_container_count | int == 0
+        fail_msg: "Docker VM health check failed. Review the generated /srv/artifacts/hc Docker health artifact."
+        success_msg: "Docker VM health check passed. Review the generated /srv/artifacts/hc Docker health artifact for details."
