@@ -1,0 +1,309 @@
+---
+- name: Stage OPNsense onboarding on Proxmox Alpha
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../group_vars/future_opnsense.yml
+
+  pre_tasks:
+    - name: Resolve Proxmox API credentials from environment or Semaphore key binding
+      ansible.builtin.set_fact:
+        pve_api_token_full_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+            | default(ansible_user | default(''), true)
+          }}
+        pve_api_user_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_USER')
+            | default(
+                (
+                  (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                   | default(ansible_user | default(''), true)).split('!')[0]
+                ),
+                true
+              )
+          }}
+        pve_api_token_id_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_ID')
+            | default(
+                (
+                  (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                   | default(ansible_user | default(''), true)).split('!')[1]
+                  if '!' in (lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL')
+                             | default(ansible_user | default(''), true))
+                  else ''
+                ),
+                true
+              )
+          }}
+        pve_api_token_secret_runtime: >-
+          {{
+            lookup('ansible.builtin.env', 'PVE_API_TOKEN_SECRET')
+            | default(ansible_password | default(''), true)
+          }}
+      no_log: true
+
+    - name: Capture Proxmox API credential presence
+      ansible.builtin.set_fact:
+        pve_api_credentials_present: >-
+          {{
+            pve_api_user_runtime | length > 0 and
+            pve_api_token_id_runtime | length > 0 and
+            pve_api_token_secret_runtime | length > 0
+          }}
+      no_log: true
+
+    - name: Validate Proxmox API token before VM staging
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/version"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_version
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Report authenticated Proxmox API validation
+      ansible.builtin.debug:
+        msg:
+          - "Authenticated Proxmox API version discovery succeeded."
+          - "Host: {{ pve_api_host }}"
+          - "Token user: {{ pve_api_user_runtime }}"
+          - "Token id: {{ pve_api_token_id_runtime }}"
+          - "Version: {{ pve_version.json.data.version | default('unknown') }}"
+      when: pve_api_credentials_present | bool
+
+    - name: Query Proxmox nodes for dry-run validation
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_nodes
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Query Proxmox resources for VMID dry-run validation
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/cluster/resources?type=vm"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_resources
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Query Proxmox storage for dry-run validation
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/storage"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_storages
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Query Proxmox ISO storage for dry-run validation
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/storage/{{ opnsense_iso_storage }}/content?content=iso"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_iso_content
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Query Proxmox network config for dry-run validation
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/network"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_network
+      no_log: true
+      check_mode: false
+      when: pve_api_credentials_present | bool
+
+    - name: Build Proxmox dry-run validation facts
+      ansible.builtin.set_fact:
+        pve_node_names: "{{ pve_nodes.json.data | map(attribute='node') | list }}"
+        pve_qemu_resources: "{{ pve_resources.json.data | selectattr('type', 'equalto', 'qemu') | list }}"
+        pve_existing_vmids: "{{ pve_resources.json.data | map(attribute='vmid') | map('int') | list }}"
+        pve_storage_names: "{{ pve_storages.json.data | map(attribute='storage') | list }}"
+        pve_iso_volids: "{{ pve_iso_content.json.data | map(attribute='volid') | list }}"
+        pve_network_ifaces: "{{ pve_network.json.data | default([]) | map(attribute='iface') | select('defined') | list }}"
+      when: pve_api_credentials_present | bool
+
+    - name: Build OPNsense VM existence facts
+      ansible.builtin.set_fact:
+        opnsense_vm_exists: "{{ opnsense_vm_id | int in pve_existing_vmids }}"
+        pve_opnsense_resource: >-
+          {{
+            (
+              pve_qemu_resources
+              | selectattr('vmid', 'equalto', opnsense_vm_id | int)
+              | list
+              | first
+            )
+            | default({})
+          }}
+      when: pve_api_credentials_present | bool
+
+    - name: Assert Proxmox staging prerequisites
+      ansible.builtin.assert:
+        that:
+          - pve_node in pve_node_names
+          - opnsense_disk_storage in pve_storage_names
+          - opnsense_iso_storage in pve_storage_names
+          - opnsense_iso_storage ~ ':iso/' ~ opnsense_iso_image in pve_iso_volids
+          - opnsense_trunk_bridge_required | bool or opnsense_trunk_bridge not in pve_network_ifaces
+        fail_msg: "Proxmox staging prerequisite validation failed; stop before OPNsense VM work."
+        success_msg: "Proxmox staging prerequisites validated: node, storage, ISO, and trunk bridge guard."
+      when: pve_api_credentials_present | bool
+
+    - name: Query existing OPNsense VM config
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/qemu/{{ opnsense_vm_id }}/config"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_opnsense_config
+      no_log: true
+      check_mode: false
+      when:
+        - pve_api_credentials_present | bool
+        - opnsense_vm_exists | bool
+
+    - name: Query existing OPNsense VM runtime status
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/nodes/{{ pve_node }}/qemu/{{ opnsense_vm_id }}/status/current"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_user_runtime }}!{{ pve_api_token_id_runtime }}={{ pve_api_token_secret_runtime }}"
+      register: pve_opnsense_status
+      no_log: true
+      check_mode: false
+      when:
+        - pve_api_credentials_present | bool
+        - opnsense_vm_exists | bool
+
+    - name: Build existing OPNsense VM validation facts
+      ansible.builtin.set_fact:
+        pve_opnsense_config_data: "{{ pve_opnsense_config.json.data | default({}) }}"
+        pve_opnsense_status_data: "{{ pve_opnsense_status.json.data | default({}) }}"
+        pve_opnsense_net_keys: >-
+          {{
+            pve_opnsense_config.json.data
+            | default({})
+            | dict2items
+            | selectattr('key', 'match', '^net[0-9]+$')
+            | map(attribute='key')
+            | list
+          }}
+      when:
+        - pve_api_credentials_present | bool
+        - opnsense_vm_exists | bool
+
+    - name: Assert existing OPNsense VM is still stage-safe
+      ansible.builtin.assert:
+        that:
+          - pve_opnsense_resource.node == pve_node
+          - pve_opnsense_config_data.name == opnsense_vm_name
+          - pve_opnsense_config_data.memory | int == opnsense_memory_mb | int
+          - pve_opnsense_config_data.cores | int == opnsense_cores | int
+          - pve_opnsense_config_data.sockets | int == opnsense_sockets | int
+          - pve_opnsense_config_data.scsihw == 'virtio-scsi-pci'
+          - pve_opnsense_config_data.scsi0 is search('^' ~ opnsense_disk_storage ~ ':')
+          - pve_opnsense_config_data.scsi0 is search('size=' ~ opnsense_disk_size)
+          - pve_opnsense_config_data.ide2 is search(opnsense_iso_image)
+          - pve_opnsense_config_data.ide2 is search('media=cdrom')
+          - pve_opnsense_config_data.boot == 'order=scsi0;ide2;net0'
+          - pve_opnsense_config_data.onboot | default(0) | int == (1 if opnsense_onboot | bool else 0)
+          - pve_opnsense_net_keys | length == 1
+          - pve_opnsense_net_keys[0] == 'net0'
+          - pve_opnsense_config_data.net0 is search('^virtio=')
+          - pve_opnsense_config_data.net0 is search('bridge=' ~ opnsense_management_bridge)
+          - pve_opnsense_status_data.status == 'stopped'
+        fail_msg: "Existing OPNsense VM 401 is not in the expected stage-safe shape; refuse mutation."
+        success_msg: "Existing OPNsense VM 401 is stage-safe: stopped, onboot disabled, and only net0 on vmbr0."
+      when:
+        - pve_api_credentials_present | bool
+        - opnsense_vm_exists | bool
+
+    - name: Report Proxmox network API visibility
+      ansible.builtin.debug:
+        msg:
+          - "Network API-visible interfaces: {{ pve_network_ifaces | join(', ') if pve_network_ifaces | length > 0 else 'none visible to token' }}"
+          - "Management bridge remains validated by SSH discovery: {{ opnsense_management_bridge }}"
+      when: pve_api_credentials_present | bool
+
+    - name: Stop mutation path when Proxmox API credentials are missing
+      ansible.builtin.assert:
+        that:
+          - pve_api_credentials_present | bool
+        fail_msg: >-
+          Export PVE_API_USER, PVE_API_TOKEN_ID, and PVE_API_TOKEN_SECRET
+          before running the Alpha onboarding playbook with mutation enabled.
+      when: not opnsense_check_mode | bool
+
+    - name: Report credential-gated check-mode run
+      ansible.builtin.debug:
+        msg:
+          - "Proxmox API credentials are not present."
+          - "VM mutation remains blocked, as expected."
+          - "Bind the Semaphore pve-opnsense-api-token key or set PVE_API_USER, PVE_API_TOKEN_ID, and PVE_API_TOKEN_SECRET."
+      when:
+        - opnsense_check_mode | bool
+        - not pve_api_credentials_present | bool
+
+  tasks:
+    - name: Report OPNsense onboarding target
+      ansible.builtin.debug:
+        msg:
+          - "Target Proxmox node: {{ pve_node }}"
+          - "Target Proxmox host: {{ pve_api_host }}"
+          - "Planned VM name: {{ opnsense_vm_name }}"
+          - "Planned VMID: {{ opnsense_vm_id }}"
+          - "Management bridge: {{ opnsense_management_bridge }}"
+          - "Future trunk bridge: {{ opnsense_trunk_bridge }}"
+          - "Disk: {{ opnsense_disk_storage }} ({{ opnsense_disk_size }})"
+          - "On boot: {{ opnsense_onboot }}"
+          - "Check mode: {{ opnsense_check_mode }}"
+
+    - name: Create the OPNsense VM shell on Alpha when absent
+      ansible.builtin.include_tasks: tasks/create-opnsense-vm.yml
+      when:
+        - pve_api_credentials_present | bool
+        - not opnsense_vm_exists | default(false) | bool
+
+    - name: Report existing OPNsense VM validation result
+      ansible.builtin.debug:
+        msg:
+          - "OPNsense VM {{ opnsense_vm_id }} already exists and was validated as stage-safe."
+          - "No VM creation task was run."
+      when:
+        - pve_api_credentials_present | bool
+        - opnsense_vm_exists | default(false) | bool
+
+    - name: Report post-creation next steps
+      ansible.builtin.debug:
+        msg:
+          - "Boot the VM, complete the OPNsense installer, and enable the API."
+          - "Then export OPNSENSE_API_KEY and OPNSENSE_API_SECRET for ansibleguy.opnsense tasks."
+          - "Use NetBox/IPAM after API health and source-of-truth ownership are confirmed."
+      when: pve_api_credentials_present | bool
