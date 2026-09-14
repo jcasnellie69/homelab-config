@@ -1,0 +1,36 @@
+# D082626 | CHG-PR-RISK-TIER-001 | p.p. claude-sonnet-5 for JC | ct409
+#
+# Review-gate policy, not a contact list. Patterns below define Tier C
+# ("touches live infra, credentials, or CI/automation permissions") --
+# anything matching requires @jcasnellie69's review via branch protection's
+# "Require review from Code Owners". Anything NOT matched here has no
+# required review (Tier A/B) and can auto-merge on green CI.
+#
+# Default posture is deny: unrecognized new paths under deploy/ansible/
+# fall under the broad playbooks/ rule below, so a brand-new playbook is
+# Tier C by default, not Tier A. Only explicitly-listed, known-safe,
+# read-only/check-mode-default playbooks are carved back out.
+#
+# Ordering matters -- CODEOWNERS uses last-match-wins. Broad Tier C rules
+# come first; Tier B carve-outs (no owner) come after so they win.
+
+# --- Tier C: mutation-capable or sensitive by default ---
+/deploy/ansible/playbooks/ @jcasnellie69
+/deploy/ansible/scripts/ @jcasnellie69
+/deploy/ansible/group_vars/ @jcasnellie69
+/deploy/ansible/host_vars/ @jcasnellie69
+/deploy/ansible/inventory/ @jcasnellie69
+/configs/ @jcasnellie69
+/.github/workflows/ @jcasnellie69
+/.github/CODEOWNERS @jcasnellie69
+/ops/systemd/ @jcasnellie69
+/CLAUDE.md @jcasnellie69
+/LANES.md @jcasnellie69
+
+# --- Tier B carve-outs: known-safe, read-only / check-mode-default ---
+# No owner listed = no required review for these specific files, even
+# though they live under the Tier C /deploy/ansible/playbooks/ rule above.
+/deploy/ansible/playbooks/opnsense-preflight.yml
+/deploy/ansible/playbooks/proxmox-readonly-discovery.yml
+/deploy/ansible/playbooks/lab-connectivity.yml
+/deploy/ansible/playbooks/docker-vm-health-check.yml
