@@ -43,6 +43,11 @@ for the Proxmox VE + LXC infrastructure.
    candidate VLAN model, Proxmox trunk intent, and cutover gates.
    - File: opnsense-vlan-port-map.md
 
+7. Docker VM Health Check
+   Documents the alpha/QEMU guest-agent workflow for auditing Docker VM 109,
+   Scrypted plugin health, container state, disk usage, and evidence artifacts.
+   - File: runbooks/docker-vm-health-check.md
+
 ---
 
 ## Purpose of docs/
