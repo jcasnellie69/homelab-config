@@ -1,0 +1,27 @@
+D082626 | CHG-PR-RISK-TIER-001 | p.p. claude-sonnet-5 for JC | ct409
+Change: sync LANES.md onto feat/repo-health-curator, evidence artifact
+
+Per .github/copilot-instructions.md evidence-first requirement (flagged
+via Copilot review comment on this PR after the fact -- this artifact
+backfills it).
+
+Verification performed before landing LANES.md on this branch:
+
+  $ git show origin/main:LANES.md | md5sum
+  0a87e86cebbe6fbf0515d060bab394bc  -
+
+  $ git merge-base --is-ancestor 6950615 <branch>  (per branch, before this PR)
+  main: yes
+  feat/repo-health-curator: no
+  feat/opnsense-staged-deployment: no
+  wip/CHG-NFS-PERSIST-001: no
+  wip/CHG-DOCKER-SCRYPTED-SPACE-20260822: no
+
+  $ md5sum LANES.md   (this branch, after copying from origin/main)
+  0a87e86cebbe6fbf0515d060bab394bc  LANES.md   <- matches exactly, no drift
+
+Intent: LANES.md (HA-0005..HA-0008) exists on origin/main but not on any
+branch where real work actually happens (main has no deploy/ansible/
+tree at all). This PR propagates the existing, operator-approved content
+verbatim -- it does not author or edit governance, per LANES.md's own
+"write: human operator ONLY" rule.
