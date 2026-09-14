@@ -52,3 +52,6 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+## 2026-05-10 - Screen Reader Accessibility in Complex Data Grids
+**Learning:** Complex data grids often use inline filtering mechanisms (like text inputs or select dropdowns in table headers) and icon-only pagination buttons to save space. Without explicit `<label>` elements or accessible names, these inputs are announced generically (e.g., "edit text") by screen readers, making it difficult for visually impaired users to understand their purpose or context within the grid.
+**Action:** Always add explicit `aria-label` attributes to inline filter inputs, select dropdowns, and icon-only pagination buttons within data tables to ensure their purpose is explicitly communicated to assistive technologies.
