@@ -45,6 +45,7 @@ theme:
     - navigation.instant
     - navigation.top
     - navigation.tracking
+    - navigation.path
     - search.suggest
     - search.highlight
     - content.code.copy
