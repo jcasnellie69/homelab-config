@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-08-01 - Pagination Accessibility
+**Learning:** Icon-only pagination controls (like first/prev/next/last arrows) and dynamically generated page number buttons are opaque to screen readers if they lack explicit ARIA labels. Additionally, screen reader users need context on which page is currently active.
+**Action:** Always add `aria-label` to icon-only buttons, `aria-hidden="true"` to decorative icons, and use `aria-current="page"` on the active page number button to ensure full keyboard and screen reader accessibility for pagination components.
