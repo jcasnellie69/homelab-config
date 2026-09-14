@@ -1,0 +1,65 @@
+name: Session Turnover Archive
+
+on:
+  push:
+    paths:
+      - 'turnover/latest.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  archive-turnover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate turnover
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s turnover/latest.md
+          required=(
+            '## Objective and Scope'
+            '## Work Completed'
+            '## Current Implementation State'
+            '## Validation and Evidence'
+            '## Blockers'
+            '## Outstanding Work'
+            '## DO NOT REDO'
+            '## NEXT SESSION START HERE'
+          )
+          for section in "${required[@]}"; do
+            grep -Fq "$section" turnover/latest.md || {
+              echo "Missing required section: $section"
+              exit 1
+            }
+          done
+
+      - name: Archive turnover
+        shell: bash
+        run: |
+          set -euo pipefail
+          stamp="$(date -u +'%Y%m%dT%H%M%SZ')"
+          short_sha="${GITHUB_SHA::8}"
+          mkdir -p turnover/archive
+          archive="turnover/archive/${stamp}-${short_sha}.md"
+          cp turnover/latest.md "$archive"
+          echo "archive=$archive" >> "$GITHUB_ENV"
+
+      - name: Commit archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$archive"
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "archive session turnover ${GITHUB_SHA::8}"
+          git push

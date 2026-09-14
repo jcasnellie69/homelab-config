@@ -1,0 +1,10 @@
+---
+service_role: ipam_source_of_truth_candidate
+vmid: 100
+validation_ports: [22, 80, 443, 8080]
+reachability_state: reachable
+netbox_deployment_status: present
+notes:
+  - The netbox host is an intentional LXC service endpoint.
+  - Keep the host name netbox; inventory group hygiene should rename the group, not the host.
+  - 2026-05-28 validation reached 192.168.4.140 on ports 22, 80, 443, and 8080.

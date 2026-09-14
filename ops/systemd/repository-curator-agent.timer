@@ -1,0 +1,11 @@
+[Unit]
+Description=Run repository checkpoint curator hourly
+
+[Timer]
+OnCalendar=*-*-* *:20:00
+Persistent=true
+AccuracySec=1m
+Unit=repository-curator-agent.service
+
+[Install]
+WantedBy=timers.target
