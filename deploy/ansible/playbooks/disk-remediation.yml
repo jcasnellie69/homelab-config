@@ -1,0 +1,489 @@
+---
+- name: Initialize disk remediation workflow
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  become: false
+  vars:
+    repository_root: >-
+      {{ lookup('env', 'REMEDIATION_REPO_ROOT')
+         | default('/mnt/repos/homelab-config', true) }}
+    target_profiles:
+      - name: homepage
+        vmid: 106
+        telemetry_utilization: 99.93
+        hours_remaining: 0.77
+      - name: watchyourlan
+        vmid: 108
+        telemetry_utilization: 96.99
+        hours_remaining: null
+  tasks:
+    - name: Create unique workflow metadata
+      ansible.builtin.set_fact:
+        remediation_tracking_id: >-
+          disk-{{ ansible_date_time.iso8601_basic_short }}
+        remediation_timestamp: "{{ ansible_date_time.iso8601 }}"
+        remediation_repository_root: "{{ repository_root }}"
+      tags: [always]
+
+    - name: Register VMID-pinned remediation targets
+      ansible.builtin.add_host:
+        name: "{{ item.name }}"
+        groups: remediation_targets
+        ansible_host: 192.168.4.10
+        ansible_user: root
+        ansible_connection: community.proxmox.proxmox_pct_remote
+        ansible_host_key_checking: false
+        proxmox_vmid: "{{ item.vmid }}"
+        telemetry_start_utilization: "{{ item.telemetry_utilization }}"
+        telemetry_hours_remaining: "{{ item.hours_remaining }}"
+      loop: "{{ target_profiles }}"
+      tags: [always]
+
+    - name: Create repository artifact directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0750"
+      loop:
+        - "{{ repository_root }}/artifacts"
+        - "{{ repository_root }}/docs/runbooks"
+      tags: [audit]
+
+    - name: Initialize repository remediation audit trail
+      ansible.builtin.blockinfile:
+        path: "{{ repository_root }}/artifacts/remediation_log.md"
+        create: true
+        mode: "0640"
+        insertafter: EOF
+        marker: "<!-- {mark} {{ remediation_tracking_id }} -->"
+        block: |
+          ## Disk remediation {{ remediation_tracking_id }}
+
+          - Timestamp: {{ remediation_timestamp }}
+          - Tracking ID: `{{ remediation_tracking_id }}`
+          - OTel context: `disk.space`
+          - OTel instance: `disk_space./`
+          - Mountpoint: `/`
+          - Target `homepage`: `99.93%` utilized, `0.77` hours remaining
+          - Target `watchyourlan`: `96.99%` utilized
+          - State: `INITIALIZED`
+      tags: [audit]
+
+- name: Remediate root filesystem depletion
+  hosts: remediation_targets
+  gather_facts: true
+  become: false
+  any_errors_fatal: false
+  vars:
+    target_mountpoint: "/"
+    safe_threshold_percent: 90
+  pre_tasks:
+    - name: Initialize per-host workflow state
+      ansible.builtin.set_fact:
+        remediation_errors: []
+        remediation_status: RUNNING
+        unlinked_open_files: []
+      tags: [preflight]
+
+    - name: Verify the root mount and capture baseline KPI
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / |
+          awk 'NR == 2 {gsub(/%/, "", $5); print $2, $3, $4, $5, $6}'
+      args:
+        executable: /bin/bash
+      register: disk_before
+      changed_when: false
+      check_mode: false
+      failed_when:
+        - disk_before.rc != 0
+        - disk_before.stdout.split() | length != 5
+        - disk_before.stdout.split()[4] != target_mountpoint
+      tags: [preflight]
+
+    - name: Store baseline root filesystem values
+      ansible.builtin.set_fact:
+        disk_before_total_kb: "{{ disk_before.stdout.split()[0] | int }}"
+        disk_before_used_kb: "{{ disk_before.stdout.split()[1] | int }}"
+        disk_before_available_kb: "{{ disk_before.stdout.split()[2] | int }}"
+        disk_before_utilization: "{{ disk_before.stdout.split()[3] | float }}"
+      tags: [preflight]
+
+  tasks:
+    - name: Vacuum systemd journal to two days
+      tags: [cleanup]
+      block:
+        - name: Run journal vacuum
+          ansible.builtin.command:
+            argv: [journalctl, "--vacuum-time=2d"]
+          register: journal_cleanup
+          changed_when: true
+      rescue:
+        - name: Record journal cleanup error
+          ansible.builtin.set_fact:
+            remediation_errors: >-
+              {{ remediation_errors + ['journal: ' +
+                 (ansible_failed_result.stderr
+                  | default(ansible_failed_result.msg, true)
+                  | default('unknown failure', true))] }}
+        - name: Emit journal cleanup error to stderr
+          ansible.builtin.shell: 'printf "%s\n" "$ERROR" >&2'
+          environment:
+            ERROR: "{{ remediation_errors | last }}"
+          changed_when: false
+          failed_when: false
+
+    - name: Measure journal cleanup delta
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / | awk 'NR == 2 {print $4}'
+      args:
+        executable: /bin/bash
+      register: available_after_journal
+      changed_when: false
+      check_mode: false
+      tags: [cleanup]
+
+    - name: Calculate journal cleanup delta
+      ansible.builtin.set_fact:
+        journal_reclaimed_kb: >-
+          {{ [available_after_journal.stdout | int
+              - disk_before_available_kb | int, 0] | max }}
+      tags: [cleanup]
+
+    - name: Purge package manager transaction caches
+      tags: [cleanup]
+      block:
+        - name: Clean APT cache
+          ansible.builtin.apt:
+            clean: true
+          when: ansible_facts.pkg_mgr == 'apt'
+
+        - name: Clean DNF cache
+          ansible.builtin.command:
+            argv: [dnf, clean, all]
+          changed_when: true
+          when: ansible_facts.pkg_mgr in ['dnf', 'dnf5', 'yum']
+
+        - name: Reject unsupported package managers
+          ansible.builtin.fail:
+            msg: "Unsupported package manager: {{ ansible_facts.pkg_mgr }}"
+          when: ansible_facts.pkg_mgr not in ['apt', 'dnf', 'dnf5', 'yum']
+      rescue:
+        - name: Record package cleanup error
+          ansible.builtin.set_fact:
+            remediation_errors: >-
+              {{ remediation_errors + ['package-cache: ' +
+                 (ansible_failed_result.stderr
+                  | default(ansible_failed_result.msg, true)
+                  | default('unknown failure', true))] }}
+        - name: Emit package cleanup error to stderr
+          ansible.builtin.shell: 'printf "%s\n" "$ERROR" >&2'
+          environment:
+            ERROR: "{{ remediation_errors | last }}"
+          changed_when: false
+          failed_when: false
+
+    - name: Measure package cache delta
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / | awk 'NR == 2 {print $4}'
+      args:
+        executable: /bin/bash
+      register: available_after_packages
+      changed_when: false
+      check_mode: false
+      tags: [cleanup]
+
+    - name: Calculate package cache delta
+      ansible.builtin.set_fact:
+        package_reclaimed_kb: >-
+          {{ [available_after_packages.stdout | int
+              - available_after_journal.stdout | int, 0] | max }}
+      tags: [cleanup]
+
+    - name: Purge stale transient files
+      tags: [cleanup]
+      block:
+        - name: Identify unlinked open transient files
+          ansible.builtin.shell: |
+            if command -v lsof >/dev/null 2>&1; then
+              lsof +L1 -- /tmp /var/tmp 2>/dev/null || true
+            fi
+          args:
+            executable: /bin/bash
+          register: unlinked_scan
+          changed_when: false
+
+        - name: Store unlinked descriptor evidence
+          ansible.builtin.set_fact:
+            unlinked_open_files: "{{ unlinked_scan.stdout_lines | default([]) }}"
+
+        - name: Delete transient files older than seven days
+          ansible.builtin.shell: |
+            set -o pipefail
+            find /tmp /var/tmp -xdev \
+              \( -type f -o -type l \) -mtime +7 -print -delete
+          args:
+            executable: /bin/bash
+          register: transient_cleanup
+          changed_when: transient_cleanup.stdout_lines | length > 0
+      rescue:
+        - name: Record transient cleanup error
+          ansible.builtin.set_fact:
+            remediation_errors: >-
+              {{ remediation_errors + ['transient-files: ' +
+                 (ansible_failed_result.stderr
+                  | default(ansible_failed_result.msg, true)
+                  | default('locked descriptor or unknown failure', true))] }}
+        - name: Emit transient cleanup error to stderr
+          ansible.builtin.shell: 'printf "%s\n" "$ERROR" >&2'
+          environment:
+            ERROR: "{{ remediation_errors | last }}"
+          changed_when: false
+          failed_when: false
+
+    - name: Measure transient cleanup delta
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / | awk 'NR == 2 {print $4}'
+      args:
+        executable: /bin/bash
+      register: available_after_transients
+      changed_when: false
+      check_mode: false
+      tags: [cleanup]
+
+    - name: Calculate transient cleanup delta
+      ansible.builtin.set_fact:
+        transient_reclaimed_kb: >-
+          {{ [available_after_transients.stdout | int
+              - available_after_packages.stdout | int, 0] | max }}
+      tags: [cleanup]
+
+    - name: Prune active Docker runtime safely
+      tags: [cleanup]
+      block:
+        - name: Detect active Docker daemon
+          ansible.builtin.command:
+            argv: [systemctl, is-active, docker]
+          register: docker_state
+          changed_when: false
+          failed_when: false
+
+        - name: Prune Docker resources older than 24 hours
+          ansible.builtin.command:
+            argv:
+              - docker
+              - system
+              - prune
+              - -f
+              - --filter
+              - until=24h
+          register: docker_cleanup
+          changed_when: true
+          when: docker_state.rc == 0
+      rescue:
+        - name: Record Docker cleanup error
+          ansible.builtin.set_fact:
+            remediation_errors: >-
+              {{ remediation_errors + ['docker-prune: ' +
+                 (ansible_failed_result.stderr
+                  | default(ansible_failed_result.msg, true)
+                  | default('unknown failure', true))] }}
+        - name: Emit Docker cleanup error to stderr
+          ansible.builtin.shell: 'printf "%s\n" "$ERROR" >&2'
+          environment:
+            ERROR: "{{ remediation_errors | last }}"
+          changed_when: false
+          failed_when: false
+
+    - name: Measure Docker cleanup delta
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / | awk 'NR == 2 {print $4}'
+      args:
+        executable: /bin/bash
+      register: available_after_docker
+      changed_when: false
+      check_mode: false
+      tags: [cleanup]
+
+    - name: Calculate Docker cleanup delta
+      ansible.builtin.set_fact:
+        docker_reclaimed_kb: >-
+          {{ [available_after_docker.stdout | int
+              - available_after_transients.stdout | int, 0] | max }}
+      tags: [cleanup]
+
+    - name: Re-query root disk KPI
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C df -Pk -- / |
+          awk 'NR == 2 {gsub(/%/, "", $5); print $2, $3, $4, $5, $6}'
+      args:
+        executable: /bin/bash
+      register: disk_after
+      changed_when: false
+      check_mode: false
+      failed_when:
+        - disk_after.rc != 0
+        - disk_after.stdout.split() | length != 5
+        - disk_after.stdout.split()[4] != target_mountpoint
+      tags: [verification]
+
+    - name: Calculate post-remediation KPI and per-step yields
+      ansible.builtin.set_fact:
+        disk_after_available_kb: "{{ disk_after.stdout.split()[2] | int }}"
+        disk_after_utilization: "{{ disk_after.stdout.split()[3] | float }}"
+        disk_reclaimed_kb: >-
+          {{ [disk_after.stdout.split()[2] | int
+              - disk_before_available_kb | int, 0] | max }}
+        remediation_step_deltas:
+          - step: systemd journals
+            reclaimed_kb: "{{ journal_reclaimed_kb | int }}"
+          - step: package caches
+            reclaimed_kb: "{{ package_reclaimed_kb | int }}"
+          - step: transient files
+            reclaimed_kb: "{{ transient_reclaimed_kb | int }}"
+          - step: Docker runtime
+            reclaimed_kb: "{{ docker_reclaimed_kb | int }}"
+      tags: [verification]
+
+    - name: Determine highest-yield cleanup step
+      ansible.builtin.set_fact:
+        highest_yield: >-
+          {{ remediation_step_deltas
+             | sort(attribute='reclaimed_kb', reverse=true) | first }}
+        remediation_status: >-
+          {{ 'RESOLVED' if disk_after_utilization | float
+             < safe_threshold_percent else 'ESCALATED' }}
+      tags: [verification]
+
+    - name: Emit structured resolved status
+      ansible.builtin.debug:
+        msg: >-
+          STATUS: RESOLVED
+          tracking_id={{ hostvars['localhost'].remediation_tracking_id }}
+          host={{ inventory_hostname }} mount=/
+          utilization_percent={{ disk_after_utilization }}
+          reclaimed_kb={{ disk_reclaimed_kb }}
+      when: remediation_status == 'RESOLVED'
+      tags: [verification]
+
+    - name: Collect largest root-volume directory trees for review
+      ansible.builtin.shell: |
+        set -o pipefail
+        LC_ALL=C du -x -B1 --max-depth=2 / 2>/dev/null |
+          sort -nr | head -10
+      args:
+        executable: /bin/bash
+      register: largest_directory_trees
+      changed_when: false
+      when: remediation_status == 'ESCALATED'
+      tags: [verification]
+
+    - name: Emit structured escalation status
+      ansible.builtin.debug:
+        msg: >-
+          STATUS: ESCALATED
+          tracking_id={{ hostvars['localhost'].remediation_tracking_id }}
+          host={{ inventory_hostname }} mount=/
+          utilization_percent={{ disk_after_utilization }}
+      when: remediation_status == 'ESCALATED'
+      tags: [verification]
+
+- name: Export evidence and update repository documentation
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  vars:
+    target_hosts: [homepage, watchyourlan]
+    tracking_id: "{{ hostvars['localhost'].remediation_tracking_id }}"
+    timestamp: "{{ hostvars['localhost'].remediation_timestamp }}"
+    repository_root: "{{ hostvars['localhost'].remediation_repository_root }}"
+  tasks:
+    - name: Export unresolved OTel log payloads
+      ansible.builtin.copy:
+        dest: >-
+          {{ repository_root }}/artifacts/disk_triage_{{ item }}_{{ tracking_id }}.otel.json
+        mode: "0640"
+        content: |
+          {{
+            {
+              'resourceLogs': [{
+                'resource': {'attributes': [
+                  {'key': 'service.name', 'value': {'stringValue': 'ansible-disk-remediation'}},
+                  {'key': 'host.name', 'value': {'stringValue': item}},
+                  {'key': 'remediation.tracking_id', 'value': {'stringValue': tracking_id}}
+                ]},
+                'scopeLogs': [{
+                  'scope': {'name': 'disk.triage', 'version': '1.0.0'},
+                  'logRecords': [{
+                    'severityText': 'ERROR',
+                    'body': {'kvlistValue': {'values': [
+                      {'key': 'status', 'value': {'stringValue': hostvars[item].remediation_status | default('ERROR')}},
+                      {'key': 'mountpoint', 'value': {'stringValue': '/'}},
+                      {'key': 'utilization_percent', 'value': {'doubleValue': hostvars[item].disk_after_utilization | default(0) | float}},
+                      {'key': 'top_directories_json', 'value': {'stringValue': hostvars[item].largest_directory_trees.stdout_lines | default([]) | to_json}},
+                      {'key': 'errors_json', 'value': {'stringValue': hostvars[item].remediation_errors | default(['host did not complete']) | to_json}}
+                    ]}}
+                  }]
+                }]
+              }]
+            } | to_nice_json
+          }}
+      loop: "{{ target_hosts }}"
+      when: hostvars[item].remediation_status | default('ERROR') != 'RESOLVED'
+      tags: [docs]
+
+    - name: Update disk triage runbook insights
+      ansible.builtin.blockinfile:
+        path: "{{ repository_root }}/docs/runbooks/disk_triage_insights.md"
+        create: true
+        mode: "0640"
+        insertafter: EOF
+        marker: "<!-- {mark} {{ tracking_id }} {{ item }} -->"
+        block: |
+          ## {{ timestamp }} — {{ item }}
+
+          - Tracking ID: `{{ tracking_id }}`
+          - Mountpoint: `/`
+          - Starting OTel utilization: `{{ hostvars[item].telemetry_start_utilization }}%`
+          - Live baseline utilization: `{{ hostvars[item].disk_before_utilization | default('unavailable') }}%`
+          - Final utilization: `{{ hostvars[item].disk_after_utilization | default('unavailable') }}%`
+          - Reclaimed: `{{ hostvars[item].disk_reclaimed_kb | default(0) }} KiB`
+          - Outcome: `{{ hostvars[item].remediation_status | default('ERROR') }}`
+          {% if hostvars[item].remediation_status | default('ERROR') == 'RESOLVED'
+                and hostvars[item].remediation_errors | default([]) | length == 0 %}
+          - Highest-yield step: `{{ hostvars[item].highest_yield.step }}`
+          - Highest step delta: `{{ hostvars[item].highest_yield.reclaimed_kb }} KiB`
+          {% else %}
+          - Error strings: `{{ hostvars[item].remediation_errors | default(['host did not complete']) | to_json }}`
+          - Next iteration: review the OTel evidence, resolve owning services
+            for unlinked descriptors, and investigate the largest root-volume
+            trees before expanding cleanup scope.
+          {% endif %}
+      loop: "{{ target_hosts }}"
+      tags: [docs]
+
+    - name: Finalize remediation audit trail
+      ansible.builtin.blockinfile:
+        path: "{{ repository_root }}/artifacts/remediation_log.md"
+        create: true
+        mode: "0640"
+        insertafter: EOF
+        marker: "<!-- {mark} {{ tracking_id }} outcome -->"
+        block: |
+          ### Outcome {{ tracking_id }}
+
+          {% for target in target_hosts %}
+          - Target: `{{ target }}`
+            - Status: `{{ hostvars[target].remediation_status | default('ERROR') }}`
+            - Final utilization: `{{ hostvars[target].disk_after_utilization | default('unavailable') }}%`
+            - Reclaimed: `{{ hostvars[target].disk_reclaimed_kb | default(0) }} KiB`
+            - Errors: `{{ hostvars[target].remediation_errors | default(['host did not complete']) | to_json }}`
+          {% endfor %}
+      tags: [docs]

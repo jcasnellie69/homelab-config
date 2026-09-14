@@ -1,0 +1,29 @@
+[Unit]
+Description=Policy-driven repository checkpoint and push agent
+Documentation=file:/mnt/repos/homelab-config/skills/repo-health-curator/SKILL.md
+After=network-online.target repository-scan-agent.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/mnt/repos/homelab-config
+ExecStart=/usr/bin/python3 /mnt/repos/homelab-config/scripts/reporting/curate_repositories.py
+Nice=10
+IOSchedulingClass=idle
+TimeoutStartSec=30min
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadOnlyPaths=/srv
+ReadWritePaths=/mnt/repos /srv/artifacts/hc
+UMask=0027
+Environment=GIT_TERMINAL_PROMPT=0
+Environment=LC_ALL=C.UTF-8
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

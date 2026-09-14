@@ -1,0 +1,64 @@
+---
+# DATE       CHGID    REASON                                        USER  SYSTEM
+# 2026-07-12 CR-0414  Deploy scripts/hc/* from the CT409 checkout   JC    alpha
+#                     (source of truth) to Proxmox hosts. Alpha
+#                     previously had its own independent writable
+#                     git checkout of homelab-config that got
+#                     hand-edited locally (uncommitted hardening in
+#                     hc-pve-guests.sh, a local path patch in the hc
+#                     wrapper) and drifted from origin. This playbook
+#                     replaces that workflow: content only ever flows
+#                     from this repo, pushed by Ansible, never edited
+#                     in place on the target. See CR-0415 for the
+#                     matching decommission of alpha's local checkout.
+- name: Deploy HC pipeline scripts to Proxmox hosts
+  hosts: proxmox
+  gather_facts: false
+  become: false
+  vars:
+    repository_root: /mnt/repos/homelab-config
+    # NOTE: group_vars/proxmox.yml sets this same default, but this repo's
+    # group_vars/ directory isn't on a path ansible-playbook auto-loads
+    # (it's a sibling of both inventory/ and playbooks/, not of either) -
+    # confirmed by reproducing with a minimal debug-var playbook. Setting
+    # explicitly here rather than relying on that until it's fixed repo-wide.
+    hc_deploy_root: /srv/homelab-share/homelab-config
+  tasks:
+    - name: Ensure remote scripts/hc directory exists
+      ansible.builtin.file:
+        path: "{{ hc_deploy_root }}/scripts/hc"
+        state: directory
+        owner: root
+        group: root
+        mode: "0750"
+
+    - name: Deploy hc-* check scripts and the systemd scanner
+      ansible.builtin.copy:
+        src: "{{ repository_root }}/scripts/hc/{{ item }}"
+        dest: "{{ hc_deploy_root }}/scripts/hc/{{ item }}"
+        owner: root
+        group: root
+        mode: "0750"
+      loop:
+        - hc-master.sh
+        - hc-pve-guests.sh
+        - hc-storage-zfs.sh
+        - hc-netflow-basic.sh
+        - hc-artifacts-index.sh
+        - pve-lxc-systemd-scan.sh
+        - hc-guest-disk-and-units.sh
+
+    - name: Deploy hc entrypoint wrapper
+      ansible.builtin.copy:
+        src: "{{ repository_root }}/scripts/hc/hc"
+        dest: "{{ hc_deploy_root }}/scripts/hc/hc"
+        owner: root
+        group: root
+        mode: "0750"
+
+    - name: Symlink /usr/local/bin/hc to the deployed entrypoint
+      ansible.builtin.file:
+        src: "{{ hc_deploy_root }}/scripts/hc/hc"
+        dest: /usr/local/bin/hc
+        state: link
+        force: true

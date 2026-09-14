@@ -1,0 +1,33 @@
+---
+- name: Validate Proxmox API token access for OPNsense automation
+  hosts: localhost
+  gather_facts: false
+  vars:
+    pve_api_host: "{{ lookup('ansible.builtin.env', 'PVE_API_HOST') | default('192.168.4.10', true) }}"
+    pve_api_token_full: "{{ lookup('ansible.builtin.env', 'PVE_API_TOKEN_FULL') | default('ansible@pve!opnsense-automation', true) }}"
+    pve_api_token_secret: "{{ lookup('ansible.builtin.env', 'PVE_API_TOKEN_SECRET') }}"
+
+  tasks:
+    - name: Require token secret from environment
+      ansible.builtin.assert:
+        that:
+          - pve_api_token_secret | length > 0
+        fail_msg: "Set PVE_API_TOKEN_SECRET before validating Proxmox API token access."
+
+    - name: Query Proxmox API version
+      ansible.builtin.uri:
+        url: "https://{{ pve_api_host }}:8006/api2/json/version"
+        method: GET
+        validate_certs: false
+        headers:
+          Authorization: "PVEAPIToken={{ pve_api_token_full }}={{ pve_api_token_secret }}"
+      register: pve_version
+      no_log: true
+
+    - name: Report authenticated Proxmox API validation
+      ansible.builtin.debug:
+        msg:
+          - "Authenticated Proxmox API version discovery succeeded."
+          - "Host: {{ pve_api_host }}"
+          - "Token: {{ pve_api_token_full }}"
+          - "Version: {{ pve_version.json.data.version | default('unknown') }}"
