@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2024-10-24 - Modal Close Button Accessibility and HTML Validation
+**Learning:** Icon-only elements like spans representing a close (X) action that are given keyboard focus (via tabindex) will be completely opaque to screen reader users unless explicitly provided with a semantic `role="button"` and a descriptive `aria-label`. Furthermore, duplicate IDs for inputs break the accessibility tree map and JS selection.
+**Action:** When inspecting modals and custom interactive elements, always verify that non-semantic tags are paired with proper ARIA attributes to communicate their function, and validate the page for duplicate element IDs.
