@@ -1,0 +1,18 @@
+Timestamp: 2026-10-01T17:53Z
+Change: Merged origin/main into palette/pagination-accessibility-7252971696251100623.
+
+Conflict:
+- skills/geofeed-tuner/scripts/templates/index.html had competing pagination markup.
+- Kept the branch's accessible icon hiding, labeled page-number group, and aria-current state.
+
+Commands:
+- git fetch origin main:refs/remotes/origin/main
+- git merge --no-commit --no-ff origin/main
+
+Verification:
+- Static template assertions passed: no conflict markers; icon labels, decorative icon hiding, the labeled page group, and current-page state are present.
+- The resolved template and artifact pass `git diff --check`; the full merge diff has unrelated trailing whitespace in `docs/session-logs/20260803-ct409-provisioning-evidence.md:23` from `origin/main`.
+- No targeted test suite exists for the template; the repository contribution guide lists markdownlint and shellcheck only.
+- `scripts/reporting/create_artifact.sh` could not write to `/srv/artifacts/hc` in this sandbox (permission denied); this tracked artifact records the change here.
+- The remote secret-scanning service was unavailable; a local high-confidence scan found no private-key or common provider-token patterns in the 86 incoming paths, including the archived checkout.
+- ShellCheck ran on the merged shell scripts and reported warnings/info in the newly merged `scripts/hc/hc-guest-disk-and-units.sh`; these upstream findings are unrelated to the pagination conflict and were left unchanged.

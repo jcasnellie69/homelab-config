@@ -1,0 +1,17 @@
+---
+# D080926 | CHG-OPNSENSE-GATE2-001 | attach WAN + LAN-test NICs to VM 401 | JC | alpha
+
+- name: Attach net1 (WAN) and net2 (LAN-test) to the OPNsense VM
+  community.proxmox.proxmox_kvm:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_api_user_runtime }}"
+    api_token_id: "{{ pve_api_token_id_runtime }}"
+    api_token_secret: "{{ pve_api_token_secret_runtime }}"
+    node: "{{ pve_node }}"
+    vmid: "{{ opnsense_vm_id }}"
+    net: "{{ opnsense_gate2_vm_net }}"
+    update: true
+    update_unsafe: true
+    state: present
+  check_mode: "{{ opnsense_gate2_check_mode }}"
+  no_log: true

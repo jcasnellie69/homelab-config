@@ -27,6 +27,27 @@ for the Proxmox VE + LXC infrastructure.
    Defines governance for exporters, Telegraf placement, and pipeline integrity.
    - File: policy-observability.md
 
+4. OPNsense Staged Deployment
+   Defines the low-risk Proxmox VM stage, Semaphore playbooks, validation
+   checkpoints, DHCP/DNS transition considerations, and rollback checks.
+   - File: opnsense-staged-deployment.md
+
+5. Proxmox API Token Bootstrap
+   Defines the SSH bootstrap workflow for creating the Proxmox automation user,
+   least-privilege role, API token, Semaphore key storage, validation, and
+   rollback commands.
+   - File: proxmox-api-token-bootstrap.md
+
+6. OPNsense VLAN and Port Map
+   Refactors the OPNsense rollout around the current MokerLink 1 MAC table,
+   candidate VLAN model, Proxmox trunk intent, and cutover gates.
+   - File: opnsense-vlan-port-map.md
+
+7. Docker VM Health Check
+   Documents the alpha/QEMU guest-agent workflow for auditing Docker VM 109,
+   Scrypted plugin health, container state, disk usage, and evidence artifacts.
+   - File: runbooks/docker-vm-health-check.md
+
 ---
 
 ## Purpose of docs/

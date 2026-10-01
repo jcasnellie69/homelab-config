@@ -1,0 +1,52 @@
+---
+- name: Validate non-destructive OPNsense deployment prerequisites
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - ../group_vars/future_opnsense.yml
+
+  tasks:
+    - name: Confirm stage 1 remains non-destructive by default
+      ansible.builtin.assert:
+        that:
+          - opnsense_check_mode | bool
+          - opnsense_management_bridge == "vmbr0"
+          - opnsense_trunk_bridge == "vmbr1"
+          - not opnsense_trunk_bridge_required | bool
+        fail_msg: >-
+          OPNsense preflight expected check-mode stage 1 using vmbr0 for
+          management only and vmbr1 as a future, not-yet-required trunk bridge.
+
+    - name: Probe required baseline services from the controller
+      ansible.builtin.wait_for:
+        host: "{{ item.0.value.host }}"
+        port: "{{ item.1 }}"
+        timeout: 3
+        connect_timeout: 1
+        state: started
+      loop: "{{ opnsense_preflight_required_ports | dict2items | subelements('value.ports') }}"
+      register: opnsense_preflight_ports
+      failed_when: false
+      changed_when: false
+      loop_control:
+        label: "{{ item.0.key }} {{ item.0.value.host }}:{{ item.1 }}"
+
+    - name: Summarize preflight reachability
+      ansible.builtin.debug:
+        msg: >-
+          {{ item.item.0.key }} {{ item.item.0.value.host }}:{{ item.item.1 }}
+          => {{ 'reachable' if not item.failed else 'unreachable' }}
+      loop: "{{ opnsense_preflight_ports.results }}"
+      loop_control:
+        label: "{{ item.item.0.key }}:{{ item.item.1 }}"
+
+    - name: Report staged OPNsense VM parameters
+      ansible.builtin.debug:
+        msg:
+          - "VM: {{ opnsense_vm_name }} / {{ opnsense_vm_id }}"
+          - "CPU/RAM: {{ opnsense_sockets }} socket(s), {{ opnsense_cores }} core(s), {{ opnsense_memory_mb }} MB"
+          - "Disk: {{ opnsense_disk_storage }} {{ opnsense_disk_size }}"
+          - "ISO: {{ opnsense_iso_storage }}:iso/{{ opnsense_iso_image }}"
+          - "Management NIC: {{ opnsense_vm_net.net0 }}"
+          - "Future trunk bridge: {{ opnsense_trunk_bridge }}; not attached in stage 1"
+          - "Rollback checks: {{ opnsense_rollback_checks }}"

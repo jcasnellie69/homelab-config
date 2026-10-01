@@ -1,0 +1,17 @@
+---
+homelab_management_subnet: 192.168.4.0/24
+homelab_default_gateway: 192.168.4.1
+homelab_default_vlan: 1
+homelab_network_artifact_repo: artifacts/network-inventory.json
+homelab_authoritative_sources:
+  repo: deploy/ansible/inventory/generated.yml
+  network: artifacts/network-inventory.json
+  orchestration: docs/orchestration.md
+  metadata: configs/automation-metadata.json
+homelab_bridge_model:
+  primary_bridge: vmbr0
+  vlan_aware: true
+  allowed_vids: 2-4094
+homelab_notes:
+  - Prefer live reachability checks over historical DHCP artifacts.
+  - Do not apply VLAN changes from automation until switch and Proxmox configs are confirmed live.

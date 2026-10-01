@@ -1,0 +1,7 @@
+---
+collections:
+  - name: community.proxmox
+  - name: netbox.netbox
+  - name: ansibleguy.opnsense
+  - name: community.general
+  - name: ansible.posix

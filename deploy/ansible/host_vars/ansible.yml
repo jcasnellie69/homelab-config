@@ -1,0 +1,8 @@
+---
+service_role: automation_control_node
+vmid: 111
+reachability_state: blocked
+ansible_host: null
+notes:
+  - Control-node container exists in inventory but is currently recorded as stopped with no confirmed management IP.
+  - Use deploy/ansible/bootstrap-control-node.sh once the container is started or a replacement control node is selected.

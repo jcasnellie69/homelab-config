@@ -1,0 +1,111 @@
+---
+# DATE       CHGID    REASON                                        USER  SYSTEM
+# 2026-07-12 CR-0415  Decommission alpha's independent, writable    JC    alpha
+#                     git checkout of homelab-config. Alpha was
+#                     found tracking origin/master directly (dirty:
+#                     modified hc/hc-pve-guests.sh, three symlinks
+#                     turned into real files, untracked backup
+#                     files) - a second writable checkout CT409's
+#                     CLAUDE.md didn't document as existing. Ansible
+#                     (this repo, on CT409) is the only source of
+#                     truth going forward; targets receive content,
+#                     they don't originate it. Backs up the full
+#                     working tree (both to the target's own
+#                     /srv/artifacts and back to the controller)
+#                     before removing .git, per the standing order
+#                     to never overwrite/decommission without a
+#                     backup. Only removes .git - all other files in
+#                     the directory (mkdocs build tree, unrelated
+#                     working docs) are left exactly where they are.
+- name: Back up and decommission independent homelab-config git checkouts
+  hosts: proxmox
+  gather_facts: false
+  become: false
+  vars:
+    # See NOTE in hc-pipeline-deploy.yml: group_vars/proxmox.yml is not
+    # actually on ansible-playbook's auto-load path in this repo, so this
+    # is set explicitly rather than relied upon from there.
+    hc_deploy_root: /srv/homelab-share/homelab-config
+    local_backup_dir: "{{ playbook_dir }}/../../../artifacts/decommissioned-checkouts"
+  tasks:
+    - name: Check whether an independent git checkout exists at the deploy root
+      ansible.builtin.stat:
+        path: "{{ hc_deploy_root }}/.git"
+      register: git_dir_stat
+
+    - name: Stop here if there is no independent checkout to decommission
+      ansible.builtin.meta: end_host
+      when: not git_dir_stat.stat.exists
+
+    # lookup('pipe', 'date ...') is not memoized - referencing it in two
+    # separate vars/tasks yields two different timestamps a few seconds
+    # apart (hit this for real: the archive task wrote one filename, the
+    # fetch task looked for another and failed with the .git-removal step
+    # never running). set_fact computes it once and freezes it.
+    - name: Compute a single decommission timestamp for this run
+      ansible.builtin.set_fact:
+        decommission_stamp: "{{ lookup('pipe', 'date +%Y%m%d-%H%M%S') }}"
+
+    - name: Compute the backup archive path from that fixed timestamp
+      ansible.builtin.set_fact:
+        backup_archive: "/srv/artifacts/hc-checkout-backup/{{ inventory_hostname }}-homelab-config-{{ decommission_stamp }}.tar.gz"
+
+    - name: Ensure on-host backup directory exists
+      ansible.builtin.file:
+        path: /srv/artifacts/hc-checkout-backup
+        state: directory
+        owner: root
+        group: root
+        mode: "0750"
+
+    - name: Archive the full working tree (tracked, modified, and untracked files) before touching anything
+      community.general.archive:
+        path: "{{ hc_deploy_root }}"
+        dest: "{{ backup_archive }}"
+        format: gz
+        mode: "0640"
+
+    - name: Ensure a controller-side backup directory exists
+      ansible.builtin.file:
+        path: "{{ local_backup_dir }}"
+        state: directory
+        mode: "0750"
+      delegate_to: localhost
+
+    - name: Pull a copy of the archive back to the controller (belt-and-suspenders backup)
+      ansible.builtin.fetch:
+        src: "{{ backup_archive }}"
+        dest: "{{ local_backup_dir }}/"
+        flat: true
+
+    - name: Remove git metadata so this checkout can no longer be committed/pushed independently
+      ansible.builtin.file:
+        path: "{{ hc_deploy_root }}/.git"
+        state: absent
+
+    - name: Drop a marker explaining the directory is now Ansible-managed only
+      ansible.builtin.copy:
+        dest: "{{ hc_deploy_root }}/DECOMMISSIONED_CHECKOUT.md"
+        owner: root
+        group: root
+        mode: "0640"
+        content: |
+          # This directory is no longer an independent git checkout
+
+          Decommissioned: {{ decommission_stamp }} (CR-0415)
+
+          Source of truth for scripts/hc/* is now the CT409 checkout of
+          homelab-config (/mnt/repos/homelab-config), deployed here by
+          deploy/ansible/playbooks/hc-pipeline-deploy.yml. Do not hand-edit
+          files under scripts/hc/ on this host - changes made here will be
+          overwritten on the next deploy run and will not be preserved
+          anywhere else.
+
+          A full backup of this directory as it stood before decommission
+          (including uncommitted changes and untracked files) was archived to:
+            - {{ backup_archive }} (on this host)
+            - artifacts/decommissioned-checkouts/ (on the CT409 controller)
+
+          Non-hc content found in this directory at decommission time
+          (mkdocs build tree, "cut sheet.xlsx", etc.) was left in place
+          untouched and was out of scope for this change.

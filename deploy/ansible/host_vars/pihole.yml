@@ -1,0 +1,10 @@
+---
+service_role: dns_infra
+vmid: 115
+validation_ports: [22, 53, 80]
+reachability_state: reachable
+notes:
+  - DNS, HTTP, and SSH were all reachable during the latest controller validation.
+  - "Corrected D080826 (CHG-PR128-UNBLOCK-001): vmid 109 was stale and
+     actually belongs to the Docker VM (192.168.4.76); Pi-hole is LXC 115
+     on Charlie, not VM 109 on alpha."
