@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-10-25 - Duplicate Form Inputs Accessibility Impact
+**Learning:** Having duplicate form elements with the same ID or identical interactive elements in the DOM (like two identically functioning checkboxes in the same table row) breaks the accessibility tree map. Screen readers announce duplicate controls, confusing users, and duplicate IDs cause JavaScript selection bugs that interfere with keyboard navigation and focus management.
+**Action:** Always verify that form inputs have unique IDs and that interactive UI controls (like row selection checkboxes) are not duplicated in the DOM to ensure a clean, understandable accessibility tree.
