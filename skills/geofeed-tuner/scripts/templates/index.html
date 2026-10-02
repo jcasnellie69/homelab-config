@@ -736,7 +736,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <span><i class="bi bi-list-ul" style="margin-right: 10px;"></i>Entries</span>
                                 <div class="mode-toggle-container">
-                                    <div class="mode-toggle" id="modeToggle" onclick="toggleMode()" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleMode(); }">
+                                    <div class="mode-toggle" id="modeToggle" role="button" aria-label="Toggle tuning mode" onclick="toggleMode()" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleMode(); }">
                                         <span class="mode-toggle-text active" id="viewingText">Viewing Mode</span>
                                         <div class="mode-toggle-slider"></div>
                                         <span class="mode-toggle-text" id="tuningText">Tuning Mode</span>
@@ -841,7 +841,7 @@
                     <div class="issues-header">
                         <strong>Issues:</strong>
                         {{if .Tunable}}
-                        <button class="tune-all-btn" onclick="handleTuneButtonClick(this)">Tune</button>
+                        <button class="tune-all-btn" aria-label="Tune row {{.Line}}" onclick="handleTuneButtonClick(this)">Tune</button>
                         {{end}}
                     </div>
                     {{range .Messages}}
@@ -893,7 +893,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <span><i class="bi bi-map-fill" style="margin-right: 10px;"></i>Geographic Coverage Map</span>
                             <div class="mode-toggle-container" style="font-size: 1em;">
-                                <div class="mode-toggle" id="mapModeToggle" onclick="switchMapMode()" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchMapMode();}" style="width: 170px;">
+                                <div class="mode-toggle" id="mapModeToggle" role="button" aria-label="Toggle map mode between BBox and H3 Cells" onclick="switchMapMode()" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();switchMapMode();}" style="width: 170px;">
                                     <span class="mode-toggle-text active" id="mapModeBboxText">BBox</span>
                                     <div class="mode-toggle-slider" style="width: 81px;"></div>
                                     <span class="mode-toggle-text" id="mapModeH3Text">H3 Cells</span>
@@ -912,7 +912,7 @@
         <div class="modal-content" tabindex="0">
             <h2>
                 <i class="bi bi-geo-alt" style="margin-right: 10px;"></i>Location Matches
-                <span class="close" tabindex="0">&times;</span>
+                <span class="close" role="button" aria-label="Close modal" tabindex="0">&times;</span>
             </h2>
             <div id="matchesList" class="matches-container"></div>
         </div>
