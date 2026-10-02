@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2024-05-18 - Missing ARIA labels and duplicate IDs in form elements
+**Learning:** Found duplicate IDs for form inputs which can break accessibility tree map and interfere with JavaScript selection.
+**Action:** Remove duplicate inputs with same ID.
