@@ -55,3 +55,7 @@
 ## 2026-07-14 - Icon-only Button Accessibility
 **Learning:** Icon-only buttons (like pagination controls) that only use a `title` attribute for tooltips are insufficient for screen readers. The `title` attribute is often ignored by assistive technologies, making the button's purpose unclear.
 **Action:** Always add an `aria-label` to icon-only buttons to provide a clear accessible name, and use `aria-hidden="true"` on the icon itself to prevent screen readers from announcing meaningless text or font-icon characters.
+
+## 2025-10-25 - Duplicate Form Inputs Accessibility Impact
+**Learning:** Having duplicate form elements with the same ID or identical interactive elements in the DOM (like two identically functioning checkboxes in the same table row) breaks the accessibility tree map. Screen readers announce duplicate controls, confusing users, and duplicate IDs cause JavaScript selection bugs that interfere with keyboard navigation and focus management.
+**Action:** Always verify that form inputs have unique IDs and that interactive UI controls (like row selection checkboxes) are not duplicated in the DOM to ensure a clean, understandable accessibility tree.
