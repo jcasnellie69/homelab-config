@@ -52,3 +52,7 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-02-14 - Remove Duplicate DOM Elements
+**Learning:** Duplicate IDs (`id="filterStatus"`) and identical sibling interactive elements (duplicate row checkboxes) break the accessibility tree map and interfere with JavaScript selection.
+**Action:** Ensure templates do not accidentally duplicate elements during development; always check for duplicate element IDs and interactive elements in tables.
