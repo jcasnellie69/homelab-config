@@ -9,6 +9,7 @@
 #                      units.sh). Neither host disk/mem nor
 #                      guest failed-unit state was checked
 #                      by this orchestrator before.
+# 2026-10-16 CHG-137  Add codex CLI presence/update check   JC    PVE
 #===================================================================
 
 set -euo pipefail
@@ -53,6 +54,7 @@ run_step "Storage (ZFS)"     "${BASE_DIR}/scripts/hc/hc-storage-zfs.sh"         
 run_step "NetFlow Basic"     "${BASE_DIR}/scripts/hc/hc-netflow-basic.sh"        "${RUN_DIR}/netflow-basic.txt"
 run_step "LXC Systemd Scan"  "${BASE_DIR}/scripts/hc/pve-lxc-systemd-scan.sh"    "${RUN_DIR}/lxc-systemd-scan.txt"
 run_step "Guest Disk/Units"  "${BASE_DIR}/scripts/hc/hc-guest-disk-and-units.sh" "${RUN_DIR}/guest-disk-and-units.txt"
+run_step "Codex CLI"        "${BASE_DIR}/scripts/hc/hc-codex-cli.sh"            "${RUN_DIR}/codex-cli.txt"
 
 echo
 echo "=== HC COMPLETE ==="
