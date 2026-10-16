@@ -1,6 +1,6 @@
 1. **Fix Duplicate `id="filterStatus"`**:
-   - Issue: The frontend template `skills/geofeed-tuner/scripts/templates/index.html` has two `<select>` tags with the `id="filterStatus"` on lines 782 and 783. This breaks the accessibility tree and affects element selection for keyboard navigation and screen readers.
-   - Action: Remove the duplicate `<select>` tag on line 782, leaving only the one on line 783 which has a better formatted `aria-label` ("Filter by Status").
+   - Issue: The frontend template `skills/geofeed-tuner/scripts/templates/index.html` previously contained two `<select>` tags with the `id="filterStatus"`; the duplicate has now been removed.
+   - Action: Keep the single `<select id="filterStatus">` with the `aria-label="Filter by Status"`.
 
 2. **Add `aria-expanded` and Keyboard Enter/Space Support Details**:
    - Wait, `tabindex` is on `.expandable-row`, it can be opened with Enter/Space as seen in `row.addEventListener('keydown'...)`. Let's ensure this is just left as is, but duplicate IDs is a clear UX win and bug fix.
