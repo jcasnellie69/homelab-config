@@ -52,6 +52,10 @@
 ## 2026-04-26 - Navigation Breadcrumbs
 **Learning:** In deeply nested documentation structures (like MkDocs sites), users can easily lose track of their current location within the hierarchy. Adding breadcrumbs improves orientation and provides a quick way to navigate back up the tree.
 **Action:** Always enable `navigation.path` in `mkdocs.yml` when configuring the Material for MkDocs theme to enhance usability and navigational context.
+
+## 2025-05-25 - Duplicate DOM IDs breaking Accessibility
+**Learning:** Having duplicate DOM element IDs (like two form inputs with the same ID) breaks the accessibility tree map and causes screen readers to misinterpret form controls or completely skip elements. It also interferes with JavaScript selection.
+**Action:** Always check for and remove duplicate element IDs in HTML templates, especially for interactive form controls, to ensure a robust and accessible DOM structure.
 ## 2026-07-14 - Icon-only Button Accessibility
 **Learning:** Icon-only buttons (like pagination controls) that only use a `title` attribute for tooltips are insufficient for screen readers. The `title` attribute is often ignored by assistive technologies, making the button's purpose unclear.
 **Action:** Always add an `aria-label` to icon-only buttons to provide a clear accessible name, and use `aria-hidden="true"` on the icon itself to prevent screen readers from announcing meaningless text or font-icon characters.
