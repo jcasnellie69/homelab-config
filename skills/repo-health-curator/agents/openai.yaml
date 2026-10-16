@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Health Curator"
+  short_description: "Curate repository backlog into safe checkpoint PRs"
+  default_prompt: "Use $repo-health-curator to inspect repository drift, protect secrets, and curate checkpoint branches into reviewable pull requests."

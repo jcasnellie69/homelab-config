@@ -1,0 +1,29 @@
+---
+- name: Show validation target
+  ansible.builtin.debug:
+    msg:
+      - "Host: {{ inventory_hostname }}"
+      - "Address: {{ ansible_host | default('unset') }}"
+      - "Ports: {{ validation_ports | default([]) | join(', ') }}"
+
+- name: Probe expected ports from the controller
+  ansible.builtin.wait_for:
+    host: "{{ ansible_host }}"
+    port: "{{ item }}"
+    timeout: 3
+    connect_timeout: 1
+    state: started
+  delegate_to: localhost
+  register: lab_connectivity_results
+  failed_when: false
+  changed_when: false
+  loop: "{{ validation_ports | default([]) }}"
+  when: ansible_host is defined and ansible_host is not none
+
+- name: Summarize connectivity results
+  ansible.builtin.debug:
+    msg: >-
+      Port {{ item.item }} => {{ 'reachable' if not item.failed else 'unreachable' }}
+  loop: "{{ lab_connectivity_results.results | default([]) }}"
+  loop_control:
+    label: "{{ item.item }}"
