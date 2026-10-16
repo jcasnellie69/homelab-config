@@ -743,7 +743,7 @@ html, body {
   </button>
 
   <!-- Help -->
-  <button class="help-btn" id="help-btn" title="Help">?</button>
+  <button class="help-btn" id="help-btn" title="Help" aria-label="Help">?</button>
 </div>
 
 <!-- ── Canvas ──────────────────────────────────────────────────── -->
@@ -796,7 +796,7 @@ html, body {
 
 <!-- ── Keyboard shortcuts panel ────────────────────────────────── -->
 <div class="shortcuts-panel" id="shortcuts-panel">
-  <button class="close-shortcuts" id="close-shortcuts">&times;</button>
+  <button class="close-shortcuts" id="close-shortcuts" aria-label="Close shortcuts panel">&times;</button>
   <h3>Keyboard Shortcuts</h3>
   <div class="shortcut-row"><span>Select / Move</span><kbd>V</kbd></div>
   <div class="shortcut-row"><span>Pen</span><kbd>P</kbd></div>
@@ -814,9 +814,9 @@ html, body {
 
 <!-- ── Zoom indicator ──────────────────────────────────────────── -->
 <div class="zoom-indicator">
-  <button id="zoom-out-btn" title="Zoom out">&minus;</button>
+  <button id="zoom-out-btn" title="Zoom out" aria-label="Zoom out">&minus;</button>
   <span id="zoom-level">100%</span>
-  <button id="zoom-in-btn" title="Zoom in">+</button>
+  <button id="zoom-in-btn" title="Zoom in" aria-label="Zoom in">+</button>
   <button id="fit-btn" title="Fit to content" style="font-size:11px;width:auto;padding:0 8px;">Fit</button>
 </div>
 
@@ -1633,6 +1633,7 @@ html, body {
     const del = document.createElement('button');
     del.className = 'note-delete';
     del.textContent = '\u00d7';
+    del.setAttribute('aria-label', 'Delete note');
     del.addEventListener('click', () => {
       saveState();
       stickyNotes = stickyNotes.filter(n => n.id !== note.id);
