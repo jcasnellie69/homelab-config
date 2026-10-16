@@ -1,0 +1,47 @@
+---
+# D080926 | CHG-OPNSENSE-GATE2-001 | create WAN + LAN-test bridges | JC | alpha
+
+- name: Stage vmbr1 (WAN, no IP) over the AT&T-facing NIC
+  community.proxmox.proxmox_node_network:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_api_user_runtime }}"
+    api_token_id: "{{ pve_api_token_id_runtime }}"
+    api_token_secret: "{{ pve_api_token_secret_runtime }}"
+    node: "{{ pve_node }}"
+    iface: "{{ opnsense_wan_bridge }}"
+    type: bridge
+    bridge_ports: "{{ opnsense_wan_nic }}"
+    bridge_vlan_aware: false
+    autostart: true
+    state: present
+  check_mode: "{{ opnsense_gate2_check_mode }}"
+  no_log: true
+
+- name: Stage vmbr2 (LAN-test, VLAN 80 only, no IP) over the MokerLink-facing NIC
+  community.proxmox.proxmox_node_network:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_api_user_runtime }}"
+    api_token_id: "{{ pve_api_token_id_runtime }}"
+    api_token_secret: "{{ pve_api_token_secret_runtime }}"
+    node: "{{ pve_node }}"
+    iface: "{{ opnsense_lan_test_bridge }}"
+    type: bridge
+    bridge_ports: "{{ opnsense_lan_test_nic }}"
+    bridge_vlan_aware: true
+    bridge_vids: "{{ opnsense_lan_test_vlan }}"
+    autostart: true
+    state: present
+  check_mode: "{{ opnsense_gate2_check_mode }}"
+  no_log: true
+
+- name: Apply staged network changes on alpha
+  community.proxmox.proxmox_node_network:
+    api_host: "{{ pve_api_host }}"
+    api_user: "{{ pve_api_user_runtime }}"
+    api_token_id: "{{ pve_api_token_id_runtime }}"
+    api_token_secret: "{{ pve_api_token_secret_runtime }}"
+    node: "{{ pve_node }}"
+    state: apply
+  check_mode: "{{ opnsense_gate2_check_mode }}"
+  no_log: true
+  when: not opnsense_gate2_check_mode | bool
