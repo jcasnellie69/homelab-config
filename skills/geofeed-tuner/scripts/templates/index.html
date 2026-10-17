@@ -862,6 +862,17 @@
                     <span id="paginationInfo">Showing 0-0 of 0 rows</span>
                 </div>
                 <div class="pagination-controls">
+                    <button class="pagination-btn" aria-label="First Page" id="firstPage" title="First Page">
+                        <i class="bi bi-chevron-bar-left"></i>
+                    </button>
+                    <button class="pagination-btn" aria-label="Previous Page" id="prevPage" title="Previous Page">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <div id="pageNumbers" style="display: flex; gap: 5px;"></div>
+                    <button class="pagination-btn" aria-label="Next Page" id="nextPage" title="Next Page">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <button class="pagination-btn" aria-label="Last Page" id="lastPage" title="Last Page">
                     <button class="pagination-btn" id="firstPage" title="First Page" aria-label="First Page">
                         <i class="bi bi-chevron-bar-left" aria-hidden="true"></i>
                     </button>
@@ -923,6 +934,7 @@
         <div class="modal-content" tabindex="0">
             <h2>
                 <i class="bi bi-geo-alt" style="margin-right: 10px;"></i>Location Matches
+                <span class="close" tabindex="0" role="button" aria-label="Close location matches modal">&times;</span>
                 <span class="close" tabindex="0" role="button" aria-label="Close modal">&times;</span>
             </h2>
             <div id="matchesList" class="matches-container"></div>
