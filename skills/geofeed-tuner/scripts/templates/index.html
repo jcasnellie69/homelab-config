@@ -841,7 +841,7 @@
                     <div class="issues-header">
                         <strong>Issues:</strong>
                         {{if .Tunable}}
-                        <button class="tune-all-btn" onclick="handleTuneButtonClick(this)">Tune</button>
+                        <button class="tune-all-btn" onclick="handleTuneButtonClick(this)" aria-label="Tune row {{.Line}}">Tune</button>
                         {{end}}
                     </div>
                     {{range .Messages}}
