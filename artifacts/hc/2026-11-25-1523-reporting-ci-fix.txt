@@ -1,0 +1,21 @@
+D112526 | CHG-REPORTING-CI-001 | fix hosted runner reporting | JC | github-actions
+
+GitHub Actions run 45559621092, job 139019908964, failed in collection:
+mkdir: Permission denied. The hosted runner could not create /srv/artifacts/hc.
+After provisioning that directory, collect_inventory.sh also tried to execute
+the Markdown code fence as shell substitution, omitting the raw log reference.
+
+The workflow now prepares the existing artifact path for the runner without
+changing token permissions. The inventory collector escapes its Markdown
+fences. Original files were backed up under
+/tmp/reporting-backups-D112526T1524/ before editing.
+
+Commands and verification:
+- bash scripts/reporting/create_artifact.sh (evidence under /srv/artifacts/hc)
+- bash collect_inventory.sh, collect_health.sh, and publish_docs.sh from a
+  temporary working directory after preparing /srv/artifacts/hc: passed; the
+  generated inventory and health indexes include their respective fragments,
+  and the inventory fragment and index include the raw log reference.
+- bash -n on the three reporting scripts: passed.
+- shellcheck scripts/reporting/collect_inventory.sh: passed.
+- git diff --check: passed.

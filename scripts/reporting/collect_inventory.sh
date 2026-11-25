@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# D112526 | CHG-REPORTING-CI-001 | preserve inventory evidence link | JC | github-actions
 set -euo pipefail
 
 # Collect inventory data: produce raw log, JSON metadata, and a markdown fragment.
@@ -59,9 +60,9 @@ cat > "$FRAG_MD" <<EOF
 
 Summary of collected items:
 
-```
+\`\`\`
 See raw log: ${RAW_LOG}
-```
+\`\`\`
 
 EOF
 

@@ -1,3 +1,4 @@
+# D112526 | CHG-REPORTING-CI-001 | prepare hosted runner reporting | JC | github-actions
 name: Reporting — collect & publish
 
 on:
@@ -17,6 +18,11 @@ jobs:
       - name: Make reporting scripts executable
         run: |
           chmod +x scripts/reporting/*.sh
+
+      - name: Prepare artifact directory
+        run: |
+          sudo mkdir -p /srv/artifacts/hc
+          sudo chown "$(id -u):$(id -g)" /srv/artifacts/hc
 
       - name: Run collection scripts
         run: |
